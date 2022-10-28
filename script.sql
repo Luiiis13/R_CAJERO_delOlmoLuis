@@ -23,7 +23,7 @@ primer_apellido varchar(20)
 );
 
 create table usuario_rol(
-id int not null primary key,
+id int not null primary key auto_increment,
 id_usuario int not null ,
 id_rol int  not null ,
 CONSTRAINT id_usuario_fk FOREIGN KEY (id_usuario) REFERENCES Usuario (id),
