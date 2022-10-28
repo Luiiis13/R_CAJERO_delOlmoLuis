@@ -19,7 +19,8 @@ create table Usuario(
 id int AUTO_INCREMENT primary key not null, 
 nombre varchar(20) not null,
 edad int not null,
-primer_apellido varchar(20)
+primer_apellido varchar(20),
+
 );
 
 create table usuario_rol(
@@ -43,7 +44,9 @@ create table Cuenta(
 id int AUTO_INCREMENT primary key not null,
 numero int unique key,
 iban varchar(20) unique key,
-saldo float,
-tarjeta_asociada int,
+saldo float not null ,
+tarjeta_asociada int not null,
+id_usuario int not null  ,
+foreign key (id_usuario) references usuario(id),
 foreign key(tarjeta_asociada) REFERENCES tarjeta(id) 
 );
