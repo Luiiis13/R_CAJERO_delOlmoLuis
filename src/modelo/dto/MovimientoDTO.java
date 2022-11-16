@@ -1,5 +1,7 @@
 package modelo.dto;
 
+import java.sql.Date;
+
 public class MovimientoDTO {
 
 	private int id;
@@ -7,9 +9,9 @@ public class MovimientoDTO {
 	private int idCuentaOrigen;
 	private int idCuentaDestino;
 	private float Cantidad;
-	private String fechaDelMovimiento;
+	private Date fechaDelMovimiento;
 
-	public MovimientoDTO(int id, int idCuentaOrigen, int idCuentaDestino, float cantidad, String fechaDelMovimiento) {
+	public MovimientoDTO(int id, int idCuentaOrigen, int idCuentaDestino, float cantidad, Date fechaDelMovimiento) {
 		super();
 		this.id = id;
 		this.idCuentaOrigen = idCuentaOrigen;
@@ -50,11 +52,11 @@ public class MovimientoDTO {
 		Cantidad = cantidad;
 	}
 
-	public String getFechaDelMovimiento() {
+	public Date getFechaDelMovimiento() {
 		return fechaDelMovimiento;
 	}
 
-	public void setFechaDelMovimiento(String fechaDelMovimiento) {
+	public void setFechaDelMovimiento(Date fechaDelMovimiento) {
 		this.fechaDelMovimiento = fechaDelMovimiento;
 	}
 }

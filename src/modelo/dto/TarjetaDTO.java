@@ -1,13 +1,15 @@
 package modelo.dto;
 
+import java.sql.Date;
+
 public class TarjetaDTO {
 	private int id;
 	private int numero;
-	private String fecha_expiracion;
+	private Date fecha_expiracion;
 	private int cvv;
 	private int pin;
 
-	public TarjetaDTO(int id, int numero, String fecha_expiracion, int cvv, int pin) {
+	public TarjetaDTO(int id, int numero, Date fecha_expiracion, int cvv, int pin) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -32,11 +34,11 @@ public class TarjetaDTO {
 		this.numero = numero;
 	}
 
-	public String getFecha_expiracion() {
+	public Date getFecha_expiracion() {
 		return fecha_expiracion;
 	}
 
-	public void setFecha_expiracion(String fecha_expiracion) {
+	public void setFecha_expiracion(Date fecha_expiracion) {
 		this.fecha_expiracion = fecha_expiracion;
 	}
 

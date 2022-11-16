@@ -1,11 +1,11 @@
 package modelo.dto;
 
-public class usuario_rolDTO {
+public class UsuarioRolDTO {
 	private int id;
 	private int id_usuario;
 	private int id_rol;
 
-	public usuario_rolDTO(int id, int id_usuario, int id_rol) {
+	public UsuarioRolDTO(int id, int id_usuario, int id_rol) {
 		super();
 		this.id = id;
 		this.id_usuario = id_usuario;

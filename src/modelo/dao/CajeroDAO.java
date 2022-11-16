@@ -5,23 +5,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.imageio.plugins.tiff.GeoTIFFTagSet;
-
-import com.mysql.cj.xdevapi.PreparableStatement;
-
 import modelo.Conectar;
-import modelo.dto.RolDTO;
+import modelo.dto.CajeroDTO;
+;
 
-public class RolDAO {
-
-	public void insertarRol(RolDTO nuevoRol) {
+public class CajeroDAO {
+	public void insertarCajero(CajeroDTO nuevoCajero) {
 		Conectar conexion = new Conectar();
 
 		try {
-			String query = "INSERT INTO rol(nombre,descripcion) VALUES (?,?)";
+			String query = "INSERT INTO Cajero(ubicacion) VALUES (?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setString(1, nuevoRol.getNombre());
-			preparedStatement.setString(2, nuevoRol.getDescripcion());
+			preparedStatement.setString(1, nuevoCajero.getUbicacion());
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 
@@ -34,22 +29,22 @@ public class RolDAO {
 
 	}
 
-	public ArrayList<RolDTO> obtenerRoles() {
-		ArrayList<RolDTO> roles = new ArrayList<>();
+	public ArrayList<CajeroDTO> obtenerCajeros() {
+		ArrayList<CajeroDTO> cajeros = new ArrayList<>();
 
 		Conectar conexion = new Conectar();
 		try {
-			String query = "SELECT * FROM rol ";
+			String query = "SELECT * FROM Cajero ";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 
 			ResultSet resultado = preparedStatement.executeQuery();
 			while (resultado.next() == true) {
 				int id = resultado.getInt("id");
-				String nombre = resultado.getString("nombre");
-				String descripcion = resultado.getString("descripcion");
-				RolDTO rol = new RolDTO(id, nombre, descripcion);
+				String ubicacion = resultado.getString("ubicacion");
+				
+				CajeroDTO cajero = new CajeroDTO(id, ubicacion);
 
-				roles.add(rol);
+				cajeros.add(cajero);
 			}
 			resultado.close();
 			preparedStatement.close();
@@ -60,24 +55,25 @@ public class RolDAO {
 			conexion.cerrarConexion();
 		}
 
-		return roles;
+		return cajeros;
 	}
 
-	public RolDTO obtenerRol(int id) {
-		RolDTO rol = null;
+	public CajeroDTO obtenerCajero(int id) {
+		CajeroDTO cajero = null;
 
 		Conectar conexion = new Conectar();
 		try {
-			String query = "SELECT * FROM rol WHERE id=?";
+			String query = "SELECT * FROM Cajero WHERE id=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setInt(1, id);
 			ResultSet resultado = preparedStatement.executeQuery();
 			if (resultado.next() == true) {
-				int idResult = resultado.getInt("id");
-				String nombre = resultado.getString("nombre");
-				String descripcion = resultado.getString("descripcion");
-				rol = new RolDTO(idResult, nombre, descripcion);
+				int idCajero = resultado.getInt("id");
+				String ubicacion = resultado.getString("ubicacion");
+				
+				 cajero = new CajeroDTO(id, ubicacion);
 
+				;
 			}
 			resultado.close();
 			preparedStatement.close();
@@ -87,17 +83,17 @@ public class RolDAO {
 		} finally {
 			conexion.cerrarConexion();
 		}
-		return rol;
+		return cajero;
 	}
 	
 	
-	public boolean eliminarRol(int id) {
+	public boolean eliminarCajero(int id) {
 		boolean eliminado = false;
 		
 		Conectar conexion = new Conectar();
 		
 		try {
-			String query="DELETE From rol WHERE id=?";
+			String query="DELETE From Cajero WHERE id=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -117,17 +113,16 @@ public class RolDAO {
 	}
 	
 	
-	public boolean actualizarRol(RolDTO nuevoRol) {
+	public boolean actualizarCajero(CajeroDTO nuevoCajero) {
 		
 		boolean actualizado=false;
 		
 		Conectar conexion=new Conectar();
 		try {
-			String query="UPDATE rol SET nombre=? ,descripcion=? WHERE id=? ";
+			String query="UPDATE Cajero SET ubicacion=? WHERE id=? ";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setString(1,nuevoRol.getNombre());
-			preparedStatement.setString(2, nuevoRol.getDescripcion());
-			preparedStatement.setInt(3, nuevoRol.getId());
+			preparedStatement.setString(1,nuevoCajero.getUbicacion());
+			preparedStatement.setInt(2, nuevoCajero.getId());
 			preparedStatement.executeUpdate();
 			actualizado=true;
 		
@@ -144,5 +139,4 @@ public class RolDAO {
 		
 		
 	}
-
 }
