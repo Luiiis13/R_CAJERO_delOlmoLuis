@@ -42,9 +42,10 @@ public class UsuarioDAO {
 					
 					int id = resultado.getInt("id");
 					String nombre=resultado.getString("nombre");
-					int Edad=resultado.getInt("edad");
+					int edad=resultado.getInt("edad");
 					String primerApellido=resultado.getString("primer_apellido");
-					UsuarioDTO usuario = new UsuarioDTO(id, nombre, Edad, primerApellido);
+					String rol=resultado.getString("rol");
+					UsuarioDTO usuario = new UsuarioDTO(id, nombre, edad, primerApellido,rol);
 					usuarios.add(usuario);
 				}
 				resultado.close();
@@ -76,7 +77,8 @@ public class UsuarioDAO {
 					String nombre = resultado.getString("nombre");
 					int edad=resultado.getInt("edad");
 					String primerApellido = resultado.getString("primer_apellido");
-					usuario = new UsuarioDTO(idResult, nombre, edad,primerApellido);
+					String rol=resultado.getString("rol");
+					usuario = new UsuarioDTO(idResult, nombre, edad,primerApellido,rol);
 
 				}
 				resultado.close();

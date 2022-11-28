@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 public class Sesion extends JFrame {
@@ -14,6 +15,7 @@ public class Sesion extends JFrame {
 	private JTextField numeroTarjeta = new JTextField();
 	private JPasswordField pin = new JPasswordField();
 	private JButton aceptarbtn = new JButton("Aceptar");
+	
 
 // Por defecto que posicion ocupa en la ventana 
 //El jframe para insertar algo tengo que poner un Jpanel?
@@ -32,7 +34,9 @@ public class Sesion extends JFrame {
 		this.panel.add(pinlbl);
 		this.panel.add(pin);
 		this.panel.add(aceptarbtn);
-
+		
+		
+		
 		this.pack();
 
 	}

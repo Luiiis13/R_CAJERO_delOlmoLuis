@@ -9,27 +9,16 @@ drop table if exists  Usuario;
 drop table if exists  Tarjeta;
 drop table if exists  Cajero;
 
-create table Rol(
-id int AUTO_INCREMENT primary key, 
-nombre varchar(20) not null,
-descripcion varchar(40)
-);
+
 
 create table Usuario(
 id int AUTO_INCREMENT primary key not null, 
 nombre varchar(20) not null,
 edad int not null,
-primer_apellido varchar(20)
-
+primer_apellido varchar(20),
+rol varchar(20) not null
 );
 
-create table usuario_rol(
-id int auto_increment not null primary key ,
-id_usuario int not null ,
-id_rol int  not null ,
-CONSTRAINT id_usuario_fk FOREIGN KEY (id_usuario) REFERENCES Usuario (id),
- constraint id_rol_fk foreign key(id_rol) REFERENCES Rol(id) 
-);
 
 
 create table Tarjeta(

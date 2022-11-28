@@ -1,5 +1,6 @@
 package controlador;
 
+import vista.Opciones;
 import vista.Sesion;
 
 public class Main {
