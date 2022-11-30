@@ -11,8 +11,8 @@ public class OpcionesTabPane extends JTabbedPane {
 
 public OpcionesTabPane(){
 		this.add("Usuario",jUsuario);
-		//TO DO verificar porque no funciona
-		if(SesionControlador.datosUsuario.getRol()=="admin") {
+		
+		if(SesionControlador.datosUsuario.getRol().equalsIgnoreCase("admin")) {
 			this.add("administrador",jAdministrador);
 			
 		}
