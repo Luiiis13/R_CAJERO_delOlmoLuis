@@ -5,17 +5,24 @@ import java.awt.Button;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import listeners.ExtraerDineroOpcionListener;
+
 public class PanelUsuario extends JPanel{
-	private Button retirarDinero = new Button("Retirar dinero");
-	private Button ingresarDinero = new Button("Ingresar dinero");
-	private Button cambiarNumero = new Button("Cambiar número secreto");
-	private Button noviminetos = new Button("Ver movimientos y saldo de la cuenta");
+	private Button retirarDineroBtn = new Button("Retirar dinero");
+	private Button ingresarDineroBtn = new Button("Ingresar dinero");
+	private Button cambiarNumeroBtn = new Button("Cambiar número secreto");
+	private Button noviminetosBtn = new Button("Ver movimientos y saldo de la cuenta");
 
 	public PanelUsuario() {
-		this.add(retirarDinero);
-		this.add(ingresarDinero);
-		this.add(cambiarNumero);
-		this.add(noviminetos);
+		this.add(retirarDineroBtn);
+		this.add(ingresarDineroBtn);
+		this.add(cambiarNumeroBtn);
+		this.add(noviminetosBtn);
+		this.inicializar();
 	}
 
+	private void inicializar() {
+		this.retirarDineroBtn.addActionListener(new ExtraerDineroOpcionListener());
+		
+	}
 }

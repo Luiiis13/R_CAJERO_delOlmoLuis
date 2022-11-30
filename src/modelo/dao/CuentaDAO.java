@@ -17,7 +17,7 @@ public class CuentaDAO {
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setInt(1, nuevacuenta.getNumero());
 			preparedStatement.setString(2, nuevacuenta.getIban());
-			preparedStatement.setFloat(3, nuevacuenta.getSueldo());
+			preparedStatement.setFloat(3, nuevacuenta.getSaldo());
 			preparedStatement.setInt(4, nuevacuenta.getTarjetaAsociada());
 			preparedStatement.setInt(5, nuevacuenta.getId_usuario());
 			preparedStatement.executeUpdate();
@@ -165,7 +165,7 @@ public class CuentaDAO {
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setInt(1, nuevaCuenta.getNumero());
 			preparedStatement.setString(2, nuevaCuenta.getIban());
-			preparedStatement.setFloat(3, nuevaCuenta.getSueldo());
+			preparedStatement.setFloat(3, nuevaCuenta.getSaldo());
 			preparedStatement.setInt(4, nuevaCuenta.getTarjetaAsociada());
 			preparedStatement.setInt(5, nuevaCuenta.getId_usuario());
 			preparedStatement.setInt(6, nuevaCuenta.getId());

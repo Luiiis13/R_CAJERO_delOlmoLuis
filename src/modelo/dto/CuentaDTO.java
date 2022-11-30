@@ -5,16 +5,16 @@ public class CuentaDTO {
 	private int id;
 	private int numero;
 	private String iban;
-	private float sueldo;
+	private float saldo;
 	private int tarjetaAsociada;
 	private int id_usuario;
 
-	public CuentaDTO(int id, int numero, String iban, float sueldo, int tarjetaAsociada, int id_usuario) {
+	public CuentaDTO(int id, int numero, String iban, float saldo, int tarjetaAsociada, int id_usuario) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.iban = iban;
-		this.sueldo = sueldo;
+		this.saldo = saldo;
 		this.tarjetaAsociada = tarjetaAsociada;
 		this.id_usuario = id_usuario;
 	}
@@ -43,12 +43,12 @@ public class CuentaDTO {
 		this.iban = iban;
 	}
 
-	public float getSueldo() {
-		return sueldo;
+	public float getSaldo() {
+		return saldo;
 	}
 
-	public void setSueldo(float sueldo) {
-		this.sueldo = sueldo;
+	public void setSaldo(float sueldo) {
+		this.saldo = sueldo;
 	}
 
 	public int getTarjetaAsociada() {
