@@ -15,7 +15,6 @@ public class SesionControlador {
 	public static CuentaDTO datosCuenta;
 	public static UsuarioDTO datosUsuario;
 
-
 	public SesionControlador() {
 
 		this.inicializarListener();

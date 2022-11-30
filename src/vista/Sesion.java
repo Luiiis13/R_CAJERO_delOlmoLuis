@@ -1,5 +1,8 @@
 package vista;
 
+import java.awt.BorderLayout;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,7 +18,6 @@ public class Sesion extends JFrame {
 	private JTextField numeroTarjeta = new JTextField();
 	private JPasswordField pin = new JPasswordField();
 	private JButton aceptarbtn = new JButton("Aceptar");
-	
 
 // Por defecto que posicion ocupa en la ventana 
 //El jframe para insertar algo tengo que poner un Jpanel?
@@ -23,6 +25,7 @@ public class Sesion extends JFrame {
 	public Sesion() {
 
 		this.add(panel);
+		this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		this.setContentPane(panel);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("Iniciar sesion");
@@ -34,9 +37,7 @@ public class Sesion extends JFrame {
 		this.panel.add(pinlbl);
 		this.panel.add(pin);
 		this.panel.add(aceptarbtn);
-		
-		
-		
+
 		this.pack();
 
 	}

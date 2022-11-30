@@ -6,8 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Conectar;
-import modelo.dto.CajeroDTO;
-;
+import modelo.dto.CajeroDTO;;
 
 public class CajeroDAO {
 	public void insertarCajero(CajeroDTO nuevoCajero) {
@@ -41,7 +40,7 @@ public class CajeroDAO {
 			while (resultado.next() == true) {
 				int id = resultado.getInt("id");
 				String ubicacion = resultado.getString("ubicacion");
-				
+
 				CajeroDTO cajero = new CajeroDTO(id, ubicacion);
 
 				cajeros.add(cajero);
@@ -70,8 +69,8 @@ public class CajeroDAO {
 			if (resultado.next() == true) {
 				int idCajero = resultado.getInt("id");
 				String ubicacion = resultado.getString("ubicacion");
-				
-				 cajero = new CajeroDTO(id, ubicacion);
+
+				cajero = new CajeroDTO(id, ubicacion);
 
 				;
 			}
@@ -85,58 +84,54 @@ public class CajeroDAO {
 		}
 		return cajero;
 	}
-	
-	
+
 	public boolean eliminarCajero(int id) {
 		boolean eliminado = false;
-		
+
 		Conectar conexion = new Conectar();
-		
+
 		try {
-			String query="DELETE From Cajero WHERE id=?";
+			String query = "DELETE From Cajero WHERE id=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
-			
-			eliminado=true;
-			
+
+			eliminado = true;
+
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-						e.printStackTrace();
-		}finally {
+			e.printStackTrace();
+		} finally {
 			conexion.cerrarConexion();
 		}
-		
+
 		return eliminado;
-		
+
 	}
-	
-	
+
 	public boolean actualizarCajero(CajeroDTO nuevoCajero) {
-		
-		boolean actualizado=false;
-		
-		Conectar conexion=new Conectar();
+
+		boolean actualizado = false;
+
+		Conectar conexion = new Conectar();
 		try {
-			String query="UPDATE Cajero SET ubicacion=? WHERE id=? ";
+			String query = "UPDATE Cajero SET ubicacion=? WHERE id=? ";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setString(1,nuevoCajero.getUbicacion());
+			preparedStatement.setString(1, nuevoCajero.getUbicacion());
 			preparedStatement.setInt(2, nuevoCajero.getId());
 			preparedStatement.executeUpdate();
-			actualizado=true;
-		
-		preparedStatement.close();
+			actualizado = true;
+
+			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			conexion.cerrarConexion();
 		}
-		
+
 		return actualizado;
-		
-		
-		
+
 	}
 }

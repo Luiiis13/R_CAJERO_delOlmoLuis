@@ -1,6 +1,6 @@
 package controlador;
 
-import vista.Opciones;
+import vista.OpcionesFrame;
 import vista.Sesion;
 
 public class Main {

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import controlador.OpcionesControlador;
 import controlador.SesionControlador;
 import modelo.dao.CuentaDAO;
 import modelo.dao.SesionDAO;
@@ -40,9 +41,9 @@ public class SesionListener implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Credenciales validas");
 				this.sesionVista.show(false);
 				obtenerDatosUsuario(idTarjeta);
-				
+				OpcionesControlador opcionesControlador=new OpcionesControlador();
 			} else {
-				JOptionPane.showMessageDialog(null, "Credenciales no validas","Error",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Credenciales no validas", "Error", JOptionPane.ERROR_MESSAGE);
 
 			}
 
@@ -51,19 +52,21 @@ public class SesionListener implements ActionListener {
 
 		}
 	}
+
 	private void obtenerDatosUsuario(int id) {
 		TarjetaDAO tarjeta = new TarjetaDAO();
-		TarjetaDTO datosTarjeta=tarjeta.obtenerTarjeta(id);
-		SesionControlador.datosTarjeta=datosTarjeta; 	//PARA HACER ACCESIBLE LOS DATOS DE LA TARJETA
-		
-		CuentaDAO cuenta=new CuentaDAO();
-		CuentaDTO datosCuenta=cuenta.obtenerCuentaDadoTarjeta(id);
-		SesionControlador.datosCuenta=datosCuenta;
-		//System.out.print(datosCuenta.getId_usuario());
-		
+		TarjetaDTO datosTarjeta = tarjeta.obtenerTarjeta(id);
+		SesionControlador.datosTarjeta = datosTarjeta; // PARA HACER ACCESIBLE LOS DATOS DE LA TARJETA
+
+		CuentaDAO cuenta = new CuentaDAO();
+		CuentaDTO datosCuenta = cuenta.obtenerCuentaDadoTarjeta(id);
+		SesionControlador.datosCuenta = datosCuenta;
+		// System.out.print(datosCuenta.getId_usuario());
+
 		UsuarioDAO usuario = new UsuarioDAO();
-		UsuarioDTO datosUsuario =usuario.obtenerUsuario(datosCuenta.getId_usuario());
-		SesionControlador.datosUsuario=datosUsuario;
-		
+		UsuarioDTO datosUsuario = usuario.obtenerUsuario(datosCuenta.getId_usuario());
+		SesionControlador.datosUsuario = datosUsuario;
+	//	System.out.print(datosUsuario.getRol());
+
 	}
 }

@@ -22,7 +22,7 @@ public class SesionDAO {
 			ResultSet resultado = preparedStatement.executeQuery();
 			while (resultado.next() == true) {
 				idTarjeta = resultado.getInt("id");
-				
+
 			}
 			resultado.close();
 			preparedStatement.close();

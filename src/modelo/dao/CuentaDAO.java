@@ -129,7 +129,7 @@ public class CuentaDAO {
 		return cuenta;
 
 	}
-	
+
 	public boolean eliminarCuenta(int id) {
 		boolean eliminado = false;
 
