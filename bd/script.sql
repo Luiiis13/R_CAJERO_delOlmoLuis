@@ -43,12 +43,8 @@ foreign key(tarjeta_asociada) REFERENCES tarjeta(id)
 
 create table Movimiento(
 id int auto_increment primary key not null ,
-id_cuenta_origen int not null,
-id_cuenta_destino int not null ,
-cantidad float not null,
 fecha_del_movimiento date not null,
-foreign key (id_cuenta_origen) references Cuenta(id),
-foreign key (id_cuenta_destino) references Cuenta(id)
+tipo varchar(20) not null 
 );
 
 create table Cajero(
