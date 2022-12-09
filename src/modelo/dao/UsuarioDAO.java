@@ -21,21 +21,17 @@ public class UsuarioDAO {
 			preparedStatement.setString(3, nuevoUsuario.getPrimerApellido());
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
-
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally {
 			conexion.cerrarConexion();
 		}
-
 	}
 
 	public ArrayList<UsuarioDTO> obtenerUsuarios() {
 		ArrayList<UsuarioDTO> usuarios = new ArrayList<>();
-
 		Conectar conexion = new Conectar();
 		try {
-
 			String query = "SELECT * FROM Usuario";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			ResultSet resultado = preparedStatement.executeQuery();
@@ -51,22 +47,17 @@ public class UsuarioDAO {
 			}
 			resultado.close();
 			preparedStatement.close();
-
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-
 		} finally {
 			conexion.cerrarConexion();
 		}
-
 		return usuarios;
-
 	}
 
 	public UsuarioDTO obtenerUsuario(int id) {
 		UsuarioDTO usuario = null;
-
 		Conectar conexion = new Conectar();
 		try {
 			String query = "SELECT * FROM usuario WHERE id=?";
@@ -80,7 +71,6 @@ public class UsuarioDAO {
 				String primerApellido = resultado.getString("primer_apellido");
 				String rol = resultado.getString("rol");
 				usuario = new UsuarioDTO(idResult, nombre, edad, primerApellido, rol);
-
 			}
 			resultado.close();
 			preparedStatement.close();
@@ -94,11 +84,8 @@ public class UsuarioDAO {
 	}
 
 	public boolean eliminarUsuario(int id) {
-
 		boolean eliminar = false;
-
 		Conectar conexion = new Conectar();
-
 		try {
 			String query = "DELETE  FROM usuario WHERE id=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
@@ -116,7 +103,6 @@ public class UsuarioDAO {
 	}
 
 	public boolean actualizarUsuario(UsuarioDTO nuevoUsuario) {
-
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
 		try {
@@ -128,7 +114,6 @@ public class UsuarioDAO {
 			preparedStatement.setInt(4, nuevoUsuario.getId());
 			preparedStatement.executeUpdate();
 			actualizado = true;
-
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -136,8 +121,6 @@ public class UsuarioDAO {
 		} finally {
 			conexion.cerrarConexion();
 		}
-
 		return actualizado;
-
 	}
 }

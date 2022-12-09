@@ -25,7 +25,6 @@ public class SesionListener implements ActionListener {
 		this.sesionDAO = nuevaSesionDAO;
 		this.sesionVista = Sesion;
 	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.verificarCredenciales();
@@ -41,15 +40,12 @@ public class SesionListener implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Credenciales validas");
 				this.sesionVista.show(false);
 				obtenerDatosUsuario(idTarjeta);
-				OpcionesControlador opcionesControlador=new OpcionesControlador();
+				OpcionesControlador opcionesControlador = new OpcionesControlador();
 			} else {
 				JOptionPane.showMessageDialog(null, "Credenciales no validas", "Error", JOptionPane.ERROR_MESSAGE);
-
 			}
-
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Formato no valido");
-
 		}
 	}
 
@@ -66,7 +62,6 @@ public class SesionListener implements ActionListener {
 		UsuarioDAO usuario = new UsuarioDAO();
 		UsuarioDTO datosUsuario = usuario.obtenerUsuario(datosCuenta.getId_usuario());
 		SesionControlador.datosUsuario = datosUsuario;
-	//	System.out.print(datosUsuario.getRol());
-
+		// System.out.print(datosUsuario.getRol());
 	}
 }

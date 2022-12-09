@@ -18,19 +18,16 @@ public class CajeroDAO {
 			preparedStatement.setString(1, nuevoCajero.getUbicacion());
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			conexion.cerrarConexion();
 		}
-
 	}
 
 	public ArrayList<CajeroDTO> obtenerCajeros() {
 		ArrayList<CajeroDTO> cajeros = new ArrayList<>();
-
 		Conectar conexion = new Conectar();
 		try {
 			String query = "SELECT * FROM Cajero ";
@@ -40,9 +37,7 @@ public class CajeroDAO {
 			while (resultado.next() == true) {
 				int id = resultado.getInt("id");
 				String ubicacion = resultado.getString("ubicacion");
-
 				CajeroDTO cajero = new CajeroDTO(id, ubicacion);
-
 				cajeros.add(cajero);
 			}
 			resultado.close();
@@ -53,13 +48,11 @@ public class CajeroDAO {
 		} finally {
 			conexion.cerrarConexion();
 		}
-
 		return cajeros;
 	}
 
 	public CajeroDTO obtenerCajero(int id) {
 		CajeroDTO cajero = null;
-
 		Conectar conexion = new Conectar();
 		try {
 			String query = "SELECT * FROM Cajero WHERE id=?";
@@ -69,10 +62,7 @@ public class CajeroDAO {
 			if (resultado.next() == true) {
 				int idCajero = resultado.getInt("id");
 				String ubicacion = resultado.getString("ubicacion");
-
 				cajero = new CajeroDTO(id, ubicacion);
-
-				;
 			}
 			resultado.close();
 			preparedStatement.close();
@@ -87,17 +77,13 @@ public class CajeroDAO {
 
 	public boolean eliminarCajero(int id) {
 		boolean eliminado = false;
-
 		Conectar conexion = new Conectar();
-
 		try {
 			String query = "DELETE From Cajero WHERE id=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
-
 			eliminado = true;
-
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -105,15 +91,12 @@ public class CajeroDAO {
 		} finally {
 			conexion.cerrarConexion();
 		}
-
 		return eliminado;
-
 	}
 
 	public boolean actualizarCajero(CajeroDTO nuevoCajero) {
 
 		boolean actualizado = false;
-
 		Conectar conexion = new Conectar();
 		try {
 			String query = "UPDATE Cajero SET ubicacion=? WHERE id=? ";
@@ -122,7 +105,6 @@ public class CajeroDAO {
 			preparedStatement.setInt(2, nuevoCajero.getId());
 			preparedStatement.executeUpdate();
 			actualizado = true;
-
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -130,7 +112,6 @@ public class CajeroDAO {
 		} finally {
 			conexion.cerrarConexion();
 		}
-
 		return actualizado;
 
 	}

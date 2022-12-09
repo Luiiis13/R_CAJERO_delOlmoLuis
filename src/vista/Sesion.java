@@ -23,7 +23,6 @@ public class Sesion extends JFrame {
 //El jframe para insertar algo tengo que poner un Jpanel?
 
 	public Sesion() {
-
 		this.add(panel);
 		this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		this.setContentPane(panel);
@@ -31,15 +30,12 @@ public class Sesion extends JFrame {
 		this.setTitle("Iniciar sesion");
 		this.setVisible(true);
 		this.setSize(500, 500);
-
 		this.panel.add(numeroTarjetalbl);
 		this.panel.add(numeroTarjeta);
 		this.panel.add(pinlbl);
 		this.panel.add(pin);
 		this.panel.add(aceptarbtn);
-
 		this.pack();
-
 	}
 
 	public JTextField getNumeroTarjeta() {

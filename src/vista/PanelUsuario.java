@@ -5,9 +5,11 @@ import java.awt.Button;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import listeners.CambiarNumeroSecretoOpcionListener;
 import listeners.ExtraerDineroOpcionListener;
+import listeners.IngresarDineroOpcionListener;
 
-public class PanelUsuario extends JPanel{
+public class PanelUsuario extends JPanel {
 	private Button retirarDineroBtn = new Button("Retirar dinero");
 	private Button ingresarDineroBtn = new Button("Ingresar dinero");
 	private Button cambiarNumeroBtn = new Button("Cambiar número secreto");
@@ -23,6 +25,8 @@ public class PanelUsuario extends JPanel{
 
 	private void inicializar() {
 		this.retirarDineroBtn.addActionListener(new ExtraerDineroOpcionListener());
-		
+		this.ingresarDineroBtn.addActionListener(new IngresarDineroOpcionListener());
+		this.cambiarNumeroBtn.addActionListener(new CambiarNumeroSecretoOpcionListener());
+
 	}
 }

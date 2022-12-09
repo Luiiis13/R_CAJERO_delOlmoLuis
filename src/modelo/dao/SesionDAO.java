@@ -12,7 +12,6 @@ public class SesionDAO {
 
 	public int verificarSesion(SesionDTO nuevaSesion) {
 		int idTarjeta = -1;
-
 		Conectar conexion = new Conectar();
 		try {
 			String query = "SELECT id FROM tarjeta WHERE numero=? and pin=?  and date(fecha_expiracion)>=curdate()";
@@ -22,7 +21,6 @@ public class SesionDAO {
 			ResultSet resultado = preparedStatement.executeQuery();
 			while (resultado.next() == true) {
 				idTarjeta = resultado.getInt("id");
-
 			}
 			resultado.close();
 			preparedStatement.close();
@@ -32,7 +30,6 @@ public class SesionDAO {
 		} finally {
 			conexion.cerrarConexion();
 		}
-
 		return idTarjeta;
 	}
 }
