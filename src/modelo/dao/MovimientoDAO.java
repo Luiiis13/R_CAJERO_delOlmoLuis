@@ -13,11 +13,13 @@ public class MovimientoDAO {
 	public void insertarMovimiento(MovimientoDTO nuevoMovimiento) {
 		Conectar conexion = new Conectar();
 		try {
-			String query = "INSERT INTO Movimiento(tipo,fecha_del_movimiento) VALUES(?,?)";
+			String query = "INSERT INTO Movimiento(tipo,fecha_del_movimiento,cuenta_asociada) VALUES(?,?,?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			
 			preparedStatement.setString(1, nuevoMovimiento.getTipo());
 			preparedStatement.setDate(2, nuevoMovimiento.getFechaDelMovimiento());
+			preparedStatement.setInt(3, nuevoMovimiento.getCuentaAsociada());
+
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 		} catch (Exception e) {
@@ -28,44 +30,21 @@ public class MovimientoDAO {
 		}
 	}
 
-	public ArrayList<MovimientoDTO> obtenerMovimientos() {
+	
+	public ArrayList<MovimientoDTO> obtenerMovimiento(int idCuenta) {
 		ArrayList<MovimientoDTO> Movimientos = new ArrayList<>();
 		Conectar conexion = new Conectar();
 		try {
-			String query = "SELECT * FROM Movimiento";
+			String query = "SELECT * FROM Movimiento WHERE cuenta_asociada=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			ResultSet resultado = preparedStatement.executeQuery();
-			while (resultado.next() == true) {
-				int id = resultado.getInt("id");
-				String tipo = resultado.getString("tipo");
-				Date fechaDelMovimiento = resultado.getDate("fecha_del_movimiento");
-				MovimientoDTO Movimiento = new MovimientoDTO(id,fechaDelMovimiento,tipo);
-				Movimientos.add(Movimiento);
-			}
-			resultado.close();
-			preparedStatement.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			conexion.cerrarConexion();
-		}
-		return Movimientos;
-	}
-
-	public ArrayList<MovimientoDTO> obtenerMovimiento(int id) {
-		ArrayList<MovimientoDTO> Movimientos = new ArrayList<>();
-		Conectar conexion = new Conectar();
-		try {
-			String query = "SELECT * FROM Movimiento WHERE id=?";
-			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(1, idCuenta);
 			ResultSet resultado = preparedStatement.executeQuery();
 			while (resultado.next() == true) {
 				int idMovimientos = resultado.getInt("id");
 				String tipo = resultado.getString("tipo");
 				Date fechaDelMovimiento = resultado.getDate("fecha_del_movimiento");
-				MovimientoDTO Movimiento = new MovimientoDTO(idMovimientos,fechaDelMovimiento,tipo);
+				int cuentaAsociada = resultado.getInt("cuenta_asociada");
+				MovimientoDTO Movimiento = new MovimientoDTO(idMovimientos,fechaDelMovimiento,tipo,cuentaAsociada);
 				Movimientos.add(Movimiento);
 			}
 			resultado.close();
@@ -98,24 +77,5 @@ public class MovimientoDAO {
 		return eliminado;
 	}
 
-	public boolean actualizarMovimiento(MovimientoDTO nuevoMovimiento) {
-		boolean actualizado = false;
-		Conectar conexion = new Conectar();
-		try {
-			String query = "UPDATE Movimiento SET tipo=?,fecha_del_movimiento=? WHERE id=? ";
-			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setString(1, nuevoMovimiento.getTipo());
-			preparedStatement.setDate(2, nuevoMovimiento.getFechaDelMovimiento());
-			preparedStatement.setInt(3, nuevoMovimiento.getId());
-			preparedStatement.executeUpdate();
-			actualizado = true;
-			preparedStatement.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			conexion.cerrarConexion();
-		}
-		return actualizado;
-	}
+	
 }

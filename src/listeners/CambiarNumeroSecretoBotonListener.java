@@ -33,8 +33,7 @@ public class CambiarNumeroSecretoBotonListener implements ActionListener {
 				tarjetaDAO.actualizarTarjeta(SesionControlador.datosTarjeta);
 				MovimientoDAO movimientoDAO = new MovimientoDAO();
 				long millis=System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
-				MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Cambio pin");
-				//TO DO MIRAR SI FUNCIONA
+				MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Cambio pin",SesionControlador.datosCuenta.getId());
 				movimientoDAO.insertarMovimiento(movimientoDTO);
 				JOptionPane.showMessageDialog(null, "La operacion se ha ejecutado correctamente");
 			}

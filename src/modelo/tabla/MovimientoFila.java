@@ -1,27 +1,17 @@
-package modelo.dto;
+package modelo.tabla;
 
 import java.sql.Date;
 
-public class MovimientoDTO {
+public class MovimientoFila {
 
 	private int id;
 	private String tipo; 
 	private Date fechaDelMovimiento;
-private int cuentaAsociada;
-	public MovimientoDTO(int id,  Date fechaDelMovimiento,String tipo,int cuentaAsociada ) {
-		super();
+	
+	public MovimientoFila(int id,  Date fechaDelMovimiento,String tipo) {
 		this.id = id;
 		this.tipo = tipo;
 		this.fechaDelMovimiento = fechaDelMovimiento;
-		this.cuentaAsociada=cuentaAsociada;
-	}
-
-	public int getCuentaAsociada() {
-		return cuentaAsociada;
-	}
-
-	public void setCuentaAsociada(int cuentaAsociada) {
-		this.cuentaAsociada = cuentaAsociada;
 	}
 
 	public int getId() {
@@ -31,8 +21,6 @@ private int cuentaAsociada;
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	
 
 	public String getTipo() {
 		return tipo;
@@ -49,4 +37,5 @@ private int cuentaAsociada;
 	public void setFechaDelMovimiento(Date fechaDelMovimiento) {
 		this.fechaDelMovimiento = fechaDelMovimiento;
 	}
+
 }
