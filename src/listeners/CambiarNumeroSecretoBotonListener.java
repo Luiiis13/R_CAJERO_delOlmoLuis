@@ -2,12 +2,15 @@ package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 
 import javax.swing.JOptionPane;
 
 import controlador.SesionControlador;
 import modelo.dao.CuentaDAO;
+import modelo.dao.MovimientoDAO;
 import modelo.dao.TarjetaDAO;
+import modelo.dto.MovimientoDTO;
 import vista.CambiarNumeroSecretoFrame;
 
 public class CambiarNumeroSecretoBotonListener implements ActionListener {
@@ -28,6 +31,11 @@ public class CambiarNumeroSecretoBotonListener implements ActionListener {
 				SesionControlador.datosTarjeta.setPin(nuevoPin);
 				TarjetaDAO tarjetaDAO = new TarjetaDAO();
 				tarjetaDAO.actualizarTarjeta(SesionControlador.datosTarjeta);
+				MovimientoDAO movimientoDAO = new MovimientoDAO();
+				long millis=System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
+				MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Cambio pin");
+				//TO DO MIRAR SI FUNCIONA
+				movimientoDAO.insertarMovimiento(movimientoDTO);
 				JOptionPane.showMessageDialog(null, "La operacion se ha ejecutado correctamente");
 			}
 		} catch (Exception error) {

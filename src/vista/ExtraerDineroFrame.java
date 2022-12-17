@@ -1,5 +1,6 @@
 package vista;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +18,7 @@ public class ExtraerDineroFrame extends JFrame {
 	public ExtraerDineroFrame() {
 		this.add(panel);
 		this.setContentPane(panel);
+		this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("Extraer dinero");
 		this.setVisible(true);
@@ -25,6 +27,7 @@ public class ExtraerDineroFrame extends JFrame {
 		this.panel.add(cantidadSpinner);
 		this.panel.add(confirmarBtn);
 		this.inicializar();
+		this.pack();
 	}
 	private void inicializar() {
 		confirmarBtn.addActionListener(new ExtraerDineroBotonListener(this));

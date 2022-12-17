@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 
 import controlador.SesionControlador;
 import modelo.dao.CuentaDAO;
+import modelo.dao.MovimientoDAO;
+import modelo.dto.MovimientoDTO;
 import vista.ExtraerDineroFrame;
 
 public class ExtraerDineroBotonListener implements ActionListener {
@@ -28,6 +30,10 @@ public class ExtraerDineroBotonListener implements ActionListener {
 				SesionControlador.datosCuenta.setSaldo(saldoRestante);
 				CuentaDAO cuentaDAO = new CuentaDAO();
 				cuentaDAO.actualizarCuenta(SesionControlador.datosCuenta);
+				MovimientoDAO movimientoDAO = new MovimientoDAO();
+				long millis=System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
+				MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Extracción de dinero");
+
 				JOptionPane.showMessageDialog(null, "Operacion realizada correctamente");
 				this.frame.show(false);
 			} else {

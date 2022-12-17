@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 
 import controlador.SesionControlador;
 import modelo.dao.CuentaDAO;
+import modelo.dao.MovimientoDAO;
+import modelo.dto.MovimientoDTO;
 import vista.IngresarDineroFrame;
 
 
@@ -27,6 +29,10 @@ public class IngresarDineroBotonListener implements ActionListener{
 					SesionControlador.datosCuenta.setSaldo(saldoTotalIngresado);
 					CuentaDAO cuentaDAO = new CuentaDAO();
 					cuentaDAO.actualizarCuenta(SesionControlador.datosCuenta);
+					MovimientoDAO movimientoDAO = new MovimientoDAO();
+					long millis=System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
+					MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Ingreso de dinero");
+
 					JOptionPane.showMessageDialog(null, "Operacion realizada correctamente");
 					this.frame.show(false);
 				} catch (Exception error) {
