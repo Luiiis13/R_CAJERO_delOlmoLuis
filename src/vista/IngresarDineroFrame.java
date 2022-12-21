@@ -6,12 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 
 import listeners.IngresarDineroBotonListener;
 //Clase la cual implementa el frame de ingresar dinero usuario cuando se pulsa el boton 
 public class IngresarDineroFrame extends JFrame{
 private JLabel mensajelbl = new JLabel("Seleccione la cantidad que desea ingresar ");
-private JSpinner cantidadSpinner = new JSpinner();
+private SpinnerModel sm = new SpinnerNumberModel(0, 0, 1000, 1);
+private JSpinner cantidadSpinner = new JSpinner(sm);
 private JButton confirmarBtn = new JButton("Confirmar");
 private JPanel panel = new JPanel();
 
@@ -19,7 +22,6 @@ private JPanel panel = new JPanel();
 			this.add(panel);
 			this.setContentPane(panel);
 			this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-			this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 			this.setTitle("Ingresar dinero");
 			this.setVisible(true);
 			this.setSize(500, 500);

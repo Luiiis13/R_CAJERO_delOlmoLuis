@@ -6,12 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 
 import listeners.ExtraerDineroBotonListener;
 
 public class ExtraerDineroFrame extends JFrame {
 	private JLabel mensajelbl = new JLabel("Seleccione la cantidad que desea extraer ");
-	private JSpinner cantidadSpinner = new JSpinner();
+	private SpinnerModel sm = new SpinnerNumberModel(0, 0, 1000, 1);
+	private JSpinner cantidadSpinner = new JSpinner(sm);
 	private JButton confirmarBtn = new JButton("Confirmar");
 	private JPanel panel = new JPanel();
 
@@ -19,7 +22,6 @@ public class ExtraerDineroFrame extends JFrame {
 		this.add(panel);
 		this.setContentPane(panel);
 		this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("Extraer dinero");
 		this.setVisible(true);
 		this.setSize(500, 500);
