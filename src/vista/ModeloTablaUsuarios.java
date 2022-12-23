@@ -76,7 +76,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 		if (columnIndex == 5) {
 			return true;
 		}
-		return false;
+		return true;
 	}
 
 	@Override
@@ -108,13 +108,16 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 		switch (columnIndex) {
 		case 1:
 			usuario.setNombre((String) value);// Empiezan en case 1 porque el id no le edito
+			break;
 		case 2:
 			usuario.setEdad((int) value);
+			break;
 		case 3:
 			usuario.setPrimerApellido((String) value);
+			break;
 		case 4:
 			usuario.setRol((String) value);
-
+			break;
 		default:
 			break;
 		}

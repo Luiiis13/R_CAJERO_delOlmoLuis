@@ -1,31 +1,44 @@
 package vista;
 
+import java.awt.Container;
+import java.awt.FlowLayout;
+
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class AdministrarUsuariosFrame extends JFrame{
-	private JPanel panel = new JPanel();
+public class AdministrarUsuariosFrame extends JFrame {
+	private JPanel panelTabla = new JPanel();
+	private JPanel panelBotones = new JPanel();
 	private JTable table;
-	private JScrollPane scroll =new JScrollPane();
+	private JScrollPane scroll = new JScrollPane();
 	private ModeloTablaUsuarios modelo;
-	
-
+	private JButton insertarbtn = new JButton("Insertar");
+	private JButton modificarbtn = new JButton("Modificar");
+	private JButton eliminarbtn = new JButton("Eliminar");
 
 	public AdministrarUsuariosFrame() {
-		this.add(panel);
-		this.setContentPane(panel);
-		this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		this.setTitle("Administrar usuarios");
-		this.setVisible(true);
+		Container c = getContentPane();
+		c.setLayout(new BoxLayout(c, BoxLayout.Y_AXIS));
 		this.setSize(500, 500);
-		getContentPane().add(scroll);// Para agregar el scrool al panel 
-		this.modelo=new ModeloTablaUsuarios();
-		this.table=new JTable(this.modelo);
+		this.modelo = new ModeloTablaUsuarios();
+		this.table = new JTable(this.modelo);
 		this.scroll.setViewportView(this.table);
-	}	
+		c.add(this.panelTabla);
+		this.panelTabla.add(scroll);// Para agregar el scrool al panel
+
+		this.panelBotones.setLayout(new FlowLayout());
+		c.add(this.panelBotones);
+		this.panelBotones.add(insertarbtn);
+		this.panelBotones.add(modificarbtn);
+		this.panelBotones.add(eliminarbtn);
+		this.setVisible(true);
+	}
+
 	public ModeloTablaUsuarios getModelo() {
 		return modelo;
 	}
