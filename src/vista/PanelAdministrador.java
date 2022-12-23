@@ -5,17 +5,28 @@ import java.awt.Button;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import listeners.AdministrarUsuariosListener;
+import listeners.CambiarNumeroSecretoOpcionListener;
+import listeners.ExtraerDineroOpcionListener;
+import listeners.IngresarDineroOpcionListener;
+import listeners.MovimientosOpcionListener;
+
 public class PanelAdministrador extends JPanel {
 
-	private Button administrarUsuarios = new Button("Administrar usuarios");
-	private Button administrarTarjertas = new Button("Administrar tarjetas");
-	private Button administrarCuentas = new Button("Administrar cuentas");
-	private Button administrarCajero = new Button("Administrar cajero");
+	private Button administrarUsuariosbtn = new Button("Administrar usuarios");
+	private Button administrarTarjertasbtn = new Button("Administrar tarjetas");
+	private Button administrarCuentasbtn = new Button("Administrar cuentas");
+	private Button administrarCajerobtn = new Button("Administrar cajero");
 
 	public PanelAdministrador() {
-		this.add(this.administrarUsuarios);
-		this.add(this.administrarTarjertas);
-		this.add(this.administrarCuentas);
-		this.add(this.administrarCajero);
+		this.add(this.administrarUsuariosbtn);
+		this.add(this.administrarTarjertasbtn);
+		this.add(this.administrarCuentasbtn);
+		this.add(this.administrarCajerobtn);
+		this.inicializar();
+	}
+	private void inicializar() {
+		this.administrarUsuariosbtn.addActionListener(new AdministrarUsuariosListener());
+		
 	}
 }
