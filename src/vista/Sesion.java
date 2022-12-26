@@ -1,6 +1,5 @@
 package vista;
 
-import java.awt.BorderLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -8,32 +7,30 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class Sesion extends JFrame {
-	private JPanel panel = new JPanel();
-	private JLabel numeroTarjetalbl = new JLabel("Introduce el numero de tarjeta");
+	
+	private JLabel numeroTarjetalbl = new JLabel("Introduce el número de tarjeta");
 	private JLabel pinlbl = new JLabel("Introduce el pin");
 	private JPasswordField pin = new JPasswordField();
-	private JButton aceptarbtn = new JButton("Aceptar");
+	private JButton aceptarbtn = new JButton("Validar");
 	private JTextField numeroTarjeta=new JTextField();
 
 	public Sesion() {
-		this.add(panel);
-		this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		this.setContentPane(panel);
+		
+		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("Iniciar sesion");
-		this.setVisible(true);
 		this.limitarTamañoContraseña();
 		this.setSize(500, 500);
-		this.panel.add(numeroTarjetalbl);
-		this.panel.add(numeroTarjeta);
-		this.panel.add(pinlbl);
-		this.panel.add(pin);
-		this.panel.add(aceptarbtn);
+		this.getContentPane().add(numeroTarjetalbl);
+		this.getContentPane().add(numeroTarjeta);
+		this.getContentPane().add(pinlbl);
+		this.getContentPane().add(pin);
+		this.getContentPane().add(aceptarbtn);
+		this.setVisible(true);
 		this.pack();
 		
 	}

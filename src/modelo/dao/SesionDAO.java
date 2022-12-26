@@ -5,22 +5,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import modelo.Conectar;
-import modelo.dto.CajeroDTO;
 import modelo.dto.SesionDTO;
 
 public class SesionDAO {
 
-	public int verificarSesion(SesionDTO nuevaSesion) {
-		int idTarjeta = -1;
+	public SesionDTO verificarSesion(int numeroTarjeta) {
+		
+		SesionDTO sesionDTO = new SesionDTO();
+		sesionDTO.setNumeroTarjeta(numeroTarjeta);
 		Conectar conexion = new Conectar();
 		try {
-			String query = "SELECT id FROM tarjeta WHERE numero=? and pin=?  and date(fecha_expiracion)>=curdate()";
+			String query = "SELECT id,pin,fecha_expiracion FROM tarjeta WHERE numero=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, nuevaSesion.getNumeroTarjeta());
-			preparedStatement.setInt(2, nuevaSesion.getPin());
+			preparedStatement.setInt(1, numeroTarjeta);
 			ResultSet resultado = preparedStatement.executeQuery();
 			while (resultado.next() == true) {
-				idTarjeta = resultado.getInt("id");
+				sesionDTO.setId(resultado.getInt("id")); 
+				sesionDTO.setPin(resultado.getInt("pin")); 
+				sesionDTO.setFechaExpiracion(resultado.getDate("fecha_expiracion")); 
+
 			}
 			resultado.close();
 			preparedStatement.close();
@@ -30,6 +33,6 @@ public class SesionDAO {
 		} finally {
 			conexion.cerrarConexion();
 		}
-		return idTarjeta;
+		return sesionDTO;
 	}
 }

@@ -14,16 +14,14 @@ public class SesionControlador {
 	public static TarjetaDTO datosTarjeta;
 	public static CuentaDTO datosCuenta;
 	public static UsuarioDTO datosUsuario;
-
+	public static int intentosFallidos=0;
+	
 	public SesionControlador() {
-
 		this.inicializarListener();
 	}
 
 	private void inicializarListener() {
-
 		this.listener = new SesionListener(this.sesionDAO, this.sesionVista);
 		this.sesionVista.getAceptarbtn().addActionListener(this.listener);
-
 	}
 }

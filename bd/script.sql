@@ -26,7 +26,8 @@ id int AUTO_INCREMENT primary key not null ,
 numero int unique key not null,
 fecha_expiracion date not null,
 cvv int not null, 
-pin int not null
+pin int not null,
+bloqueado boolean not null
 );
 
 create table Cuenta(

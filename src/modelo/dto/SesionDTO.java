@@ -1,13 +1,28 @@
 package modelo.dto;
 
+import java.sql.Date;
+
 public class SesionDTO {
 	private int numeroTarjeta;
 	private int pin;
+	private Date fechaExpiracion;
+	private int id;
+	
+	
+	public int getId() {
+		return id;
+	}
 
-	public SesionDTO(int numeroTarjeta, int pin) {
-		super();
-		this.numeroTarjeta = numeroTarjeta;
-		this.pin = pin;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Date getFechaExpiracion() {
+		return fechaExpiracion;
+	}
+
+	public void setFechaExpiracion(Date fechaExpiracion) {
+		this.fechaExpiracion = fechaExpiracion;
 	}
 
 	public int getNumeroTarjeta() {
