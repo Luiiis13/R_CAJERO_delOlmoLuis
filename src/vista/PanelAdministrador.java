@@ -5,6 +5,9 @@ import java.awt.Button;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import listeners.AdministrarCajerosListener;
+import listeners.AdministrarCuentasListener;
+import listeners.AdministrarTarjetasListener;
 import listeners.AdministrarUsuariosListener;
 import listeners.CambiarNumeroSecretoOpcionListener;
 import listeners.ExtraerDineroOpcionListener;
@@ -27,6 +30,8 @@ public class PanelAdministrador extends JPanel {
 	}
 	private void inicializar() {
 		this.administrarUsuariosbtn.addActionListener(new AdministrarUsuariosListener());
-		
+		this.administrarTarjertasbtn.addActionListener(new AdministrarTarjetasListener());
+		this.administrarCuentasbtn.addActionListener(new AdministrarCuentasListener());
+		this.administrarCajerobtn.addActionListener(new AdministrarCajerosListener());
 	}
 }

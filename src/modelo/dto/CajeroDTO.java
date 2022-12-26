@@ -3,7 +3,6 @@ package modelo.dto;
 public class CajeroDTO {
 
 	private int id;
-
 	private String ubicacion;
 
 	public CajeroDTO(int id, String ubicacion) {

@@ -118,6 +118,9 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 		case 4:
 			usuario.setRol((String) value);
 			break;
+		case 5:
+			usuario.setSeleccionable((boolean)value);			
+			break;
 		default:
 			break;
 		}

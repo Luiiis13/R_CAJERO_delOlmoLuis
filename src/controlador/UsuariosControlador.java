@@ -27,5 +27,4 @@ public class UsuariosControlador {
 			JOptionPane.showMessageDialog(null, "Error haciendo la operacion", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
 }
