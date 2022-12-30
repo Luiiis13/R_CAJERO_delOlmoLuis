@@ -15,7 +15,7 @@ public class Sesion extends JFrame {
 	private JLabel numeroTarjetalbl = new JLabel("Introduce el número de tarjeta");
 	private JLabel pinlbl = new JLabel("Introduce el pin");
 	private JPasswordField pin = new JPasswordField();
-	private JButton aceptarbtn = new JButton("Validar");
+	private JButton validarBtn = new JButton("Validar");
 	private JTextField numeroTarjeta=new JTextField();
 
 	public Sesion() {
@@ -29,7 +29,9 @@ public class Sesion extends JFrame {
 		this.getContentPane().add(numeroTarjeta);
 		this.getContentPane().add(pinlbl);
 		this.getContentPane().add(pin);
-		this.getContentPane().add(aceptarbtn);
+		this.validarBtn.setBackground(new java.awt.Color(255,215,000));
+		this.validarBtn.setForeground(new java.awt.Color(0,0,0));
+		this.getContentPane().add(validarBtn);
 		this.setVisible(true);
 		this.pack();
 		
@@ -56,7 +58,7 @@ public class Sesion extends JFrame {
 	}
 
 	public JButton getAceptarbtn() {
-		return aceptarbtn;
+		return validarBtn;
 	}
 	
 }

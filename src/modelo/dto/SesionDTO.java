@@ -8,7 +8,6 @@ public class SesionDTO {
 	private Date fechaExpiracion;
 	private int id;
 	
-	
 	public int getId() {
 		return id;
 	}

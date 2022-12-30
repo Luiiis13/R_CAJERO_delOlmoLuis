@@ -20,6 +20,8 @@ public class PantallaInicioFrame extends JFrame {
 		this.setTitle("Pantalla de inicio");
 		this.setSize(500, 500);
 		this.getContentPane().add(this.bienvenidaLbl);
+		this.comnezarBtn.setBackground(new java.awt.Color(50,205,50));
+		this.comnezarBtn.setForeground(new java.awt.Color(255,255,255));
 		this.getContentPane().add(this.comnezarBtn);
 		this.setVisible(true);
 		this.inicializar();

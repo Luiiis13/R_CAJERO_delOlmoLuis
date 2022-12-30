@@ -36,14 +36,11 @@ public class SesionListener implements ActionListener {
 			int numeroTarjeta = Integer.parseInt(this.sesionVista.getNumeroTarjeta().getText());
 			int pin = Integer.parseInt(this.sesionVista.getPin().getText());
 			SesionDTO sesionDTO = this.sesionDAO.verificarSesion(numeroTarjeta);
-			//TO DO agregar el atributo bloqueado a la consulta
+			
 			
 			if (sesionDTO.getId() == 0) {
 				JOptionPane.showMessageDialog(null, "Número no válido", "Error", JOptionPane.ERROR_MESSAGE);
-				SesionControlador.intentosFallidos++;
-				if (SesionControlador.intentosFallidos > 4) {
-					this.bloquearTarjeta(sesionDTO.getId());
-				}
+				
 				return;
 			}
 			if (sesionDTO.getPin() != pin) {
@@ -51,7 +48,7 @@ public class SesionListener implements ActionListener {
 				SesionControlador.intentosFallidos++;
 				if (SesionControlador.intentosFallidos > 4) {
 					this.bloquearTarjeta(sesionDTO.getId());
-					
+					JOptionPane.showMessageDialog(null, "Tarjeta bloqueada");
 				}
 				return;
 			}
@@ -61,10 +58,8 @@ public class SesionListener implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Tarjeta expirada", "Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			JOptionPane.showMessageDialog(null, "Credenciales validas");
-			this.sesionVista.show(false);
+			
 			this.obtenerDatosUsuario(sesionDTO.getId());
-			OpcionesControlador opcionesControlador = new OpcionesControlador();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Formato no valido");
 		}
@@ -73,6 +68,10 @@ public class SesionListener implements ActionListener {
 	private void obtenerDatosUsuario(int id) {
 		TarjetaDAO tarjeta = new TarjetaDAO();
 		TarjetaDTO datosTarjeta = tarjeta.obtenerTarjeta(id);
+		if(datosTarjeta.isBloqueado()) {
+			JOptionPane.showMessageDialog(null, "Tarjeta bloqueada contacte con administrador", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		SesionControlador.datosTarjeta = datosTarjeta; // PARA HACER ACCESIBLE LOS DATOS DE LA TARJETA
 
 		CuentaDAO cuenta = new CuentaDAO();
@@ -82,6 +81,9 @@ public class SesionListener implements ActionListener {
 		UsuarioDAO usuario = new UsuarioDAO();
 		UsuarioDTO datosUsuario = usuario.obtenerUsuario(datosCuenta.getId_usuario());
 		SesionControlador.datosUsuario = datosUsuario;
+		JOptionPane.showMessageDialog(null, "Credenciales validas");
+		this.sesionVista.show(false);
+		OpcionesControlador opcionesControlador = new OpcionesControlador();
 	}
 
 	private void bloquearTarjeta(int id) {
@@ -102,4 +104,6 @@ public class SesionListener implements ActionListener {
 		}
 		return valido;
 	}
+	
+	
 }
