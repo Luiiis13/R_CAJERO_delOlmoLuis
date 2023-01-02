@@ -3,7 +3,7 @@ package listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import vista.ExtraerDineroFrame;
+import vista.ExtraerOtraCantidadFrame;
 import vista.RetirarDineroPrincipalFrame;
 
 public class ExtraerDineroOpcionListener implements ActionListener {

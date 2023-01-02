@@ -12,6 +12,7 @@ import listeners.CambiarNumeroSecretoOpcionListener;
 import listeners.ExtraerDineroOpcionListener;
 import listeners.IngresarDineroOpcionListener;
 import listeners.MovimientosOpcionListener;
+import listeners.RetirarCantidadDineroListener;
 import listeners.RetirarOtraCantidadListener;
 import listeners.SalirBotonListener;
 
@@ -47,5 +48,10 @@ public class RetirarDineroPrincipalFrame extends JFrame{
 	 }
 	 private void inicializar() {
 			this.otraCantidadBtn.addActionListener(new RetirarOtraCantidadListener());
+			this.cincoBtn.addActionListener(new RetirarCantidadDineroListener(5));
+			this.veinticincoBtn.addActionListener(new RetirarCantidadDineroListener(25));
+			this.cincuentaBtn.addActionListener(new RetirarCantidadDineroListener(50));
+			this.setentaycincoBtn.addActionListener(new RetirarCantidadDineroListener(75));
+			this.cienBtn.addActionListener(new RetirarCantidadDineroListener(100));
 		}
 }
