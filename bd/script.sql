@@ -54,3 +54,16 @@ create table Cajero(
 id int auto_increment not null  primary key,
 ubicacion varchar(40) not null
 );
+create table Bonobus(
+id int primary key not null auto_increment,
+saldo float not null,
+id_cuenta int not null unique,
+foreign key(id_cuenta) REFERENCES cuenta(id)
+);
+create table telefono(
+id int primary key not null auto_increment,
+numero int not null,
+saldo float not null,
+id_cuenta int not null unique,
+foreign key(id_cuenta) REFERENCES cuenta(id)
+);

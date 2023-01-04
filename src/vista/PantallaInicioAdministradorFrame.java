@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import listeners.InicioSesionAdministradorListener;
 
 public class PantallaInicioAdministradorFrame extends JFrame {
 	private JLabel nombreLbl = new JLabel("Nombre:");
@@ -39,11 +38,6 @@ public class PantallaInicioAdministradorFrame extends JFrame {
 		contenedorBtn.setAlignmentX(CENTER_ALIGNMENT);
 		contenedorBtn.add(aceptarBtn);
 		this.getContentPane().add(contenedorBtn);
-		this.inicializar();
 		this.setVisible(true);
-	}
-
-	private void inicializar() {
-
 	}
 }

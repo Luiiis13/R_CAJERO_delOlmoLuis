@@ -15,7 +15,7 @@ public class PantallaInicioFrame extends JFrame {
 
 	private JLabel bienvenidaLbl = new JLabel("Bienvenido al cajero");
 	private JButton comnezarBtn = new JButton("Comenzar");
-	private JButton opcionesDeAdministradorBtn = new JButton("Iniciar como administrador");
+	private JButton opcionesDeAdministradorBtn = new JButton("Comenzar como administrador");
 	public PantallaInicioFrame() {
 
 		this.setLayout(new BorderLayout());
