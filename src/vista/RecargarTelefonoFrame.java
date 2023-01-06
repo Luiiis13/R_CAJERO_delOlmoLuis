@@ -10,7 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import listeners.RecargarBonobusListener;
+import listeners.RecargarOtraCantidadBonobusListener;
 import listeners.RecargarOtraCantidadTelefonoListener;
+import listeners.RecargarTelefonoListener;
 
 public class RecargarTelefonoFrame extends JFrame {
 	private JLabel elegirLbl = new JLabel("Elige la cantidad a recargar");
@@ -43,5 +46,9 @@ public class RecargarTelefonoFrame extends JFrame {
 
 	public void inicializar() {
 		this.otraCantidadBtn.addActionListener(new RecargarOtraCantidadTelefonoListener());
+		this.cincoBtn.addActionListener(new RecargarTelefonoListener(5));
+		this.diezBtn.addActionListener(new RecargarTelefonoListener(10));
+		this.quinceBtn.addActionListener(new RecargarTelefonoListener(15));
+		this.veinteBtn.addActionListener(new RecargarTelefonoListener(20));
 	}
 }

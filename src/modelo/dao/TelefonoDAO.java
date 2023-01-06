@@ -38,12 +38,12 @@ public class TelefonoDAO {
 
 			ResultSet resultado = preparedStatement.executeQuery();
 			while (resultado.next() == true) {
-				int id = resultado.getInt("id");
-				int numero = resultado.getInt("numero");
-				Float saldo = resultado.getFloat("saldo");
-				int idCuenta = resultado.getInt("id_cuenta");
+				int idDB = resultado.getInt("id");
+				int numeroDB = resultado.getInt("numero");
+				float saldoDB = resultado.getFloat("saldo");
+				int idCuentaDB = resultado.getInt("id_cuenta");
 
-				TelefonoDTO telefono = new TelefonoDTO(id, numero, saldo, idCuenta);
+				TelefonoDTO telefono = new TelefonoDTO(idDB, numeroDB, saldoDB, idCuentaDB);
 				telefonos.add(telefono);
 			}
 			resultado.close();
@@ -57,20 +57,20 @@ public class TelefonoDAO {
 		return telefonos;
 	}
 
-	public TelefonoDTO obtenerTelefonos(int id) {
+	public TelefonoDTO obtenerTelefonos(int idCuenta) {
 		TelefonoDTO telefono = null;
 		Conectar conexion = new Conectar();
 		try {
-			String query = "SELECT * FROM telefono WHERE id=?";
+			String query = "SELECT * FROM telefono WHERE id_cuenta=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(1, idCuenta);
 			ResultSet resultado = preparedStatement.executeQuery();
 			if (resultado.next() == true) {
-				int idTelefono = resultado.getInt("id");
-				int numero = resultado.getInt("numero");
-				Float saldo = resultado.getFloat("saldo");
-				int idCuenta = resultado.getInt("id_cuenta");
-				telefono = new TelefonoDTO(idTelefono, numero, saldo, idCuenta);
+				int idTelefonoDB = resultado.getInt("id");
+				int numeroDB = resultado.getInt("numero");
+				float saldoDB = resultado.getFloat("saldo");
+				int idCuentaDB = resultado.getInt("id_cuenta");
+				telefono = new TelefonoDTO(idTelefonoDB, numeroDB, saldoDB, idCuentaDB);
 			}
 			resultado.close();
 			preparedStatement.close();
