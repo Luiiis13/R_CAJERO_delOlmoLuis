@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import vista.RecargarTelefonoFrame;
 
-public class RecargarTelefonoListener implements ActionListener {
+public class RecargarTelefonoBotonListener implements ActionListener {
 	private RecargarTelefonoFrame telefonoFrame;
 
 	@Override

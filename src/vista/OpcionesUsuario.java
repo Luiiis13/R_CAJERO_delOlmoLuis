@@ -14,8 +14,8 @@ import listeners.CambiarNumeroSecretoOpcionListener;
 import listeners.ExtraerDineroOpcionListener;
 import listeners.IngresarDineroOpcionListener;
 import listeners.MovimientosOpcionListener;
-import listeners.RecargarBonobusListener;
-import listeners.RecargarTelefonoListener;
+import listeners.RecargarBonobusBotonListener;
+import listeners.RecargarTelefonoBotonListener;
 import listeners.SalirBotonListener;
 
 public class OpcionesUsuario extends JFrame {
@@ -72,8 +72,8 @@ public class OpcionesUsuario extends JFrame {
 		this.ingresarDineroBtn.addActionListener(new IngresarDineroOpcionListener());
 		this.cambiarNumeroBtn.addActionListener(new CambiarNumeroSecretoOpcionListener());
 		this.movimientosBtn.addActionListener(new MovimientosOpcionListener());
-		this.recargarBonobusBtn.addActionListener(new RecargarBonobusListener());
-		this.recargarTelefonoBtn.addActionListener(new RecargarTelefonoListener());
+		this.recargarBonobusBtn.addActionListener(new RecargarBonobusBotonListener());
+		this.recargarTelefonoBtn.addActionListener(new RecargarTelefonoBotonListener());
 		this.salirBtn.addActionListener(new SalirBotonListener());
 	}
 }

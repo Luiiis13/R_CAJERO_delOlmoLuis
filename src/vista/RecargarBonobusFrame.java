@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import listeners.RecargarBonobusListener;
 import listeners.RecargarOtraCantidadBonobusListener;
 
 public class RecargarBonobusFrame extends JFrame {
@@ -41,5 +42,11 @@ public class RecargarBonobusFrame extends JFrame {
 
 	public void inicializar() {
 		this.otraCantidadBtn.addActionListener(new RecargarOtraCantidadBonobusListener());
+		this.cincoBtn.addActionListener(new RecargarBonobusListener(5));
+		this.diezBtn.addActionListener(new RecargarBonobusListener(10));
+		this.quinceBtn.addActionListener(new RecargarBonobusListener(15));
+		this.veinteBtn.addActionListener(new RecargarBonobusListener(20));
+
+
 	}
 }
