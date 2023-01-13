@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import listeners.RecargarBonobusListener;
-import listeners.RecargarOtraCantidadBonobusListener;
+import listeners.RecargarOtraCantidadBonobusFrameListener;
 
 public class RecargarBonobusFrame extends JFrame {
 	private JLabel elegirLbl = new JLabel("Elige la cantidad a recargar");
@@ -41,7 +41,7 @@ public class RecargarBonobusFrame extends JFrame {
 	}
 
 	public void inicializar() {
-		this.otraCantidadBtn.addActionListener(new RecargarOtraCantidadBonobusListener());
+		this.otraCantidadBtn.addActionListener(new RecargarOtraCantidadBonobusFrameListener());
 		this.cincoBtn.addActionListener(new RecargarBonobusListener(5));
 		this.diezBtn.addActionListener(new RecargarBonobusListener(10));
 		this.quinceBtn.addActionListener(new RecargarBonobusListener(15));

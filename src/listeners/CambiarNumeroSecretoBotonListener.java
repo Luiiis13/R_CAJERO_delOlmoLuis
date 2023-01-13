@@ -41,7 +41,7 @@ public class CambiarNumeroSecretoBotonListener implements ActionListener {
 		} catch (Exception error) {
 			JOptionPane.showMessageDialog(null, "Error haciendo la operación", "Error", JOptionPane.ERROR_MESSAGE);
 			System.out.print(error);
-		} 
+		}
 	}
 
 	private boolean comprobarNuevoPin() {

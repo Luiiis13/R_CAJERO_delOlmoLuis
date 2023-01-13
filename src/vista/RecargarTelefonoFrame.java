@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import listeners.RecargarBonobusListener;
-import listeners.RecargarOtraCantidadBonobusListener;
+import listeners.RecargarOtraCantidadBonobusFrameListener;
 import listeners.RecargarOtraCantidadTelefonoFrameListener;
 import listeners.RecargarTelefonoListener;
 
