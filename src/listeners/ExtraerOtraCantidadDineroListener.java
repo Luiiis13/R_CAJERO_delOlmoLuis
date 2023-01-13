@@ -10,13 +10,13 @@ import controlador.SesionControlador;
 import modelo.dao.CuentaDAO;
 import modelo.dao.MovimientoDAO;
 import modelo.dto.MovimientoDTO;
-import vista.ExtraerOtraCantidadFrame;
+import vista.ExtraerOtraCantidadDineroFrame;
 
 public class ExtraerOtraCantidadDineroListener implements ActionListener {
-	private ExtraerOtraCantidadFrame frame;
+	private ExtraerOtraCantidadDineroFrame frame;
 	private int extraido;
 
-	public ExtraerOtraCantidadDineroListener(ExtraerOtraCantidadFrame frame) {
+	public ExtraerOtraCantidadDineroListener(ExtraerOtraCantidadDineroFrame frame) {
 		this.frame = frame;
 	}
 

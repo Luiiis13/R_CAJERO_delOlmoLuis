@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 import listeners.RecargarBonobusListener;
 import listeners.RecargarOtraCantidadBonobusListener;
-import listeners.RecargarOtraCantidadTelefonoListener;
+import listeners.RecargarOtraCantidadTelefonoFrameListener;
 import listeners.RecargarTelefonoListener;
 
 public class RecargarTelefonoFrame extends JFrame {
@@ -45,7 +45,7 @@ public class RecargarTelefonoFrame extends JFrame {
 	}
 
 	public void inicializar() {
-		this.otraCantidadBtn.addActionListener(new RecargarOtraCantidadTelefonoListener());
+		this.otraCantidadBtn.addActionListener(new RecargarOtraCantidadTelefonoFrameListener());
 		this.cincoBtn.addActionListener(new RecargarTelefonoListener(5));
 		this.diezBtn.addActionListener(new RecargarTelefonoListener(10));
 		this.quinceBtn.addActionListener(new RecargarTelefonoListener(15));

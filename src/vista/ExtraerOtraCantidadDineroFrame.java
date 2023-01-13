@@ -11,14 +11,14 @@ import javax.swing.SpinnerNumberModel;
 
 import listeners.ExtraerOtraCantidadDineroListener;
 
-public class ExtraerOtraCantidadFrame extends JFrame {
+public class ExtraerOtraCantidadDineroFrame extends JFrame {
 	private JLabel mensajelbl = new JLabel("Seleccione la cantidad que desea extraer ");
 	private SpinnerModel sm = new SpinnerNumberModel(0, 0, 1000, 5);
 	private JSpinner cantidadSpinner = new JSpinner(sm);
 	private JButton confirmarBtn = new JButton("Confirmar");
 	private JPanel panel = new JPanel();
 
-	public ExtraerOtraCantidadFrame() {
+	public ExtraerOtraCantidadDineroFrame() {
 		this.add(panel);
 		this.setContentPane(panel);
 		this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));

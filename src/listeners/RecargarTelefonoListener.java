@@ -18,7 +18,6 @@ public class RecargarTelefonoListener implements ActionListener {
 
 	public RecargarTelefonoListener(int cantidad) {
 		this.cantidad = cantidad;
-
 	}
 
 	@Override
@@ -38,12 +37,11 @@ public class RecargarTelefonoListener implements ActionListener {
 				return;
 			}
 			SesionControlador.datosCuenta.setSaldo(nuevoSaldo);
-
 			telefonoDAO.actualizarTelefono(datosTelefono);
 			cuentaDAO.actualizarCuenta(SesionControlador.datosCuenta);
 			MovimientoDAO movimientoDAO = new MovimientoDAO();
 			long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
-			MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Recarga de bonobus",
+			MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Recarga de telefono",
 					idCuenta);
 			movimientoDAO.insertarMovimiento(movimientoDTO);
 			JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
@@ -51,5 +49,4 @@ public class RecargarTelefonoListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, "ERROR recargando bonobus", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
 }

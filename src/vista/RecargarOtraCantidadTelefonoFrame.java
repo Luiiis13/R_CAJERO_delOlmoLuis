@@ -9,6 +9,8 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
+import listeners.RecargarOtraCantidadTelefonoListener;
+
 public class RecargarOtraCantidadTelefonoFrame extends JFrame {
 	private JLabel mensajelbl = new JLabel("Seleccione la cantidad que desea recargar ");
 	private SpinnerModel sm = new SpinnerNumberModel(0, 0, 1000, 5);
@@ -31,7 +33,7 @@ public class RecargarOtraCantidadTelefonoFrame extends JFrame {
 	}
 
 	private void inicializar() {
-		// confirmarBtn.addActionListener(new (this));
+		confirmarBtn.addActionListener(new RecargarOtraCantidadTelefonoListener(this));
 	}
 
 	public JSpinner getCantidadSpinner() {
