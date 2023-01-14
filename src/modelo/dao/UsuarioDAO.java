@@ -14,15 +14,18 @@ public class UsuarioDAO {
 	public void insertarUsuario(UsuarioDTO nuevoUsuario) {
 		Conectar conexion = new Conectar();
 		try {
-			String query = "INSERT INTO usuario(nombre,edad,primer_apellido) VALUES(?,?,?)";
+			String query = "INSERT INTO usuario(nombre,edad,primer_apellido,isAdmin,contraseña) VALUES(?,?,?,?,?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setString(1, nuevoUsuario.getNombre());
 			preparedStatement.setInt(2, nuevoUsuario.getEdad());
 			preparedStatement.setString(3, nuevoUsuario.getPrimerApellido());
+			preparedStatement.setBoolean(4, nuevoUsuario.getIsAdmin());
+			preparedStatement.setString(5, nuevoUsuario.getContraseña());
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
+			// TO DO ver como devolver el id generado en base de datos 
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			conexion.cerrarConexion();
 		}
@@ -41,8 +44,9 @@ public class UsuarioDAO {
 				String nombre = resultado.getString("nombre");
 				int edad = resultado.getInt("edad");
 				String primerApellido = resultado.getString("primer_apellido");
-				String rol = resultado.getString("rol");
-				UsuarioDTO usuario = new UsuarioDTO(id, nombre, edad, primerApellido, rol);
+				boolean isAdmin = resultado.getBoolean("isAdmin");
+				String contraseña = resultado.getString("contraseña");
+				UsuarioDTO usuario = new UsuarioDTO(id, nombre, edad, primerApellido, isAdmin, contraseña);
 				usuarios.add(usuario);
 			}
 			resultado.close();
@@ -69,8 +73,9 @@ public class UsuarioDAO {
 				String nombre = resultado.getString("nombre");
 				int edad = resultado.getInt("edad");
 				String primerApellido = resultado.getString("primer_apellido");
-				String rol = resultado.getString("rol");
-				usuario = new UsuarioDTO(idResult, nombre, edad, primerApellido, rol);
+				boolean isAdmin = resultado.getBoolean("isAdmin");
+				String contraseña = resultado.getString("contraseña");
+				usuario = new UsuarioDTO(idResult, nombre, edad, primerApellido, isAdmin, contraseña);
 			}
 			resultado.close();
 			preparedStatement.close();
@@ -106,12 +111,14 @@ public class UsuarioDAO {
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
 		try {
-			String query = "UPDATE Usuario SET nombre=? ,edad=?,primer_apellido=? WHERE id=?";
+			String query = "UPDATE Usuario SET nombre=? ,edad=?,primer_apellido=?,isAdmin=?,contraseña=? WHERE id=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setString(1, nuevoUsuario.getNombre());
 			preparedStatement.setInt(2, nuevoUsuario.getEdad());
 			preparedStatement.setString(3, nuevoUsuario.getPrimerApellido());
-			preparedStatement.setInt(4, nuevoUsuario.getId());
+			preparedStatement.setBoolean(4, nuevoUsuario.getIsAdmin());
+			preparedStatement.setString(5, nuevoUsuario.getContraseña());
+			preparedStatement.setInt(6, nuevoUsuario.getId());
 			preparedStatement.executeUpdate();
 			actualizado = true;
 			preparedStatement.close();

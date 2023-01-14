@@ -5,15 +5,15 @@ public class UsuarioFila {
 	private String nombre;
 	private int edad;
 	private String primerApellido;
-	private String rol;
+	private boolean isAdmin;
 	private boolean seleccionable;
 	
-	public UsuarioFila(int id, String nombre, int edad, String primerApellido, String rol, boolean seleccionable) {
+	public UsuarioFila(int id, String nombre, int edad, String primerApellido, boolean isAdmin, boolean seleccionable) {
 		this.id = id;
 		this.nombre = nombre;
 		this.edad = edad;
 		this.primerApellido = primerApellido;
-		this.rol = rol;
+		this.isAdmin = isAdmin;
 		this.seleccionable=seleccionable;
 	}
 
@@ -46,12 +46,12 @@ public class UsuarioFila {
 		this.primerApellido = primerApellido;
 	}
 
-	public String getRol() {
-		return rol;
+	public boolean getIsAdmin() {
+		return isAdmin;
 	}
 
-	public void setRol(String rol) {
-		this.rol = rol;
+	public void setIsAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 	public boolean isSeleccionable() {

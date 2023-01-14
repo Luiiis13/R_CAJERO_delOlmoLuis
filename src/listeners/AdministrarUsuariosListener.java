@@ -10,7 +10,7 @@ public class AdministrarUsuariosListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		UsuariosControlador usuariosControlador = new UsuariosControlador();
-		
+		usuariosControlador.inicializar();
 	}
 
 }

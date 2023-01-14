@@ -40,7 +40,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 		case 3:
 			return "Primer apellido";
 		case 4:
-			return "Rol";
+			return "Administrador";
 		case 5:
 			return "Seleccionable";
 
@@ -62,7 +62,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 		case 3:
 			return String.class;
 		case 4:
-			return String.class;
+			return Boolean.class;
 		case 5:
 			return Boolean.class;
 
@@ -92,7 +92,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 		case 3:
 			return usuario.getPrimerApellido();
 		case 4:
-			return usuario.getRol();
+			return usuario.getIsAdmin();
 		case 5:
 			return usuario.isSeleccionable();
 
@@ -116,7 +116,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 			usuario.setPrimerApellido((String) value);
 			break;
 		case 4:
-			usuario.setRol((String) value);
+			usuario.setIsAdmin((boolean) value);
 			break;
 		case 5:
 			usuario.setSeleccionable((boolean)value);			
@@ -133,7 +133,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 		for (int i = 0; i < usuariosBD.size(); i++) {
 			UsuarioDTO usuarioDTO = usuariosBD.get(i);
 			UsuarioFila datosFila = new UsuarioFila(usuarioDTO.getId(), usuarioDTO.getNombre(), usuarioDTO.getEdad(),
-					usuarioDTO.getPrimerApellido(), usuarioDTO.getRol(), false);
+					usuarioDTO.getPrimerApellido(), usuarioDTO.getIsAdmin(), false);
 			this.datos.add(datosFila);
 		}
 	}

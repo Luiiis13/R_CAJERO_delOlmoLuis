@@ -5,16 +5,26 @@ public class UsuarioDTO {
 	private String nombre;
 	private int edad;
 	private String primerApellido;
-	private String rol;
+	private boolean isAdmin;
+	private String contraseña;
 
-	public UsuarioDTO(int id, String nombre, int edad, String primerApellido, String rol) {
+	public UsuarioDTO(int id, String nombre, int edad, String primerApellido, boolean isAdmin,String contraseña) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.edad = edad;
 		this.primerApellido = primerApellido;
-		this.rol = rol;
+		this.isAdmin = isAdmin;
+		this.contraseña = contraseña;
 
+	}
+
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
 
 	public int getId() {
@@ -49,11 +59,11 @@ public class UsuarioDTO {
 		this.primerApellido = primerApellido;
 	}
 
-	public String getRol() {
-		return rol;
+	public boolean getIsAdmin() {
+		return isAdmin;
 	}
 
-	public void setRol(String rol) {
-		this.rol = rol;
+	public void setIsAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 }

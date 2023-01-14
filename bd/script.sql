@@ -16,7 +16,7 @@ id int AUTO_INCREMENT primary key not null,
 nombre varchar(20) not null,
 edad int not null,
 primer_apellido varchar(20),
-rol varchar(20) not null,
+isAdmin boolean not null,
 contraseña varchar(50) null
 );
 

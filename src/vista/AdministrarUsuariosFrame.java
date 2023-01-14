@@ -10,13 +10,15 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import listeners.MostrarInserccionUsuariosListener;
+
 public class AdministrarUsuariosFrame extends JFrame {
 	private JPanel panelTabla = new JPanel();
 	private JPanel panelBotones = new JPanel();
 	private JTable table;
 	private JScrollPane scroll = new JScrollPane();
 	private ModeloTablaUsuarios modelo;
-	private JButton insertarbtn = new JButton("Insertar");
+	private JButton insertarbtn = new JButton("Nuevo");
 	private JButton modificarbtn = new JButton("Modificar");
 	private JButton eliminarbtn = new JButton("Eliminar");
 
@@ -30,17 +32,19 @@ public class AdministrarUsuariosFrame extends JFrame {
 		this.scroll.setViewportView(this.table);
 		c.add(this.panelTabla);
 		this.panelTabla.add(scroll);// Para agregar el scrool al panel
-
 		this.panelBotones.setLayout(new FlowLayout());
 		c.add(this.panelBotones);
 		this.panelBotones.add(insertarbtn);
 		this.panelBotones.add(modificarbtn);
 		this.panelBotones.add(eliminarbtn);
+		this.inicializar();
 		this.setVisible(true);
 	}
 
 	public ModeloTablaUsuarios getModelo() {
 		return modelo;
 	}
-
+	public void inicializar() {
+		this.insertarbtn.addActionListener(new  MostrarInserccionUsuariosListener());
+	}
 }

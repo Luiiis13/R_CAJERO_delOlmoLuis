@@ -16,9 +16,9 @@ public class UsuariosControlador {
 	private UsuarioDAO usuarioDAO;
 	public UsuariosControlador() {
 		this.usuarioDAO=new UsuarioDAO();
-		this.inicializar();
+		
 	}
-	private void inicializar() {
+	public void inicializar() {
 		try {
 			ArrayList<UsuarioDTO> usuariosBD=this.usuarioDAO.obtenerUsuarios();
 			this.frame = new AdministrarUsuariosFrame();
@@ -27,4 +27,8 @@ public class UsuariosControlador {
 			JOptionPane.showMessageDialog(null, "Error haciendo la operacion", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	public void insertar(UsuarioDTO nuevoUsuario) {
+		this.usuarioDAO.insertarUsuario(nuevoUsuario);
+	}
+	
 }
