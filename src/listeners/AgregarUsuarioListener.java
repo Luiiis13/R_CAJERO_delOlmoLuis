@@ -7,12 +7,12 @@ import javax.swing.JOptionPane;
 
 import controlador.UsuariosControlador;
 import modelo.dto.UsuarioDTO;
-import vista.InsertarAdministradorUsuarioFrame;
+import vista.InsertarUsuarioAdministradorFrame;
 
 public class AgregarUsuarioListener implements ActionListener {
-	private InsertarAdministradorUsuarioFrame insertarUsuarioFrame;
+	private InsertarUsuarioAdministradorFrame insertarUsuarioFrame;
 
-	public AgregarUsuarioListener(InsertarAdministradorUsuarioFrame frame) {
+	public AgregarUsuarioListener(InsertarUsuarioAdministradorFrame frame) {
 		this.insertarUsuarioFrame = frame;
 	}
 

@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import listeners.MostrarInserccionCuentasListener;
+
 public class AdministrarCuentasFrame extends JFrame{
 	private JPanel panelTabla = new JPanel();
 	private JPanel panelBotones = new JPanel();
@@ -37,9 +39,14 @@ public class AdministrarCuentasFrame extends JFrame{
 		this.panelBotones.add(modificarbtn);
 		this.panelBotones.add(eliminarbtn);
 		this.setVisible(true);
+		this.inicializar();
 	}
 
 	public ModeloTablaCuentas getModelo() {
 		return modelo;
 	}	
+	public void inicializar() {
+		this.insertarbtn.addActionListener(new MostrarInserccionCuentasListener());
+		this.modificarbtn.addActionListener(new MostrarInserccionCuentasListener());
+	}
 }

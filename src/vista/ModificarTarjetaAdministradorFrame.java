@@ -7,11 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class InsertarTarjetaAdministrador extends JFrame {
-
+public class ModificarTarjetaAdministradorFrame extends JFrame{
 	private JLabel numeroLbl = new JLabel("Numero:");
 	private JLabel fecha_expiracionLbl = new JLabel("Fecha expiracion:");
 	private JLabel cvvLbl = new JLabel("cvv:");
@@ -25,13 +23,13 @@ public class InsertarTarjetaAdministrador extends JFrame {
 	private JButton aceptarBtn = new JButton("Aceptar");
 	private JButton cancelarBtn = new JButton("Cancelar");
 
-	public InsertarTarjetaAdministrador() {
+	public ModificarTarjetaAdministradorFrame() {
 
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 		this.setTitle("Pantalla de administrar tarjeta");
 		this.setSize(500, 500);
 		JPanel contenedor = new JPanel();
-		contenedor.setLayout(new GridLayout(2, 2));
+		contenedor.setLayout(new GridLayout(5, 2));
 		contenedor.add(numeroLbl);
 		contenedor.add(numeroTxt);
 		contenedor.add(fecha_expiracionLbl);
@@ -49,7 +47,26 @@ public class InsertarTarjetaAdministrador extends JFrame {
 		this.getContentPane().add(contenedorBtn);
 		this.setVisible(true);
 		this.pack();
+	}
 
+	public JTextField getNumeroTxt() {
+		return numeroTxt;
+	}
+
+	public JTextField getFechaExpiracionTxt() {
+		return fechaExpiracionTxt;
+	}
+
+	public JTextField getCvvTxt() {
+		return cvvTxt;
+	}
+
+	public JTextField getPinTxt() {
+		return pinTxt;
+	}
+
+	public JTextField getBloqueadoTxt() {
+		return bloqueadoTxt;
 	}
 
 }

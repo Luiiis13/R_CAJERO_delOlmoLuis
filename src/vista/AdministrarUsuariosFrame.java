@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import listeners.MostrarInserccionCuentasListener;
 import listeners.MostrarInserccionUsuariosListener;
 
 public class AdministrarUsuariosFrame extends JFrame {
@@ -46,5 +47,7 @@ public class AdministrarUsuariosFrame extends JFrame {
 	}
 	public void inicializar() {
 		this.insertarbtn.addActionListener(new  MostrarInserccionUsuariosListener());
+		this.modificarbtn.addActionListener(new MostrarInserccionUsuariosListener());
+
 	}
 }

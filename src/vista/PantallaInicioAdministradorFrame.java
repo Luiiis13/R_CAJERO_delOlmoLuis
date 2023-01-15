@@ -39,5 +39,6 @@ public class PantallaInicioAdministradorFrame extends JFrame {
 		contenedorBtn.add(aceptarBtn);
 		this.getContentPane().add(contenedorBtn);
 		this.setVisible(true);
+	
 	}
 }

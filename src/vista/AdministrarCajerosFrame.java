@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import listeners.MostrarInserccionCajerosListener;
+import listeners.MostrarInserccionCuentasListener;
+import listeners.MostrarInserccionUsuariosListener;
+
 public class AdministrarCajerosFrame extends JFrame{
 	private JPanel panelTabla = new JPanel();
 	private JPanel panelBotones = new JPanel();
@@ -37,9 +41,15 @@ public class AdministrarCajerosFrame extends JFrame{
 		this.panelBotones.add(modificarbtn);
 		this.panelBotones.add(eliminarbtn);
 		this.setVisible(true);
+		this.inicializar();
 	}
 
 	public ModeloTablaCajero getModelo() {
 		return modelo;
 	}	
+	public void inicializar() {
+		this.insertarbtn.addActionListener(new MostrarInserccionCajerosListener());
+		this.modificarbtn.addActionListener(new MostrarInserccionCuentasListener());
+
+	}
 }

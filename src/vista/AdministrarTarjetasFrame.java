@@ -10,7 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class AdministrarTarjetasFrame extends JFrame{
+import listeners.MostarInserccionTarjetasListener;
+import listeners.MostrarInserccionCuentasListener;
+
+public class AdministrarTarjetasFrame extends JFrame {
 	private JPanel panelTabla = new JPanel();
 	private JPanel panelBotones = new JPanel();
 	private JTable table;
@@ -19,7 +22,7 @@ public class AdministrarTarjetasFrame extends JFrame{
 	private JButton insertarbtn = new JButton("Insertar");
 	private JButton modificarbtn = new JButton("Modificar");
 	private JButton eliminarbtn = new JButton("Eliminar");
-	
+
 	public AdministrarTarjetasFrame() {
 		this.setTitle("Administrar tarjetas");
 		Container c = getContentPane();
@@ -37,9 +40,16 @@ public class AdministrarTarjetasFrame extends JFrame{
 		this.panelBotones.add(modificarbtn);
 		this.panelBotones.add(eliminarbtn);
 		this.setVisible(true);
+		this.inicializar();
 	}
 
 	public ModeloTablaTarjetas getModelo() {
 		return modelo;
-	}	
+	}
+
+	public void inicializar() {
+		this.insertarbtn.addActionListener(new MostarInserccionTarjetasListener());
+		this.modificarbtn.addActionListener(new MostrarInserccionCuentasListener());
+
+	}
 }

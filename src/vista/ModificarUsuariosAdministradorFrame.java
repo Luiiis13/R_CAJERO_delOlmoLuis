@@ -1,6 +1,5 @@
 package vista;
 
-import java.awt.Checkbox;
 import java.awt.GridLayout;
 
 import javax.swing.BoxLayout;
@@ -14,7 +13,7 @@ import javax.swing.JTextField;
 
 import listeners.AgregarUsuarioListener;
 
-public class InsertarAdministradorUsuarioFrame extends JFrame {
+public class ModificarUsuariosAdministradorFrame extends JFrame{
 
 	private JLabel nombreLbl = new JLabel("Nombre:");
 	private JLabel edadLbl = new JLabel("Edad:");
@@ -29,7 +28,7 @@ public class InsertarAdministradorUsuarioFrame extends JFrame {
 	private JButton aceptarBtn = new JButton("Aceptar");
 	private JButton cancelarBtn = new JButton("Cancelar");
 
-	public InsertarAdministradorUsuarioFrame() {
+	public ModificarUsuariosAdministradorFrame() {
 
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 		this.setTitle("Pantalla de administrar usuarios");
@@ -61,18 +60,13 @@ public class InsertarAdministradorUsuarioFrame extends JFrame {
 		return nombreTxt;
 	}
 
-
 	public JTextField getEdadTxt() {
 		return edadTxt;
 	}
 
-	
-
 	public JTextField getPrimerApellidoTxt() {
 		return primerApellidoTxt;
 	}
-
-	
 
 	public JCheckBox getIsAdmin() {
 		return isAdmin;
@@ -83,8 +77,7 @@ public class InsertarAdministradorUsuarioFrame extends JFrame {
 		return contraseñaField;
 	}
 
-
 	public void inicializar() {
-		this.aceptarBtn.addActionListener(new AgregarUsuarioListener(this));
+		//this.aceptarBtn.addActionListener(new AgregarUsuarioListener(this));
 	}
 }
