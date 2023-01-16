@@ -26,13 +26,15 @@ public class MovimientosControlador {
 	private void inicializar() {
 		try {
 			int idCuenta = SesionControlador.datosCuenta.getId();
+			int idTarjeta = SesionControlador.datosTarjeta.getId();
+
 			CuentaDTO cuentaDTO = cuentaDAO.obtenerCuenta(idCuenta);
 			this.frame = new MovimientosFrame();
 			String textolblSaldo = this.frame.getSaldolbl().getText();
 			textolblSaldo += cuentaDTO.getSaldo() + "€";
 			this.frame.getSaldolbl().setText(textolblSaldo);
 			
-			ArrayList<MovimientoDTO> movimientosCuenta=this.movimientoDAO.obtenerMovimiento(idCuenta);
+			ArrayList<MovimientoDTO> movimientosCuenta=this.movimientoDAO.obtenerMovimiento(idTarjeta);
 			this.frame.getModelo().agregarDatosDeTabla(movimientosCuenta);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Error haciendo la operacion", "Error", JOptionPane.ERROR_MESSAGE);

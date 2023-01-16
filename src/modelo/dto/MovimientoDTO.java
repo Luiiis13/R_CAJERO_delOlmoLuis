@@ -5,15 +5,16 @@ import java.sql.Date;
 public class MovimientoDTO {
 
 	private int id;
-	private String tipo; 
+	private String tipo;
 	private Date fechaDelMovimiento;
-private int idTarjetaAsociada;
-	public MovimientoDTO(int id,  Date fechaDelMovimiento,String tipo,int idTarjetaAsociada ) {
+	private int idTarjetaAsociada;
+
+	public MovimientoDTO(int id, Date fechaDelMovimiento, String tipo, int idTarjetaAsociada) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
 		this.fechaDelMovimiento = fechaDelMovimiento;
-		this.idTarjetaAsociada=idTarjetaAsociada;
+		this.idTarjetaAsociada = idTarjetaAsociada;
 	}
 
 	public int getIdTarjetaAsociada() {
@@ -31,6 +32,7 @@ private int idTarjetaAsociada;
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getTipo() {
 		return tipo;
 	}
