@@ -27,7 +27,8 @@ public class RecargarBonobusListener implements ActionListener {
 		try {
 			BonobusDAO bonobusDAO = new BonobusDAO();
 			int idCuenta = SesionControlador.datosCuenta.getId();
-			BonobusDTO datosBonobus = bonobusDAO.obtenerBonobus(idCuenta);
+			int idTarjeta = SesionControlador.datosTarjeta.getId();
+			BonobusDTO datosBonobus = bonobusDAO.obtenerBonobus(idTarjeta);
 			datosBonobus.setSaldo(this.cantidad + datosBonobus.getSaldo());
 			CuentaDAO cuentaDAO = new CuentaDAO();
 			CuentaDTO datosDeCuenta = cuentaDAO.obtenerCuenta(idCuenta);
@@ -44,7 +45,7 @@ public class RecargarBonobusListener implements ActionListener {
 			MovimientoDAO movimientoDAO = new MovimientoDAO();
 			long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
 			MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Recarga de bonobus",
-					idCuenta);
+					SesionControlador.datosTarjeta.getId());
 			movimientoDAO.insertarMovimiento(movimientoDTO);
 			JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
 		} catch (Exception e2) {

@@ -13,12 +13,12 @@ public class MovimientoDAO {
 	public void insertarMovimiento(MovimientoDTO nuevoMovimiento) {
 		Conectar conexion = new Conectar();
 		try {
-			String query = "INSERT INTO Movimiento(tipo,fecha_del_movimiento,cuenta_asociada) VALUES(?,?,?)";
+			String query = "INSERT INTO Movimiento(tipo,fecha_del_movimiento,id_tarjeta_asociada) VALUES(?,?,?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			
 			preparedStatement.setString(1, nuevoMovimiento.getTipo());
 			preparedStatement.setDate(2, nuevoMovimiento.getFechaDelMovimiento());
-			preparedStatement.setInt(3, nuevoMovimiento.getCuentaAsociada());
+			preparedStatement.setInt(3, nuevoMovimiento.getIdTarjetaAsociada());
 
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
@@ -31,20 +31,20 @@ public class MovimientoDAO {
 	}
 
 	
-	public ArrayList<MovimientoDTO> obtenerMovimiento(int idCuenta) {
+	public ArrayList<MovimientoDTO> obtenerMovimiento(int idTarjetaAsociada) {
 		ArrayList<MovimientoDTO> Movimientos = new ArrayList<>();
 		Conectar conexion = new Conectar();
 		try {
-			String query = "SELECT * FROM Movimiento WHERE cuenta_asociada=?";
+			String query = "SELECT * FROM Movimiento WHERE id_tarjeta_asociada=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, idCuenta);
+			preparedStatement.setInt(1, idTarjetaAsociada);
 			ResultSet resultado = preparedStatement.executeQuery();
 			while (resultado.next() == true) {
 				int idMovimientos = resultado.getInt("id");
 				String tipo = resultado.getString("tipo");
 				Date fechaDelMovimiento = resultado.getDate("fecha_del_movimiento");
-				int cuentaAsociada = resultado.getInt("cuenta_asociada");
-				MovimientoDTO Movimiento = new MovimientoDTO(idMovimientos,fechaDelMovimiento,tipo,cuentaAsociada);
+				int idTarjetaAsociadaBD = resultado.getInt("id_tarjeta_asociada");
+				MovimientoDTO Movimiento = new MovimientoDTO(idMovimientos,fechaDelMovimiento,tipo,idTarjetaAsociadaBD);
 				Movimientos.add(Movimiento);
 			}
 			resultado.close();

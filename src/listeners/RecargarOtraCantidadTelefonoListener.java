@@ -36,7 +36,8 @@ public class RecargarOtraCantidadTelefonoListener implements ActionListener {
 				if (saldoRestante >= 0) {
 					TelefonoDAO telefonoDAO = new TelefonoDAO();
 					int idCuenta = SesionControlador.datosCuenta.getId();
-					TelefonoDTO datosTelefono = telefonoDAO.obtenerTelefonos(idCuenta);
+					int idTarjeta = SesionControlador.datosTarjeta.getId();
+					TelefonoDTO datosTelefono = telefonoDAO.obtenerTelefonos(idTarjeta);
 					datosTelefono.setSaldo(this.cantidad + datosTelefono.getSaldo());
 					telefonoDAO.actualizarTelefono(datosTelefono);
 					SesionControlador.datosCuenta.setSaldo(saldoRestante);
@@ -45,7 +46,7 @@ public class RecargarOtraCantidadTelefonoListener implements ActionListener {
 					MovimientoDAO movimientoDAO = new MovimientoDAO();
 					long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
 					MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Recarga de teléfono",
-							SesionControlador.datosCuenta.getId());
+							SesionControlador.datosTarjeta.getId());
 					movimientoDAO.insertarMovimiento(movimientoDTO);
 					JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
 				} else {

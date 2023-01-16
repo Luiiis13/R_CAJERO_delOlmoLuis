@@ -14,11 +14,11 @@ public class TelefonoDAO {
 		Conectar conexion = new Conectar();
 
 		try {
-			String query = "INSERT INTO telefono(numero,saldo,id_cuenta) VALUES (?,?,?)";
+			String query = "INSERT INTO telefono(numero,saldo,id_tarjeta_asociada) VALUES (?,?,?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setFloat(1, nuevoTelefono.getNumero());
 			preparedStatement.setFloat(2, nuevoTelefono.getSaldo());
-			preparedStatement.setInt(3, nuevoTelefono.getIdCuenta());
+			preparedStatement.setInt(3, nuevoTelefono.getIdTarjetaAsociada());
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 		} catch (SQLException e) {
@@ -41,9 +41,9 @@ public class TelefonoDAO {
 				int idDB = resultado.getInt("id");
 				int numeroDB = resultado.getInt("numero");
 				float saldoDB = resultado.getFloat("saldo");
-				int idCuentaDB = resultado.getInt("id_cuenta");
+				int idTarjetaAsociada = resultado.getInt("id_tarjeta_asociada");
 
-				TelefonoDTO telefono = new TelefonoDTO(idDB, numeroDB, saldoDB, idCuentaDB);
+				TelefonoDTO telefono = new TelefonoDTO(idDB, numeroDB, saldoDB, idTarjetaAsociada);
 				telefonos.add(telefono);
 			}
 			resultado.close();
@@ -57,20 +57,20 @@ public class TelefonoDAO {
 		return telefonos;
 	}
 
-	public TelefonoDTO obtenerTelefonos(int idCuenta) {
+	public TelefonoDTO obtenerTelefonos(int idTarjetaAsociada) {
 		TelefonoDTO telefono = null;
 		Conectar conexion = new Conectar();
 		try {
-			String query = "SELECT * FROM telefono WHERE id_cuenta=?";
+			String query = "SELECT * FROM telefono WHERE id_tarjeta_asociada=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, idCuenta);
+			preparedStatement.setInt(1, idTarjetaAsociada);
 			ResultSet resultado = preparedStatement.executeQuery();
 			if (resultado.next() == true) {
 				int idTelefonoDB = resultado.getInt("id");
 				int numeroDB = resultado.getInt("numero");
 				float saldoDB = resultado.getFloat("saldo");
-				int idCuentaDB = resultado.getInt("id_cuenta");
-				telefono = new TelefonoDTO(idTelefonoDB, numeroDB, saldoDB, idCuentaDB);
+				int idTarjetaAsociadaBD = resultado.getInt("id_tarjeta_asociada");
+				telefono = new TelefonoDTO(idTelefonoDB, numeroDB, saldoDB, idTarjetaAsociadaBD);
 			}
 			resultado.close();
 			preparedStatement.close();
@@ -107,11 +107,11 @@ public class TelefonoDAO {
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
 		try {
-			String query = "UPDATE telefono SET numero=?,saldo=?, id_cuenta=? WHERE id=? ";
+			String query = "UPDATE telefono SET numero=?,saldo=?, id_tarjeta_asociada=? WHERE id=? ";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, nuevoTelefono.getIdCuenta());
+			preparedStatement.setInt(1, nuevoTelefono.getIdTarjetaAsociada());
 			preparedStatement.setFloat(2, nuevoTelefono.getSaldo());
-			preparedStatement.setInt(3, nuevoTelefono.getIdCuenta());
+			preparedStatement.setInt(3, nuevoTelefono.getIdTarjetaAsociada());
 			preparedStatement.setInt(4, nuevoTelefono.getId());
 
 			preparedStatement.executeUpdate();

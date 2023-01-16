@@ -9,8 +9,9 @@ public class TarjetaDTO {
 	private int cvv;
 	private int pin;
 	private boolean bloqueado;
+	private int IdCuentaAsociada;
 
-	public TarjetaDTO(int id, int numero, Date fecha_expiracion, int cvv, int pin,boolean bloqueado) {
+	public TarjetaDTO(int id, int numero, Date fecha_expiracion, int cvv, int pin,boolean bloqueado,int IdCuentaAsociada) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -18,6 +19,15 @@ public class TarjetaDTO {
 		this.cvv = cvv;
 		this.pin = pin;
 		this.bloqueado = bloqueado;
+		this.IdCuentaAsociada=IdCuentaAsociada;
+	}
+
+	public int getIdCuentaAsociada() {
+		return IdCuentaAsociada;
+	}
+
+	public void setIdCuentaAsociada(int idCuentaAsociada) {
+		IdCuentaAsociada = idCuentaAsociada;
 	}
 
 	public boolean isBloqueado() {

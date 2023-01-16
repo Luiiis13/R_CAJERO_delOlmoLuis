@@ -26,7 +26,8 @@ public class RecargarTelefonoListener implements ActionListener {
 		try {
 			TelefonoDAO telefonoDAO = new TelefonoDAO();
 			int idCuenta = SesionControlador.datosCuenta.getId();
-			TelefonoDTO datosTelefono = telefonoDAO.obtenerTelefonos(idCuenta);
+			int idTarjeta = SesionControlador.datosTarjeta.getId();
+			TelefonoDTO datosTelefono = telefonoDAO.obtenerTelefonos(idTarjeta);
 			datosTelefono.setSaldo(this.cantidad + datosTelefono.getSaldo());
 			CuentaDAO cuentaDAO = new CuentaDAO();
 			CuentaDTO datosDeCuenta = cuentaDAO.obtenerCuenta(idCuenta);
@@ -42,11 +43,12 @@ public class RecargarTelefonoListener implements ActionListener {
 			MovimientoDAO movimientoDAO = new MovimientoDAO();
 			long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
 			MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Recarga de telefono",
-					idCuenta);
+					SesionControlador.datosTarjeta.getId());
 			movimientoDAO.insertarMovimiento(movimientoDTO);
 			JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
 		} catch (Exception e2) {
 			JOptionPane.showMessageDialog(null, "ERROR recargando bonobus", "Error", JOptionPane.ERROR_MESSAGE);
+			e2.printStackTrace();
 		}
 	}
 }

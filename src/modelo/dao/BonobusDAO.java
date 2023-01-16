@@ -13,10 +13,10 @@ public class BonobusDAO {
 		Conectar conexion = new Conectar();
 
 		try {
-			String query = "INSERT INTO Bonobus(saldo,id_cuenta) VALUES (?,?)";
+			String query = "INSERT INTO Bonobus(saldo,id_tarjeta_asociada) VALUES (?,?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setFloat(1, nuevoBonobus.getSaldo());
-			preparedStatement.setInt(2, nuevoBonobus.getIdCuenta());
+			preparedStatement.setInt(2, nuevoBonobus.getIdTarjetaAsociada());
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 		} catch (SQLException e) {
@@ -38,9 +38,9 @@ public class BonobusDAO {
 			while (resultado.next() == true) {
 				int idDB = resultado.getInt("id");
 				Float saldoDB = resultado.getFloat("saldo");
-				int idCuentaDB = resultado.getInt("id_cuenta");
+				int idTarjetaAsociada = resultado.getInt("id_tarjeta_asociada");
 
-				BonobusDTO bonobus = new BonobusDTO(idDB, saldoDB, idCuentaDB);
+				BonobusDTO bonobus = new BonobusDTO(idDB, saldoDB, idTarjetaAsociada);
 				bonobuses.add(bonobus);
 			}
 			resultado.close();
@@ -54,19 +54,19 @@ public class BonobusDAO {
 		return bonobuses;
 	}
 
-	public BonobusDTO obtenerBonobus(int idCuenta) {
+	public BonobusDTO obtenerBonobus(int idTarjetaAsociada) {
 		BonobusDTO bonobus = null;
 		Conectar conexion = new Conectar();
 		try {
-			String query = "SELECT * FROM Bonobus WHERE id_cuenta=?";
+			String query = "SELECT * FROM Bonobus WHERE id_tarjeta_asociada=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, idCuenta);
+			preparedStatement.setInt(1, idTarjetaAsociada);
 			ResultSet resultado = preparedStatement.executeQuery();
 			if (resultado.next() == true) {
 				int idBonobusDB = resultado.getInt("id");
 				float saldoDB = resultado.getFloat("saldo");
-				int idCuentaDB = resultado.getInt("id_cuenta");
-				bonobus = new BonobusDTO(idBonobusDB, saldoDB, idCuentaDB);
+				int idTarjetaAsociadaBD = resultado.getInt("id_tarjeta_asociada");
+				bonobus = new BonobusDTO(idBonobusDB, saldoDB, idTarjetaAsociadaBD);
 			}
 			resultado.close();
 			preparedStatement.close();
@@ -103,10 +103,10 @@ public class BonobusDAO {
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
 		try {
-			String query = "UPDATE Bonobus SET saldo=?, id_cuenta=? WHERE id=? ";
+			String query = "UPDATE Bonobus SET saldo=?, id_tarjeta_asociada=? WHERE id=? ";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setFloat(1, nuevoBonobus.getSaldo());
-			preparedStatement.setInt(2, nuevoBonobus.getIdCuenta());
+			preparedStatement.setInt(2, nuevoBonobus.getIdTarjetaAsociada());
 			preparedStatement.setInt(3, nuevoBonobus.getId());
 
 			preparedStatement.executeUpdate();

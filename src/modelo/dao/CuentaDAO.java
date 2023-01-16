@@ -12,13 +12,12 @@ public class CuentaDAO {
 	public void insertarCuenta(CuentaDTO nuevacuenta) {
 		Conectar conexion = new Conectar();
 		try {
-			String query = "INSERT INTO Cuenta(numero,iban,saldo,tarjeta_asociada,id_usuario) VALUES(?,?,?,?,?)";
+			String query = "INSERT INTO Cuenta(numero,iban,saldo,id_usuario) VALUES(?,?,?,?,?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setInt(1, nuevacuenta.getNumero());
 			preparedStatement.setString(2, nuevacuenta.getIban());
 			preparedStatement.setFloat(3, nuevacuenta.getSaldo());
-			preparedStatement.setInt(4, nuevacuenta.getTarjetaAsociada());
-			preparedStatement.setInt(5, nuevacuenta.getId_usuario());
+			preparedStatement.setInt(4, nuevacuenta.getId_usuario());
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 		} catch (Exception e) {
@@ -41,9 +40,8 @@ public class CuentaDAO {
 				int numero = resultado.getInt("numero");
 				String iban = resultado.getString("iban");
 				float saldo = resultado.getFloat("saldo");
-				int tarjetaAsociada = resultado.getInt("tarjeta_asociada");
 				int idUsuario = resultado.getInt("id_usuario");
-				CuentaDTO cuenta = new CuentaDTO(id, numero, iban, saldo, tarjetaAsociada, idUsuario);
+				CuentaDTO cuenta = new CuentaDTO(id, numero, iban, saldo, idUsuario);
 				cuentas.add(cuenta);
 			}
 			resultado.close();
@@ -70,9 +68,8 @@ public class CuentaDAO {
 				int numero = resultado.getInt("numero");
 				String iban = resultado.getString("iban");
 				float saldo = resultado.getFloat("saldo");
-				int tarjetaAsociada = resultado.getInt("tarjeta_asociada");
 				int idUsuario = resultado.getInt("id_usuario");
-				cuenta = new CuentaDTO(idCuenta, numero, iban, saldo, tarjetaAsociada, idUsuario);
+				cuenta = new CuentaDTO(idCuenta, numero, iban, saldo, idUsuario);
 			}
 			resultado.close();
 			preparedStatement.close();
@@ -85,33 +82,6 @@ public class CuentaDAO {
 		return cuenta;
 	}
 
-	public CuentaDTO obtenerCuentaDadoTarjeta(int idTarjeta) {
-		CuentaDTO cuenta = null;
-		Conectar conexion = new Conectar();
-		try {
-			String query = "SELECT * FROM Cuenta WHERE tarjeta_asociada=?";
-			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, idTarjeta);
-			ResultSet resultado = preparedStatement.executeQuery();
-			if (resultado.next() == true) {
-				int idCuenta = resultado.getInt("id");
-				int numero = resultado.getInt("numero");
-				String iban = resultado.getString("iban");
-				float saldo = resultado.getFloat("saldo");
-				int tarjetaAsociada = resultado.getInt("tarjeta_asociada");
-				int idUsuario = resultado.getInt("id_usuario");
-				cuenta = new CuentaDTO(idCuenta, numero, iban, saldo, tarjetaAsociada, idUsuario);
-			}
-			resultado.close();
-			preparedStatement.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			conexion.cerrarConexion();
-		}
-		return cuenta;
-	}
 
 	public boolean eliminarCuenta(int id) {
 		boolean eliminado = false;
@@ -136,14 +106,13 @@ public class CuentaDAO {
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
 		try {
-			String query = "UPDATE Cuenta SET numero=?,iban=?,saldo=?,tarjeta_asociada=?,id_usuario=? WHERE id=?";
+			String query = "UPDATE Cuenta SET numero=?,iban=?,saldo=?,id_usuario=? WHERE id=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setInt(1, nuevaCuenta.getNumero());
 			preparedStatement.setString(2, nuevaCuenta.getIban());
 			preparedStatement.setFloat(3, nuevaCuenta.getSaldo());
-			preparedStatement.setInt(4, nuevaCuenta.getTarjetaAsociada());
-			preparedStatement.setInt(5, nuevaCuenta.getId_usuario());
-			preparedStatement.setInt(6, nuevaCuenta.getId());
+			preparedStatement.setInt(4, nuevaCuenta.getId_usuario());
+			preparedStatement.setInt(5, nuevaCuenta.getId());
 			preparedStatement.executeUpdate();
 			actualizado = true;
 			preparedStatement.close();

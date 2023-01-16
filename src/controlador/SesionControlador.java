@@ -6,7 +6,11 @@ import modelo.dto.CuentaDTO;
 import modelo.dto.TarjetaDTO;
 import modelo.dto.UsuarioDTO;
 import vista.Sesion;
-
+/***
+ * 
+ * @author Luis
+ *
+ */
 public class SesionControlador {
 	private Sesion sesionVista = new Sesion();
 	private SesionDAO sesionDAO = new SesionDAO();

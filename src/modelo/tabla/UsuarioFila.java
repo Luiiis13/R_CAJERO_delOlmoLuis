@@ -3,15 +3,15 @@ package modelo.tabla;
 public class UsuarioFila {
 	private int id;
 	private String nombre;
-	private int edad;
+	private String dni;
 	private String primerApellido;
 	private boolean isAdmin;
 	private boolean seleccionable;
 	
-	public UsuarioFila(int id, String nombre, int edad, String primerApellido, boolean isAdmin, boolean seleccionable) {
+	public UsuarioFila(int id, String nombre, String dni, String primerApellido, boolean isAdmin, boolean seleccionable) {
 		this.id = id;
 		this.nombre = nombre;
-		this.edad = edad;
+		this.dni = dni;
 		this.primerApellido = primerApellido;
 		this.isAdmin = isAdmin;
 		this.seleccionable=seleccionable;
@@ -30,12 +30,12 @@ public class UsuarioFila {
 		this.nombre = nombre;
 	}
 
-	public int getEdad() {
-		return edad;
+	public String getDni() {
+		return dni;
 	}
 
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 	public String getPrimerApellido() {

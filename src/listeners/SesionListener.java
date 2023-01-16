@@ -65,19 +65,17 @@ public class SesionListener implements ActionListener {
 		}
 	}
 
-	private void obtenerDatosUsuario(int id) {
+	private void obtenerDatosUsuario(int idTarjeta) {
 		TarjetaDAO tarjeta = new TarjetaDAO();
-		TarjetaDTO datosTarjeta = tarjeta.obtenerTarjeta(id);
+		TarjetaDTO datosTarjeta = tarjeta.obtenerTarjeta(idTarjeta);
 		if(datosTarjeta.isBloqueado()) {
 			JOptionPane.showMessageDialog(null, "Tarjeta bloqueada contacte con administrador", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		SesionControlador.datosTarjeta = datosTarjeta; // PARA HACER ACCESIBLE LOS DATOS DE LA TARJETA
-
 		CuentaDAO cuenta = new CuentaDAO();
-		CuentaDTO datosCuenta = cuenta.obtenerCuentaDadoTarjeta(id);
+		CuentaDTO datosCuenta = cuenta.obtenerCuenta(datosTarjeta.getIdCuentaAsociada());
 		SesionControlador.datosCuenta = datosCuenta;
-
 		UsuarioDAO usuario = new UsuarioDAO();
 		UsuarioDTO datosUsuario = usuario.obtenerUsuario(datosCuenta.getId_usuario());
 		SesionControlador.datosUsuario = datosUsuario;

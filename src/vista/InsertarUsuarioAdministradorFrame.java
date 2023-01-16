@@ -16,12 +16,12 @@ import listeners.AgregarUsuarioListener;
 public class InsertarUsuarioAdministradorFrame extends JFrame {
 
 	private JLabel nombreLbl = new JLabel("Nombre:");
-	private JLabel edadLbl = new JLabel("Edad:");
+	private JLabel dniLbl = new JLabel("Dni:");
 	private JLabel primerApellidoLbl = new JLabel("Primer apellido:");
 	private JLabel contraseñaLbl = new JLabel("Contraseña:");
 	private JLabel isAdminLbl = new JLabel("Administrador:");
 	private JTextField nombreTxt = new JTextField();
-	private JTextField edadTxt = new JTextField();
+	private JTextField dniTxt = new JTextField();
 	private JTextField primerApellidoTxt = new JTextField();
 	private JCheckBox isAdmin = new JCheckBox();
 	private JPasswordField contraseñaField = new JPasswordField();
@@ -37,8 +37,8 @@ public class InsertarUsuarioAdministradorFrame extends JFrame {
 		contenedor.setLayout(new GridLayout(5, 2));
 		contenedor.add(nombreLbl);
 		contenedor.add(nombreTxt);
-		contenedor.add(edadLbl);
-		contenedor.add(edadTxt);
+		contenedor.add(dniLbl);
+		contenedor.add(dniTxt);
 		contenedor.add(primerApellidoLbl);
 		contenedor.add(primerApellidoTxt);
 		contenedor.add(contraseñaLbl);
@@ -59,8 +59,8 @@ public class InsertarUsuarioAdministradorFrame extends JFrame {
 	public JTextField getNombreTxt() {
 		return nombreTxt;
 	}
-	public JTextField getEdadTxt() {
-		return edadTxt;
+	public JTextField getDniTxt() {
+		return dniTxt;
 	}
 	public JTextField getPrimerApellidoTxt() {
 		return primerApellidoTxt;

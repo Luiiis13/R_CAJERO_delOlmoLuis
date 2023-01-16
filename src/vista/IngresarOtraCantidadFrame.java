@@ -33,7 +33,9 @@ public class IngresarOtraCantidadFrame extends JFrame {
 		this.pack();
 	}
 
-	// metodo que añade un evento al pulsar el boton confirmar
+	/***
+	 *  metodo que añade un evento al pulsar el boton confirmar
+	 */
 	private void inicializar() {
 		confirmarBtn.addActionListener(new IngresarOtraCantidadDineroListener(this));
 	}

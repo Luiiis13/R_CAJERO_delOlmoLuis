@@ -5,18 +5,16 @@ public class CuentasFila {
 	private int numero;
 	private String iban;
 	private float saldo;
-	private int tarjetaAsociada;
 	private int id_usuario;
 	private boolean seleccionable;
 
-	public CuentasFila(int id, int numero, String iban, float saldo, int tarjetaAsociada, int id_usuario,
+	public CuentasFila(int id, int numero, String iban, float saldo, int id_usuario,
 			boolean seleccionable) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.iban = iban;
 		this.saldo = saldo;
-		this.tarjetaAsociada = tarjetaAsociada;
 		this.id_usuario = id_usuario;
 		this.seleccionable = seleccionable;
 	}
@@ -43,14 +41,6 @@ public class CuentasFila {
 
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
-	}
-
-	public int getTarjetaAsociada() {
-		return tarjetaAsociada;
-	}
-
-	public void setTarjetaAsociada(int tarjetaAsociada) {
-		this.tarjetaAsociada = tarjetaAsociada;
 	}
 
 	public int getId_usuario() {

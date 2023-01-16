@@ -20,11 +20,11 @@ public class AgregarUsuarioListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		try {
 			String nombre = this.insertarUsuarioFrame.getNombreTxt().getText();
-			int edad = Integer.parseInt(this.insertarUsuarioFrame.getEdadTxt().getText());
+			String dni = this.insertarUsuarioFrame.getDniTxt().getText();
 			String primerApellido = this.insertarUsuarioFrame.getPrimerApellidoTxt().getText();
 			String contraseña = this.insertarUsuarioFrame.getContraseñaField().getText();
 			boolean isAdmin = this.insertarUsuarioFrame.getIsAdmin().isSelected();
-			UsuarioDTO usuarioDTO = new UsuarioDTO(0, nombre, edad, primerApellido, isAdmin, contraseña);
+			UsuarioDTO usuarioDTO = new UsuarioDTO(0, nombre, dni, primerApellido, isAdmin, contraseña);
 			new UsuariosControlador().insertar(usuarioDTO);
 			JOptionPane.showMessageDialog(null, "Usuario insertado correctamente");
 			this.insertarUsuarioFrame.show(false);

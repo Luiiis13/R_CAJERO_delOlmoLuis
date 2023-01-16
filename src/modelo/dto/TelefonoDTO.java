@@ -3,15 +3,15 @@ package modelo.dto;
 public class TelefonoDTO {
 	private int id;
 	private float saldo;
-	private int idCuenta;
+	private int idTarjetaAsociada;
 	private int numero;
 
-	public TelefonoDTO(int id, int numero, float saldo, int idCuenta) {
+	public TelefonoDTO(int id, int numero, float saldo, int idTarjetaAsociada) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.saldo = saldo;
-		this.idCuenta = idCuenta;
+		this.idTarjetaAsociada = idTarjetaAsociada;
 	}
 
 	public int getNumero() {
@@ -30,12 +30,12 @@ public class TelefonoDTO {
 		this.saldo = saldo;
 	}
 
-	public int getIdCuenta() {
-		return idCuenta;
+	public int getIdTarjetaAsociada() {
+		return idTarjetaAsociada;
 	}
 
-	public void setIdCuenta(int idCuenta) {
-		this.idCuenta = idCuenta;
+	public void setIdTarjetaAsociada(int idTarjetaAsociada) {
+		this.idTarjetaAsociada = idTarjetaAsociada;
 	}
 
 	public int getId() {

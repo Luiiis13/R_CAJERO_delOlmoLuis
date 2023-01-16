@@ -10,7 +10,11 @@ import javax.swing.JPanel;
 
 import listeners.InicioSesionAdministradorListener;
 import listeners.PantallaInicioListener;
-
+/***
+ * 
+ * @author Luis
+ * Clase que sirve para mostrar un panel de bienvenida al cajero con dos botones comenzar y comenzar como administrador 
+ */
 public class PantallaInicioFrame extends JFrame {
 
 	private JLabel bienvenidaLbl = new JLabel("Bienvenido al cajero");
@@ -36,7 +40,9 @@ public class PantallaInicioFrame extends JFrame {
 		this.inicializar();
 		this.pack();
 	}
-
+/***
+ * Metodo que invoca a los action listener de cada uno 
+ */
 	private void inicializar() {
 		this.comnezarBtn.addActionListener(new PantallaInicioListener(this));
 		this.opcionesDeAdministradorBtn.addActionListener(new InicioSesionAdministradorListener());

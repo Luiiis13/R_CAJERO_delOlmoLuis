@@ -14,12 +14,12 @@ public class UsuarioDAO {
 	public void insertarUsuario(UsuarioDTO nuevoUsuario) {
 		Conectar conexion = new Conectar();
 		try {
-			String query = "INSERT INTO usuario(nombre,edad,primer_apellido,isAdmin,contraseña) VALUES(?,?,?,?,?)";
+			String query = "INSERT INTO usuario(nombre,dni,primer_apellido,es_admin,contraseña) VALUES(?,?,?,?,?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setString(1, nuevoUsuario.getNombre());
-			preparedStatement.setInt(2, nuevoUsuario.getEdad());
+			preparedStatement.setString(2, nuevoUsuario.getDni());
 			preparedStatement.setString(3, nuevoUsuario.getPrimerApellido());
-			preparedStatement.setBoolean(4, nuevoUsuario.getIsAdmin());
+			preparedStatement.setBoolean(4, nuevoUsuario.getEsAdmin());
 			preparedStatement.setString(5, nuevoUsuario.getContraseña());
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
@@ -42,11 +42,11 @@ public class UsuarioDAO {
 
 				int id = resultado.getInt("id");
 				String nombre = resultado.getString("nombre");
-				int edad = resultado.getInt("edad");
+				String dni = resultado.getString("dni");
 				String primerApellido = resultado.getString("primer_apellido");
-				boolean isAdmin = resultado.getBoolean("isAdmin");
+				boolean isAdmin = resultado.getBoolean("es_admin");
 				String contraseña = resultado.getString("contraseña");
-				UsuarioDTO usuario = new UsuarioDTO(id, nombre, edad, primerApellido, isAdmin, contraseña);
+				UsuarioDTO usuario = new UsuarioDTO(id, nombre, dni, primerApellido, isAdmin, contraseña);
 				usuarios.add(usuario);
 			}
 			resultado.close();
@@ -71,11 +71,11 @@ public class UsuarioDAO {
 			if (resultado.next() == true) {
 				int idResult = resultado.getInt("id");
 				String nombre = resultado.getString("nombre");
-				int edad = resultado.getInt("edad");
+				String dni = resultado.getString("dni");
 				String primerApellido = resultado.getString("primer_apellido");
-				boolean isAdmin = resultado.getBoolean("isAdmin");
+				boolean isAdmin = resultado.getBoolean("es_admin");
 				String contraseña = resultado.getString("contraseña");
-				usuario = new UsuarioDTO(idResult, nombre, edad, primerApellido, isAdmin, contraseña);
+				usuario = new UsuarioDTO(idResult, nombre, dni, primerApellido, isAdmin, contraseña);
 			}
 			resultado.close();
 			preparedStatement.close();
@@ -111,12 +111,12 @@ public class UsuarioDAO {
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
 		try {
-			String query = "UPDATE Usuario SET nombre=? ,edad=?,primer_apellido=?,isAdmin=?,contraseña=? WHERE id=?";
+			String query = "UPDATE Usuario SET nombre=? ,dni=?,primer_apellido=?,es_admin=?,contraseña=? WHERE id=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setString(1, nuevoUsuario.getNombre());
-			preparedStatement.setInt(2, nuevoUsuario.getEdad());
+			preparedStatement.setString(2, nuevoUsuario.getDni());
 			preparedStatement.setString(3, nuevoUsuario.getPrimerApellido());
-			preparedStatement.setBoolean(4, nuevoUsuario.getIsAdmin());
+			preparedStatement.setBoolean(4, nuevoUsuario.getEsAdmin());
 			preparedStatement.setString(5, nuevoUsuario.getContraseña());
 			preparedStatement.setInt(6, nuevoUsuario.getId());
 			preparedStatement.executeUpdate();

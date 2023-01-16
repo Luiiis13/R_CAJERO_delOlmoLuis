@@ -9,7 +9,7 @@ import modelo.dto.CuentaDTO;
 import modelo.tabla.CuentasFila;
 
 public class ModeloTablaCuentas extends AbstractTableModel implements TableModel {
-	public static int columnas=6;
+	public static int columnas=5;
 	private ArrayList<CuentasFila> datos;
 	public ModeloTablaCuentas() {
 		this.datos = new ArrayList<>();
@@ -38,10 +38,8 @@ public class ModeloTablaCuentas extends AbstractTableModel implements TableModel
 		case 3:
 			return "Saldo";
 		case 4:
-			return "Tarjeta asociada";
-		case 5:
 			return "Id usuario";
-		case 6:
+		case 5:
 			return "Seleccionable";
 
 
@@ -64,8 +62,6 @@ public class ModeloTablaCuentas extends AbstractTableModel implements TableModel
 		case 4:
 			return Integer.class;
 		case 5:
-			return Integer.class;
-		case 6:
 			return Boolean.class;
 
 		default:
@@ -73,7 +69,7 @@ public class ModeloTablaCuentas extends AbstractTableModel implements TableModel
 		}
 	}
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		if (columnIndex == 6) {
+		if (columnIndex == 5) {
 			return true;
 		}
 		return true;
@@ -93,10 +89,6 @@ public class ModeloTablaCuentas extends AbstractTableModel implements TableModel
 		case 3:
 			return cuenta.getSaldo();
 		case 4:
-			return cuenta.getTarjetaAsociada();
-		case 5:
-			return cuenta.getId_usuario();
-		case 6:
 			return cuenta.isSeleccionable();
 
 		default:
@@ -121,12 +113,9 @@ public class ModeloTablaCuentas extends AbstractTableModel implements TableModel
 			cuentas.setSaldo((int) value);
 			break;
 		case 4:
-			cuentas.setTarjetaAsociada((int) value);
-			break;
-		case 5:
 			cuentas.setId_usuario((int) value);
 			break;
-		case 6:
+		case 5:
 			cuentas.setSeleccionable((boolean)value);
 			break;
 		default:
@@ -141,7 +130,7 @@ public class ModeloTablaCuentas extends AbstractTableModel implements TableModel
 		for (int i = 0; i < cuentasBD.size(); i++) {
 			CuentaDTO cuentaDTO = cuentasBD.get(i);
 			CuentasFila datosFila = new CuentasFila(cuentaDTO.getId(), cuentaDTO.getNumero(), cuentaDTO.getIban(),
-					cuentaDTO.getSaldo(), cuentaDTO.getTarjetaAsociada(), cuentaDTO.getId_usuario(), false);
+					cuentaDTO.getSaldo(),cuentaDTO.getId_usuario(), false);
 			this.datos.add(datosFila);
 		}
 	}

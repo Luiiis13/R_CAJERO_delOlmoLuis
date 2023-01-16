@@ -3,13 +3,13 @@ package modelo.dto;
 public class BonobusDTO {
 	private int id;
 	private float saldo;
-	private int idCuenta;
+	private int idTarjetaAsociada;
 
-	public BonobusDTO(int id, float saldo, int idCuenta) {
+	public BonobusDTO(int id, float saldo, int idTarjetaAsociada) {
 		super();
 		this.id = id;
 		this.saldo = saldo;
-		this.idCuenta = idCuenta;
+		this.idTarjetaAsociada = idTarjetaAsociada;
 	}
 
 	public float getSaldo() {
@@ -20,12 +20,12 @@ public class BonobusDTO {
 		this.saldo = saldo;
 	}
 
-	public int getIdCuenta() {
-		return idCuenta;
+	public int getIdTarjetaAsociada() {
+		return idTarjetaAsociada;
 	}
 
-	public void setIdCuenta(int idCuenta) {
-		this.idCuenta = idCuenta;
+	public void setIdTarjetaAsociada(int idTarjetaAsociada) {
+		this.idTarjetaAsociada = idTarjetaAsociada;
 	}
 
 	public int getId() {

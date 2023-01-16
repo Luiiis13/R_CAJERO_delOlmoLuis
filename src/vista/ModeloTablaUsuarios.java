@@ -36,7 +36,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 		case 1:
 			return "Nombre";
 		case 2:
-			return "Edad";
+			return "Dni";
 		case 3:
 			return "Primer apellido";
 		case 4:
@@ -58,7 +58,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 		case 1:
 			return String.class; // tambien esta el Float.class, Double.class y Boolean.class
 		case 2:
-			return Integer.class;
+			return String.class;
 		case 3:
 			return String.class;
 		case 4:
@@ -88,7 +88,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 		case 1:
 			return usuario.getNombre();
 		case 2:
-			return usuario.getEdad();
+			return usuario.getDni();
 		case 3:
 			return usuario.getPrimerApellido();
 		case 4:
@@ -110,7 +110,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 			usuario.setNombre((String) value);// Empiezan en case 1 porque el id no le edito
 			break;
 		case 2:
-			usuario.setEdad((int) value);
+			usuario.setDni((String) value);
 			break;
 		case 3:
 			usuario.setPrimerApellido((String) value);
@@ -132,8 +132,8 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 	public void agregarDatosDeTabla(ArrayList<UsuarioDTO> usuariosBD) {
 		for (int i = 0; i < usuariosBD.size(); i++) {
 			UsuarioDTO usuarioDTO = usuariosBD.get(i);
-			UsuarioFila datosFila = new UsuarioFila(usuarioDTO.getId(), usuarioDTO.getNombre(), usuarioDTO.getEdad(),
-					usuarioDTO.getPrimerApellido(), usuarioDTO.getIsAdmin(), false);
+			UsuarioFila datosFila = new UsuarioFila(usuarioDTO.getId(), usuarioDTO.getNombre(), usuarioDTO.getDni(),
+					usuarioDTO.getPrimerApellido(), usuarioDTO.getEsAdmin(), false);
 			this.datos.add(datosFila);
 		}
 	}

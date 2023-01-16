@@ -3,18 +3,18 @@ package modelo.dto;
 public class UsuarioDTO {
 	private int id;
 	private String nombre;
-	private int edad;
+	private String dni;
 	private String primerApellido;
-	private boolean isAdmin;
+	private boolean esAdmin;
 	private String contraseña;
 
-	public UsuarioDTO(int id, String nombre, int edad, String primerApellido, boolean isAdmin,String contraseña) {
+	public UsuarioDTO(int id, String nombre, String dni, String primerApellido, boolean esAdmin,String contraseña) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.edad = edad;
+		this.dni = dni;
 		this.primerApellido = primerApellido;
-		this.isAdmin = isAdmin;
+		this.esAdmin = esAdmin;
 		this.contraseña = contraseña;
 
 	}
@@ -43,12 +43,12 @@ public class UsuarioDTO {
 		this.nombre = nombre;
 	}
 
-	public int getEdad() {
-		return edad;
+	public String getDni() {
+		return dni;
 	}
 
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 	public String getPrimerApellido() {
@@ -59,11 +59,11 @@ public class UsuarioDTO {
 		this.primerApellido = primerApellido;
 	}
 
-	public boolean getIsAdmin() {
-		return isAdmin;
+	public boolean getEsAdmin() {
+		return esAdmin;
 	}
 
-	public void setIsAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setEsAdmin(boolean esAdmin) {
+		this.esAdmin = esAdmin;
 	}
 }

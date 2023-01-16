@@ -13,13 +13,14 @@ public class TarjetaDAO {
 	public void insertarTarjeta(TarjetaDTO nuevaTarjeta) {
 		Conectar conexion = new Conectar();
 		try {
-			String query = "INSERT INTO Tarjeta(numero,fecha_expiracion,cvv,pin,bloqueado) VALUES(?,?,?,?,?)";
+			String query = "INSERT INTO Tarjeta(numero,fecha_expiracion,cvv,pin,bloqueado,id_cuenta_asociada) VALUES(?,?,?,?,?,?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setInt(1, nuevaTarjeta.getNumero());
 			preparedStatement.setDate(2, nuevaTarjeta.getFecha_expiracion());
 			preparedStatement.setInt(3, nuevaTarjeta.getCvv());
 			preparedStatement.setInt(4, nuevaTarjeta.getPin());
 			preparedStatement.setBoolean(5, nuevaTarjeta.isBloqueado());
+			preparedStatement.setInt(6, nuevaTarjeta.getIdCuentaAsociada());
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 		} catch (Exception e) {
@@ -44,7 +45,8 @@ public class TarjetaDAO {
 				int cvv = resultado.getInt("cvv");
 				int pin = resultado.getInt("pin");
 				boolean bloqueado = resultado.getBoolean("bloqueado");
-				TarjetaDTO tarjeta = new TarjetaDTO(id, numero, fechaExpiracion, cvv, pin,bloqueado);
+				int idCuentaAsociadaBD = resultado.getInt("id_cuenta_asociada");
+				TarjetaDTO tarjeta = new TarjetaDTO(id, numero, fechaExpiracion, cvv, pin,bloqueado,idCuentaAsociadaBD);
 				tarjetas.add(tarjeta);
 			}
 			resultado.close();
@@ -73,7 +75,9 @@ public class TarjetaDAO {
 				int cvv = resultado.getInt("cvv");
 				int pin = resultado.getInt("pin");
 				boolean bloqueado = resultado.getBoolean("bloqueado");
-				tarjeta = new TarjetaDTO(idtarjeta, numero, fechaExpiracion, cvv, pin,bloqueado);
+				int idCuentaAsociadaBD = resultado.getInt("id_cuenta_asociada");
+
+				tarjeta = new TarjetaDTO(idtarjeta, numero, fechaExpiracion, cvv, pin,bloqueado,idCuentaAsociadaBD);
 			}
 			resultado.close();
 			preparedStatement.close();
@@ -109,14 +113,15 @@ public class TarjetaDAO {
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
 		try {
-			String query = "UPDATE Tarjeta SET numero=?,fecha_expiracion=?,cvv=?,pin=?,bloqueado=? WHERE id=? ";
+			String query = "UPDATE Tarjeta SET numero=?,fecha_expiracion=?,cvv=?,pin=?,bloqueado=?,id_cuenta_asociada=? WHERE id=? ";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setInt(1, nuevaTarjeta.getNumero());
 			preparedStatement.setDate(2, nuevaTarjeta.getFecha_expiracion());
 			preparedStatement.setInt(3, nuevaTarjeta.getCvv());
 			preparedStatement.setInt(4, nuevaTarjeta.getPin());
 			preparedStatement.setBoolean(5, nuevaTarjeta.isBloqueado());
-			preparedStatement.setInt(6, nuevaTarjeta.getId());
+			preparedStatement.setInt(6, nuevaTarjeta.getIdCuentaAsociada());
+			preparedStatement.setInt(7, nuevaTarjeta.getId());
 			preparedStatement.executeUpdate();
 			actualizado = true;
 			preparedStatement.close();

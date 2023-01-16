@@ -38,7 +38,9 @@ public class RecargarOtraCantidadBonobusListener implements ActionListener {
 				if (saldoRestante >= 0) {
 					BonobusDAO bonobusDAO = new BonobusDAO();
 					int idCuenta = SesionControlador.datosCuenta.getId();
-					BonobusDTO datosBonobus = bonobusDAO.obtenerBonobus(idCuenta);
+					int idTarjeta = SesionControlador.datosTarjeta.getId();
+
+					BonobusDTO datosBonobus = bonobusDAO.obtenerBonobus(idTarjeta);
 					datosBonobus.setSaldo(this.cantidad + datosBonobus.getSaldo());
 					bonobusDAO.actualizarBonobus(datosBonobus);
 					SesionControlador.datosCuenta.setSaldo(saldoRestante);
@@ -47,7 +49,7 @@ public class RecargarOtraCantidadBonobusListener implements ActionListener {
 					MovimientoDAO movimientoDAO = new MovimientoDAO();
 					long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
 					MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Recarga de bonobus",
-							SesionControlador.datosCuenta.getId());
+							SesionControlador.datosTarjeta.getId());
 					movimientoDAO.insertarMovimiento(movimientoDTO);
 					JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
 				} else {

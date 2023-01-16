@@ -7,21 +7,21 @@ public class MovimientoDTO {
 	private int id;
 	private String tipo; 
 	private Date fechaDelMovimiento;
-private int cuentaAsociada;
-	public MovimientoDTO(int id,  Date fechaDelMovimiento,String tipo,int cuentaAsociada ) {
+private int idTarjetaAsociada;
+	public MovimientoDTO(int id,  Date fechaDelMovimiento,String tipo,int idTarjetaAsociada ) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
 		this.fechaDelMovimiento = fechaDelMovimiento;
-		this.cuentaAsociada=cuentaAsociada;
+		this.idTarjetaAsociada=idTarjetaAsociada;
 	}
 
-	public int getCuentaAsociada() {
-		return cuentaAsociada;
+	public int getIdTarjetaAsociada() {
+		return idTarjetaAsociada;
 	}
 
-	public void setCuentaAsociada(int cuentaAsociada) {
-		this.cuentaAsociada = cuentaAsociada;
+	public void setIdTarjetaAsociada(int idTarjetaAsociada) {
+		this.idTarjetaAsociada = idTarjetaAsociada;
 	}
 
 	public int getId() {
@@ -31,9 +31,6 @@ private int cuentaAsociada;
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	
-
 	public String getTipo() {
 		return tipo;
 	}

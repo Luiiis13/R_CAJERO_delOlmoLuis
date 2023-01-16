@@ -37,7 +37,7 @@ public class IngresarOtraCantidadDineroListener implements ActionListener {
 				MovimientoDAO movimientoDAO = new MovimientoDAO();
 				long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
 				MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Ingreso de dinero",
-						SesionControlador.datosCuenta.getId());
+						SesionControlador.datosTarjeta.getId());
 				movimientoDAO.insertarMovimiento(movimientoDTO);
 				JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
 			} catch (Exception error) {
