@@ -37,7 +37,7 @@ public class RecargarOtraCantidadTelefonoListener implements ActionListener {
 					TelefonoDAO telefonoDAO = new TelefonoDAO();
 					int idCuenta = SesionControlador.datosCuenta.getId();
 					int idTarjeta = SesionControlador.datosTarjeta.getId();
-					TelefonoDTO datosTelefono = telefonoDAO.obtenerTelefonos(idTarjeta);
+					TelefonoDTO datosTelefono = telefonoDAO.obtenerTelefono(idTarjeta);
 					datosTelefono.setSaldo(this.cantidad + datosTelefono.getSaldo());
 					telefonoDAO.actualizarTelefono(datosTelefono);
 					SesionControlador.datosCuenta.setSaldo(saldoRestante);

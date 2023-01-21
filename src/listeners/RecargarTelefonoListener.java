@@ -27,7 +27,7 @@ public class RecargarTelefonoListener implements ActionListener {
 			TelefonoDAO telefonoDAO = new TelefonoDAO();
 			int idCuenta = SesionControlador.datosCuenta.getId();
 			int idTarjeta = SesionControlador.datosTarjeta.getId();
-			TelefonoDTO datosTelefono = telefonoDAO.obtenerTelefonos(idTarjeta);
+			TelefonoDTO datosTelefono = telefonoDAO.obtenerTelefono(idTarjeta);
 			datosTelefono.setSaldo(this.cantidad + datosTelefono.getSaldo());
 			CuentaDAO cuentaDAO = new CuentaDAO();
 			CuentaDTO datosDeCuenta = cuentaDAO.obtenerCuenta(idCuenta);

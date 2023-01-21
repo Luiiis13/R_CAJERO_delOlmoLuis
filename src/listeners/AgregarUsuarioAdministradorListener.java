@@ -9,10 +9,10 @@ import controlador.UsuariosControlador;
 import modelo.dto.UsuarioDTO;
 import vista.InsertarUsuarioAdministradorFrame;
 
-public class AgregarUsuarioListener implements ActionListener {
+public class AgregarUsuarioAdministradorListener implements ActionListener {
 	private InsertarUsuarioAdministradorFrame insertarUsuarioFrame;
 
-	public AgregarUsuarioListener(InsertarUsuarioAdministradorFrame frame) {
+	public AgregarUsuarioAdministradorListener(InsertarUsuarioAdministradorFrame frame) {
 		this.insertarUsuarioFrame = frame;
 	}
 

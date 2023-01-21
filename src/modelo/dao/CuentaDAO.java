@@ -124,4 +124,31 @@ public class CuentaDAO {
 		}
 		return actualizado;
 	}
+	
+	public CuentaDTO obtenerCuentaDadoNumero(int numeroCuenta) {
+		CuentaDTO cuenta = null;
+		Conectar conexion = new Conectar();
+		try {
+			String query = "SELECT * FROM Cuenta WHERE numero=?";
+			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
+			preparedStatement.setInt(1, numeroCuenta);
+			ResultSet resultado = preparedStatement.executeQuery();
+			if (resultado.next() == true) {
+				int idCuenta = resultado.getInt("id");
+				int numero = resultado.getInt("numero");
+				String iban = resultado.getString("iban");
+				float saldo = resultado.getFloat("saldo");
+				int idUsuario = resultado.getInt("id_usuario");
+				cuenta = new CuentaDTO(idCuenta, numero, iban, saldo, idUsuario);
+			}
+			resultado.close();
+			preparedStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+		return cuenta;
+	}
 }

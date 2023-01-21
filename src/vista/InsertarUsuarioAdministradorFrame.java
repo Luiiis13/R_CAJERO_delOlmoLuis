@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import listeners.AgregarUsuarioListener;
+import listeners.AgregarUsuarioAdministradorListener;
 
 public class InsertarUsuarioAdministradorFrame extends JFrame {
 
@@ -72,6 +72,6 @@ public class InsertarUsuarioAdministradorFrame extends JFrame {
 		return contraseñaField;
 	}
 	public void inicializar() {
-		this.aceptarBtn.addActionListener(new AgregarUsuarioListener(this));
+		this.aceptarBtn.addActionListener(new AgregarUsuarioAdministradorListener(this));
 	}
 }

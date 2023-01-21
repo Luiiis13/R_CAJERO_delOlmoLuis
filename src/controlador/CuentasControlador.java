@@ -11,17 +11,22 @@ import vista.AdministrarCuentasFrame;
 public class CuentasControlador {
 	private AdministrarCuentasFrame frame;
 	private CuentaDAO cuentaDAO;
-public CuentasControlador() {
-	this.cuentaDAO=new CuentaDAO();
-	this.inicializar();
+
+	public CuentasControlador() {
+		this.cuentaDAO = new CuentaDAO();
+	
 	}
-private void inicializar() {
-	try {
-		ArrayList<CuentaDTO> cuentasBD=this.cuentaDAO.obtenerCuentas();
-		this.frame = new AdministrarCuentasFrame();
-		this.frame.getModelo().agregarDatosDeTabla(cuentasBD);
-	} catch (Exception e) {
-		JOptionPane.showMessageDialog(null, "Error haciendo la operacion", "Error", JOptionPane.ERROR_MESSAGE);
+
+	public void inicializar() {
+		try {
+			ArrayList<CuentaDTO> cuentasBD = this.cuentaDAO.obtenerCuentas();
+			this.frame = new AdministrarCuentasFrame();
+			this.frame.getModelo().agregarDatosDeTabla(cuentasBD);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Error haciendo la operacion", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
-}
+	public CuentaDTO obtenerCuentaDadoNumero(int numero) {
+		return this.cuentaDAO.obtenerCuentaDadoNumero(numero);
+	}
 }

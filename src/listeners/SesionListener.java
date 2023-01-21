@@ -17,6 +17,13 @@ import modelo.dto.TarjetaDTO;
 import modelo.dto.UsuarioDTO;
 import vista.Sesion;
 
+/***
+ * Clase que es llamada por el controlador de sesion controlador para validar
+ * los campos de numero de tarjeta y contraseña del frame sesion
+ * 
+ * @author Luis
+ *
+ */
 public class SesionListener implements ActionListener {
 	private SesionDAO sesionDAO;
 	private Sesion sesionVista;
@@ -31,20 +38,23 @@ public class SesionListener implements ActionListener {
 		this.verificarCredenciales();
 	}
 
+	/***
+	 * Metodo que comprueba si el numero de la tarjeta existe en base de datos y
+	 * comprueba que el pin y el numero sean correctos
+	 */
 	private void verificarCredenciales() {
 		try {
 			int numeroTarjeta = Integer.parseInt(this.sesionVista.getNumeroTarjeta().getText());
 			int pin = Integer.parseInt(this.sesionVista.getPin().getText());
 			SesionDTO sesionDTO = this.sesionDAO.verificarSesion(numeroTarjeta);
-			
-			
+
 			if (sesionDTO.getId() == 0) {
-				JOptionPane.showMessageDialog(null, "Número no válido", "Error", JOptionPane.ERROR_MESSAGE);
-				
+				JOptionPane.showMessageDialog(null, "Número incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+
 				return;
 			}
 			if (sesionDTO.getPin() != pin) {
-				JOptionPane.showMessageDialog(null, "Pin no válido", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Pin incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
 				SesionControlador.intentosFallidos++;
 				if (SesionControlador.intentosFallidos > 4) {
 					this.bloquearTarjeta(sesionDTO.getId());
@@ -58,27 +68,32 @@ public class SesionListener implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Tarjeta expirada", "Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			
+
 			this.obtenerDatosUsuario(sesionDTO.getId());
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Formato no valido");
 		}
 	}
 
+	/***
+	 * Metodo que sirve para a traves de la tarjeta sacar los datos del usuario y
+	 * guardar los datos de la tarjeta y los datos de la cuenta y una vez estan
+	 * guardados mostrar un mensaje de credenciales validas
+	 * 
+	 * @param idTarjeta
+	 */
 	private void obtenerDatosUsuario(int idTarjeta) {
 		TarjetaDAO tarjeta = new TarjetaDAO();
 		TarjetaDTO datosTarjeta = tarjeta.obtenerTarjeta(idTarjeta);
-		if(datosTarjeta.isBloqueado()) {
-			JOptionPane.showMessageDialog(null, "Tarjeta bloqueada contacte con administrador", "Error", JOptionPane.ERROR_MESSAGE);
+		if (datosTarjeta.isBloqueado()) {
+			JOptionPane.showMessageDialog(null, "Tarjeta bloqueada contacte con administrador", "Error",
+					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		SesionControlador.datosTarjeta = datosTarjeta; // PARA HACER ACCESIBLE LOS DATOS DE LA TARJETA
 		CuentaDAO cuenta = new CuentaDAO();
 		CuentaDTO datosCuenta = cuenta.obtenerCuenta(datosTarjeta.getIdCuentaAsociada());
 		SesionControlador.datosCuenta = datosCuenta;
-		UsuarioDAO usuario = new UsuarioDAO();
-		UsuarioDTO datosUsuario = usuario.obtenerUsuario(datosCuenta.getId_usuario());
-		SesionControlador.datosUsuario = datosUsuario;
 		JOptionPane.showMessageDialog(null, "Credenciales validas");
 		this.sesionVista.show(false);
 		OpcionesControlador opcionesControlador = new OpcionesControlador();
@@ -92,6 +107,13 @@ public class SesionListener implements ActionListener {
 
 	}
 
+	/***
+	 * Metodo que sirve para verificar que la fecha de la tarjeta es valida y por
+	 * tanto no esta expirada
+	 * 
+	 * @param fechaTarjeta
+	 * @return
+	 */
 	private boolean verificarFechaDeExpiracion(Date fechaTarjeta) {
 		boolean valido = false;
 		java.util.Date date = new java.util.Date();
@@ -102,6 +124,5 @@ public class SesionListener implements ActionListener {
 		}
 		return valido;
 	}
-	
-	
+
 }

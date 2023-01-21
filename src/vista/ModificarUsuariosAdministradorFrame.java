@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import listeners.AgregarUsuarioListener;
+import listeners.AgregarUsuarioAdministradorListener;
 
 public class ModificarUsuariosAdministradorFrame extends JFrame{
 

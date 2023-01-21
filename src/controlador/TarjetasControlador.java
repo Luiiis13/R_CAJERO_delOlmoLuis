@@ -13,18 +13,22 @@ import vista.AdministrarTarjetasFrame;
 public class TarjetasControlador {
 	private AdministrarTarjetasFrame frame;
 	private TarjetaDAO tarjetaDAO;
-public TarjetasControlador() {
-	this.tarjetaDAO=new TarjetaDAO();
-	this.inicializar();
+
+	public TarjetasControlador() {
+		this.tarjetaDAO = new TarjetaDAO();
 	}
-private void inicializar() {
-	try {
-		ArrayList<TarjetaDTO> tarjetasBD=this.tarjetaDAO.obtenerTarjetas();
-		this.frame = new AdministrarTarjetasFrame();
-		this.frame.getModelo().agregarDatosDeTabla(tarjetasBD);
-	} catch (Exception e) {
-		JOptionPane.showMessageDialog(null, "Error haciendo la operacion", "Error", JOptionPane.ERROR_MESSAGE);
+
+	public void inicializar() {
+		try {
+			ArrayList<TarjetaDTO> tarjetasBD = this.tarjetaDAO.obtenerTarjetas();
+			this.frame = new AdministrarTarjetasFrame();
+			this.frame.getModelo().agregarDatosDeTabla(tarjetasBD);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Error haciendo la operacion", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
-}
+	public void agregarTarjeta(TarjetaDTO tarjetaDTO) {
+		this.tarjetaDAO.insertarTarjeta(tarjetaDTO);
+	}
 
 }

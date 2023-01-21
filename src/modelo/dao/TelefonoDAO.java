@@ -29,7 +29,7 @@ public class TelefonoDAO {
 		}
 	}
 
-	public ArrayList<TelefonoDTO> obtenerTelefono() {
+	public ArrayList<TelefonoDTO> obtenerTelefonos() {
 		ArrayList<TelefonoDTO> telefonos = new ArrayList<>();
 		Conectar conexion = new Conectar();
 		try {
@@ -57,7 +57,7 @@ public class TelefonoDAO {
 		return telefonos;
 	}
 
-	public TelefonoDTO obtenerTelefonos(int idTarjetaAsociada) {
+	public TelefonoDTO obtenerTelefono(int idTarjetaAsociada) {
 		TelefonoDTO telefono = null;
 		Conectar conexion = new Conectar();
 		try {

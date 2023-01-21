@@ -11,6 +11,7 @@ public class AdministrarCuentasListener  implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 
 		CuentasControlador cuentasControlador = new CuentasControlador();
+		cuentasControlador.inicializar();
 			
 	}
 

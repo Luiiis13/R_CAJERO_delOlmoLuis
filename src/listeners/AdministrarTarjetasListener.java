@@ -10,7 +10,7 @@ public class AdministrarTarjetasListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		TarjetasControlador tarjetasControlador = new TarjetasControlador();
-		
+		tarjetasControlador.inicializar();
 	}
 
 }
