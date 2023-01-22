@@ -5,14 +5,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import modelo.Conectar;
-import modelo.dto.SesionDTO;
+import modelo.dto.SesionAdministradorDTO;
+import modelo.dto.SesionUsuarioDTO;
 
 public class SesionDAO {
 
-	public SesionDTO verificarSesion(int numeroTarjeta) {
-		
-		SesionDTO sesionDTO = new SesionDTO();
-		sesionDTO.setNumeroTarjeta(numeroTarjeta);
+	public SesionUsuarioDTO verificarSesion(int numeroTarjeta) {
+
+		SesionUsuarioDTO sesionUsuarioDTO = new SesionUsuarioDTO();
+		sesionUsuarioDTO.setNumeroTarjeta(numeroTarjeta);
 		Conectar conexion = new Conectar();
 		try {
 			String query = "SELECT id,pin,fecha_expiracion FROM tarjeta WHERE numero=?";
@@ -20,9 +21,9 @@ public class SesionDAO {
 			preparedStatement.setInt(1, numeroTarjeta);
 			ResultSet resultado = preparedStatement.executeQuery();
 			while (resultado.next() == true) {
-				sesionDTO.setId(resultado.getInt("id")); 
-				sesionDTO.setPin(resultado.getInt("pin")); 
-				sesionDTO.setFechaExpiracion(resultado.getDate("fecha_expiracion")); 
+				sesionUsuarioDTO.setId(resultado.getInt("id"));
+				sesionUsuarioDTO.setPin(resultado.getInt("pin"));
+				sesionUsuarioDTO.setFechaExpiracion(resultado.getDate("fecha_expiracion"));
 
 			}
 			resultado.close();
@@ -33,6 +34,30 @@ public class SesionDAO {
 		} finally {
 			conexion.cerrarConexion();
 		}
-		return sesionDTO;
+		return sesionUsuarioDTO;
+	}
+
+	public SesionAdministradorDTO verificarSesionAdministrador(String dni) {
+		SesionAdministradorDTO sesionAdministradorDTO = new SesionAdministradorDTO();
+		Conectar conexion = new Conectar();
+		try {
+			String query = "SELECT id,nombre,dni,contraseña FROM usuario WHERE dni=?";
+			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
+			preparedStatement.setString(1, dni);
+			ResultSet resultado = preparedStatement.executeQuery();
+			while (resultado.next() == true) {
+				sesionAdministradorDTO.setId(resultado.getInt("id"));
+				sesionAdministradorDTO.setNombre(resultado.getString("nombre"));
+				sesionAdministradorDTO.setDni(resultado.getString("dni"));
+				sesionAdministradorDTO.setContraseña(resultado.getString("contraseña"));
+			}
+			resultado.close();
+			preparedStatement.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+		return sesionAdministradorDTO;
 	}
 }

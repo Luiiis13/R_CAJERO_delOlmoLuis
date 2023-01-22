@@ -1,11 +1,11 @@
 package controlador;
 
-import listeners.SesionListener;
+import listeners.SesionUsuarioListener;
 import modelo.dao.SesionDAO;
 import modelo.dto.CuentaDTO;
 import modelo.dto.TarjetaDTO;
 import modelo.dto.UsuarioDTO;
-import vista.Sesion;
+import vista.SesionUsuarioFrame;
 
 /***
  * Clase que tiene como atributos staticos los diferentes datos para poder
@@ -15,16 +15,15 @@ import vista.Sesion;
  * @author Luis
  *
  */
-public class SesionControlador {
-	private Sesion sesionVista = new Sesion();
+public class SesionUsuarioControlador {
+	private SesionUsuarioFrame sesionVista = new SesionUsuarioFrame();
 	private SesionDAO sesionDAO = new SesionDAO();
-	private SesionListener listener;
+	private SesionUsuarioListener listener;
 	public static TarjetaDTO datosTarjeta;
 	public static CuentaDTO datosCuenta;
-	public static UsuarioDTO datosUsuario;
 	public static int intentosFallidos = 0;
 
-	public SesionControlador() {
+	public SesionUsuarioControlador() {
 		this.inicializarListener();
 	}
 
@@ -34,7 +33,7 @@ public class SesionControlador {
 	 * estan bien los campos de la clase sesion
 	 */
 	private void inicializarListener() {
-		this.listener = new SesionListener(this.sesionDAO, this.sesionVista);
+		this.listener = new SesionUsuarioListener(this.sesionDAO, this.sesionVista);
 		this.sesionVista.getValidarbtn().addActionListener(this.listener);
 	}
 }

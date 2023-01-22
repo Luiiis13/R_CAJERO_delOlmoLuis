@@ -3,7 +3,7 @@ package listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controlador.SesionControlador;
+import controlador.SesionUsuarioControlador;
 import vista.PantallaInicioFrame;
 /***
  * Clase que implementa la llamada de un action listener del boton comenzar de la clase PantallaInicioFrame 
@@ -12,17 +12,17 @@ import vista.PantallaInicioFrame;
  * @author Luis
  *
  */
-public class PantallaInicioListener implements ActionListener {
+public class PantallaInicioUsuarioListener implements ActionListener {
 
 	private PantallaInicioFrame frame;
 
-	public PantallaInicioListener(PantallaInicioFrame frame) {
+	public PantallaInicioUsuarioListener(PantallaInicioFrame frame) {
 		this.frame = frame;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		SesionControlador sesionControlador = new SesionControlador();
+		SesionUsuarioControlador sesionControlador = new SesionUsuarioControlador();
 		this.frame.setVisible(false);
 	}
 

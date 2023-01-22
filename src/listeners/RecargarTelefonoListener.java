@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import controlador.SesionControlador;
+import controlador.SesionUsuarioControlador;
 import modelo.dao.CuentaDAO;
 import modelo.dao.MovimientoDAO;
 import modelo.dao.TelefonoDAO;
@@ -25,8 +25,8 @@ public class RecargarTelefonoListener implements ActionListener {
 
 		try {
 			TelefonoDAO telefonoDAO = new TelefonoDAO();
-			int idCuenta = SesionControlador.datosCuenta.getId();
-			int idTarjeta = SesionControlador.datosTarjeta.getId();
+			int idCuenta = SesionUsuarioControlador.datosCuenta.getId();
+			int idTarjeta = SesionUsuarioControlador.datosTarjeta.getId();
 			TelefonoDTO datosTelefono = telefonoDAO.obtenerTelefono(idTarjeta);
 			datosTelefono.setSaldo(this.cantidad + datosTelefono.getSaldo());
 			CuentaDAO cuentaDAO = new CuentaDAO();
@@ -37,13 +37,13 @@ public class RecargarTelefonoListener implements ActionListener {
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			SesionControlador.datosCuenta.setSaldo(nuevoSaldo);
+			SesionUsuarioControlador.datosCuenta.setSaldo(nuevoSaldo);
 			telefonoDAO.actualizarTelefono(datosTelefono);
-			cuentaDAO.actualizarCuenta(SesionControlador.datosCuenta);
+			cuentaDAO.actualizarCuenta(SesionUsuarioControlador.datosCuenta);
 			MovimientoDAO movimientoDAO = new MovimientoDAO();
 			long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
 			MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Recarga de telefono",
-					SesionControlador.datosTarjeta.getId());
+					SesionUsuarioControlador.datosTarjeta.getId());
 			movimientoDAO.insertarMovimiento(movimientoDTO);
 			JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
 		} catch (Exception e2) {

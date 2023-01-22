@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import controlador.SesionControlador;
+import controlador.SesionUsuarioControlador;
 import modelo.dao.BonobusDAO;
 import modelo.dao.CuentaDAO;
 import modelo.dao.MovimientoDAO;
@@ -26,8 +26,8 @@ public class RecargarBonobusListener implements ActionListener {
 
 		try {
 			BonobusDAO bonobusDAO = new BonobusDAO();
-			int idCuenta = SesionControlador.datosCuenta.getId();
-			int idTarjeta = SesionControlador.datosTarjeta.getId();
+			int idCuenta = SesionUsuarioControlador.datosCuenta.getId();
+			int idTarjeta = SesionUsuarioControlador.datosTarjeta.getId();
 			BonobusDTO datosBonobus = bonobusDAO.obtenerBonobus(idTarjeta);
 			datosBonobus.setSaldo(this.cantidad + datosBonobus.getSaldo());
 			CuentaDAO cuentaDAO = new CuentaDAO();
@@ -38,14 +38,14 @@ public class RecargarBonobusListener implements ActionListener {
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			SesionControlador.datosCuenta.setSaldo(nuevoSaldo);
+			SesionUsuarioControlador.datosCuenta.setSaldo(nuevoSaldo);
 
 			bonobusDAO.actualizarBonobus(datosBonobus);
-			cuentaDAO.actualizarCuenta(SesionControlador.datosCuenta);
+			cuentaDAO.actualizarCuenta(SesionUsuarioControlador.datosCuenta);
 			MovimientoDAO movimientoDAO = new MovimientoDAO();
 			long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
 			MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Recarga de bonobus",
-					SesionControlador.datosTarjeta.getId());
+					SesionUsuarioControlador.datosTarjeta.getId());
 			movimientoDAO.insertarMovimiento(movimientoDTO);
 			JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
 		} catch (Exception e2) {

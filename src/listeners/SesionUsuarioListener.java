@@ -6,16 +6,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import java.sql.Date;
 import controlador.OpcionesControlador;
-import controlador.SesionControlador;
+import controlador.SesionUsuarioControlador;
 import modelo.dao.CuentaDAO;
 import modelo.dao.SesionDAO;
 import modelo.dao.TarjetaDAO;
 import modelo.dao.UsuarioDAO;
 import modelo.dto.CuentaDTO;
-import modelo.dto.SesionDTO;
+import modelo.dto.SesionUsuarioDTO;
 import modelo.dto.TarjetaDTO;
 import modelo.dto.UsuarioDTO;
-import vista.Sesion;
+import vista.SesionUsuarioFrame;
 
 /***
  * Clase que es llamada por el controlador de sesion controlador para validar
@@ -24,11 +24,11 @@ import vista.Sesion;
  * @author Luis
  *
  */
-public class SesionListener implements ActionListener {
+public class SesionUsuarioListener implements ActionListener {
 	private SesionDAO sesionDAO;
-	private Sesion sesionVista;
+	private SesionUsuarioFrame sesionVista;
 
-	public SesionListener(SesionDAO nuevaSesionDAO, Sesion Sesion) {
+	public SesionUsuarioListener(SesionDAO nuevaSesionDAO, SesionUsuarioFrame Sesion) {
 		this.sesionDAO = nuevaSesionDAO;
 		this.sesionVista = Sesion;
 	}
@@ -46,7 +46,7 @@ public class SesionListener implements ActionListener {
 		try {
 			int numeroTarjeta = Integer.parseInt(this.sesionVista.getNumeroTarjeta().getText());
 			int pin = Integer.parseInt(this.sesionVista.getPin().getText());
-			SesionDTO sesionDTO = this.sesionDAO.verificarSesion(numeroTarjeta);
+			SesionUsuarioDTO sesionDTO = this.sesionDAO.verificarSesion(numeroTarjeta);
 
 			if (sesionDTO.getId() == 0) {
 				JOptionPane.showMessageDialog(null, "Número incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
@@ -55,8 +55,8 @@ public class SesionListener implements ActionListener {
 			}
 			if (sesionDTO.getPin() != pin) {
 				JOptionPane.showMessageDialog(null, "Pin incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
-				SesionControlador.intentosFallidos++;
-				if (SesionControlador.intentosFallidos > 4) {
+				SesionUsuarioControlador.intentosFallidos++;
+				if (SesionUsuarioControlador.intentosFallidos > 4) {
 					this.bloquearTarjeta(sesionDTO.getId());
 					JOptionPane.showMessageDialog(null, "Tarjeta bloqueada");
 				}
@@ -90,10 +90,10 @@ public class SesionListener implements ActionListener {
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		SesionControlador.datosTarjeta = datosTarjeta; // PARA HACER ACCESIBLE LOS DATOS DE LA TARJETA
+		SesionUsuarioControlador.datosTarjeta = datosTarjeta; // PARA HACER ACCESIBLE LOS DATOS DE LA TARJETA
 		CuentaDAO cuenta = new CuentaDAO();
 		CuentaDTO datosCuenta = cuenta.obtenerCuenta(datosTarjeta.getIdCuentaAsociada());
-		SesionControlador.datosCuenta = datosCuenta;
+		SesionUsuarioControlador.datosCuenta = datosCuenta;
 		JOptionPane.showMessageDialog(null, "Credenciales validas");
 		this.sesionVista.show(false);
 		OpcionesControlador opcionesControlador = new OpcionesControlador();

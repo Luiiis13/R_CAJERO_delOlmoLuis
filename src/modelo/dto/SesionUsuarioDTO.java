@@ -2,7 +2,7 @@ package modelo.dto;
 
 import java.sql.Date;
 
-public class SesionDTO {
+public class SesionUsuarioDTO {
 	private int numeroTarjeta;
 	private int pin;
 	private Date fechaExpiracion;

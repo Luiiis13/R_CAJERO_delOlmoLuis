@@ -33,8 +33,8 @@ public class MovimientosControlador {
 
 	private void inicializar() {
 		try {
-			int idCuenta = SesionControlador.datosCuenta.getId();
-			int idTarjeta = SesionControlador.datosTarjeta.getId();
+			int idCuenta = SesionUsuarioControlador.datosCuenta.getId();
+			int idTarjeta = SesionUsuarioControlador.datosTarjeta.getId();
 
 			this.frame = new MovimientosFrame();
 			CuentaDTO cuentaDTO = this.cuentaDAO.obtenerCuenta(idCuenta);

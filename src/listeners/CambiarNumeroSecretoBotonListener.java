@@ -6,7 +6,7 @@ import java.sql.Date;
 
 import javax.swing.JOptionPane;
 
-import controlador.SesionControlador;
+import controlador.SesionUsuarioControlador;
 import modelo.dao.CuentaDAO;
 import modelo.dao.MovimientoDAO;
 import modelo.dao.TarjetaDAO;
@@ -27,13 +27,13 @@ public class CambiarNumeroSecretoBotonListener implements ActionListener {
 			boolean correcto = this.comprobarNuevoPin();
 			if (correcto == true) {
 				int nuevoPin = Integer.parseInt(this.frame.getPinPassfield().getText());
-				SesionControlador.datosTarjeta.setPin(nuevoPin);
+				SesionUsuarioControlador.datosTarjeta.setPin(nuevoPin);
 				TarjetaDAO tarjetaDAO = new TarjetaDAO();
-				tarjetaDAO.actualizarTarjeta(SesionControlador.datosTarjeta);
+				tarjetaDAO.actualizarTarjeta(SesionUsuarioControlador.datosTarjeta);
 				MovimientoDAO movimientoDAO = new MovimientoDAO();
 				long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
 				MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Cambio pin",
-						SesionControlador.datosTarjeta.getId());
+						SesionUsuarioControlador.datosTarjeta.getId());
 				movimientoDAO.insertarMovimiento(movimientoDTO);
 				JOptionPane.showMessageDialog(null, "La operación se ha ejecutado correctamente");
 				this.frame.setVisible(false);
@@ -65,7 +65,7 @@ public class CambiarNumeroSecretoBotonListener implements ActionListener {
 					JOptionPane.ERROR_MESSAGE);
 			return correcto;
 		}
-		int numeroActual = SesionControlador.datosTarjeta.getPin();
+		int numeroActual = SesionUsuarioControlador.datosTarjeta.getPin();
 		if (nuevoPin == numeroActual) {
 			JOptionPane.showMessageDialog(null, "El pin nuevo es igual al anterior", "Error",
 					JOptionPane.ERROR_MESSAGE);

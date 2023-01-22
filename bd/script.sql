@@ -15,7 +15,7 @@ drop table if exists  Cajero;
 create table Usuario(
 id int AUTO_INCREMENT primary key not null, 
 nombre varchar(20) not null,
-dni char(9) not null,
+dni char(9) unique not null,
 primer_apellido varchar(20),
 es_admin boolean not null,
 contraseña varchar(50) null

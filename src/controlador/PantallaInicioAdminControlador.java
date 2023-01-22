@@ -1,18 +1,13 @@
 package controlador;
 
-import vista.AdministradorMenuFrame;
-import vista.InsertarUsuarioAdministradorFrame;
-import vista.InsertarTarjetaAdministradorFrame;
 import vista.PantallaInicioAdministradorFrame;
-
+/***
+ * Muestra el frame para ingresar como administrador 
+ * @author Luis
+ *
+ */
 public class PantallaInicioAdminControlador {
-	private PantallaInicioAdministradorFrame frame;
-	private AdministradorMenuFrame frameMenu;
+	private PantallaInicioAdministradorFrame pantallaInicio= new PantallaInicioAdministradorFrame();
 	
-	
-	public PantallaInicioAdminControlador() {
-		//this.frame = new PantallaInicioAdministradorFrame();
-		this.frameMenu = new AdministradorMenuFrame();
-	
-	}
+
 }

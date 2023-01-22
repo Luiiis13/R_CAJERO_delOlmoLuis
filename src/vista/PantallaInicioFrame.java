@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import listeners.InicioSesionAdministradorListener;
-import listeners.PantallaInicioListener;
+import listeners.PantallaInicioUsuarioListener;
 /***
  * 
  * @author Luis
@@ -44,7 +44,7 @@ public class PantallaInicioFrame extends JFrame {
  * Metodo que invoca a los action listener de cada uno 
  */
 	private void inicializar() {
-		this.comnezarBtn.addActionListener(new PantallaInicioListener(this));
-		this.opcionesDeAdministradorBtn.addActionListener(new InicioSesionAdministradorListener());
+		this.comnezarBtn.addActionListener(new PantallaInicioUsuarioListener(this));
+		this.opcionesDeAdministradorBtn.addActionListener(new InicioSesionAdministradorListener(this));
 	}
 }
