@@ -29,4 +29,7 @@ public class CuentasControlador {
 	public CuentaDTO obtenerCuentaDadoNumero(int numero) {
 		return this.cuentaDAO.obtenerCuentaDadoNumero(numero);
 	}
+	public void insertarCuenta(CuentaDTO cuentaDTO) {
+		this.cuentaDAO.insertarCuenta(cuentaDTO);
+	}
 }

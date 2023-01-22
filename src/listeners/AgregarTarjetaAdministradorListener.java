@@ -67,7 +67,7 @@ public class AgregarTarjetaAdministradorListener implements ActionListener {
 			Integer.parseInt(pinTxt);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
-					"Error haciendo la operación: Verifique que los parametros sean numéricos", "Error",
+					"Error haciendo la operación: Verifique que los parámetros sean numéricos", "Error",
 					JOptionPane.ERROR_MESSAGE);
 			valido = false;
 		}

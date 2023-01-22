@@ -18,7 +18,7 @@ public class AdministrarCuentasFrame extends JFrame{
 	private JTable table;
 	private JScrollPane scroll = new JScrollPane();
 	private ModeloTablaCuentas modelo;
-	private JButton insertarbtn = new JButton("Insertar");
+	private JButton insertarbtn = new JButton("Nuevo");
 	private JButton modificarbtn = new JButton("Modificar");
 	private JButton eliminarbtn = new JButton("Eliminar");
 	public AdministrarCuentasFrame() {

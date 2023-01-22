@@ -1,6 +1,8 @@
 package vista;
 
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -9,18 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import listeners.AgregarCuentaAdministradorListener;
+
 public class InsertarCuentaAdministradorFrame extends JFrame {
 
-	private JLabel numeroLbl = new JLabel("Numero:");
-	private JLabel ibanLbl = new JLabel("Iban:");
-	private JLabel saldoLbl = new JLabel("saldo:");
-	private JLabel tarjeta_asociadaLbl = new JLabel("Tarjeta_asociada:");
-	private JLabel id_usuarioLbl = new JLabel("Id usuario:");
+	private JLabel numeroLbl = new JLabel("Número:");
+	private JLabel ibanLbl = new JLabel("IBAN:");
 	private JTextField numeroTxt = new JTextField();
 	private JTextField ibanTxt = new JTextField();
-	private JTextField saldoTxt = new JTextField();
-	private JTextField tarjeta_asociadaTxt = new JTextField();
-	private JTextField id_usuarioTxt = new JTextField();
 
 	private JButton aceptarBtn = new JButton("Aceptar");
 	private JButton cancelarBtn = new JButton("Cancelar");
@@ -28,24 +26,21 @@ public class InsertarCuentaAdministradorFrame extends JFrame {
 	public InsertarCuentaAdministradorFrame() {
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 		this.setTitle("Pantalla de administrar Cuenta");
+		this.limitarTamañoNumero();
+		this.limitarTamañoIban();
 		this.setSize(500, 500);
 		JPanel contenedor = new JPanel();
-		contenedor.setLayout(new GridLayout(5, 2));
+		contenedor.setLayout(new GridLayout(2, 2));
 		contenedor.add(numeroLbl);
 		contenedor.add(numeroTxt);
 		contenedor.add(ibanLbl);
 		contenedor.add(ibanTxt);
-		contenedor.add(saldoLbl);
-		contenedor.add(saldoTxt);
-		contenedor.add(tarjeta_asociadaLbl);
-		contenedor.add(tarjeta_asociadaTxt);
-		contenedor.add(id_usuarioLbl);
-		contenedor.add(id_usuarioTxt);
 		this.getContentPane().add(contenedor);
 		JPanel contenedorBtn = new JPanel();
 		contenedorBtn.setAlignmentX(CENTER_ALIGNMENT);
 		contenedorBtn.add(aceptarBtn);
 		this.getContentPane().add(contenedorBtn);
+		this.inicializar();
 		this.setVisible(true);
 		this.pack();
 	}
@@ -58,15 +53,33 @@ public class InsertarCuentaAdministradorFrame extends JFrame {
 		return ibanTxt;
 	}
 
-	public JTextField getSaldoTxt() {
-		return saldoTxt;
+	private void limitarTamañoNumero() {
+		this.numeroTxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JTextField) e.getComponent()).getText();
+				if (text.length() >= 20) // limit to 4 characters
+					e.consume();
+			}
+		});
 	}
 
-	public JTextField getTarjeta_asociadaTxt() {
-		return tarjeta_asociadaTxt;
+	private void limitarTamañoIban() {
+		this.ibanTxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JTextField) e.getComponent()).getText();
+				if (text.length() >= 24) // limit to 4 characters
+					e.consume();
+			}
+		});
+	}
+	private void inicializar() {
+		this.aceptarBtn.addActionListener(new AgregarCuentaAdministradorListener(this));
 	}
 
-	public JTextField getId_usuarioTxt() {
-		return id_usuarioTxt;
+	public void limpiarCampos() {
+		this.numeroTxt.setText("");
+		this.ibanTxt.setText("");
 	}
 }
