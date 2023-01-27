@@ -24,7 +24,7 @@ contraseña varchar(50) null
 
 create table Tarjeta(
 id int AUTO_INCREMENT primary key not null ,
-numero varchar(20) unique key not null,
+numero varchar(16) unique key not null,
 fecha_expiracion date not null,
 cvv int not null, 
 pin int not null,
@@ -36,7 +36,7 @@ foreign key (id_cuenta_asociada) references Cuenta(id) ON DELETE CASCADE
 create table Cuenta(
 id int AUTO_INCREMENT primary key not null,
 numero varchar(20) unique key not null,
-iban varchar(20) unique key not null,
+iban varchar(24) unique key not null,
 saldo float not null ,
 id_usuario int not null  ,
 foreign key (id_usuario) references usuario(id) 

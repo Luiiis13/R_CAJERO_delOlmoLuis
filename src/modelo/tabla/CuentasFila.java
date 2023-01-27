@@ -5,17 +5,14 @@ public class CuentasFila {
 	private String numero;
 	private String iban;
 	private float saldo;
-	private int id_usuario;
 	private boolean seleccionable;
 
-	public CuentasFila(int id, String numero, String iban, float saldo, int id_usuario,
-			boolean seleccionable) {
+	public CuentasFila(int id, String numero, String iban, float saldo,boolean seleccionable) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.iban = iban;
 		this.saldo = saldo;
-		this.id_usuario = id_usuario;
 		this.seleccionable = seleccionable;
 	}
 
@@ -41,14 +38,6 @@ public class CuentasFila {
 
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
-	}
-
-	public int getId_usuario() {
-		return id_usuario;
-	}
-
-	public void setId_usuario(int id_usuario) {
-		this.id_usuario = id_usuario;
 	}
 
 	public boolean isSeleccionable() {

@@ -16,10 +16,10 @@ import listeners.AgregarTarjetaAdministradorListener;
 
 public class InsertarTarjetaAdministradorFrame extends JFrame {
 
-	private JLabel numeroLbl = new JLabel("Numero:");
-	private JLabel fecha_expiracionLbl = new JLabel("Fecha expiracion:");
-	private JLabel cvvLbl = new JLabel("cvv:");
-	private JLabel pinLbl = new JLabel("pin:");
+	private JLabel numeroLbl = new JLabel("Número:");
+	private JLabel fecha_expiracionLbl = new JLabel("Fecha expiración:");
+	private JLabel cvvLbl = new JLabel("Cvv:");
+	private JLabel pinLbl = new JLabel("Pin:");
 	private JLabel cuentaLbl = new JLabel("Cuenta:");
 	private JTextField numeroTxt = new JTextField();
 	private JTextField fechaExpiracionTxt = new JTextField();

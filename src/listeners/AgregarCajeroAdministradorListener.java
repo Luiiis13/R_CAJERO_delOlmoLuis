@@ -6,10 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import controlador.CajeroControlador;
-import controlador.CuentasControlador;
 import controlador.SesionAdministradorControlador;
 import modelo.dto.CajeroDTO;
-import modelo.dto.CuentaDTO;
 import vista.InsertarCajeroAdministradorFrame;
 
 public class AgregarCajeroAdministradorListener implements ActionListener{

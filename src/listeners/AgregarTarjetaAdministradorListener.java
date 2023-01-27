@@ -25,7 +25,7 @@ public class AgregarTarjetaAdministradorListener implements ActionListener {
 		try {
 			boolean valido = this.validarCampos();
 			if (valido) {
-				int numeroCuenta = Integer.parseInt(this.insertarTarjetasFrame.getCuentaTxt().getText());
+				String numeroCuenta = this.insertarTarjetasFrame.getCuentaTxt().getText();
 				CuentasControlador controladorCuenta = new CuentasControlador();
 				CuentaDTO cuentaDTO = controladorCuenta.obtenerCuentaDadoNumero(numeroCuenta);
 				if (cuentaDTO == null) {
@@ -61,8 +61,6 @@ public class AgregarTarjetaAdministradorListener implements ActionListener {
 		String cvvTxt = this.insertarTarjetasFrame.getCvvTxt().getText();
 		String pinTxt = this.insertarTarjetasFrame.getPinTxt().getText();
 		try {
-			Integer.parseInt(cuentaTxt);
-			Integer.parseInt(numeroTxt);
 			Integer.parseInt(cvvTxt);
 			Integer.parseInt(pinTxt);
 		} catch (Exception e) {

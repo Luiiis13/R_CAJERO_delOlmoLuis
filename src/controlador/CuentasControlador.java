@@ -26,7 +26,7 @@ public class CuentasControlador {
 			JOptionPane.showMessageDialog(null, "Error haciendo la operacion", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	public CuentaDTO obtenerCuentaDadoNumero(int numero) {
+	public CuentaDTO obtenerCuentaDadoNumero(String numero) {
 		return this.cuentaDAO.obtenerCuentaDadoNumero(numero);
 	}
 	public void insertarCuenta(CuentaDTO cuentaDTO) {

@@ -12,7 +12,7 @@ public class CuentaDAO {
 	public void insertarCuenta(CuentaDTO nuevacuenta) {
 		Conectar conexion = new Conectar();
 		try {
-			String query = "INSERT INTO Cuenta(numero,iban,saldo,id_usuario) VALUES(?,?,?,?,?)";
+			String query = "INSERT INTO Cuenta(numero,iban,saldo,id_usuario) VALUES(?,?,?,?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
 			preparedStatement.setString(1, nuevacuenta.getNumero());
 			preparedStatement.setString(2, nuevacuenta.getIban());
@@ -125,13 +125,13 @@ public class CuentaDAO {
 		return actualizado;
 	}
 	
-	public CuentaDTO obtenerCuentaDadoNumero(int numeroCuenta) {
+	public CuentaDTO obtenerCuentaDadoNumero(String numeroCuenta) {
 		CuentaDTO cuenta = null;
 		Conectar conexion = new Conectar();
 		try {
 			String query = "SELECT * FROM Cuenta WHERE numero=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, numeroCuenta);
+			preparedStatement.setString(1, numeroCuenta);
 			ResultSet resultado = preparedStatement.executeQuery();
 			if (resultado.next() == true) {
 				int idCuenta = resultado.getInt("id");

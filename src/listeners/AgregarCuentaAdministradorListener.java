@@ -42,16 +42,7 @@ public class AgregarCuentaAdministradorListener implements ActionListener {
 		boolean valido = true;
 		String numeroCuentaTxt = this.insertarCuentaFrame.getNumeroTxt().getText();
 		String ibanTxt = this.insertarCuentaFrame.getIbanTxt().getText();
-		try {
-			Long.parseLong(numeroCuentaTxt);
-
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,
-					"Error haciendo la operación: Verifique que el numero de cuenta es numérico", "Error",
-					JOptionPane.ERROR_MESSAGE);
-			valido = false;
-		}
-
+		
 		if (numeroCuentaTxt.length() < 20) {
 			JOptionPane.showMessageDialog(null,
 					"Error haciendo la operación: El número de cuenta debe tener 20 dígitos ", "Error",
