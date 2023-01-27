@@ -14,7 +14,7 @@ public class CuentaDAO {
 		try {
 			String query = "INSERT INTO Cuenta(numero,iban,saldo,id_usuario) VALUES(?,?,?,?,?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, nuevacuenta.getNumero());
+			preparedStatement.setString(1, nuevacuenta.getNumero());
 			preparedStatement.setString(2, nuevacuenta.getIban());
 			preparedStatement.setFloat(3, nuevacuenta.getSaldo());
 			preparedStatement.setInt(4, nuevacuenta.getId_usuario());
@@ -37,7 +37,7 @@ public class CuentaDAO {
 			ResultSet resultado = preparedStatement.executeQuery();
 			while (resultado.next() == true) {
 				int id = resultado.getInt("id");
-				int numero = resultado.getInt("numero");
+				String numero = resultado.getString("numero");
 				String iban = resultado.getString("iban");
 				float saldo = resultado.getFloat("saldo");
 				int idUsuario = resultado.getInt("id_usuario");
@@ -65,7 +65,7 @@ public class CuentaDAO {
 			ResultSet resultado = preparedStatement.executeQuery();
 			if (resultado.next() == true) {
 				int idCuenta = resultado.getInt("id");
-				int numero = resultado.getInt("numero");
+				String numero = resultado.getString("numero");
 				String iban = resultado.getString("iban");
 				float saldo = resultado.getFloat("saldo");
 				int idUsuario = resultado.getInt("id_usuario");
@@ -108,7 +108,7 @@ public class CuentaDAO {
 		try {
 			String query = "UPDATE Cuenta SET numero=?,iban=?,saldo=?,id_usuario=? WHERE id=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, nuevaCuenta.getNumero());
+			preparedStatement.setString(1, nuevaCuenta.getNumero());
 			preparedStatement.setString(2, nuevaCuenta.getIban());
 			preparedStatement.setFloat(3, nuevaCuenta.getSaldo());
 			preparedStatement.setInt(4, nuevaCuenta.getId_usuario());
@@ -135,7 +135,7 @@ public class CuentaDAO {
 			ResultSet resultado = preparedStatement.executeQuery();
 			if (resultado.next() == true) {
 				int idCuenta = resultado.getInt("id");
-				int numero = resultado.getInt("numero");
+				String numero = resultado.getString("numero");
 				String iban = resultado.getString("iban");
 				float saldo = resultado.getFloat("saldo");
 				int idUsuario = resultado.getInt("id_usuario");

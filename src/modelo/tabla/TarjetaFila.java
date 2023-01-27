@@ -4,13 +4,13 @@ import java.sql.Date;
 
 public class TarjetaFila {
 	private int id;
-	private int numero;
+	private String numero;
 	private Date fecha_expiracion;
 	private int cvv;
 	private int pin;
 	private boolean seleccionable;
 
-	public TarjetaFila(int id, int numero, Date fecha_expiracion, int cvv, int pin, boolean seleccionable) {
+	public TarjetaFila(int id, String numero, Date fecha_expiracion, int cvv, int pin, boolean seleccionable) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -20,11 +20,11 @@ public class TarjetaFila {
 		this.seleccionable = seleccionable;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 

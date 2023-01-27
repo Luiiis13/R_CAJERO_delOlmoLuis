@@ -22,7 +22,7 @@ public class AgregarCuentaAdministradorListener implements ActionListener {
 		try {
 			boolean valido = this.validarCampos();
 			if (valido) {
-				int numeroCuenta = Integer.parseInt(this.insertarCuentaFrame.getNumeroTxt().getText());
+				String numeroCuenta =this.insertarCuentaFrame.getNumeroTxt().getText();
 				String iban = this.insertarCuentaFrame.getIbanTxt().getText();
 				int idUsuario = SesionAdministradorControlador.sesionAdminDTO.getId();
 				CuentasControlador controladorCuenta = new CuentasControlador();
@@ -43,7 +43,7 @@ public class AgregarCuentaAdministradorListener implements ActionListener {
 		String numeroCuentaTxt = this.insertarCuentaFrame.getNumeroTxt().getText();
 		String ibanTxt = this.insertarCuentaFrame.getIbanTxt().getText();
 		try {
-			Integer.parseInt(numeroCuentaTxt);
+			Long.parseLong(numeroCuentaTxt);
 
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,

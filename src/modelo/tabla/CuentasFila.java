@@ -2,13 +2,13 @@ package modelo.tabla;
 
 public class CuentasFila {
 	private int id;
-	private int numero;
+	private String numero;
 	private String iban;
 	private float saldo;
 	private int id_usuario;
 	private boolean seleccionable;
 
-	public CuentasFila(int id, int numero, String iban, float saldo, int id_usuario,
+	public CuentasFila(int id, String numero, String iban, float saldo, int id_usuario,
 			boolean seleccionable) {
 		super();
 		this.id = id;
@@ -19,11 +19,11 @@ public class CuentasFila {
 		this.seleccionable = seleccionable;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 

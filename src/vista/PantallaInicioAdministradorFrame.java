@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -26,6 +28,8 @@ public class PantallaInicioAdministradorFrame extends JFrame {
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("Pantalla de administrador");
+		this.limitarTamañoDni();
+		this.limitarTamañoContraseña();
 		this.setSize(250, 120);
 		JPanel contenedor = new JPanel();
 		contenedor.setLayout(new GridLayout(2, 2));
@@ -54,4 +58,25 @@ public class PantallaInicioAdministradorFrame extends JFrame {
 	public void inicializar() {
 		this.aceptarBtn.addActionListener(new SesionAdministradorListener(this));
 	}
+	private void limitarTamañoDni() {
+		this.dniTxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JTextField) e.getComponent()).getText();
+				if (text.length() >= 9) 
+					e.consume();
+			}
+		});
+	}
+	private void limitarTamañoContraseña() {
+		this.contraseñaField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JPasswordField) e.getComponent()).getText();
+				if (text.length() >= 4) 
+					e.consume();
+			}
+		});
+	}
+	
 }

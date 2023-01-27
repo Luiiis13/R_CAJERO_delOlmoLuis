@@ -54,7 +54,7 @@ public class ModeloTablaCuentas extends AbstractTableModel implements TableModel
 		case 0:
 			return Integer.class;
 		case 1:
-			return Integer.class; // tambien esta el Float.class, Double.class y Boolean.class
+			return String.class; // tambien esta el Float.class, Double.class y Boolean.class
 		case 2:
 			return String.class;
 		case 3:
@@ -104,7 +104,7 @@ public class ModeloTablaCuentas extends AbstractTableModel implements TableModel
 
 		switch (columnIndex) {
 		case 1:
-			cuentas.setNumero((int) value);// Empiezan en case 1 porque el id no le edito
+			cuentas.setNumero((String) value);// Empiezan en case 1 porque el id no le edito
 			break;
 		case 2:
 			cuentas.setIban((String) value);

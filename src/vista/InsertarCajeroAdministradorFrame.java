@@ -9,6 +9,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import listeners.AgregarCajeroAdministradorListener;
+import listeners.AgregarCuentaAdministradorListener;
+
 public class InsertarCajeroAdministradorFrame extends JFrame {
 
 	private JLabel ubicacionLbl = new JLabel("Ubicacion:");
@@ -30,10 +33,18 @@ public class InsertarCajeroAdministradorFrame extends JFrame {
 		contenedorBtn.add(aceptarBtn);
 		this.getContentPane().add(contenedorBtn);
 		this.setVisible(true);
+		this.inicializar();
 		this.pack();
 	}
 
 	public JTextField getUbicacionTxt() {
 		return ubicacionTxt;
+	}
+	
+	private void inicializar() {
+		this.aceptarBtn.addActionListener(new AgregarCajeroAdministradorListener(this));
+	}
+	public void limpiarCampos() {
+		this.ubicacionTxt.setText("");
 	}
 }

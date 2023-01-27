@@ -32,7 +32,6 @@ public class CajeroDAO {
 		try {
 			String query = "SELECT * FROM Cajero ";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-
 			ResultSet resultado = preparedStatement.executeQuery();
 			while (resultado.next() == true) {
 				int id = resultado.getInt("id");

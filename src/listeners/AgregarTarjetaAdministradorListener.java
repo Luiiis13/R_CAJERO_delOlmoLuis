@@ -33,7 +33,7 @@ public class AgregarTarjetaAdministradorListener implements ActionListener {
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				int numero = Integer.parseInt(this.insertarTarjetasFrame.getNumeroTxt().getText());
+				String numero = this.insertarTarjetasFrame.getNumeroTxt().getText();
 				int cvv = Integer.parseInt(this.insertarTarjetasFrame.getCvvTxt().getText());
 				long millis = System.currentTimeMillis();
 				Date fechaExpiracion = new Date(millis);// TO DO obtener del Jcalendar

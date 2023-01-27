@@ -14,17 +14,23 @@ import vista.AdministrarCuentasFrame;
 public class CajeroControlador {
 	private AdministrarCajerosFrame frame;
 	private CajeroDAO cajeroDAO;
-public CajeroControlador() {
-	this.cajeroDAO=new CajeroDAO();
-	this.inicializar();
+
+	public CajeroControlador() {
+		this.cajeroDAO = new CajeroDAO();
+		this.inicializar();
 	}
-private void inicializar() {
-	try {
-		ArrayList<CajeroDTO> cuentasBD=this.cajeroDAO.obtenerCajeros();
-		this.frame = new AdministrarCajerosFrame();
-		this.frame.getModelo().agregarDatosDeTabla(cuentasBD);
-	} catch (Exception e) {
-		JOptionPane.showMessageDialog(null, "Error haciendo la operacion", "Error", JOptionPane.ERROR_MESSAGE);
+
+	private void inicializar() {
+		try {
+			ArrayList<CajeroDTO> cuentasBD = this.cajeroDAO.obtenerCajeros();
+			this.frame = new AdministrarCajerosFrame();
+			this.frame.getModelo().agregarDatosDeTabla(cuentasBD);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Error haciendo la operacion", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
-}
+
+	public void insertarCajero(CajeroDTO cajeroDTO) {
+		this.cajeroDAO.insertarCajero(cajeroDTO);
+	}
 }

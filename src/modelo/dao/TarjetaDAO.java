@@ -15,7 +15,7 @@ public class TarjetaDAO {
 		try {
 			String query = "INSERT INTO Tarjeta(numero,fecha_expiracion,cvv,pin,bloqueado,id_cuenta_asociada) VALUES(?,?,?,?,?,?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, nuevaTarjeta.getNumero());
+			preparedStatement.setString(1, nuevaTarjeta.getNumero());
 			preparedStatement.setDate(2, nuevaTarjeta.getFecha_expiracion());
 			preparedStatement.setInt(3, nuevaTarjeta.getCvv());
 			preparedStatement.setInt(4, nuevaTarjeta.getPin());
@@ -40,7 +40,7 @@ public class TarjetaDAO {
 			ResultSet resultado = preparedStatement.executeQuery();
 			while (resultado.next() == true) {
 				int id = resultado.getInt("id");
-				int numero = resultado.getInt("numero");
+				String numero = resultado.getString("numero");
 				Date fechaExpiracion = resultado.getDate("fecha_expiracion");
 				int cvv = resultado.getInt("cvv");
 				int pin = resultado.getInt("pin");
@@ -70,7 +70,7 @@ public class TarjetaDAO {
 			ResultSet resultado = preparedStatement.executeQuery();
 			if (resultado.next() == true) {
 				int idtarjeta = resultado.getInt("id");
-				int numero = resultado.getInt("numero");
+				String numero = resultado.getString("numero");
 				Date fechaExpiracion = resultado.getDate("fecha_expiracion");
 				int cvv = resultado.getInt("cvv");
 				int pin = resultado.getInt("pin");
@@ -115,7 +115,7 @@ public class TarjetaDAO {
 		try {
 			String query = "UPDATE Tarjeta SET numero=?,fecha_expiracion=?,cvv=?,pin=?,bloqueado=?,id_cuenta_asociada=? WHERE id=? ";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, nuevaTarjeta.getNumero());
+			preparedStatement.setString(1, nuevaTarjeta.getNumero());
 			preparedStatement.setDate(2, nuevaTarjeta.getFecha_expiracion());
 			preparedStatement.setInt(3, nuevaTarjeta.getCvv());
 			preparedStatement.setInt(4, nuevaTarjeta.getPin());

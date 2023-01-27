@@ -4,14 +4,14 @@ import java.sql.Date;
 
 public class TarjetaDTO {
 	private int id;
-	private int numero;
+	private String numero;
 	private Date fecha_expiracion;
 	private int cvv;
 	private int pin;
 	private boolean bloqueado;
 	private int IdCuentaAsociada;
 
-	public TarjetaDTO(int id, int numero, Date fecha_expiracion, int cvv, int pin,boolean bloqueado,int IdCuentaAsociada) {
+	public TarjetaDTO(int id, String numero, Date fecha_expiracion, int cvv, int pin,boolean bloqueado,int IdCuentaAsociada) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -46,11 +46,11 @@ public class TarjetaDTO {
 		this.id = id;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 

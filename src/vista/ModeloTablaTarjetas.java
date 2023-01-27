@@ -52,7 +52,7 @@ public ModeloTablaTarjetas() {
 		case 0:
 			return Integer.class;
 		case 1:
-			return Integer.class; // tambien esta el Float.class, Double.class y Boolean.class
+			return String.class; // tambien esta el Float.class, Double.class y Boolean.class
 		case 2:
 			return Date.class;
 		case 3:
@@ -100,7 +100,7 @@ public ModeloTablaTarjetas() {
 
 		switch (columnIndex) {
 		case 1:
-			tarjeta.setNumero((int) value);// Empiezan en case 1 porque el id no le edito
+			tarjeta.setNumero((String) value);// Empiezan en case 1 porque el id no le edito
 			break;
 		case 2:
 			tarjeta.setFecha_expiracion((Date) value);

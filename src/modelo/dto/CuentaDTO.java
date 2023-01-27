@@ -3,18 +3,17 @@ package modelo.dto;
 public class CuentaDTO {
 
 	private int id;
-	private int numero;
+	private String numero;
 	private String iban;
 	private float saldo;
 	private int id_usuario;
 
-	public CuentaDTO(int id, int numero, String iban, float saldo, int id_usuario) {
+	public CuentaDTO(int id, String numero, String iban, float saldo, int id_usuario) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.iban = iban;
 		this.saldo = saldo;
-	
 		this.id_usuario = id_usuario;
 	}
 
@@ -26,11 +25,11 @@ public class CuentaDTO {
 		this.id = id;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
