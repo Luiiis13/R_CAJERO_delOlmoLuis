@@ -10,14 +10,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ModificarCajerosAdministradorFrame extends JFrame{
-	private JLabel ubicacionLbl = new JLabel("Ubicacion:");
+	private JLabel ubicacionLbl = new JLabel("Ubicación:");
 	private JTextField ubicacionTxt = new JTextField();
 	private JButton aceptarBtn = new JButton("Aceptar");
 	private JButton cancelarBtn = new JButton("Cancelar");
-
+	
+	
 	public ModificarCajerosAdministradorFrame() {
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-		this.setTitle("Pantalla de administrar usuarios");
+		this.setTitle("Pantalla de modificar cajero");
 		this.setSize(500, 500);
 		JPanel contenedor = new JPanel();
 		contenedor.setLayout(new GridLayout(2, 2));
@@ -34,6 +35,9 @@ public class ModificarCajerosAdministradorFrame extends JFrame{
 
 	public JTextField getUbicacionTxt() {
 		return ubicacionTxt;
+	}
+	public void setUbicacion(String ubicacion) {
+		this.ubicacionTxt.setText(ubicacion);
 	}
 
 }

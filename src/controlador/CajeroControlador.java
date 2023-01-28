@@ -4,12 +4,15 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import listeners.EditarCajeroAdministradorListener;
 import modelo.dao.CajeroDAO;
 import modelo.dao.CuentaDAO;
 import modelo.dto.CajeroDTO;
 import modelo.dto.CuentaDTO;
+import modelo.tabla.CajeroFila;
 import vista.AdministrarCajerosFrame;
 import vista.AdministrarCuentasFrame;
+import vista.ModificarCajerosAdministradorFrame;
 
 public class CajeroControlador {
 	private AdministrarCajerosFrame frame;
@@ -36,5 +39,9 @@ public class CajeroControlador {
 	
 	public void eliminarCajero(int idCajero) {
 		this.cajeroDAO.eliminarCajero(idCajero);
+	}
+	public void mostrarInterfazEdicion(CajeroDTO cajeroDTO) {
+		ModificarCajerosAdministradorFrame frameModificar=new ModificarCajerosAdministradorFrame();
+		frameModificar.setUbicacion(cajeroDTO.getUbicacion());
 	}
 }

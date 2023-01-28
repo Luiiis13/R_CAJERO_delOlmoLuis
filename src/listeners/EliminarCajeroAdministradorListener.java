@@ -20,23 +20,29 @@ public class EliminarCajeroAdministradorListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ArrayList<CajeroFila> arrayCajero = this.eliminarCajerosFrame.getModelo().getDatos();
-		ArrayList<CajeroFila> cajerosSeleccionados = new ArrayList<>();
-		for (int i = 0; i < arrayCajero.size(); i++) {
-			CajeroFila filaCajero = arrayCajero.get(i);
-			if (filaCajero.isSeleccionable() == true) {
-				cajerosSeleccionados.add(filaCajero);
+
+		try {
+			ArrayList<CajeroFila> arrayCajero = this.eliminarCajerosFrame.getModelo().getDatos();
+			ArrayList<CajeroFila> cajerosSeleccionados = new ArrayList<>();
+			for (int i = 0; i < arrayCajero.size(); i++) {
+				CajeroFila filaCajero = arrayCajero.get(i);
+				if (filaCajero.isSeleccionable() == true) {
+					cajerosSeleccionados.add(filaCajero);
+				}
 			}
-		}
-		if (cajerosSeleccionados.size() > 0) {
-			int confirmado = JOptionPane.showConfirmDialog(eliminarCajerosFrame,
-					"¿Está seguro que desea eliminar los cajeros?");
-			if (JOptionPane.OK_OPTION == confirmado) {
-				this.eliminarCajeros(cajerosSeleccionados);
-				JOptionPane.showMessageDialog(null, "Cajeros eliminados correctamente");
-			}else {
-				JOptionPane.showMessageDialog(null, "Operación cancelada");
+			if (cajerosSeleccionados.size() > 0) {
+				int confirmado = JOptionPane.showConfirmDialog(eliminarCajerosFrame,
+						"¿Está seguro que desea eliminar los cajeros?");
+				if (JOptionPane.OK_OPTION == confirmado) {
+					this.eliminarCajeros(cajerosSeleccionados);
+					JOptionPane.showMessageDialog(null, "Cajeros eliminados correctamente");
+				} else {
+					JOptionPane.showMessageDialog(null, "Operación cancelada");
+				}
 			}
+		} catch (Exception e2) {
+			e2.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Error haciendo la operación", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -48,5 +54,4 @@ public class EliminarCajeroAdministradorListener implements ActionListener {
 			controladoCajero.eliminarCajero(idCajero);
 		}
 	}
-
 }

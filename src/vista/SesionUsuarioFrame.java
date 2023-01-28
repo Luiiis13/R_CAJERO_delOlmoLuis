@@ -61,8 +61,9 @@ public class SesionUsuarioFrame extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				String text = ((JTextField) e.getComponent()).getText();
-				if (text.length() >= 16) // limit to 4 characters
+				if (text.length() >= 16) {
 					e.consume();
+				}
 			}
 		});
 	}
