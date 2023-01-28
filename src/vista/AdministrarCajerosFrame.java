@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import listeners.EliminarCajeroAdministradorListener;
 import listeners.MostrarInserccionCajerosListener;
 import listeners.MostrarInserccionCuentasListener;
 import listeners.MostrarInserccionUsuariosListener;
@@ -50,6 +51,7 @@ public class AdministrarCajerosFrame extends JFrame{
 	public void inicializar() {
 		this.insertarbtn.addActionListener(new MostrarInserccionCajerosListener());
 		this.modificarbtn.addActionListener(new MostrarInserccionCuentasListener());
+		this.eliminarbtn.addActionListener(new EliminarCajeroAdministradorListener(this));
 
 	}
 }

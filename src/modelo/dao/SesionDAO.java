@@ -10,7 +10,7 @@ import modelo.dto.SesionUsuarioDTO;
 
 public class SesionDAO {
 
-	public SesionUsuarioDTO verificarSesion(int numeroTarjeta) {
+	public SesionUsuarioDTO verificarSesion(String numeroTarjeta) {
 
 		SesionUsuarioDTO sesionUsuarioDTO = new SesionUsuarioDTO();
 		sesionUsuarioDTO.setNumeroTarjeta(numeroTarjeta);
@@ -18,7 +18,7 @@ public class SesionDAO {
 		try {
 			String query = "SELECT id,pin,fecha_expiracion FROM tarjeta WHERE numero=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, numeroTarjeta);
+			preparedStatement.setString(1, numeroTarjeta);
 			ResultSet resultado = preparedStatement.executeQuery();
 			while (resultado.next() == true) {
 				sesionUsuarioDTO.setId(resultado.getInt("id"));

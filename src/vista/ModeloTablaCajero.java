@@ -13,6 +13,7 @@ import modelo.tabla.CuentasFila;
 public class ModeloTablaCajero extends AbstractTableModel implements TableModel{
 	public static int columnas=3;
 	private ArrayList<CajeroFila> datos;
+	
 	public ModeloTablaCajero() {
 		this.datos = new ArrayList<>();
 	}
@@ -104,5 +105,8 @@ public class ModeloTablaCajero extends AbstractTableModel implements TableModel{
 			CajeroFila datosFila = new CajeroFila(cajeroDTO.getId(), cajeroDTO.getUbicacion(), false);
 			this.datos.add(datosFila);
 		}
+	}
+	public ArrayList<CajeroFila> getDatos() {
+		return datos;
 	}
 }

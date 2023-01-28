@@ -3,7 +3,7 @@ package modelo.dto;
 import java.sql.Date;
 
 public class SesionUsuarioDTO {
-	private int numeroTarjeta;
+	private String numeroTarjeta;
 	private int pin;
 	private Date fechaExpiracion;
 	private int id;
@@ -24,11 +24,11 @@ public class SesionUsuarioDTO {
 		this.fechaExpiracion = fechaExpiracion;
 	}
 
-	public int getNumeroTarjeta() {
+	public String getNumeroTarjeta() {
 		return numeroTarjeta;
 	}
 
-	public void setNumeroTarjeta(int numeroTarjeta) {
+	public void setNumeroTarjeta(String numeroTarjeta) {
 		this.numeroTarjeta = numeroTarjeta;
 	}
 

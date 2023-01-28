@@ -33,4 +33,8 @@ public class CajeroControlador {
 	public void insertarCajero(CajeroDTO cajeroDTO) {
 		this.cajeroDAO.insertarCajero(cajeroDTO);
 	}
+	
+	public void eliminarCajero(int idCajero) {
+		this.cajeroDAO.eliminarCajero(idCajero);
+	}
 }

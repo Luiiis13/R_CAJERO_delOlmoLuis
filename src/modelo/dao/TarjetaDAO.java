@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.Conectar;
@@ -14,7 +15,8 @@ public class TarjetaDAO {
 		Conectar conexion = new Conectar();
 		try {
 			String query = "INSERT INTO Tarjeta(numero,fecha_expiracion,cvv,pin,bloqueado,id_cuenta_asociada) VALUES(?,?,?,?,?,?)";
-			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
+			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query,
+					Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setString(1, nuevaTarjeta.getNumero());
 			preparedStatement.setDate(2, nuevaTarjeta.getFecha_expiracion());
 			preparedStatement.setInt(3, nuevaTarjeta.getCvv());
@@ -22,6 +24,12 @@ public class TarjetaDAO {
 			preparedStatement.setBoolean(5, nuevaTarjeta.isBloqueado());
 			preparedStatement.setInt(6, nuevaTarjeta.getIdCuentaAsociada());
 			preparedStatement.executeUpdate();
+
+			ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+			if (generatedKeys.next()) {
+				nuevaTarjeta.setId(generatedKeys.getInt(1));
+			}
+
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -46,7 +54,8 @@ public class TarjetaDAO {
 				int pin = resultado.getInt("pin");
 				boolean bloqueado = resultado.getBoolean("bloqueado");
 				int idCuentaAsociadaBD = resultado.getInt("id_cuenta_asociada");
-				TarjetaDTO tarjeta = new TarjetaDTO(id, numero, fechaExpiracion, cvv, pin,bloqueado,idCuentaAsociadaBD);
+				TarjetaDTO tarjeta = new TarjetaDTO(id, numero, fechaExpiracion, cvv, pin, bloqueado,
+						idCuentaAsociadaBD);
 				tarjetas.add(tarjeta);
 			}
 			resultado.close();
@@ -77,7 +86,7 @@ public class TarjetaDAO {
 				boolean bloqueado = resultado.getBoolean("bloqueado");
 				int idCuentaAsociadaBD = resultado.getInt("id_cuenta_asociada");
 
-				tarjeta = new TarjetaDTO(idtarjeta, numero, fechaExpiracion, cvv, pin,bloqueado,idCuentaAsociadaBD);
+				tarjeta = new TarjetaDTO(idtarjeta, numero, fechaExpiracion, cvv, pin, bloqueado, idCuentaAsociadaBD);
 			}
 			resultado.close();
 			preparedStatement.close();

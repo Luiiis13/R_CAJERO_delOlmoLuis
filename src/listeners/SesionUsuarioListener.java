@@ -44,7 +44,7 @@ public class SesionUsuarioListener implements ActionListener {
 	 */
 	private void verificarCredenciales() {
 		try {
-			int numeroTarjeta = Integer.parseInt(this.sesionVista.getNumeroTarjeta().getText());
+			String numeroTarjeta = this.sesionVista.getNumeroTarjeta().getText();
 			int pin = Integer.parseInt(this.sesionVista.getPin().getText());
 			SesionUsuarioDTO sesionDTO = this.sesionDAO.verificarSesion(numeroTarjeta);
 
@@ -67,6 +67,13 @@ public class SesionUsuarioListener implements ActionListener {
 			if (fechaValida == false) {
 				JOptionPane.showMessageDialog(null, "Tarjeta expirada", "Error", JOptionPane.ERROR_MESSAGE);
 				return;
+			}
+			
+			if (numeroTarjeta.length() < 16) {
+				JOptionPane.showMessageDialog(null,
+						"Error haciendo la operación: El número de tarjeta debe tener 16 dígitos ", "Error",
+						JOptionPane.ERROR_MESSAGE);
+				return ;
 			}
 
 			this.obtenerDatosUsuario(sesionDTO.getId());

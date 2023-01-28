@@ -27,6 +27,7 @@ public class SesionUsuarioFrame extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("Iniciar sesion");
 		this.limitarTamañoContraseña();
+		this.limitarTamañoTarjeta();
 		this.setSize(500, 500);
 		this.getContentPane().add(numeroTarjetalbl);
 		this.getContentPane().add(numeroTarjeta);
@@ -35,6 +36,7 @@ public class SesionUsuarioFrame extends JFrame {
 		this.validarBtn.setBackground(new java.awt.Color(255, 215, 000));
 		this.validarBtn.setForeground(new java.awt.Color(0, 0, 0));
 		this.getContentPane().add(validarBtn);
+		
 		this.setVisible(true);
 		this.pack();
 
@@ -52,7 +54,17 @@ public class SesionUsuarioFrame extends JFrame {
 					e.consume();
 			}
 		});
-
+	}
+	
+	private void limitarTamañoTarjeta() {
+		this.numeroTarjeta.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JTextField) e.getComponent()).getText();
+				if (text.length() >= 16) // limit to 4 characters
+					e.consume();
+			}
+		});
 	}
 
 	public JTextField getNumeroTarjeta() {
