@@ -9,12 +9,13 @@ import controlador.UsuariosControlador;
 import modelo.dto.UsuarioDTO;
 import vista.ModificarUsuariosAdministradorFrame;
 
-public class EditarUsuariosAdministradorListener implements ActionListener{
+public class EditarUsuariosAdministradorListener implements ActionListener {
 	private ModificarUsuariosAdministradorFrame editarUsuariosFrame;
 
 	public EditarUsuariosAdministradorListener(ModificarUsuariosAdministradorFrame frame) {
 		this.editarUsuariosFrame = frame;
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -22,7 +23,7 @@ public class EditarUsuariosAdministradorListener implements ActionListener{
 			int idUsuario = this.editarUsuariosFrame.getIdUsuario();
 			String nombreUsuario = this.editarUsuariosFrame.getNombreTxt().getText();
 			String dni = this.editarUsuariosFrame.getDniTxt().getText();
-			String primerApellido= this.editarUsuariosFrame.getPrimerApellidoTxt().getText();
+			String primerApellido = this.editarUsuariosFrame.getPrimerApellidoTxt().getText();
 			String contraseña = this.editarUsuariosFrame.getContraseñaField().getText();
 			boolean esAdmin = this.editarUsuariosFrame.getIsAdmin().isSelected();
 			UsuarioDTO usuarioDTO = new UsuarioDTO(idUsuario, nombreUsuario, dni, primerApellido, esAdmin, contraseña);
@@ -34,7 +35,7 @@ public class EditarUsuariosAdministradorListener implements ActionListener{
 			JOptionPane.showMessageDialog(null, "Error haciendo la operación", "Error", JOptionPane.ERROR_MESSAGE);
 			e2.printStackTrace();
 		}
-		
+
 	}
 
 }

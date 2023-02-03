@@ -12,6 +12,7 @@ import javax.swing.JTable;
 
 import listeners.EliminarTarjetasAdministradorListener;
 import listeners.MostarInserccionTarjetasListener;
+import listeners.MostrarEdicionTarjetasListener;
 import listeners.MostrarInserccionCuentasListener;
 
 public class AdministrarTarjetasFrame extends JFrame {
@@ -49,7 +50,7 @@ public class AdministrarTarjetasFrame extends JFrame {
 
 	public void inicializar() {
 		this.insertarbtn.addActionListener(new MostarInserccionTarjetasListener());
-		this.modificarbtn.addActionListener(new MostrarInserccionCuentasListener());
+		this.modificarbtn.addActionListener(new MostrarEdicionTarjetasListener(this));
 		this.eliminarbtn.addActionListener(new EliminarTarjetasAdministradorListener(this));
 	}
 }

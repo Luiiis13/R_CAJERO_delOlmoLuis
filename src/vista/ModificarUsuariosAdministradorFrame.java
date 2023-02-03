@@ -79,7 +79,7 @@ public class ModificarUsuariosAdministradorFrame extends JFrame{
 		return contraseñaField;
 	}
 
-	public void inicializar() {
+	private void inicializar() {
 	this.aceptarBtn.addActionListener(new EditarUsuariosAdministradorListener(this));
 	}
 	public void limpiarCampos() {

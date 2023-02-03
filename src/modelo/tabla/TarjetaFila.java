@@ -9,8 +9,11 @@ public class TarjetaFila {
 	private int cvv;
 	private int pin;
 	private boolean seleccionable;
+	private boolean bloqueado;
+	private int idCuentaAsociada;
 
-	public TarjetaFila(int id, String numero, Date fecha_expiracion, int cvv, int pin, boolean seleccionable) {
+	public TarjetaFila(int id, String numero, Date fecha_expiracion, int cvv, int pin, boolean seleccionable,
+			boolean bloqueado, int idCuentaAsociada) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -18,6 +21,24 @@ public class TarjetaFila {
 		this.cvv = cvv;
 		this.pin = pin;
 		this.seleccionable = seleccionable;
+		this.bloqueado = bloqueado;
+		this.idCuentaAsociada = idCuentaAsociada;
+	}
+
+	public boolean isBloqueado() {
+		return bloqueado;
+	}
+
+	public void setBloqueado(boolean bloqueado) {
+		this.bloqueado = bloqueado;
+	}
+
+	public int getIdCuentaAsociada() {
+		return idCuentaAsociada;
+	}
+
+	public void setIdCuentaAsociada(int idCuentaAsociada) {
+		this.idCuentaAsociada = idCuentaAsociada;
 	}
 
 	public String getNumero() {

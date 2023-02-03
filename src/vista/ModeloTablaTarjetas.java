@@ -122,7 +122,7 @@ public ModeloTablaTarjetas() {
 		for (int i = 0; i < tarjetasBD.size(); i++) {
 			TarjetaDTO tarjetaDTO = tarjetasBD.get(i);
 			TarjetaFila datosFila = new TarjetaFila(tarjetaDTO.getId(), tarjetaDTO.getNumero(), tarjetaDTO.getFecha_expiracion(),
-					tarjetaDTO.getCvv(), tarjetaDTO.getPin(), false);
+					tarjetaDTO.getCvv(), tarjetaDTO.getPin(), false,tarjetaDTO.isBloqueado(),tarjetaDTO.getIdCuentaAsociada());
 			this.datos.add(datosFila);
 		}
 	}
