@@ -10,7 +10,7 @@ public class AdministrarCajerosListener  implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		CajeroControlador cajeroControlador = new CajeroControlador();
-		
+		cajeroControlador.inicializar();
 		
 	}
 

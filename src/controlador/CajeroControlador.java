@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import listeners.EditarCajeroAdministradorListener;
+import listeners.MostrarEdicionCajerosListener;
 import modelo.dao.CajeroDAO;
 import modelo.dao.CuentaDAO;
 import modelo.dto.CajeroDTO;
@@ -20,10 +20,10 @@ public class CajeroControlador {
 
 	public CajeroControlador() {
 		this.cajeroDAO = new CajeroDAO();
-		this.inicializar();
+
 	}
 
-	private void inicializar() {
+	public void inicializar() {
 		try {
 			ArrayList<CajeroDTO> cuentasBD = this.cajeroDAO.obtenerCajeros();
 			this.frame = new AdministrarCajerosFrame();
@@ -43,5 +43,9 @@ public class CajeroControlador {
 	public void mostrarInterfazEdicion(CajeroDTO cajeroDTO) {
 		ModificarCajerosAdministradorFrame frameModificar=new ModificarCajerosAdministradorFrame();
 		frameModificar.setUbicacion(cajeroDTO.getUbicacion());
+		frameModificar.setIdCajero(cajeroDTO.getId());
+	}
+	public void actualizarCajero(CajeroDTO cajeroDTO) {
+		this.cajeroDAO.actualizarCajero(cajeroDTO);
 	}
 }

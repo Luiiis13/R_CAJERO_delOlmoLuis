@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import listeners.EliminarCuentasAdministradorListener;
 import listeners.MostrarInserccionCuentasListener;
 
 public class AdministrarCuentasFrame extends JFrame{
@@ -48,5 +49,6 @@ public class AdministrarCuentasFrame extends JFrame{
 	public void inicializar() {
 		this.insertarbtn.addActionListener(new MostrarInserccionCuentasListener());
 		this.modificarbtn.addActionListener(new MostrarInserccionCuentasListener());
+		this.eliminarbtn.addActionListener(new EliminarCuentasAdministradorListener(this));
 	}
 }

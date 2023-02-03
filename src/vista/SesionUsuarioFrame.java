@@ -36,7 +36,6 @@ public class SesionUsuarioFrame extends JFrame {
 		this.validarBtn.setBackground(new java.awt.Color(255, 215, 000));
 		this.validarBtn.setForeground(new java.awt.Color(0, 0, 0));
 		this.getContentPane().add(validarBtn);
-		
 		this.setVisible(true);
 		this.pack();
 

@@ -7,14 +7,24 @@ public class UsuarioFila {
 	private String primerApellido;
 	private boolean isAdmin;
 	private boolean seleccionable;
+	private String contraseña;
 	
-	public UsuarioFila(int id, String nombre, String dni, String primerApellido, boolean isAdmin, boolean seleccionable) {
+	public UsuarioFila(int id, String nombre, String dni, String primerApellido, boolean isAdmin, boolean seleccionable,String contraseña) {
 		this.id = id;
 		this.nombre = nombre;
 		this.dni = dni;
 		this.primerApellido = primerApellido;
 		this.isAdmin = isAdmin;
 		this.seleccionable=seleccionable;
+		this.contraseña=contraseña;
+	}
+
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
 
 	public int getId() {

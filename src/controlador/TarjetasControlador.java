@@ -35,5 +35,9 @@ public class TarjetasControlador {
 		BonobusDAO bonobusDAO = new BonobusDAO();
 		bonobusDAO.insertarbonobus(bonobusDTO);
 	}
+	
+	public void eliminarTarjetas(int idTarjeta) {
+		this.tarjetaDAO.eliminarTarjeta(idTarjeta);
+	}
 
 }

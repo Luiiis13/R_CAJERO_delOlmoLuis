@@ -9,7 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import listeners.EditarCajeroAdministradorListener;
+
 public class ModificarCajerosAdministradorFrame extends JFrame{
+	private int idCajero;
+
 	private JLabel ubicacionLbl = new JLabel("Ubicación:");
 	private JTextField ubicacionTxt = new JTextField();
 	private JButton aceptarBtn = new JButton("Aceptar");
@@ -29,6 +33,7 @@ public class ModificarCajerosAdministradorFrame extends JFrame{
 		contenedorBtn.setAlignmentX(CENTER_ALIGNMENT);
 		contenedorBtn.add(aceptarBtn);
 		this.getContentPane().add(contenedorBtn);
+		this.inicializar();
 		this.setVisible(true);
 		this.pack();
 	}
@@ -39,5 +44,16 @@ public class ModificarCajerosAdministradorFrame extends JFrame{
 	public void setUbicacion(String ubicacion) {
 		this.ubicacionTxt.setText(ubicacion);
 	}
-
+	public int getIdCajero() {
+		return idCajero;
+	}
+	public void setIdCajero(int idCajero) {
+		this.idCajero = idCajero;
+	}
+	private void inicializar() {
+		this.aceptarBtn.addActionListener(new EditarCajeroAdministradorListener(this));
+	}
+	public void limpiarCampos() {
+		this.ubicacionTxt.setText("");
+	}
 }

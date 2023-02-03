@@ -6,6 +6,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
 import modelo.dto.UsuarioDTO;
+import modelo.tabla.CajeroFila;
 import modelo.tabla.UsuarioFila;
 
 public class ModeloTablaUsuarios extends AbstractTableModel implements TableModel {
@@ -133,8 +134,11 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 		for (int i = 0; i < usuariosBD.size(); i++) {
 			UsuarioDTO usuarioDTO = usuariosBD.get(i);
 			UsuarioFila datosFila = new UsuarioFila(usuarioDTO.getId(), usuarioDTO.getNombre(), usuarioDTO.getDni(),
-					usuarioDTO.getPrimerApellido(), usuarioDTO.getEsAdmin(), false);
+					usuarioDTO.getPrimerApellido(), usuarioDTO.getEsAdmin(), false,usuarioDTO.getContraseña());
 			this.datos.add(datosFila);
 		}
+	}
+	public ArrayList<UsuarioFila> getDatos() {
+		return datos;
 	}
 }

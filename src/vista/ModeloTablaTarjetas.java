@@ -126,5 +126,8 @@ public ModeloTablaTarjetas() {
 			this.datos.add(datosFila);
 		}
 	}
+	public ArrayList<TarjetaFila> getDatos() {
+		return datos;
+	}
 
 }

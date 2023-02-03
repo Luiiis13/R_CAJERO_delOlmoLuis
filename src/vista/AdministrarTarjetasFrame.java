@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import listeners.EliminarTarjetasAdministradorListener;
 import listeners.MostarInserccionTarjetasListener;
 import listeners.MostrarInserccionCuentasListener;
 
@@ -33,7 +34,6 @@ public class AdministrarTarjetasFrame extends JFrame {
 		this.scroll.setViewportView(this.table);
 		c.add(this.panelTabla);
 		this.panelTabla.add(scroll);// Para agregar el scrool al panel
-
 		this.panelBotones.setLayout(new FlowLayout());
 		c.add(this.panelBotones);
 		this.panelBotones.add(insertarbtn);
@@ -50,6 +50,6 @@ public class AdministrarTarjetasFrame extends JFrame {
 	public void inicializar() {
 		this.insertarbtn.addActionListener(new MostarInserccionTarjetasListener());
 		this.modificarbtn.addActionListener(new MostrarInserccionCuentasListener());
-
+		this.eliminarbtn.addActionListener(new EliminarTarjetasAdministradorListener(this));
 	}
 }

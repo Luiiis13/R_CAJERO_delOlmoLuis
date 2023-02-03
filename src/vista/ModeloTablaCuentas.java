@@ -9,6 +9,8 @@ import modelo.dto.CuentaDTO;
 import modelo.tabla.CuentasFila;
 
 public class ModeloTablaCuentas extends AbstractTableModel implements TableModel {
+	
+
 	public static int columnas=5;
 	private ArrayList<CuentasFila> datos;
 	public ModeloTablaCuentas() {
@@ -127,5 +129,7 @@ public class ModeloTablaCuentas extends AbstractTableModel implements TableModel
 			this.datos.add(datosFila);
 		}
 	}
-
+	public ArrayList<CuentasFila> getDatos() {
+		return datos;
+	}
 }

@@ -16,14 +16,14 @@ import listeners.AgregarUsuarioAdministradorListener;
 public class ModificarUsuariosAdministradorFrame extends JFrame{
 
 	private JLabel nombreLbl = new JLabel("Nombre:");
-	private JLabel edadLbl = new JLabel("Edad:");
+	private JLabel dniLbl = new JLabel("DNI:");
 	private JLabel primerApellidoLbl = new JLabel("Primer apellido:");
 	private JLabel contraseñaLbl = new JLabel("Contraseña:");
-	private JLabel isAdminLbl = new JLabel("Administrador:");
+	private JLabel esAdminLbl = new JLabel("Administrador:");
 	private JTextField nombreTxt = new JTextField();
-	private JTextField edadTxt = new JTextField();
+	private JTextField dniTxt = new JTextField();
 	private JTextField primerApellidoTxt = new JTextField();
-	private JCheckBox isAdmin = new JCheckBox();
+	private JCheckBox esAdmin = new JCheckBox();
 	private JPasswordField contraseñaField = new JPasswordField();
 	private JButton aceptarBtn = new JButton("Aceptar");
 	private JButton cancelarBtn = new JButton("Cancelar");
@@ -37,14 +37,14 @@ public class ModificarUsuariosAdministradorFrame extends JFrame{
 		contenedor.setLayout(new GridLayout(5, 2));
 		contenedor.add(nombreLbl);
 		contenedor.add(nombreTxt);
-		contenedor.add(edadLbl);
-		contenedor.add(edadTxt);
+		contenedor.add(dniLbl);
+		contenedor.add(dniTxt);
 		contenedor.add(primerApellidoLbl);
 		contenedor.add(primerApellidoTxt);
 		contenedor.add(contraseñaLbl);
 		contenedor.add(contraseñaField);
-		contenedor.add(isAdminLbl);
-		contenedor.add(isAdmin);
+		contenedor.add(esAdminLbl);
+		contenedor.add(esAdmin);
 		this.getContentPane().add(contenedor);
 		JPanel contenedorBtn = new JPanel();
 		contenedorBtn.setAlignmentX(CENTER_ALIGNMENT);
@@ -60,8 +60,8 @@ public class ModificarUsuariosAdministradorFrame extends JFrame{
 		return nombreTxt;
 	}
 
-	public JTextField getEdadTxt() {
-		return edadTxt;
+	public JTextField getDniTxt() {
+		return dniTxt;
 	}
 
 	public JTextField getPrimerApellidoTxt() {
@@ -69,7 +69,7 @@ public class ModificarUsuariosAdministradorFrame extends JFrame{
 	}
 
 	public JCheckBox getIsAdmin() {
-		return isAdmin;
+		return esAdmin;
 	}
 
 
@@ -79,5 +79,25 @@ public class ModificarUsuariosAdministradorFrame extends JFrame{
 
 	public void inicializar() {
 		//this.aceptarBtn.addActionListener(new AgregarUsuarioListener(this));
+	}
+
+	public void setNombreTxt(String nombreTxt) {
+		this.nombreTxt.setText(nombreTxt);
+	}
+
+	public void setDniTxt(String dniTxt) {
+		this.dniTxt.setText(dniTxt);
+	}
+
+	public void setPrimerApellidoTxt(String primerApellidoTxt) {
+		this.primerApellidoTxt.setText(primerApellidoTxt);
+	}
+
+	public void setIsAdmin(boolean isAdmin) {
+		this.esAdmin.setSelected(isAdmin);
+	}
+
+	public void setContraseñaField(String contraseña) {
+		this.contraseñaField.setText(contraseña);
 	}
 }

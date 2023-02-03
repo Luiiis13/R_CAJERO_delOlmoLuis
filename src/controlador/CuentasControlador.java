@@ -32,4 +32,7 @@ public class CuentasControlador {
 	public void insertarCuenta(CuentaDTO cuentaDTO) {
 		this.cuentaDAO.insertarCuenta(cuentaDTO);
 	}
+	public void eliminarCuenta(int idCuenta) {
+		this.cuentaDAO.eliminarCuenta(idCuenta);
+	}
 }
