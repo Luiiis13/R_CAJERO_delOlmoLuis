@@ -49,5 +49,9 @@ public class UsuariosControlador {
 		frameModificar.setDniTxt(usuarioDTO.getDni());
 		frameModificar.setPrimerApellidoTxt(usuarioDTO.getPrimerApellido());
 		frameModificar.setIsAdmin(usuarioDTO.getEsAdmin());
+		frameModificar.setIdUsuario(usuarioDTO.getId());
+	}
+	public void actualizarUsuario(UsuarioDTO usuarioDTO) {
+		this.usuarioDAO.actualizarUsuario(usuarioDTO);
 	}
 }

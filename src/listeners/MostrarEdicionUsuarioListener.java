@@ -40,6 +40,7 @@ public class MostrarEdicionUsuarioListener implements ActionListener{
 				UsuariosControlador controladorUsuarios = new UsuariosControlador();
 				UsuarioDTO usuarioDTO = new UsuarioDTO(filaUsuario.getId(),filaUsuario.getNombre(), filaUsuario.getDni(),filaUsuario.getPrimerApellido(),filaUsuario.getIsAdmin(),filaUsuario.getContraseña());
 				controladorUsuarios.mostrarInterfazEdicion(usuarioDTO);
+				this.modificarUsuariosFrame.setVisible(false);
 			}
 			if(usuariosSeleccionados.size()==0) {
 				JOptionPane.showMessageDialog(null, "Error debe seleccionar un usuario", "Error", JOptionPane.ERROR_MESSAGE);

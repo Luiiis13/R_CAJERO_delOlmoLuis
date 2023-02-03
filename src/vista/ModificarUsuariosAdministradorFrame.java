@@ -12,9 +12,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import listeners.AgregarUsuarioAdministradorListener;
+import listeners.EditarUsuariosAdministradorListener;
 
 public class ModificarUsuariosAdministradorFrame extends JFrame{
-
+	private int idUsuario;
+	
 	private JLabel nombreLbl = new JLabel("Nombre:");
 	private JLabel dniLbl = new JLabel("DNI:");
 	private JLabel primerApellidoLbl = new JLabel("Primer apellido:");
@@ -78,7 +80,14 @@ public class ModificarUsuariosAdministradorFrame extends JFrame{
 	}
 
 	public void inicializar() {
-		//this.aceptarBtn.addActionListener(new AgregarUsuarioListener(this));
+	this.aceptarBtn.addActionListener(new EditarUsuariosAdministradorListener(this));
+	}
+	public void limpiarCampos() {
+		this.contraseñaField.setText("");
+		this.nombreTxt.setText("");
+		this.dniTxt.setText("");
+		this.primerApellidoTxt.setText("");
+
 	}
 
 	public void setNombreTxt(String nombreTxt) {
@@ -100,4 +109,12 @@ public class ModificarUsuariosAdministradorFrame extends JFrame{
 	public void setContraseñaField(String contraseña) {
 		this.contraseñaField.setText(contraseña);
 	}
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
 }
