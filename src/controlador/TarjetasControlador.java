@@ -56,10 +56,16 @@ public class TarjetasControlador {
 		frameModificar.setBloqueadoTxt(tarjetaDTO.isBloqueado());
 		frameModificar.setIdTarjeta(tarjetaDTO.getId());
 		frameModificar.setIdCuentaAsociada(tarjetaDTO.getIdCuentaAsociada());
+		frameModificar.setFechaExpiracionTxt(tarjetaDTO.getFecha_expiracion());
 	}
 
-	public void actualizarTarjeta(TarjetaDTO tarjetaDTO) {
-		this.tarjetaDAO.actualizarTarjeta(tarjetaDTO);
+	public void actualizarTarjeta(TarjetaDTO tarjetaDTO) throws Exception {
+		try {
+			this.tarjetaDAO.actualizarTarjeta(tarjetaDTO);
+		} catch (Exception e) {
+			throw e;
+		}
+
 	}
 
 }

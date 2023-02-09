@@ -107,10 +107,15 @@ public class SesionUsuarioListener implements ActionListener {
 	}
 
 	private void bloquearTarjeta(int id) {
-		TarjetaDAO tarjeta = new TarjetaDAO();
-		TarjetaDTO datosTarjeta = tarjeta.obtenerTarjeta(id);
-		datosTarjeta.setBloqueado(true);
-		tarjeta.actualizarTarjeta(datosTarjeta);
+		try {
+			TarjetaDAO tarjeta = new TarjetaDAO();
+			TarjetaDTO datosTarjeta = tarjeta.obtenerTarjeta(id);
+			datosTarjeta.setBloqueado(true);
+			tarjeta.actualizarTarjeta(datosTarjeta);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Error haciendo la operación", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		}
 
 	}
 

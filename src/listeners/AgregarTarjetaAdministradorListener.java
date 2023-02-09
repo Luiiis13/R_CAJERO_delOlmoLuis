@@ -36,12 +36,9 @@ public class AgregarTarjetaAdministradorListener implements ActionListener {
 				}
 				String numero = this.insertarTarjetasFrame.getNumeroTxt().getText();
 				int cvv = Integer.parseInt(this.insertarTarjetasFrame.getCvvTxt().getText());
-				
 				String fechaStr=this.insertarTarjetasFrame.getFechaExpiracionTxt().getText();  
 			    Date fechaExpiracion=Date.valueOf(fechaStr);//converting string into sql date  
-			    
 				int pin = Integer.parseInt(this.insertarTarjetasFrame.getPinTxt().getText());
-
 				TarjetaDTO tarjetaDTO = new TarjetaDTO(0, numero, fechaExpiracion, cvv, pin, false, cuentaDTO.getId());
 				TarjetasControlador controladorTarjetas = new TarjetasControlador();
 				controladorTarjetas.agregarTarjeta(tarjetaDTO);

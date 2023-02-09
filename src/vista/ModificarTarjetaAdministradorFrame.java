@@ -15,13 +15,15 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import listeners.EditarTarjetasAdministradorListener;
+
 /***
- *  Clase que implementa la vista para poder modificar una tarjeta desde las
+ * Clase que implementa la vista para poder modificar una tarjeta desde las
  * opciones de administrador
+ * 
  * @author Luis
  *
  */
-public class ModificarTarjetaAdministradorFrame extends JFrame{
+public class ModificarTarjetaAdministradorFrame extends JFrame {
 	private int idCuentaAsociada;
 	private int idTarjeta;
 	private JLabel numeroLbl = new JLabel("Numero:");
@@ -88,12 +90,25 @@ public class ModificarTarjetaAdministradorFrame extends JFrame{
 	}
 
 	public void setNumeroTxt(String numeroTxt) {
-		this.numeroTxt.setText(numeroTxt);;
+		this.numeroTxt.setText(numeroTxt);
+		;
 	}
 
-//	public void setFechaExpiracionTxt(Date fechaExpiracionTxt) {
-//		this.fechaExpiracionTxt.set
-//	}
+	public void setFechaExpiracionTxt(Date fechaExpiracionTxt) {
+		int año = fechaExpiracionTxt.getYear() + 1900;// https://www.tabnine.com/code/java/methods/java.sql.Date/getYear
+														// Resta 1900 al año actual
+		int mes = fechaExpiracionTxt.getMonth() + 1;
+		int dia = fechaExpiracionTxt.getDate();
+		String mesStr = Integer.toString(mes);
+		if (mes < 10) {
+			mesStr = "0" + mesStr;
+		}
+		String diaStr = Integer.toString(dia);
+		if (dia < 10) {
+			diaStr = "0" + diaStr;
+		}
+		this.fechaExpiracionTxt.setText(año + "-" + mesStr + "-" + diaStr);
+	}
 
 	public void setCvvTxt(int cvvTxt) {
 		this.cvvTxt.setText(String.valueOf(cvvTxt));
@@ -106,6 +121,7 @@ public class ModificarTarjetaAdministradorFrame extends JFrame{
 	public void setBloqueadoTxt(boolean bloqueadoTxt) {
 		this.bloqueadoTxt.setSelected(bloqueadoTxt);
 	}
+
 	/***
 	 * Metodo que al abrir limpia los distintos campos a rellenar de la interfaz
 	 */
@@ -113,7 +129,7 @@ public class ModificarTarjetaAdministradorFrame extends JFrame{
 		this.numeroTxt.setText("");
 		this.pinTxt.setText("");
 		this.cvvTxt.setText("");
-		
+
 	}
 
 	public int getIdTarjeta() {
@@ -123,6 +139,7 @@ public class ModificarTarjetaAdministradorFrame extends JFrame{
 	public void setIdTarjeta(int idTarjeta) {
 		this.idTarjeta = idTarjeta;
 	}
+
 	public int getIdCuentaAsociada() {
 		return idCuentaAsociada;
 	}
@@ -132,8 +149,9 @@ public class ModificarTarjetaAdministradorFrame extends JFrame{
 	}
 
 	private void inicializar() {
-	this.aceptarBtn.addActionListener(new EditarTarjetasAdministradorListener(this));
+		this.aceptarBtn.addActionListener(new EditarTarjetasAdministradorListener(this));
 	}
+
 	/***
 	 * Metodo que limita el campo de contraseña a 4 digitos
 	 */
@@ -142,11 +160,12 @@ public class ModificarTarjetaAdministradorFrame extends JFrame{
 			@Override
 			public void keyTyped(KeyEvent e) {
 				String text = ((JPasswordField) e.getComponent()).getText();
-				if (text.length() >= 4) 
+				if (text.length() >= 4)
 					e.consume();
 			}
 		});
 	}
+
 	/***
 	 * Metodo que limita el campo de cvv a 3 digitos
 	 */
@@ -155,11 +174,12 @@ public class ModificarTarjetaAdministradorFrame extends JFrame{
 			@Override
 			public void keyTyped(KeyEvent e) {
 				String text = ((JTextField) e.getComponent()).getText();
-				if (text.length() >= 3) 
+				if (text.length() >= 3)
 					e.consume();
 			}
 		});
 	}
+
 	/***
 	 * Metodo que limita el campo de numero a 16 digitos
 	 */
@@ -168,10 +188,10 @@ public class ModificarTarjetaAdministradorFrame extends JFrame{
 			@Override
 			public void keyTyped(KeyEvent e) {
 				String text = ((JTextField) e.getComponent()).getText();
-				if (text.length() >= 16) 
+				if (text.length() >= 16)
 					e.consume();
 			}
 		});
 	}
-	
+
 }
