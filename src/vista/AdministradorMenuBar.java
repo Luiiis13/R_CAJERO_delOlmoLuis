@@ -35,15 +35,16 @@ public class AdministradorMenuBar extends JMenuBar {
 		administrarUsuarios.addActionListener(new AdministrarUsuariosListener());
 		this.operaciones.add(administrarUsuarios);
 
-		JMenuItem administrarTarjetas = new JMenuItem("Administrar tarjetas");
-		administrarTarjetas.addActionListener(new AdministrarTarjetasListener());
-		this.operaciones.add(administrarTarjetas);
-
-		JMenuItem administrarCuenta = new JMenuItem("Administrar cuenta");
+		JMenuItem administrarCuenta = new JMenuItem("Administrar Cuenta");
 		administrarCuenta.addActionListener(new AdministrarCuentasListener());
 		this.operaciones.add(administrarCuenta);
+		
 
-		JMenuItem administrarCajero = new JMenuItem("Administrar cajero");
+		JMenuItem administrarTarjetas = new JMenuItem("Administrar Tarjetas");
+		administrarTarjetas.addActionListener(new AdministrarTarjetasListener());
+		this.operaciones.add(administrarTarjetas);
+		
+		JMenuItem administrarCajero = new JMenuItem("Administrar Cajero");
 		administrarCajero.addActionListener(new AdministrarCajerosListener());
 		this.operaciones.add(administrarCajero);
 	}

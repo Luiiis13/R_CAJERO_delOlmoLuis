@@ -39,6 +39,9 @@ public class EliminarCajeroAdministradorListener implements ActionListener {
 				} else {
 					JOptionPane.showMessageDialog(null, "Operación cancelada");
 				}
+			}else {
+				JOptionPane.showMessageDialog(null, "Error debe seleccionar un cajero", "Error",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (Exception e2) {
 			e2.printStackTrace();

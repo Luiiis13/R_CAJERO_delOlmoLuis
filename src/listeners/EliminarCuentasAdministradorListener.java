@@ -30,11 +30,15 @@ public EliminarCuentasAdministradorListener(AdministrarCuentasFrame frame) {
 				int confirmado = JOptionPane.showConfirmDialog(this.eliminarCuentasFrame,
 						"¿Está seguro que desea eliminar las cuentas?");
 				if (JOptionPane.OK_OPTION == confirmado) {
+					this.eliminarCuentasFrame.setVisible(false);
 					this.eliminarCuentas(cuentasSeleccionadas);
-					JOptionPane.showMessageDialog(null, "Cuentas eliminados correctamente");
+					JOptionPane.showMessageDialog(null, "Cuentas eliminadas correctamente");
 				} else {
 					JOptionPane.showMessageDialog(null, "Operación cancelada");
 				}
+			}else {
+				JOptionPane.showMessageDialog(null, "Error debe seleccionar una cuenta", "Error",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (Exception e2) {
 			e2.printStackTrace();

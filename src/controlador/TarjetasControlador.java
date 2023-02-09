@@ -32,11 +32,16 @@ public class TarjetasControlador {
 		}
 	}
 
-	public void agregarTarjeta(TarjetaDTO tarjetaDTO) {
-		this.tarjetaDAO.insertarTarjeta(tarjetaDTO);
-		BonobusDTO bonobusDTO = new BonobusDTO(0, 0, tarjetaDTO.getId());
-		BonobusDAO bonobusDAO = new BonobusDAO();
-		bonobusDAO.insertarbonobus(bonobusDTO);
+	public void agregarTarjeta(TarjetaDTO tarjetaDTO) throws Exception {
+		try {
+			this.tarjetaDAO.insertarTarjeta(tarjetaDTO);
+			BonobusDTO bonobusDTO = new BonobusDTO(0, 0, tarjetaDTO.getId());
+			BonobusDAO bonobusDAO = new BonobusDAO();
+			bonobusDAO.insertarbonobus(bonobusDTO);
+		} catch (Exception e) {
+			throw e;
+		}
+
 	}
 
 	public void eliminarTarjetas(int idTarjeta) {

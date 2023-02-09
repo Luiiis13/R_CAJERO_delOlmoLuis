@@ -59,7 +59,7 @@ public class AdministrarCuentasFrame extends JFrame {
 	 * Metodo que sirve para inicializar los distintos actionListeners
 	 */
 	public void inicializar() {
-		this.insertarbtn.addActionListener(new MostrarInserccionCuentasListener());
+		this.insertarbtn.addActionListener(new MostrarInserccionCuentasListener(this));
 		this.modificarbtn.addActionListener(new MostrarEdicionCuentasListener(this));
 		this.eliminarbtn.addActionListener(new EliminarCuentasAdministradorListener(this));
 	}

@@ -58,7 +58,7 @@ public class AdministrarTarjetasFrame extends JFrame {
 	 * Metodo que sirve para inicializar los distintos actionListeners
 	 */
 	public void inicializar() {
-		this.insertarbtn.addActionListener(new MostrarInserccionTarjetasListener());
+		this.insertarbtn.addActionListener(new MostrarInserccionTarjetasListener(this));
 		this.modificarbtn.addActionListener(new MostrarEdicionTarjetasListener(this));
 		this.eliminarbtn.addActionListener(new EliminarTarjetasAdministradorListener(this));
 	}

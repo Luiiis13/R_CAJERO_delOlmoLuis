@@ -11,7 +11,7 @@ import modelo.Conectar;
 import modelo.dto.TarjetaDTO;
 
 public class TarjetaDAO {
-	public void insertarTarjeta(TarjetaDTO nuevaTarjeta) {
+	public void insertarTarjeta(TarjetaDTO nuevaTarjeta) throws Exception {
 		Conectar conexion = new Conectar();
 		try {
 			String query = "INSERT INTO Tarjeta(numero,fecha_expiracion,cvv,pin,bloqueado,id_cuenta_asociada) VALUES(?,?,?,?,?,?)";
@@ -33,7 +33,7 @@ public class TarjetaDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}

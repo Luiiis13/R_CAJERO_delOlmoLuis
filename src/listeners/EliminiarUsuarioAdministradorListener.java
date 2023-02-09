@@ -42,6 +42,9 @@ public class EliminiarUsuarioAdministradorListener implements ActionListener{
 				} else {
 					JOptionPane.showMessageDialog(null, "Operación cancelada");
 				}
+			}else {
+				JOptionPane.showMessageDialog(null, "Error debe seleccionar un usuario", "Error",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (Exception e2) {
 			e2.printStackTrace();

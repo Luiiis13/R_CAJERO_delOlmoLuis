@@ -36,6 +36,9 @@ public EliminarTarjetasAdministradorListener(AdministrarTarjetasFrame frame) {
 				} else {
 					JOptionPane.showMessageDialog(null, "Operación cancelada");
 				}
+			}else {
+				JOptionPane.showMessageDialog(null, "Error debe seleccionar una tarjeta", "Error",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (Exception e2) {
 			e2.printStackTrace();
