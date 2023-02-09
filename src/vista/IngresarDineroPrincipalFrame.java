@@ -14,6 +14,13 @@ import listeners.IngresarOtraCantidadListener;
 import listeners.RetirarOtraCantidadListener;
 import listeners.SalirBotonListener;
 
+/***
+ * Clase que implementa el frame de ingresar una cantidad determinada a la
+ * cuenta
+ * 
+ * @author Luis
+ *
+ */
 public class IngresarDineroPrincipalFrame extends JFrame {
 	private JLabel elegirLbl = new JLabel("Elige la cantidad a ingresar");
 	private Button cincoBtn = new Button("Ingresar 5€");
@@ -46,6 +53,9 @@ public class IngresarDineroPrincipalFrame extends JFrame {
 
 	}
 
+	/***
+	 * Metodo que inicializa los actionListeners de los botones
+	 */
 	private void inicializar() {
 		this.cincoBtn.addActionListener(new IngresarCantidadDineroListener(5));
 		this.veinticincoBtn.addActionListener(new IngresarCantidadDineroListener(25));

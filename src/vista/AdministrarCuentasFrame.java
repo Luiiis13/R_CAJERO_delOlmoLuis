@@ -11,9 +11,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import listeners.EliminarCuentasAdministradorListener;
+import listeners.MostrarEdicionCuentasListener;
 import listeners.MostrarInserccionCuentasListener;
 
-public class AdministrarCuentasFrame extends JFrame{
+/***
+ * Clase que implementa el frame para poder visualizar las distintas cuentas y
+ * tener las distintas opciones de administrador
+ * 
+ * @author Luis
+ *
+ */
+public class AdministrarCuentasFrame extends JFrame {
 	private JPanel panelTabla = new JPanel();
 	private JPanel panelBotones = new JPanel();
 	private JTable table;
@@ -22,8 +30,9 @@ public class AdministrarCuentasFrame extends JFrame{
 	private JButton insertarbtn = new JButton("Nuevo");
 	private JButton modificarbtn = new JButton("Modificar");
 	private JButton eliminarbtn = new JButton("Eliminar");
+
 	public AdministrarCuentasFrame() {
-		
+
 		this.setTitle("Administrar Cuentas");
 		Container c = getContentPane();
 		c.setLayout(new BoxLayout(c, BoxLayout.Y_AXIS));
@@ -33,7 +42,6 @@ public class AdministrarCuentasFrame extends JFrame{
 		this.scroll.setViewportView(this.table);
 		c.add(this.panelTabla);
 		this.panelTabla.add(scroll);// Para agregar el scrool al panel
-
 		this.panelBotones.setLayout(new FlowLayout());
 		c.add(this.panelBotones);
 		this.panelBotones.add(insertarbtn);
@@ -45,10 +53,14 @@ public class AdministrarCuentasFrame extends JFrame{
 
 	public ModeloTablaCuentas getModelo() {
 		return modelo;
-	}	
+	}
+
+	/***
+	 * Metodo que sirve para inicializar los distintos actionListeners
+	 */
 	public void inicializar() {
 		this.insertarbtn.addActionListener(new MostrarInserccionCuentasListener());
-		this.modificarbtn.addActionListener(new MostrarInserccionCuentasListener());
+		this.modificarbtn.addActionListener(new MostrarEdicionCuentasListener(this));
 		this.eliminarbtn.addActionListener(new EliminarCuentasAdministradorListener(this));
 	}
 }

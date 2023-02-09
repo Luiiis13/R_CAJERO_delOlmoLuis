@@ -9,12 +9,20 @@ import javax.swing.table.TableModel;
 import modelo.dto.TarjetaDTO;
 import modelo.tabla.TarjetaFila;
 
+/***
+ * Clase que implementa la vista de los datos de tarjetas en forma de tablas
+ * 
+ * @author Luis
+ *
+ */
 public class ModeloTablaTarjetas extends AbstractTableModel implements TableModel {
-public static int columnas=5;
-private ArrayList<TarjetaFila> datos;
-public ModeloTablaTarjetas() {
-	this.datos = new ArrayList<>();
-}
+	public static int columnas = 5;
+	private ArrayList<TarjetaFila> datos;
+
+	public ModeloTablaTarjetas() {
+		this.datos = new ArrayList<>();
+	}
+
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
@@ -64,7 +72,7 @@ public ModeloTablaTarjetas() {
 			return Object.class;
 		}
 	}
-	
+
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		if (columnIndex == 5) {
@@ -93,7 +101,6 @@ public ModeloTablaTarjetas() {
 		}
 	}
 
-
 	@Override
 	public void setValueAt(Object value, int rowIndex, int columnIndex) {
 		TarjetaFila tarjeta = this.datos.get(rowIndex);
@@ -109,7 +116,7 @@ public ModeloTablaTarjetas() {
 			tarjeta.setCvv((int) value);
 			break;
 		case 4:
-			 tarjeta.setSeleccionable((boolean)value);
+			tarjeta.setSeleccionable((boolean) value);
 		default:
 			break;
 		}
@@ -118,14 +125,22 @@ public ModeloTablaTarjetas() {
 
 	}
 
+	/***
+	 * Metodo que añade los distintos datos de tarjeta al arrayList de "datos"
+	 * 
+	 * @param tarjetasBD parametro que sirve para buscar una tarjeta y poder
+	 *                   conseguir sus datos
+	 */
 	public void agregarDatosDeTabla(ArrayList<TarjetaDTO> tarjetasBD) {
 		for (int i = 0; i < tarjetasBD.size(); i++) {
 			TarjetaDTO tarjetaDTO = tarjetasBD.get(i);
-			TarjetaFila datosFila = new TarjetaFila(tarjetaDTO.getId(), tarjetaDTO.getNumero(), tarjetaDTO.getFecha_expiracion(),
-					tarjetaDTO.getCvv(), tarjetaDTO.getPin(), false,tarjetaDTO.isBloqueado(),tarjetaDTO.getIdCuentaAsociada());
+			TarjetaFila datosFila = new TarjetaFila(tarjetaDTO.getId(), tarjetaDTO.getNumero(),
+					tarjetaDTO.getFecha_expiracion(), tarjetaDTO.getCvv(), tarjetaDTO.getPin(), false,
+					tarjetaDTO.isBloqueado(), tarjetaDTO.getIdCuentaAsociada());
 			this.datos.add(datosFila);
 		}
 	}
+
 	public ArrayList<TarjetaFila> getDatos() {
 		return datos;
 	}

@@ -6,7 +6,10 @@ import javax.swing.JOptionPane;
 
 import modelo.dao.CuentaDAO;
 import modelo.dto.CuentaDTO;
+import modelo.dto.TarjetaDTO;
 import vista.AdministrarCuentasFrame;
+import vista.ModificarCuentaAdministradorFrame;
+import vista.ModificarTarjetaAdministradorFrame;
 
 public class CuentasControlador {
 	private AdministrarCuentasFrame frame;
@@ -35,4 +38,17 @@ public class CuentasControlador {
 	public void eliminarCuenta(int idCuenta) {
 		this.cuentaDAO.eliminarCuenta(idCuenta);
 	}
+	public void mostrarInterfazEdicion(CuentaDTO cuentaDTO) {
+		ModificarCuentaAdministradorFrame frameModificar = new ModificarCuentaAdministradorFrame();
+		frameModificar.setNumeroTxt(cuentaDTO.getNumero());
+		frameModificar.setIbanTxt(cuentaDTO.getIban());
+		frameModificar.setSaldoTxt(cuentaDTO.getSaldo());
+		frameModificar.setId_usuarioTxt(cuentaDTO.getId_usuario());
+		frameModificar.setIdCuenta(cuentaDTO.getId());
+	}
+
+	public void actualizarCuenta(CuentaDTO cuentaDTO) {
+		this.cuentaDAO.actualizarCuenta(cuentaDTO);
+	}
+
 }

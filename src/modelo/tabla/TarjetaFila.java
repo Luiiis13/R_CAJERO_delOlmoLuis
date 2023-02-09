@@ -2,6 +2,14 @@ package modelo.tabla;
 
 import java.sql.Date;
 
+/***
+ * Clase que sirve como modelo de tarjeta DTO para poder hacer las tablas de la
+ * vista y asi no modificar los verdaderos modelos que sirven para la base de
+ * datos
+ * 
+ * @author Luis
+ *
+ */
 public class TarjetaFila {
 	private int id;
 	private String numero;

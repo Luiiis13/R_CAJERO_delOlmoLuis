@@ -11,6 +11,13 @@ import javax.swing.SpinnerNumberModel;
 
 import listeners.RecargarOtraCantidadTelefonoListener;
 
+/***
+ * Clase que implementa la vista cuando se da al boton de recargar otra cantidad
+ * en la opcion de teléfono
+ * 
+ * @author Luis
+ *
+ */
 public class RecargarOtraCantidadTelefonoFrame extends JFrame {
 	private JLabel mensajelbl = new JLabel("Seleccione la cantidad que desea recargar ");
 	private SpinnerModel sm = new SpinnerNumberModel(0, 0, 1000, 5);
@@ -32,6 +39,9 @@ public class RecargarOtraCantidadTelefonoFrame extends JFrame {
 		this.pack();
 	}
 
+	/***
+	 * Metodo que inicializa el actionlistener
+	 */
 	private void inicializar() {
 		confirmarBtn.addActionListener(new RecargarOtraCantidadTelefonoListener(this));
 	}

@@ -36,6 +36,7 @@ public class EliminiarUsuarioAdministradorListener implements ActionListener{
 				int confirmado = JOptionPane.showConfirmDialog(this.eliminarUsuariosFrame,
 						"¿Está seguro que desea eliminar los usuarios?");
 				if (JOptionPane.OK_OPTION == confirmado) {
+					this.eliminarUsuariosFrame.setVisible(false);
 					this.eliminarCajeros(usuariosSeleccionados);
 					JOptionPane.showMessageDialog(null, "Usuarios eliminados correctamente");
 				} else {

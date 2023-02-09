@@ -11,6 +11,13 @@ import javax.swing.SpinnerNumberModel;
 
 import listeners.IngresarOtraCantidadDineroListener;
 
+/***
+ * Clase que implementa el frame de ingresar otra cantidad cuando se selecciona
+ * la opcion en el usuario
+ * 
+ * @author Luis
+ *
+ */
 //Clase la cual implementa el frame de ingresar dinero usuario cuando se pulsa el boton 
 public class IngresarOtraCantidadFrame extends JFrame {
 	private JLabel mensajelbl = new JLabel("Seleccione la cantidad que desea ingresar ");
@@ -34,7 +41,7 @@ public class IngresarOtraCantidadFrame extends JFrame {
 	}
 
 	/***
-	 *  metodo que añade un evento al pulsar el boton confirmar
+	 * metodo que añade un evento al pulsar el boton confirmar
 	 */
 	private void inicializar() {
 		confirmarBtn.addActionListener(new IngresarOtraCantidadDineroListener(this));

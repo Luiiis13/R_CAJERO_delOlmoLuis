@@ -14,6 +14,13 @@ import javax.swing.JTextField;
 
 import listeners.AgregarTarjetaAdministradorListener;
 
+/***
+ * Clase que implementa en la vista los distintos campos para poder añadir una
+ * nueva tarjeta
+ * 
+ * @author Luis
+ *
+ */
 public class InsertarTarjetaAdministradorFrame extends JFrame {
 
 	private JLabel numeroLbl = new JLabel("Número:");
@@ -80,10 +87,16 @@ public class InsertarTarjetaAdministradorFrame extends JFrame {
 		return cuentaTxt;
 	}
 
+	/***
+	 * Metodo que inicializa los distintos actionListeners
+	 */
 	public void inicializar() {
 		this.aceptarBtn.addActionListener(new AgregarTarjetaAdministradorListener(this));
 	}
 
+	/***
+	 * Metodo que sirve para limpiar los distintos campos
+	 */
 	public void limpiarCampos() {
 		this.numeroTxt.setText("");
 		this.fechaExpiracionTxt.setText("");
@@ -100,37 +113,46 @@ public class InsertarTarjetaAdministradorFrame extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				String text = ((JPasswordField) e.getComponent()).getText();
-				if (text.length() >= 4) // limit to 4 characters
+				if (text.length() >= 4)
 					e.consume();
 			}
 		});
 	}
+
 	private void limitarTamañoCvv() {
 		this.cvvTxt.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				String text = ((JTextField) e.getComponent()).getText();
-				if (text.length() >= 3) // limit to 4 characters
+				if (text.length() >= 3)
 					e.consume();
 			}
 		});
 	}
+
+	/***
+	 * Metodo que sirve para limitar el numero de carcteres en ese campo
+	 */
 	private void limitarTamañoNumeroTarjeta() {
 		this.numeroTxt.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				String text = ((JTextField) e.getComponent()).getText();
-				if (text.length() >= 16) // limit to 4 characters
+				if (text.length() >= 16)
 					e.consume();
 			}
 		});
 	}
+
+	/***
+	 * Metodo que sirve para limitar el numero de carcteres en ese campo
+	 */
 	private void limitarTamañoNumeroCuenta() {
 		this.cuentaTxt.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				String text = ((JTextField) e.getComponent()).getText();
-				if (text.length() >= 20) // limit to 4 characters
+				if (text.length() >= 20)
 					e.consume();
 			}
 		});

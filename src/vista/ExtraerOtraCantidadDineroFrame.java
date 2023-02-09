@@ -11,6 +11,13 @@ import javax.swing.SpinnerNumberModel;
 
 import listeners.ExtraerOtraCantidadDineroListener;
 
+/***
+ * Clase que implementa el frame para seleccionar otra cantidad de dinero a
+ * retirar
+ * 
+ * @author Luis
+ *
+ */
 public class ExtraerOtraCantidadDineroFrame extends JFrame {
 	private JLabel mensajelbl = new JLabel("Seleccione la cantidad que desea extraer ");
 	private SpinnerModel sm = new SpinnerNumberModel(0, 0, 1000, 5);
@@ -31,9 +38,14 @@ public class ExtraerOtraCantidadDineroFrame extends JFrame {
 		this.inicializar();
 		this.pack();
 	}
+
+	/***
+	 * Metodo que sirve para inicializar el actionListener
+	 */
 	private void inicializar() {
 		confirmarBtn.addActionListener(new ExtraerOtraCantidadDineroListener(this));
 	}
+
 	public JSpinner getCantidadSpinner() {
 		return cantidadSpinner;
 	}

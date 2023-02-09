@@ -1,5 +1,12 @@
 package modelo.tabla;
 
+/***
+ * Clase que sirve como modelo de usuario DTO para poder hacer las tablas de la
+ * vista y asi no modificar los verdaderos modelos para la base de datos
+ * 
+ * @author Luis
+ *
+ */
 public class UsuarioFila {
 	private int id;
 	private String nombre;
@@ -8,15 +15,16 @@ public class UsuarioFila {
 	private boolean isAdmin;
 	private boolean seleccionable;
 	private String contraseña;
-	
-	public UsuarioFila(int id, String nombre, String dni, String primerApellido, boolean isAdmin, boolean seleccionable,String contraseña) {
+
+	public UsuarioFila(int id, String nombre, String dni, String primerApellido, boolean isAdmin, boolean seleccionable,
+			String contraseña) {
 		this.id = id;
 		this.nombre = nombre;
 		this.dni = dni;
 		this.primerApellido = primerApellido;
 		this.isAdmin = isAdmin;
-		this.seleccionable=seleccionable;
-		this.contraseña=contraseña;
+		this.seleccionable = seleccionable;
+		this.contraseña = contraseña;
 	}
 
 	public String getContraseña() {
@@ -30,7 +38,6 @@ public class UsuarioFila {
 	public int getId() {
 		return id;
 	}
-
 
 	public String getNombre() {
 		return nombre;

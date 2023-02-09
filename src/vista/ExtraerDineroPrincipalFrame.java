@@ -15,7 +15,11 @@ import listeners.MovimientosOpcionListener;
 import listeners.RetirarCantidadDineroListener;
 import listeners.RetirarOtraCantidadListener;
 import listeners.SalirBotonListener;
-
+/***
+ * Clase que implementa el frame para seleccionar una determinada cantidad a retirar de la cuenta 
+ * @author Luis
+ *
+ */
 public class ExtraerDineroPrincipalFrame extends JFrame {
 	private JLabel elegirLbl = new JLabel("Elige la cantidad a retirar");
 	private Button cincoBtn = new Button("Retirar 5€");
@@ -47,7 +51,9 @@ public class ExtraerDineroPrincipalFrame extends JFrame {
 		this.pack();
 
 	}
-
+/***
+ * Metodo que sirve para incializar el actionListener de los botones 
+ */
 	private void inicializar() {
 		this.otraCantidadBtn.addActionListener(new RetirarOtraCantidadListener());
 		this.cincoBtn.addActionListener(new RetirarCantidadDineroListener(5));

@@ -1,5 +1,12 @@
 package modelo.dto;
 
+/***
+ * Clase que sirve para sacar los datos de usuario de la base de datos a la
+ * aplicacion
+ * 
+ * @author Luis
+ *
+ */
 public class UsuarioDTO {
 	private int id;
 	private String nombre;
@@ -8,7 +15,7 @@ public class UsuarioDTO {
 	private boolean esAdmin;
 	private String contraseña;
 
-	public UsuarioDTO(int id, String nombre, String dni, String primerApellido, boolean esAdmin,String contraseña) {
+	public UsuarioDTO(int id, String nombre, String dni, String primerApellido, boolean esAdmin, String contraseña) {
 		super();
 		this.id = id;
 		this.nombre = nombre;

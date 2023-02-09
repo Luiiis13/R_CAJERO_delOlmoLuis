@@ -11,7 +11,13 @@ import javax.swing.JTextField;
 
 import listeners.AgregarCajeroAdministradorListener;
 import listeners.AgregarCuentaAdministradorListener;
-
+/***
+ * Clase que implementa en la vista los distintos campos para poder añadir una
+ * nueva cajero
+ * 
+ * @author Luis
+ *
+ */
 public class InsertarCajeroAdministradorFrame extends JFrame {
 
 	private JLabel ubicacionLbl = new JLabel("Ubicacion:");
@@ -40,7 +46,9 @@ public class InsertarCajeroAdministradorFrame extends JFrame {
 	public JTextField getUbicacionTxt() {
 		return ubicacionTxt;
 	}
-	
+	/***
+	 * Metodo que sirve para inicializar el actionListener 
+	 */
 	private void inicializar() {
 		this.aceptarBtn.addActionListener(new AgregarCajeroAdministradorListener(this));
 	}

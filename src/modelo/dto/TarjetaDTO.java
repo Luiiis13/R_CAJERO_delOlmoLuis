@@ -2,6 +2,13 @@ package modelo.dto;
 
 import java.sql.Date;
 
+/***
+ * Clase que sirve para sacar los datos de tarjeta de la base de datos a la
+ * aplicacion
+ * 
+ * @author Luis
+ *
+ */
 public class TarjetaDTO {
 	private int id;
 	private String numero;
@@ -11,7 +18,8 @@ public class TarjetaDTO {
 	private boolean bloqueado;
 	private int IdCuentaAsociada;
 
-	public TarjetaDTO(int id, String numero, Date fecha_expiracion, int cvv, int pin,boolean bloqueado,int IdCuentaAsociada) {
+	public TarjetaDTO(int id, String numero, Date fecha_expiracion, int cvv, int pin, boolean bloqueado,
+			int IdCuentaAsociada) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -19,7 +27,7 @@ public class TarjetaDTO {
 		this.cvv = cvv;
 		this.pin = pin;
 		this.bloqueado = bloqueado;
-		this.IdCuentaAsociada=IdCuentaAsociada;
+		this.IdCuentaAsociada = IdCuentaAsociada;
 	}
 
 	public int getIdCuentaAsociada() {

@@ -1,7 +1,13 @@
 package modelo.dto;
 
 import java.sql.Date;
-
+/***
+ * Clase que sirve para sacar los datos de movimiento de la base de datos a la
+ * aplicacion
+ * 
+ * @author Luis
+ *
+ */
 public class MovimientoDTO {
 
 	private int id;

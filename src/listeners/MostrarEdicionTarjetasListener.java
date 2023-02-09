@@ -7,11 +7,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import controlador.TarjetasControlador;
-import controlador.UsuariosControlador;
 import modelo.dto.TarjetaDTO;
-import modelo.dto.UsuarioDTO;
 import modelo.tabla.TarjetaFila;
-import modelo.tabla.UsuarioFila;
 import vista.AdministrarTarjetasFrame;
 
 public class MostrarEdicionTarjetasListener implements ActionListener {

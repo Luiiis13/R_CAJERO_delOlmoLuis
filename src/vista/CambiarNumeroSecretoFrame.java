@@ -14,7 +14,10 @@ import javax.swing.JSpinner;
 import listeners.CambiarNumeroSecretoBotonListener;
 
 public class CambiarNumeroSecretoFrame extends JFrame {
-// Clase que extiende de un Jframe para la opcion Cambiar el numero secreto 
+	/***
+	 * Clase que implementa el frame de la opcion de cambiar el número secreto de la
+	 * tarjeta
+	 */
 	private JLabel mensajelbl = new JLabel("Escriba el nuevo pin de la tarjeta");
 	private JPasswordField pinPassfield = new JPasswordField();
 	private JLabel repetirMensajelbl = new JLabel("Repita el pin");
@@ -39,7 +42,9 @@ public class CambiarNumeroSecretoFrame extends JFrame {
 		this.pack();
 	}
 
-//Metodo que llama a un evento al pulsar el boton confirmar
+	/***
+	 * Metodo que sirve para incializar el actionListener
+	 */
 	private void inicializar() {
 		confirmarBtn.addActionListener(new CambiarNumeroSecretoBotonListener(this));
 	}
@@ -51,24 +56,31 @@ public class CambiarNumeroSecretoFrame extends JFrame {
 	public JPasswordField getRepetirPinPassfield() {
 		return repetirPinPassfield;
 	}
-	
+
+	/***
+	 * Metodo que permite limitar el número de carecteres del campo de texto
+	 * 
+	 */
 	private void limitarTamañoContraseña() {
 		this.pinPassfield.addKeyListener(new KeyAdapter() {
-	        @Override
-	        public void keyTyped(KeyEvent e) {
-	           String text = ((JPasswordField)e.getComponent()).getText();
-	        	if (text.length() >= 4 ) // limit to 4 characters
-	                e.consume();
-	        }
-	    });
-		
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JPasswordField) e.getComponent()).getText();
+				if (text.length() >= 4) // limit to 4 characters
+					e.consume();
+			}
+		});
+		/***
+		 * Metodo que permite limitar el número de carecteres del campo de texto
+		 * 
+		 */
 		this.repetirPinPassfield.addKeyListener(new KeyAdapter() {
-	        @Override
-	        public void keyTyped(KeyEvent e) {
-	           String text = ((JPasswordField)e.getComponent()).getText();
-	        	if (text.length() >= 4 ) // limit to 4 characters
-	                e.consume();
-	        }
-	    });
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JPasswordField) e.getComponent()).getText();
+				if (text.length() >= 4) // limit to 4 characters
+					e.consume();
+			}
+		});
 	}
 }

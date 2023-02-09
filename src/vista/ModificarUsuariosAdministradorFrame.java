@@ -1,6 +1,8 @@
 package vista;
 
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -11,14 +13,19 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import listeners.AgregarUsuarioAdministradorListener;
 import listeners.EditarUsuariosAdministradorListener;
 
-public class ModificarUsuariosAdministradorFrame extends JFrame{
+/***
+ * Clase que implementa la vista para poder modificar un usuario desde las
+ * opciones de administrador
+ * 
+ * @author Luis
+ *
+ */
+public class ModificarUsuariosAdministradorFrame extends JFrame {
 	private int idUsuario;
-	
 	private JLabel nombreLbl = new JLabel("Nombre:");
-	private JLabel dniLbl = new JLabel("DNI:");
+	private JLabel dniLbl = new JLabel("Dni:");
 	private JLabel primerApellidoLbl = new JLabel("Primer apellido:");
 	private JLabel contraseñaLbl = new JLabel("Contraseña:");
 	private JLabel esAdminLbl = new JLabel("Administrador:");
@@ -54,6 +61,7 @@ public class ModificarUsuariosAdministradorFrame extends JFrame{
 		this.getContentPane().add(contenedorBtn);
 		this.setVisible(true);
 		this.inicializar();
+		this.limitarTamañoDni();
 		this.pack();
 
 	}
@@ -74,14 +82,20 @@ public class ModificarUsuariosAdministradorFrame extends JFrame{
 		return esAdmin;
 	}
 
-
 	public JPasswordField getContraseñaField() {
 		return contraseñaField;
 	}
 
+	/***
+	 * Metodo para inicializar el actionListener
+	 */
 	private void inicializar() {
-	this.aceptarBtn.addActionListener(new EditarUsuariosAdministradorListener(this));
+		this.aceptarBtn.addActionListener(new EditarUsuariosAdministradorListener(this));
 	}
+
+	/***
+	 * Metodo que sirve para poder poner vacios los distintos campos que editaremos
+	 */
 	public void limpiarCampos() {
 		this.contraseñaField.setText("");
 		this.nombreTxt.setText("");
@@ -109,6 +123,7 @@ public class ModificarUsuariosAdministradorFrame extends JFrame{
 	public void setContraseñaField(String contraseña) {
 		this.contraseñaField.setText(contraseña);
 	}
+
 	public int getIdUsuario() {
 		return idUsuario;
 	}
@@ -117,4 +132,14 @@ public class ModificarUsuariosAdministradorFrame extends JFrame{
 		this.idUsuario = idUsuario;
 	}
 
+	private void limitarTamañoDni() {
+		this.dniTxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JTextField) e.getComponent()).getText();
+				if (text.length() >= 9)
+					e.consume();
+			}
+		});
+	}
 }

@@ -1,6 +1,8 @@
 package vista;
 
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -13,6 +15,13 @@ import javax.swing.JTextField;
 
 import listeners.AgregarUsuarioAdministradorListener;
 
+/***
+ * Clase que implementa en la vista los distintos campos para poder añadir un
+ * nuevo usuario
+ * 
+ * @author Luis
+ *
+ */
 public class InsertarUsuarioAdministradorFrame extends JFrame {
 
 	private JLabel nombreLbl = new JLabel("Nombre:");
@@ -52,6 +61,8 @@ public class InsertarUsuarioAdministradorFrame extends JFrame {
 		this.getContentPane().add(contenedorBtn);
 		this.setVisible(true);
 		this.inicializar();
+		this.limitarTamañoDni();
+		this.limitarTamañoPass();
 		this.pack();
 
 	}
@@ -59,19 +70,57 @@ public class InsertarUsuarioAdministradorFrame extends JFrame {
 	public JTextField getNombreTxt() {
 		return nombreTxt;
 	}
+
 	public JTextField getDniTxt() {
 		return dniTxt;
 	}
+
 	public JTextField getPrimerApellidoTxt() {
 		return primerApellidoTxt;
 	}
+
 	public JCheckBox getIsAdmin() {
 		return isAdmin;
 	}
+
 	public JPasswordField getContraseñaField() {
 		return contraseñaField;
 	}
+
+	/***
+	 * Metodo que inicializa el action listener
+	 */
 	public void inicializar() {
 		this.aceptarBtn.addActionListener(new AgregarUsuarioAdministradorListener(this));
+	}
+
+	/***
+	 * Metodo que sirve para limitar el numero de caracteres que puedes agregar en
+	 * ese campo
+	 */
+	private void limitarTamañoDni() {
+		this.dniTxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JTextField) e.getComponent()).getText();
+				if (text.length() >= 9)
+					e.consume();
+			}
+		});
+	}
+
+	/***
+	 * Metodo que sirve para limitar el numero de caracteres que puedes agregar en
+	 * ese campo
+	 */
+	private void limitarTamañoPass() {
+		this.contraseñaField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JPasswordField) e.getComponent()).getText();
+				if (text.length() >= 9)
+					e.consume();
+			}
+		});
 	}
 }

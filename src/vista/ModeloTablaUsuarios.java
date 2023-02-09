@@ -9,6 +9,12 @@ import modelo.dto.UsuarioDTO;
 import modelo.tabla.CajeroFila;
 import modelo.tabla.UsuarioFila;
 
+/***
+ * Clase que implementa la vista de los datos de usuario en forma de tablas
+ * 
+ * @author Luis
+ *
+ */
 public class ModeloTablaUsuarios extends AbstractTableModel implements TableModel {
 	private static int Columnas = 6;
 	private ArrayList<UsuarioFila> datos;
@@ -120,7 +126,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 			usuario.setIsAdmin((boolean) value);
 			break;
 		case 5:
-			usuario.setSeleccionable((boolean)value);			
+			usuario.setSeleccionable((boolean) value);
 			break;
 		default:
 			break;
@@ -130,14 +136,21 @@ public class ModeloTablaUsuarios extends AbstractTableModel implements TableMode
 
 	}
 
+	/***
+	 * Metodo que añade los distintos datos de usuario al arrayList de "datos"
+	 * 
+	 * @param usuariosBD parametro que sirve para buscar un usuario y poder
+	 *                   conseguir sus datos
+	 */
 	public void agregarDatosDeTabla(ArrayList<UsuarioDTO> usuariosBD) {
 		for (int i = 0; i < usuariosBD.size(); i++) {
 			UsuarioDTO usuarioDTO = usuariosBD.get(i);
 			UsuarioFila datosFila = new UsuarioFila(usuarioDTO.getId(), usuarioDTO.getNombre(), usuarioDTO.getDni(),
-					usuarioDTO.getPrimerApellido(), usuarioDTO.getEsAdmin(), false,usuarioDTO.getContraseña());
+					usuarioDTO.getPrimerApellido(), usuarioDTO.getEsAdmin(), false, usuarioDTO.getContraseña());
 			this.datos.add(datosFila);
 		}
 	}
+
 	public ArrayList<UsuarioFila> getDatos() {
 		return datos;
 	}

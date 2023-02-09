@@ -1,5 +1,12 @@
 package modelo.dto;
 
+/***
+ * Clase que sirve para sacar los datos de telefono de la base de datos a la
+ * aplicacion
+ * 
+ * @author Luis
+ *
+ */
 public class TelefonoDTO {
 	private int id;
 	private float saldo;

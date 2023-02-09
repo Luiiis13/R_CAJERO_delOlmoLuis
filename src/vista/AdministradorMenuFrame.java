@@ -2,7 +2,11 @@ package vista;
 
 
 import javax.swing.JFrame;
-
+/***
+ * Clase que implementa la vista del frame con la barra del menu 
+ * @author Luis
+ *
+ */
 public class AdministradorMenuFrame extends JFrame {
 	private AdministradorMenuBar barra = new AdministradorMenuBar();
 

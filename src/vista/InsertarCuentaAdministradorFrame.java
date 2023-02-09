@@ -13,6 +13,13 @@ import javax.swing.JTextField;
 
 import listeners.AgregarCuentaAdministradorListener;
 
+/***
+ * Clase que implementa en la vista los distintos campos para poder añadir una
+ * nueva cuenta
+ * 
+ * @author Luis
+ *
+ */
 public class InsertarCuentaAdministradorFrame extends JFrame {
 
 	private JLabel numeroLbl = new JLabel("Número:");
@@ -53,6 +60,9 @@ public class InsertarCuentaAdministradorFrame extends JFrame {
 		return ibanTxt;
 	}
 
+	/***
+	 * Metodo que sirve para limitar el numero de carcteres en ese campo
+	 */
 	private void limitarTamañoNumero() {
 		this.numeroTxt.addKeyListener(new KeyAdapter() {
 			@Override
@@ -64,6 +74,9 @@ public class InsertarCuentaAdministradorFrame extends JFrame {
 		});
 	}
 
+	/***
+	 * Metodo que sirve para limitar el numero de carcteres en ese campo
+	 */
 	private void limitarTamañoIban() {
 		this.ibanTxt.addKeyListener(new KeyAdapter() {
 			@Override
@@ -74,10 +87,17 @@ public class InsertarCuentaAdministradorFrame extends JFrame {
 			}
 		});
 	}
+
+	/***
+	 * Metodo que sirve para inicializar el actionListener
+	 */
 	private void inicializar() {
 		this.aceptarBtn.addActionListener(new AgregarCuentaAdministradorListener(this));
 	}
 
+	/***
+	 * Metodo que sirve para limpiar los distintos campos
+	 */
 	public void limpiarCampos() {
 		this.numeroTxt.setText("");
 		this.ibanTxt.setText("");

@@ -11,6 +11,13 @@ import javax.swing.JPanel;
 import listeners.RecargarBonobusListener;
 import listeners.RecargarOtraCantidadBonobusFrameListener;
 
+/***
+ * Clase que implementa la vista de las cantidades que se quieren añadir a
+ * bonobus
+ * 
+ * @author Luis
+ *
+ */
 public class RecargarBonobusFrame extends JFrame {
 	private JLabel elegirLbl = new JLabel("Elige la cantidad a recargar");
 	private Button cincoBtn = new Button("Recargar 5€");
@@ -40,13 +47,16 @@ public class RecargarBonobusFrame extends JFrame {
 		this.pack();
 	}
 
+	/***
+	 * Metodo que añade los actionListener a los distintos botones
+	 */
+
 	public void inicializar() {
 		this.otraCantidadBtn.addActionListener(new RecargarOtraCantidadBonobusFrameListener());
 		this.cincoBtn.addActionListener(new RecargarBonobusListener(5));
 		this.diezBtn.addActionListener(new RecargarBonobusListener(10));
 		this.quinceBtn.addActionListener(new RecargarBonobusListener(15));
 		this.veinteBtn.addActionListener(new RecargarBonobusListener(20));
-
 
 	}
 }

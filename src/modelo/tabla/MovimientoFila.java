@@ -2,13 +2,21 @@ package modelo.tabla;
 
 import java.sql.Date;
 
+/***
+ * Clase que sirve como modelo de movimiento DTO para poder hacer las tablas de
+ * la vista y asi no modificar los verdaderos modelos que sirven para la base de
+ * datos
+ * 
+ * @author Luis
+ *
+ */
 public class MovimientoFila {
 
 	private int id;
-	private String tipo; 
+	private String tipo;
 	private Date fechaDelMovimiento;
-	
-	public MovimientoFila(int id,  Date fechaDelMovimiento,String tipo) {
+
+	public MovimientoFila(int id, Date fechaDelMovimiento, String tipo) {
 		this.id = id;
 		this.tipo = tipo;
 		this.fechaDelMovimiento = fechaDelMovimiento;

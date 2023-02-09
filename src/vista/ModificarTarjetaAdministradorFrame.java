@@ -1,6 +1,8 @@
 package vista;
 
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.Date;
 
 import javax.swing.BoxLayout;
@@ -9,11 +11,16 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import listeners.EditarTarjetasAdministradorListener;
-import listeners.EditarUsuariosAdministradorListener;
-
+/***
+ *  Clase que implementa la vista para poder modificar una tarjeta desde las
+ * opciones de administrador
+ * @author Luis
+ *
+ */
 public class ModificarTarjetaAdministradorFrame extends JFrame{
 	private int idCuentaAsociada;
 	private int idTarjeta;
@@ -53,6 +60,9 @@ public class ModificarTarjetaAdministradorFrame extends JFrame{
 		contenedorBtn.add(aceptarBtn);
 		this.getContentPane().add(contenedorBtn);
 		this.inicializar();
+		this.limitarTamañoCvv();
+		this.limitarTamañoNumeroTarjeta();
+		this.limitarTamañoPin();
 		this.setVisible(true);
 		this.pack();
 	}
@@ -86,16 +96,19 @@ public class ModificarTarjetaAdministradorFrame extends JFrame{
 //	}
 
 	public void setCvvTxt(int cvvTxt) {
-		this.cvvTxt.setText(String.valueOf(cvvTxt));;
+		this.cvvTxt.setText(String.valueOf(cvvTxt));
 	}
 
 	public void setPinTxt(int pinTxt) {
-		this.pinTxt.setText(String.valueOf(pinTxt));;
+		this.pinTxt.setText(String.valueOf(pinTxt));
 	}
 
 	public void setBloqueadoTxt(boolean bloqueadoTxt) {
 		this.bloqueadoTxt.setSelected(bloqueadoTxt);
 	}
+	/***
+	 * Metodo que al abrir limpia los distintos campos a rellenar de la interfaz
+	 */
 	public void limpiarCampos() {
 		this.numeroTxt.setText("");
 		this.pinTxt.setText("");
@@ -121,4 +134,44 @@ public class ModificarTarjetaAdministradorFrame extends JFrame{
 	private void inicializar() {
 	this.aceptarBtn.addActionListener(new EditarTarjetasAdministradorListener(this));
 	}
+	/***
+	 * Metodo que limita el campo de contraseña a 4 digitos
+	 */
+	private void limitarTamañoPin() {
+		this.pinTxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JPasswordField) e.getComponent()).getText();
+				if (text.length() >= 4) 
+					e.consume();
+			}
+		});
+	}
+	/***
+	 * Metodo que limita el campo de cvv a 3 digitos
+	 */
+	private void limitarTamañoCvv() {
+		this.cvvTxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JTextField) e.getComponent()).getText();
+				if (text.length() >= 3) 
+					e.consume();
+			}
+		});
+	}
+	/***
+	 * Metodo que limita el campo de numero a 16 digitos
+	 */
+	private void limitarTamañoNumeroTarjeta() {
+		this.numeroTxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JTextField) e.getComponent()).getText();
+				if (text.length() >= 16) 
+					e.consume();
+			}
+		});
+	}
+	
 }

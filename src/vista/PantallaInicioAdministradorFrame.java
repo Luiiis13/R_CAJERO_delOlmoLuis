@@ -1,8 +1,5 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -17,6 +14,13 @@ import javax.swing.JTextField;
 
 import listeners.SesionAdministradorListener;
 
+/***
+ * Clase que implementa la vista para ver si un determinado usuario es
+ * administrador a traves de dos campos ,Dni y contraseña
+ * 
+ * @author Luis
+ *
+ */
 public class PantallaInicioAdministradorFrame extends JFrame {
 	private JLabel dniLbl = new JLabel("Dni:");
 	private JTextField dniTxt = new JTextField();
@@ -29,7 +33,6 @@ public class PantallaInicioAdministradorFrame extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("Pantalla de administrador");
 		this.limitarTamañoDni();
-		this.limitarTamañoContraseña();
 		this.setSize(250, 120);
 		JPanel contenedor = new JPanel();
 		contenedor.setLayout(new GridLayout(2, 2));
@@ -55,28 +58,29 @@ public class PantallaInicioAdministradorFrame extends JFrame {
 		return contraseñaField;
 	}
 
+	/***
+	 * Metodo para inicializar los actionListener
+	 */
 	public void inicializar() {
 		this.aceptarBtn.addActionListener(new SesionAdministradorListener(this));
 	}
+
+	/***
+	 * Metodo que sirve para limitar los caractares que se pueden añadir en el campo
+	 * dni
+	 */
 	private void limitarTamañoDni() {
 		this.dniTxt.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				String text = ((JTextField) e.getComponent()).getText();
-				if (text.length() >= 9) 
+				if (text.length() >= 9)
 					e.consume();
 			}
 		});
 	}
-	private void limitarTamañoContraseña() {
-		this.contraseñaField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				String text = ((JPasswordField) e.getComponent()).getText();
-				if (text.length() >= 4) 
-					e.consume();
-			}
-		});
-	}
+
 	
+
+
 }

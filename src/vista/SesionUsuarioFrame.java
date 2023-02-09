@@ -54,7 +54,7 @@ public class SesionUsuarioFrame extends JFrame {
 			}
 		});
 	}
-	
+
 	private void limitarTamañoTarjeta() {
 		this.numeroTarjeta.addKeyListener(new KeyAdapter() {
 			@Override

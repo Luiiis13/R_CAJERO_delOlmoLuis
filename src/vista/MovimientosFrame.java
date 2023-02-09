@@ -6,7 +6,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
+/***
+ * Clase que implementa la vista de movimientos hechos en una cuenta enseñando el distinto valor de los saldos 
+ * @author Luis
+ *
+ */
 public class MovimientosFrame extends JFrame {
 	private JLabel saldolbl = new JLabel("Saldo cuenta: ");
 	private JLabel telefonolbl = new JLabel("Saldo teléfono: ");

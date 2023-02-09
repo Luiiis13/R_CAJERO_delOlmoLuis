@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import vista.InsertarTarjetaAdministradorFrame;
 
-public class MostarInserccionTarjetasListener implements ActionListener{
+public class MostrarInserccionTarjetasListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

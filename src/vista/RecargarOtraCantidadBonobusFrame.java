@@ -9,9 +9,15 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
-import listeners.ExtraerOtraCantidadDineroListener;
 import listeners.RecargarOtraCantidadBonobusListener;
 
+/***
+ * Clase que implementa la vista cuando se da al boton de seleccionar otra
+ * cantidad bonobus
+ * 
+ * @author Luis
+ *
+ */
 public class RecargarOtraCantidadBonobusFrame extends JFrame {
 	private JLabel mensajelbl = new JLabel("Seleccione la cantidad que desea recargar ");
 	private SpinnerModel sm = new SpinnerNumberModel(0, 0, 1000, 5);
@@ -33,6 +39,9 @@ public class RecargarOtraCantidadBonobusFrame extends JFrame {
 		this.pack();
 	}
 
+	/***
+	 * Metodo que añade el listener del boton de confirmar
+	 */
 	private void inicializar() {
 		confirmarBtn.addActionListener(new RecargarOtraCantidadBonobusListener(this));
 	}

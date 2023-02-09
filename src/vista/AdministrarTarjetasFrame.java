@@ -11,10 +11,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import listeners.EliminarTarjetasAdministradorListener;
-import listeners.MostarInserccionTarjetasListener;
+import listeners.MostrarInserccionTarjetasListener;
 import listeners.MostrarEdicionTarjetasListener;
-import listeners.MostrarInserccionCuentasListener;
 
+/***
+ * Clase que implementa el frame para poder visualizar las distintas tarjetas y
+ * tener las distintas opciones de administrador
+ * 
+ * @author Luis
+ *
+ */
 public class AdministrarTarjetasFrame extends JFrame {
 	private JPanel panelTabla = new JPanel();
 	private JPanel panelBotones = new JPanel();
@@ -48,8 +54,11 @@ public class AdministrarTarjetasFrame extends JFrame {
 		return modelo;
 	}
 
+	/***
+	 * Metodo que sirve para inicializar los distintos actionListeners
+	 */
 	public void inicializar() {
-		this.insertarbtn.addActionListener(new MostarInserccionTarjetasListener());
+		this.insertarbtn.addActionListener(new MostrarInserccionTarjetasListener());
 		this.modificarbtn.addActionListener(new MostrarEdicionTarjetasListener(this));
 		this.eliminarbtn.addActionListener(new EliminarTarjetasAdministradorListener(this));
 	}

@@ -10,6 +10,13 @@ import listeners.AdministrarTarjetasListener;
 import listeners.AdministrarUsuariosListener;
 import listeners.SalirBotonListener;
 
+/***
+ * Clase que implementa las distintas opciones en la barra del menu con sus
+ * respectivos actionListeners
+ * 
+ * @author Luis
+ *
+ */
 public class AdministradorMenuBar extends JMenuBar {
 	private JMenu inicio;
 	private JMenu operaciones;
@@ -17,7 +24,7 @@ public class AdministradorMenuBar extends JMenuBar {
 	public AdministradorMenuBar() {
 		this.inicio = new JMenu("Inicio");
 		this.operaciones = new JMenu("Operaciones");
-		
+
 		this.add(this.inicio);
 		this.add(this.operaciones);
 		JMenuItem apagarCajero = new JMenuItem("Apagar cajero");

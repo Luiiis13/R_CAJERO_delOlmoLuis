@@ -13,9 +13,14 @@ import javax.swing.JTable;
 import listeners.MostrarEdicionCajerosListener;
 import listeners.EliminarCajeroAdministradorListener;
 import listeners.MostrarInserccionCajerosListener;
-import listeners.MostrarInserccionCuentasListener;
-import listeners.MostrarInserccionUsuariosListener;
 
+/***
+ * Clase que implementa el frame para poder visualizar los distintos cajeros y
+ * tener las distintas opciones de administrador
+ * 
+ * @author Luis
+ *
+ */
 public class AdministrarCajerosFrame extends JFrame{
 	private JPanel panelTabla = new JPanel();
 	private JPanel panelBotones = new JPanel();
@@ -49,6 +54,9 @@ public class AdministrarCajerosFrame extends JFrame{
 	public ModeloTablaCajero getModelo() {
 		return modelo;
 	}	
+	/***
+	 * Metodo que sirve para inicalizar los distintos actionListeners
+	 */
 	public void inicializar() {
 		this.insertarbtn.addActionListener(new MostrarInserccionCajerosListener());
 		this.modificarbtn.addActionListener(new MostrarEdicionCajerosListener(this));

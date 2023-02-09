@@ -10,12 +10,17 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import listeners.MostrarEdicionCajerosListener;
 import listeners.MostrarEdicionUsuarioListener;
 import listeners.EliminiarUsuarioAdministradorListener;
-import listeners.MostrarInserccionCuentasListener;
 import listeners.MostrarInserccionUsuariosListener;
 
+/***
+ * Clase que implementa el frame para poder visualizar los distintos usuarios y
+ * tener las distintas opciones de administrador
+ * 
+ * @author Luis
+ *
+ */
 public class AdministrarUsuariosFrame extends JFrame {
 	private JPanel panelTabla = new JPanel();
 	private JPanel panelBotones = new JPanel();
@@ -48,8 +53,12 @@ public class AdministrarUsuariosFrame extends JFrame {
 	public ModeloTablaUsuarios getModelo() {
 		return modelo;
 	}
+
+	/***
+	 * Metodo que sirve para poder inicializar los distintos actionListeners
+	 */
 	public void inicializar() {
-		this.insertarbtn.addActionListener(new  MostrarInserccionUsuariosListener());
+		this.insertarbtn.addActionListener(new MostrarInserccionUsuariosListener(this));
 		this.modificarbtn.addActionListener(new MostrarEdicionUsuarioListener(this));
 		this.eliminarbtn.addActionListener(new EliminiarUsuarioAdministradorListener(this));
 	}

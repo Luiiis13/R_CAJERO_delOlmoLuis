@@ -11,15 +11,20 @@ import javax.swing.JTextField;
 
 import listeners.EditarCajeroAdministradorListener;
 
-public class ModificarCajerosAdministradorFrame extends JFrame{
+/***
+ * Clase que implementa la vista para poder modificar un cajero desde las
+ * opciones de administrador
+ * 
+ * @author Luis
+ *
+ */
+public class ModificarCajerosAdministradorFrame extends JFrame {
 	private int idCajero;
-
 	private JLabel ubicacionLbl = new JLabel("Ubicación:");
 	private JTextField ubicacionTxt = new JTextField();
 	private JButton aceptarBtn = new JButton("Aceptar");
 	private JButton cancelarBtn = new JButton("Cancelar");
-	
-	
+
 	public ModificarCajerosAdministradorFrame() {
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 		this.setTitle("Pantalla de modificar cajero");
@@ -41,18 +46,26 @@ public class ModificarCajerosAdministradorFrame extends JFrame{
 	public JTextField getUbicacionTxt() {
 		return ubicacionTxt;
 	}
+
 	public void setUbicacion(String ubicacion) {
 		this.ubicacionTxt.setText(ubicacion);
 	}
+
 	public int getIdCajero() {
 		return idCajero;
 	}
+
 	public void setIdCajero(int idCajero) {
 		this.idCajero = idCajero;
 	}
+
 	private void inicializar() {
 		this.aceptarBtn.addActionListener(new EditarCajeroAdministradorListener(this));
 	}
+
+	/***
+	 * Metodo que al abrir limpia los distintos campos a rellenar de la interfaz
+	 */
 	public void limpiarCampos() {
 		this.ubicacionTxt.setText("");
 	}

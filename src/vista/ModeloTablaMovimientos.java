@@ -8,7 +8,12 @@ import javax.swing.table.TableModel;
 
 import modelo.dto.MovimientoDTO;
 import modelo.tabla.MovimientoFila;
-
+/***
+ * Clase que implementa la vista de los datos de movimientos en forma de tablas
+ * 
+ * @author Luis
+ *
+ */
 public class ModeloTablaMovimientos extends AbstractTableModel implements TableModel {
 	private static int Columnas = 3;
 	private ArrayList<MovimientoFila> datos;
@@ -77,7 +82,12 @@ public class ModeloTablaMovimientos extends AbstractTableModel implements TableM
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return false;
 	}
-
+	/***
+	 * Metodo que añade los distintos datos de movimientos al arrayList de "datos"
+	 * 
+	 * @param movimientosDTO parametro que sirve para buscar un movimiento y poder
+	 *                   conseguir sus datos
+	 */
 	public void agregarDatosDeTabla(ArrayList<MovimientoDTO> movimientosDTO) {
 		for (int i = 0; i < movimientosDTO.size(); i++) {
 			MovimientoDTO movimientoDTO = movimientosDTO.get(i);

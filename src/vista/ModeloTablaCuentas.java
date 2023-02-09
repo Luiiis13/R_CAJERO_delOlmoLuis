@@ -7,7 +7,12 @@ import javax.swing.table.TableModel;
 
 import modelo.dto.CuentaDTO;
 import modelo.tabla.CuentasFila;
-
+/***
+ * Clase que implementa la vista de los datos de Cuentas en forma de tablas
+ * 
+ * @author Luis
+ *
+ */
 public class ModeloTablaCuentas extends AbstractTableModel implements TableModel {
 	
 
@@ -120,12 +125,17 @@ public class ModeloTablaCuentas extends AbstractTableModel implements TableModel
 		fireTableCellUpdated(rowIndex, columnIndex);
 
 	}
-
+	/***
+	 * Metodo que añade los distintos datos de cuenta al arrayList de "datos"
+	 * 
+	 * @param cuentasBD parametro que sirve para buscar una cuenta y poder
+	 *                   conseguir sus datos
+	 */
 	public void agregarDatosDeTabla(ArrayList<CuentaDTO> cuentasBD) {
 		for (int i = 0; i < cuentasBD.size(); i++) {
 			CuentaDTO cuentaDTO = cuentasBD.get(i);
 			CuentasFila datosFila = new CuentasFila(cuentaDTO.getId(), cuentaDTO.getNumero(), cuentaDTO.getIban(),
-					cuentaDTO.getSaldo(),false);
+					cuentaDTO.getSaldo(),false,cuentaDTO.getId_usuario());
 			this.datos.add(datosFila);
 		}
 	}

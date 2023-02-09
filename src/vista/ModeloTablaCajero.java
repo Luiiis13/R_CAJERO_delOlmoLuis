@@ -9,7 +9,12 @@ import modelo.dto.CajeroDTO;
 import modelo.dto.CuentaDTO;
 import modelo.tabla.CajeroFila;
 import modelo.tabla.CuentasFila;
-
+/***
+ * Clase que implementa la vista de los datos de Cajero en forma de tablas
+ * 
+ * @author Luis
+ *
+ */
 public class ModeloTablaCajero extends AbstractTableModel implements TableModel{
 	public static int columnas=3;
 	private ArrayList<CajeroFila> datos;

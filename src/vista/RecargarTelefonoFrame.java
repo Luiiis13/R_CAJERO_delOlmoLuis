@@ -2,8 +2,6 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -15,6 +13,13 @@ import listeners.RecargarOtraCantidadBonobusFrameListener;
 import listeners.RecargarOtraCantidadTelefonoFrameListener;
 import listeners.RecargarTelefonoListener;
 
+/***
+ * Clase que implementa la vista de recargar las distintas cantidades de dinero
+ * como botones
+ * 
+ * @author Luis
+ *
+ */
 public class RecargarTelefonoFrame extends JFrame {
 	private JLabel elegirLbl = new JLabel("Elige la cantidad a recargar");
 	private Button cincoBtn = new Button("Recargar 5€");
@@ -44,6 +49,9 @@ public class RecargarTelefonoFrame extends JFrame {
 		this.pack();
 	}
 
+	/***
+	 * Metodo que inicializa los dintintos actionListeners
+	 */
 	public void inicializar() {
 		this.otraCantidadBtn.addActionListener(new RecargarOtraCantidadTelefonoFrameListener());
 		this.cincoBtn.addActionListener(new RecargarTelefonoListener(5));
