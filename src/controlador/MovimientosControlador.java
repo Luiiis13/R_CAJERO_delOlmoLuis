@@ -37,20 +37,32 @@ public class MovimientosControlador {
 			int idTarjeta = SesionUsuarioControlador.datosTarjeta.getId();
 
 			this.frame = new MovimientosFrame();
-			CuentaDTO cuentaDTO = this.cuentaDAO.obtenerCuenta(idCuenta);
-			String textolblSaldo = this.frame.getSaldolbl().getText();
-			textolblSaldo += cuentaDTO.getSaldo() + "€";
-			this.frame.getSaldolbl().setText(textolblSaldo);
+			try {
+				CuentaDTO cuentaDTO = this.cuentaDAO.obtenerCuenta(idCuenta);
+				String textolblSaldo = this.frame.getSaldolbl().getText();
+				textolblSaldo += cuentaDTO.getSaldo() + "€";
+				this.frame.getSaldolbl().setText(textolblSaldo);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 
-			TelefonoDTO telefonoDTO = this.telefonoDAO.obtenerTelefono(idTarjeta);
-			String textoLblTelefono = this.frame.getTelefonolbl().getText();
-			textoLblTelefono += telefonoDTO.getSaldo() + "€";
-			this.frame.getTelefonolbl().setText(textoLblTelefono);
+			try {
+				TelefonoDTO telefonoDTO = this.telefonoDAO.obtenerTelefonoDadoTarjeta(idTarjeta);
+				String textoLblTelefono = this.frame.getTelefonolbl().getText();
+				textoLblTelefono += telefonoDTO.getSaldo() + "€";
+				this.frame.getTelefonolbl().setText(textoLblTelefono);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 
-			BonobusDTO bonobusDTO = this.bonobusDAO.obtenerBonobus(idTarjeta);
-			String textoLblBonobus = this.frame.getBonobuslbl().getText();
-			textoLblBonobus += bonobusDTO.getSaldo() + "€";
-			this.frame.getBonobuslbl().setText(textoLblBonobus);
+			try {
+				BonobusDTO bonobusDTO = this.bonobusDAO.obtenerBonobus(idTarjeta);
+				String textoLblBonobus = this.frame.getBonobuslbl().getText();
+				textoLblBonobus += bonobusDTO.getSaldo() + "€";
+				this.frame.getBonobuslbl().setText(textoLblBonobus);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 
 			ArrayList<MovimientoDTO> movimientosCuenta = this.movimientoDAO.obtenerMovimiento(idTarjeta);
 			this.frame.getModelo().agregarDatosDeTabla(movimientosCuenta);

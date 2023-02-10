@@ -57,13 +57,13 @@ public class TelefonoDAO {
 		return telefonos;
 	}
 
-	public TelefonoDTO obtenerTelefono(int idTarjetaAsociada) {
+	public TelefonoDTO obtenerTelefono(int numeroTelefono) {
 		TelefonoDTO telefono = null;
 		Conectar conexion = new Conectar();
 		try {
-			String query = "SELECT * FROM telefono WHERE id_tarjeta_asociada=?";
+			String query = "SELECT * FROM telefono WHERE numero=?";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
-			preparedStatement.setInt(1, idTarjetaAsociada);
+			preparedStatement.setInt(1, numeroTelefono);
 			ResultSet resultado = preparedStatement.executeQuery();
 			if (resultado.next() == true) {
 				int idTelefonoDB = resultado.getInt("id");
@@ -83,6 +83,32 @@ public class TelefonoDAO {
 		return telefono;
 	}
 
+	
+	public TelefonoDTO obtenerTelefonoDadoTarjeta(int idTarjeta) {
+		TelefonoDTO telefono = null;
+		Conectar conexion = new Conectar();
+		try {
+			String query = "SELECT * FROM telefono WHERE id_tarjeta_asociada=?";
+			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query);
+			preparedStatement.setInt(1, idTarjeta);
+			ResultSet resultado = preparedStatement.executeQuery();
+			if (resultado.next() == true) {
+				int idTelefonoDB = resultado.getInt("id");
+				int numeroDB = resultado.getInt("numero");
+				float saldoDB = resultado.getFloat("saldo");
+				int idTarjetaAsociadaBD = resultado.getInt("id_tarjeta_asociada");
+				telefono = new TelefonoDTO(idTelefonoDB, numeroDB, saldoDB, idTarjetaAsociadaBD);
+			}
+			resultado.close();
+			preparedStatement.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+		return telefono;
+	}
 	public boolean eliminarTelefono(int id) throws Exception {
 		boolean eliminado = false;
 		Conectar conexion = new Conectar();

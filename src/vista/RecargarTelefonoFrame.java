@@ -7,6 +7,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import listeners.RecargarBonobusListener;
 import listeners.RecargarOtraCantidadBonobusFrameListener;
@@ -21,6 +22,8 @@ import listeners.RecargarTelefonoListener;
  *
  */
 public class RecargarTelefonoFrame extends JFrame {
+	private JLabel numTelefonoLbl = new JLabel("Escriba el número de télefono");
+	private JTextField numTelefonoTxt = new JTextField();
 	private JLabel elegirLbl = new JLabel("Elige la cantidad a recargar");
 	private Button cincoBtn = new Button("Recargar 5€");
 	private Button diezBtn = new Button("Recargar 10€");
@@ -31,8 +34,13 @@ public class RecargarTelefonoFrame extends JFrame {
 	public RecargarTelefonoFrame() {
 		this.setTitle("Recargar Dinero");
 		this.setSize(500, 500);
+		JPanel panelTelefono = new JPanel();
+		panelTelefono.setLayout(new BoxLayout(panelTelefono, BoxLayout.Y_AXIS));
+		panelTelefono.add(numTelefonoLbl, BorderLayout.NORTH);
+		panelTelefono.add(numTelefonoTxt);
+		panelTelefono.add(elegirLbl);
 		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(elegirLbl, BorderLayout.NORTH);
+		this.getContentPane().add(panelTelefono, BorderLayout.NORTH);
 		JPanel panelIzquierdo = new JPanel();
 		panelIzquierdo.setLayout(new BoxLayout(panelIzquierdo, BoxLayout.Y_AXIS));
 		this.getContentPane().add(panelIzquierdo, BorderLayout.WEST);
@@ -49,14 +57,18 @@ public class RecargarTelefonoFrame extends JFrame {
 		this.pack();
 	}
 
+	public JTextField getNumTelefonoTxt() {
+		return numTelefonoTxt;
+	}
+
 	/***
 	 * Metodo que inicializa los dintintos actionListeners
 	 */
 	public void inicializar() {
 		this.otraCantidadBtn.addActionListener(new RecargarOtraCantidadTelefonoFrameListener());
-		this.cincoBtn.addActionListener(new RecargarTelefonoListener(5));
-		this.diezBtn.addActionListener(new RecargarTelefonoListener(10));
-		this.quinceBtn.addActionListener(new RecargarTelefonoListener(15));
-		this.veinteBtn.addActionListener(new RecargarTelefonoListener(20));
+		this.cincoBtn.addActionListener(new RecargarTelefonoListener(5, this));
+		this.diezBtn.addActionListener(new RecargarTelefonoListener(10, this));
+		this.quinceBtn.addActionListener(new RecargarTelefonoListener(15, this));
+		this.veinteBtn.addActionListener(new RecargarTelefonoListener(20, this));
 	}
 }
