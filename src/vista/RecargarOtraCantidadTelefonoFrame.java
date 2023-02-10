@@ -19,6 +19,7 @@ import listeners.RecargarOtraCantidadTelefonoListener;
  *
  */
 public class RecargarOtraCantidadTelefonoFrame extends JFrame {
+	private int numeroTelefono;
 	private JLabel mensajelbl = new JLabel("Seleccione la cantidad que desea recargar ");
 	private SpinnerModel sm = new SpinnerNumberModel(0, 0, 1000, 5);
 	private JSpinner cantidadSpinner = new JSpinner(sm);
@@ -49,4 +50,12 @@ public class RecargarOtraCantidadTelefonoFrame extends JFrame {
 	public JSpinner getCantidadSpinner() {
 		return cantidadSpinner;
 	}
+	public void setNumeroTelefono(int numeroTelefono) {
+		this.numeroTelefono = numeroTelefono;
+	}
+
+	public int getNumeroTelefono() {
+		return numeroTelefono;
+	}
+
 }

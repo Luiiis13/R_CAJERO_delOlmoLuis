@@ -14,6 +14,7 @@ public class RecargaTelefonoControlador {
 				telefonoDAO.insertarTelefono(telefonoDto);
 			} else {
 				datosTelefono.setSaldo(cantidad + datosTelefono.getSaldo());
+				telefonoDAO.actualizarTelefono(datosTelefono);
 			}
 		} catch (Exception e) {
 			throw e;

@@ -2,6 +2,8 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -53,6 +55,7 @@ public class RecargarTelefonoFrame extends JFrame {
 		panelDerecho.add(veinteBtn);
 		panelDerecho.add(otraCantidadBtn);
 		this.inicializar();
+		this.limitarTamañoNumero();
 		this.setVisible(true);
 		this.pack();
 	}
@@ -65,10 +68,23 @@ public class RecargarTelefonoFrame extends JFrame {
 	 * Metodo que inicializa los dintintos actionListeners
 	 */
 	public void inicializar() {
-		this.otraCantidadBtn.addActionListener(new RecargarOtraCantidadTelefonoFrameListener());
+		this.otraCantidadBtn.addActionListener(new RecargarOtraCantidadTelefonoFrameListener(this));
 		this.cincoBtn.addActionListener(new RecargarTelefonoListener(5, this));
 		this.diezBtn.addActionListener(new RecargarTelefonoListener(10, this));
 		this.quinceBtn.addActionListener(new RecargarTelefonoListener(15, this));
 		this.veinteBtn.addActionListener(new RecargarTelefonoListener(20, this));
+	}
+	/***
+	 * Metodo que sirve para limitar el numero de caracteres en un campo de texto
+	 */
+	private void limitarTamañoNumero() {
+		this.numTelefonoTxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String text = ((JTextField) e.getComponent()).getText();
+				if (text.length() >= 9)
+					e.consume();
+			}
+		});
 	}
 }

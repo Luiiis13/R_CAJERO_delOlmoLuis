@@ -132,6 +132,9 @@ public class ModificarUsuariosAdministradorFrame extends JFrame {
 		this.idUsuario = idUsuario;
 	}
 
+	/***
+	 * Metodo que sirve para limitar el numero de caracteres en un campo de texto
+	 */
 	private void limitarTamañoDni() {
 		this.dniTxt.addKeyListener(new KeyAdapter() {
 			@Override

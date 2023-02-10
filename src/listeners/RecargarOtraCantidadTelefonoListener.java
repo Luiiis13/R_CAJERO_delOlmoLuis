@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import controlador.RecargaTelefonoControlador;
 import controlador.SesionUsuarioControlador;
 import modelo.dao.CuentaDAO;
 import modelo.dao.MovimientoDAO;
@@ -34,12 +35,10 @@ public class RecargarOtraCantidadTelefonoListener implements ActionListener {
 			try {
 				float saldoRestante = (saldoActual - this.cantidad);
 				if (saldoRestante >= 0) {
-					TelefonoDAO telefonoDAO = new TelefonoDAO();
-					int idCuenta = SesionUsuarioControlador.datosCuenta.getId();
+					RecargaTelefonoControlador controladorTelefono = new RecargaTelefonoControlador();
 					int idTarjeta = SesionUsuarioControlador.datosTarjeta.getId();
-					TelefonoDTO datosTelefono = telefonoDAO.obtenerTelefono(idTarjeta);
-					datosTelefono.setSaldo(this.cantidad + datosTelefono.getSaldo());
-					telefonoDAO.actualizarTelefono(datosTelefono);
+					int numeroTelefono = this.frame.getNumeroTelefono();
+					controladorTelefono.recargarTelefono(numeroTelefono, this.cantidad, idTarjeta);
 					SesionUsuarioControlador.datosCuenta.setSaldo(saldoRestante);
 					CuentaDAO cuentaDAO = new CuentaDAO();
 					cuentaDAO.actualizarCuenta(SesionUsuarioControlador.datosCuenta);
