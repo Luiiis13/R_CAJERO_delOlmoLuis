@@ -1,5 +1,11 @@
 package modelo.dto;
-
+/***
+ * Clase que sirve para sacar los datos de Cajero de la base de datos a la
+ * aplicacion
+ * 
+ * @author Luis
+ *
+ */
 public class CajeroDTO {
 
 	private int id;

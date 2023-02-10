@@ -8,10 +8,18 @@ import com.mysql.cj.protocol.Resultset;
 
 import modelo.Conectar;
 import modelo.dto.UsuarioDTO;
-
+/***
+ * Clase que sirve para sacar/eliminar/insertar datos de usuario en la base de datos
+ * @author Luis
+ *
+ */
 public class UsuarioDAO {
-
-	public void insertarUsuario(UsuarioDTO nuevoUsuario) {
+/***
+ * Metodo que sirve para insertar un usuario en la base de datos 
+ * @param nuevoUsuario parametro que es el usuario nuevo que deseamos insertar 
+ * @throws Exception 
+ */
+	public void insertarUsuario(UsuarioDTO nuevoUsuario) throws Exception {
 		Conectar conexion = new Conectar();
 		try {
 			String query = "INSERT INTO usuario(nombre,dni,primer_apellido,es_admin,contraseña) VALUES(?,?,?,?,?)";
@@ -25,12 +33,15 @@ public class UsuarioDAO {
 			preparedStatement.close();
 			// TO DO ver como devolver el id generado en base de datos 
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}
 	}
-
+/***
+ * Metodo que sirve para sacar todos los usuarios de la base de datos 
+ * @return devuelve un array con todos los usuarios 
+ */
 	public ArrayList<UsuarioDTO> obtenerUsuarios() {
 		ArrayList<UsuarioDTO> usuarios = new ArrayList<>();
 		Conectar conexion = new Conectar();
@@ -59,7 +70,11 @@ public class UsuarioDAO {
 		}
 		return usuarios;
 	}
-
+/***
+ * Metodo que sirve para sacar un determinado usuario de la base de datos 
+ * @param id parametro entero que identificara el usuario que nosotros queremos 
+ * @return
+ */
 	public UsuarioDTO obtenerUsuario(int id) {
 		UsuarioDTO usuario = null;
 		Conectar conexion = new Conectar();
@@ -87,8 +102,13 @@ public class UsuarioDAO {
 		}
 		return usuario;
 	}
-
-	public boolean eliminarUsuario(int id) {
+/***
+ * Metodo que sirve para eliminar un determinado usuario de la base de datos 
+ * @param id variable int que determinara el usuario que queremos 
+ * @return devolvera un booleano 
+ * @throws Exception
+ */
+	public boolean eliminarUsuario(int id) throws Exception {
 		boolean eliminar = false;
 		Conectar conexion = new Conectar();
 		try {
@@ -100,14 +120,19 @@ public class UsuarioDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}
 		return eliminar;
 	}
-
-	public boolean actualizarUsuario(UsuarioDTO nuevoUsuario) {
+/***
+ * Metodo por el cual actualizaremos un usuario de la base de datos
+ * @param nuevoUsuario
+ * @return
+ * @throws Exception
+ */
+	public boolean actualizarUsuario(UsuarioDTO nuevoUsuario) throws Exception {
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
 		try {
@@ -124,7 +149,7 @@ public class UsuarioDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}

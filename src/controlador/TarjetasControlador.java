@@ -44,7 +44,7 @@ public class TarjetasControlador {
 
 	}
 
-	public void eliminarTarjetas(int idTarjeta) {
+	public void eliminarTarjetas(int idTarjeta) throws Exception {
 		this.tarjetaDAO.eliminarTarjeta(idTarjeta);
 	}
 

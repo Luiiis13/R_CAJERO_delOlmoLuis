@@ -33,11 +33,11 @@ public class CajeroControlador {
 		}
 	}
 
-	public void insertarCajero(CajeroDTO cajeroDTO) {
+	public void insertarCajero(CajeroDTO cajeroDTO) throws Exception {
 		this.cajeroDAO.insertarCajero(cajeroDTO);
 	}
 	
-	public void eliminarCajero(int idCajero) {
+	public void eliminarCajero(int idCajero) throws Exception {
 		this.cajeroDAO.eliminarCajero(idCajero);
 	}
 	public void mostrarInterfazEdicion(CajeroDTO cajeroDTO) {
@@ -45,7 +45,7 @@ public class CajeroControlador {
 		frameModificar.setUbicacion(cajeroDTO.getUbicacion());
 		frameModificar.setIdCajero(cajeroDTO.getId());
 	}
-	public void actualizarCajero(CajeroDTO cajeroDTO) {
+	public void actualizarCajero(CajeroDTO cajeroDTO) throws Exception {
 		this.cajeroDAO.actualizarCajero(cajeroDTO);
 	}
 }

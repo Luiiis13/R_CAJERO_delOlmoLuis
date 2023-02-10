@@ -31,7 +31,7 @@ public EliminarTarjetasAdministradorListener(AdministrarTarjetasFrame frame) {
 				int confirmado = JOptionPane.showConfirmDialog(this.eliminarTarjetasFrame,
 						"¿Está seguro que desea eliminar las tarjetas?");
 				if (JOptionPane.OK_OPTION == confirmado) {
-					this.eliminarCajeros(tarjetasSeleccionados);
+					this.eliminarTarjetas(tarjetasSeleccionados);
 					JOptionPane.showMessageDialog(null, "Tarjetas eliminadas correctamente");
 				} else {
 					JOptionPane.showMessageDialog(null, "Operación cancelada");
@@ -46,7 +46,7 @@ public EliminarTarjetasAdministradorListener(AdministrarTarjetasFrame frame) {
 		}
 	}
 
-	private void eliminarCajeros(ArrayList<TarjetaFila> tarjetasSeleccionados) {
+	private void eliminarTarjetas(ArrayList<TarjetaFila> tarjetasSeleccionados) throws Exception {
 		TarjetasControlador controladorTarjetas = new TarjetasControlador();
 		for (int i = 0; i < tarjetasSeleccionados.size(); i++) {
 			TarjetaFila filaTarjetas = tarjetasSeleccionados.get(i);

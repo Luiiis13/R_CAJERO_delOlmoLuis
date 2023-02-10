@@ -9,7 +9,7 @@ import modelo.Conectar;
 import modelo.dto.CajeroDTO;;
 
 public class CajeroDAO {
-	public void insertarCajero(CajeroDTO nuevoCajero) {
+	public void insertarCajero(CajeroDTO nuevoCajero) throws Exception {
 		Conectar conexion = new Conectar();
 
 		try {
@@ -20,7 +20,7 @@ public class CajeroDAO {
 			preparedStatement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}
@@ -74,7 +74,7 @@ public class CajeroDAO {
 		return cajero;
 	}
 
-	public boolean eliminarCajero(int id) {
+	public boolean eliminarCajero(int id) throws Exception {
 		boolean eliminado = false;
 		Conectar conexion = new Conectar();
 		try {
@@ -86,14 +86,14 @@ public class CajeroDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}
 		return eliminado;
 	}
 
-	public boolean actualizarCajero(CajeroDTO nuevoCajero) {
+	public boolean actualizarCajero(CajeroDTO nuevoCajero) throws Exception {
 
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
@@ -107,7 +107,7 @@ public class CajeroDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}

@@ -34,11 +34,11 @@ public class UsuariosControlador {
 		}
 	}
 
-	public void insertar(UsuarioDTO nuevoUsuario) {
+	public void insertar(UsuarioDTO nuevoUsuario) throws Exception {
 		this.usuarioDAO.insertarUsuario(nuevoUsuario);
 	}
 
-	public void eliminarUsuarios(int idUsuario) {
+	public void eliminarUsuarios(int idUsuario) throws Exception {
 		this.usuarioDAO.eliminarUsuario(idUsuario);
 	}
 
@@ -51,7 +51,7 @@ public class UsuariosControlador {
 		frameModificar.setIsAdmin(usuarioDTO.getEsAdmin());
 		frameModificar.setIdUsuario(usuarioDTO.getId());
 	}
-	public void actualizarUsuario(UsuarioDTO usuarioDTO) {
+	public void actualizarUsuario(UsuarioDTO usuarioDTO) throws Exception {
 		this.usuarioDAO.actualizarUsuario(usuarioDTO);
 	}
 }

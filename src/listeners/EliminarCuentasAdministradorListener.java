@@ -46,7 +46,7 @@ public EliminarCuentasAdministradorListener(AdministrarCuentasFrame frame) {
 		}
 	}
 
-	private void eliminarCuentas(ArrayList<CuentasFila> cuentasSeleccionadas) {
+	private void eliminarCuentas(ArrayList<CuentasFila> cuentasSeleccionadas) throws Exception {
 		CuentasControlador controladorCuentas = new CuentasControlador();
 		for (int i = 0; i < cuentasSeleccionadas.size(); i++) {
 			CuentasFila filaCuenta = cuentasSeleccionadas.get(i);

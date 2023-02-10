@@ -99,7 +99,7 @@ public class TarjetaDAO {
 		return tarjeta;
 	}
 
-	public boolean eliminarTarjeta(int id) {
+	public boolean eliminarTarjeta(int id) throws Exception {
 		boolean eliminado = false;
 		Conectar conexion = new Conectar();
 		try {
@@ -111,7 +111,7 @@ public class TarjetaDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}

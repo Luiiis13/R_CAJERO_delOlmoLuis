@@ -2,11 +2,11 @@ package modelo.dto;
 
 import java.sql.Date;
 /***
- * Clase que sirve para sacar los datos de usuario de la base de datos a la aplicacion 
+ * Clase que sirve para sacar los datos de la sesion actual cuando entras con la tarjeta (opción comenzar) de la base de datos a la aplicacion 
  * @author Luis
  *
  */
-public class SesionUsuarioDTO {
+public class SesionTarjetaDTO {
 	private String numeroTarjeta;
 	private int pin;
 	private Date fechaExpiracion;

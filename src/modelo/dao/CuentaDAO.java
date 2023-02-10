@@ -9,7 +9,7 @@ import modelo.Conectar;
 import modelo.dto.CuentaDTO;
 
 public class CuentaDAO {
-	public void insertarCuenta(CuentaDTO nuevacuenta) {
+	public void insertarCuenta(CuentaDTO nuevacuenta) throws Exception {
 		Conectar conexion = new Conectar();
 		try {
 			String query = "INSERT INTO Cuenta(numero,iban,saldo,id_usuario) VALUES(?,?,?,?)";
@@ -22,7 +22,7 @@ public class CuentaDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}
@@ -83,7 +83,7 @@ public class CuentaDAO {
 	}
 
 
-	public boolean eliminarCuenta(int id) {
+	public boolean eliminarCuenta(int id) throws Exception {
 		boolean eliminado = false;
 		Conectar conexion = new Conectar();
 		try {
@@ -95,14 +95,14 @@ public class CuentaDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}
 		return eliminado;
 	}
 
-	public boolean actualizarCuenta(CuentaDTO nuevaCuenta) {
+	public boolean actualizarCuenta(CuentaDTO nuevaCuenta) throws Exception {
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
 		try {
@@ -118,7 +118,7 @@ public class CuentaDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}

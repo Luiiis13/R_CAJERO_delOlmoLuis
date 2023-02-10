@@ -49,7 +49,7 @@ public class EliminarCajeroAdministradorListener implements ActionListener {
 		}
 	}
 
-	private void eliminarCajeros(ArrayList<CajeroFila> cajerosSeleccionados) {
+	private void eliminarCajeros(ArrayList<CajeroFila> cajerosSeleccionados) throws Exception {
 		CajeroControlador controladoCajero = new CajeroControlador();
 		for (int i = 0; i < cajerosSeleccionados.size(); i++) {
 			CajeroFila filaCajero = cajerosSeleccionados.get(i);

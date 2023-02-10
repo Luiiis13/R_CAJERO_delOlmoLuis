@@ -10,7 +10,7 @@ import modelo.dto.BonobusDTO;
 import modelo.dto.TelefonoDTO;
 
 public class TelefonoDAO {
-	public void insertarTelefono(TelefonoDTO nuevoTelefono) {
+	public void insertarTelefono(TelefonoDTO nuevoTelefono) throws Exception {
 		Conectar conexion = new Conectar();
 
 		try {
@@ -23,7 +23,7 @@ public class TelefonoDAO {
 			preparedStatement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}
@@ -83,7 +83,7 @@ public class TelefonoDAO {
 		return telefono;
 	}
 
-	public boolean eliminarTelefono(int id) {
+	public boolean eliminarTelefono(int id) throws Exception {
 		boolean eliminado = false;
 		Conectar conexion = new Conectar();
 		try {
@@ -95,14 +95,14 @@ public class TelefonoDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}
 		return eliminado;
 	}
 
-	public boolean actualizarTelefono(TelefonoDTO nuevoTelefono) {
+	public boolean actualizarTelefono(TelefonoDTO nuevoTelefono) throws Exception {
 
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
@@ -119,7 +119,7 @@ public class TelefonoDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}

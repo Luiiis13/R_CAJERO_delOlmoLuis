@@ -44,7 +44,7 @@ private InsertarCajeroAdministradorFrame insertarCajeroFrame;
 
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
-					"Error haciendo la operación: Verifique que el numero de cuenta es numérico", "Error",
+					"Error haciendo la operación: Verifique que la ubicación es string", "Error",
 					JOptionPane.ERROR_MESSAGE);
 			valido = false;
 		}

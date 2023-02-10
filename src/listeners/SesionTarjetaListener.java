@@ -12,10 +12,10 @@ import modelo.dao.SesionDAO;
 import modelo.dao.TarjetaDAO;
 import modelo.dao.UsuarioDAO;
 import modelo.dto.CuentaDTO;
-import modelo.dto.SesionUsuarioDTO;
+import modelo.dto.SesionTarjetaDTO;
 import modelo.dto.TarjetaDTO;
 import modelo.dto.UsuarioDTO;
-import vista.SesionUsuarioFrame;
+import vista.SesionTarjetaFrame;
 
 /***
  * Clase que es llamada por el controlador de sesion controlador para validar
@@ -24,11 +24,11 @@ import vista.SesionUsuarioFrame;
  * @author Luis
  *
  */
-public class SesionUsuarioListener implements ActionListener {
+public class SesionTarjetaListener implements ActionListener {
 	private SesionDAO sesionDAO;
-	private SesionUsuarioFrame sesionVista;
+	private SesionTarjetaFrame sesionVista;
 
-	public SesionUsuarioListener(SesionDAO nuevaSesionDAO, SesionUsuarioFrame Sesion) {
+	public SesionTarjetaListener(SesionDAO nuevaSesionDAO, SesionTarjetaFrame Sesion) {
 		this.sesionDAO = nuevaSesionDAO;
 		this.sesionVista = Sesion;
 	}
@@ -46,7 +46,7 @@ public class SesionUsuarioListener implements ActionListener {
 		try {
 			String numeroTarjeta = this.sesionVista.getNumeroTarjeta().getText();
 			int pin = Integer.parseInt(this.sesionVista.getPin().getText());
-			SesionUsuarioDTO sesionDTO = this.sesionDAO.verificarSesion(numeroTarjeta);
+			SesionTarjetaDTO sesionDTO = this.sesionDAO.verificarSesion(numeroTarjeta);
 
 			if (sesionDTO.getId() == 0) {
 				JOptionPane.showMessageDialog(null, "Número incorrecto", "Error", JOptionPane.ERROR_MESSAGE);

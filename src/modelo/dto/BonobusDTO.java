@@ -1,5 +1,11 @@
 package modelo.dto;
-
+/***
+ * Clase que sirve para sacar los datos de Bonobus de la base de datos a la
+ * aplicacion
+ * 
+ * @author Luis
+ *
+ */
 public class BonobusDTO {
 	private int id;
 	private float saldo;

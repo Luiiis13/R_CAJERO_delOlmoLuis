@@ -10,7 +10,7 @@ import modelo.Conectar;
 import modelo.dto.MovimientoDTO;
 
 public class MovimientoDAO {
-	public void insertarMovimiento(MovimientoDTO nuevoMovimiento) {
+	public void insertarMovimiento(MovimientoDTO nuevoMovimiento) throws Exception {
 		Conectar conexion = new Conectar();
 		try {
 			String query = "INSERT INTO Movimiento(tipo,fecha_del_movimiento,id_tarjeta_asociada) VALUES(?,?,?)";
@@ -24,7 +24,7 @@ public class MovimientoDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}
@@ -58,7 +58,7 @@ public class MovimientoDAO {
 		return Movimientos;
 	}
 
-	public boolean eliminarMovimiento(int id) {
+	public boolean eliminarMovimiento(int id) throws Exception {
 		boolean eliminado = false;
 		Conectar conexion = new Conectar();
 		try {
@@ -70,7 +70,7 @@ public class MovimientoDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}

@@ -1,5 +1,13 @@
 package modelo.dto;
 
+/***
+ * Clase que sirve para sacar los datos de la sesion actual cuando entras con el
+ * usuario (opción comenzar como administrador) de la base de datos a la
+ * aplicacion
+ * 
+ * @author Luis
+ *
+ */
 public class SesionAdministradorDTO {
 	private int id;
 	private String nombre;
@@ -10,11 +18,11 @@ public class SesionAdministradorDTO {
 
 	}
 
-	public SesionAdministradorDTO(int id, String nombre, String contraseña,String dni) {
+	public SesionAdministradorDTO(int id, String nombre, String contraseña, String dni) {
 		this.id = id;
 		this.nombre = nombre;
 		this.contraseña = contraseña;
-		this.dni=dni;
+		this.dni = dni;
 	}
 
 	public String getDni() {

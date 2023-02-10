@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class SesionUsuarioFrame extends JFrame {
+public class SesionTarjetaFrame extends JFrame {
 	/***
 	 * Clase que crea la vista para introducir el numero de tarjeta junto a su
 	 * contraseña
@@ -21,7 +21,7 @@ public class SesionUsuarioFrame extends JFrame {
 	private JButton validarBtn = new JButton("Validar");
 	private JTextField numeroTarjeta = new JTextField();
 
-	public SesionUsuarioFrame() {
+	public SesionTarjetaFrame() {
 
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

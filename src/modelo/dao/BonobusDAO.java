@@ -9,7 +9,7 @@ import modelo.Conectar;
 import modelo.dto.BonobusDTO;
 
 public class BonobusDAO {
-	public void insertarbonobus(BonobusDTO nuevoBonobus) {
+	public void insertarbonobus(BonobusDTO nuevoBonobus) throws Exception {
 		Conectar conexion = new Conectar();
 
 		try {
@@ -21,7 +21,7 @@ public class BonobusDAO {
 			preparedStatement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}
@@ -79,7 +79,7 @@ public class BonobusDAO {
 		return bonobus;
 	}
 
-	public boolean eliminarBonobus(int id) {
+	public boolean eliminarBonobus(int id) throws Exception {
 		boolean eliminado = false;
 		Conectar conexion = new Conectar();
 		try {
@@ -91,14 +91,14 @@ public class BonobusDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}
 		return eliminado;
 	}
 
-	public boolean actualizarBonobus(BonobusDTO nuevoBonobus) {
+	public boolean actualizarBonobus(BonobusDTO nuevoBonobus) throws Exception {
 
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
@@ -114,7 +114,7 @@ public class BonobusDAO {
 			preparedStatement.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			conexion.cerrarConexion();
 		}

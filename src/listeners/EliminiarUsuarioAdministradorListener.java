@@ -37,7 +37,7 @@ public class EliminiarUsuarioAdministradorListener implements ActionListener{
 						"¿Está seguro que desea eliminar los usuarios?");
 				if (JOptionPane.OK_OPTION == confirmado) {
 					this.eliminarUsuariosFrame.setVisible(false);
-					this.eliminarCajeros(usuariosSeleccionados);
+					this.eliminarUsuarios(usuariosSeleccionados);
 					JOptionPane.showMessageDialog(null, "Usuarios eliminados correctamente");
 				} else {
 					JOptionPane.showMessageDialog(null, "Operación cancelada");
@@ -52,7 +52,7 @@ public class EliminiarUsuarioAdministradorListener implements ActionListener{
 		}
 	}
 
-	private void eliminarCajeros(ArrayList<UsuarioFila> usuariosSeleccionados) {
+	private void eliminarUsuarios(ArrayList<UsuarioFila> usuariosSeleccionados) throws Exception {
 		UsuariosControlador controladorUsuarios = new UsuariosControlador();
 		for (int i = 0; i < usuariosSeleccionados.size(); i++) {
 			UsuarioFila filaUsuario = usuariosSeleccionados.get(i);

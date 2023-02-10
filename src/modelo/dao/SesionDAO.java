@@ -6,13 +6,13 @@ import java.sql.SQLException;
 
 import modelo.Conectar;
 import modelo.dto.SesionAdministradorDTO;
-import modelo.dto.SesionUsuarioDTO;
+import modelo.dto.SesionTarjetaDTO;
 
 public class SesionDAO {
 
-	public SesionUsuarioDTO verificarSesion(String numeroTarjeta) {
+	public SesionTarjetaDTO verificarSesion(String numeroTarjeta) {
 
-		SesionUsuarioDTO sesionUsuarioDTO = new SesionUsuarioDTO();
+		SesionTarjetaDTO sesionUsuarioDTO = new SesionTarjetaDTO();
 		sesionUsuarioDTO.setNumeroTarjeta(numeroTarjeta);
 		Conectar conexion = new Conectar();
 		try {

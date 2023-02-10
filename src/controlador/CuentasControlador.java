@@ -32,10 +32,10 @@ public class CuentasControlador {
 	public CuentaDTO obtenerCuentaDadoNumero(String numero) {
 		return this.cuentaDAO.obtenerCuentaDadoNumero(numero);
 	}
-	public void insertarCuenta(CuentaDTO cuentaDTO) {
+	public void insertarCuenta(CuentaDTO cuentaDTO) throws Exception {
 		this.cuentaDAO.insertarCuenta(cuentaDTO);
 	}
-	public void eliminarCuenta(int idCuenta) {
+	public void eliminarCuenta(int idCuenta) throws Exception {
 		this.cuentaDAO.eliminarCuenta(idCuenta);
 	}
 	public void mostrarInterfazEdicion(CuentaDTO cuentaDTO) {
@@ -47,7 +47,7 @@ public class CuentasControlador {
 		frameModificar.setIdCuenta(cuentaDTO.getId());
 	}
 
-	public void actualizarCuenta(CuentaDTO cuentaDTO) {
+	public void actualizarCuenta(CuentaDTO cuentaDTO) throws Exception {
 		this.cuentaDAO.actualizarCuenta(cuentaDTO);
 	}
 
