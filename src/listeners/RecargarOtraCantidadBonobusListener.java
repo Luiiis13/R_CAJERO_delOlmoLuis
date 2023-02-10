@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import controlador.RecargarBonobusControlador;
 import controlador.SesionUsuarioControlador;
 import modelo.dao.BonobusDAO;
 import modelo.dao.CuentaDAO;
@@ -36,13 +37,10 @@ public class RecargarOtraCantidadBonobusListener implements ActionListener {
 			try {
 				float saldoRestante = (saldoActual - this.cantidad);
 				if (saldoRestante >= 0) {
-					BonobusDAO bonobusDAO = new BonobusDAO();
 					int idCuenta = SesionUsuarioControlador.datosCuenta.getId();
 					int idTarjeta = SesionUsuarioControlador.datosTarjeta.getId();
-
-					BonobusDTO datosBonobus = bonobusDAO.obtenerBonobus(idTarjeta);
-					datosBonobus.setSaldo(this.cantidad + datosBonobus.getSaldo());
-					bonobusDAO.actualizarBonobus(datosBonobus);
+					RecargarBonobusControlador controladorBonobus = new RecargarBonobusControlador();
+					controladorBonobus.recargarBonobus(this.cantidad, idTarjeta);
 					SesionUsuarioControlador.datosCuenta.setSaldo(saldoRestante);
 					CuentaDAO cuentaDAO = new CuentaDAO();
 					cuentaDAO.actualizarCuenta(SesionUsuarioControlador.datosCuenta);

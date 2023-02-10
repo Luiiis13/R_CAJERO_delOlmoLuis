@@ -11,6 +11,7 @@ public class RecargarBonobusBotonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		bonobusFrame = new RecargarBonobusFrame();
+		
 	}
 
 }

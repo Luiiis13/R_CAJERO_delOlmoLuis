@@ -5,11 +5,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import controlador.RecargarBonobusControlador;
 import controlador.SesionUsuarioControlador;
-import modelo.dao.BonobusDAO;
 import modelo.dao.CuentaDAO;
 import modelo.dao.MovimientoDAO;
-import modelo.dto.BonobusDTO;
 import modelo.dto.CuentaDTO;
 import modelo.dto.MovimientoDTO;
 
@@ -25,11 +24,9 @@ public class RecargarBonobusListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		try {
-			BonobusDAO bonobusDAO = new BonobusDAO();
+			
 			int idCuenta = SesionUsuarioControlador.datosCuenta.getId();
 			int idTarjeta = SesionUsuarioControlador.datosTarjeta.getId();
-			BonobusDTO datosBonobus = bonobusDAO.obtenerBonobus(idTarjeta);
-			datosBonobus.setSaldo(this.cantidad + datosBonobus.getSaldo());
 			CuentaDAO cuentaDAO = new CuentaDAO();
 			CuentaDTO datosDeCuenta = cuentaDAO.obtenerCuenta(idCuenta);
 			float nuevoSaldo = datosDeCuenta.getSaldo() - this.cantidad;
@@ -38,9 +35,9 @@ public class RecargarBonobusListener implements ActionListener {
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
+			RecargarBonobusControlador controladorBonobus = new RecargarBonobusControlador();
+			controladorBonobus.recargarBonobus(this.cantidad, idTarjeta);
 			SesionUsuarioControlador.datosCuenta.setSaldo(nuevoSaldo);
-
-			bonobusDAO.actualizarBonobus(datosBonobus);
 			cuentaDAO.actualizarCuenta(SesionUsuarioControlador.datosCuenta);
 			MovimientoDAO movimientoDAO = new MovimientoDAO();
 			long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
