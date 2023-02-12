@@ -18,7 +18,6 @@ import listeners.IngresarOtraCantidadDineroListener;
  * @author Luis
  *
  */
-//Clase la cual implementa el frame de ingresar dinero usuario cuando se pulsa el boton 
 public class IngresarOtraCantidadFrame extends JFrame {
 	private JLabel mensajelbl = new JLabel("Seleccione la cantidad que desea ingresar ");
 	private SpinnerModel sm = new SpinnerNumberModel(0, 0, 1000, 5);

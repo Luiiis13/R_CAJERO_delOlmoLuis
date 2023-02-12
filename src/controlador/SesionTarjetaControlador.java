@@ -8,14 +8,14 @@ import modelo.dto.UsuarioDTO;
 import vista.SesionTarjetaFrame;
 
 /***
- * Clase que tiene como atributos staticos los diferentes datos para poder
+ * Clase que tiene como atributos estaticos los diferentes datos para poder
  * llamarlos desde otras clases y que cuando das al boton de comenzar se cierra
  * la pantalla inicial y crea un nuevo frame de la clase sesion.
  * 
  * @author Luis
  *
  */
-public class SesionUsuarioControlador {
+public class SesionTarjetaControlador {
 	private SesionTarjetaFrame sesionVista = new SesionTarjetaFrame();
 	private SesionDAO sesionDAO = new SesionDAO();
 	private SesionTarjetaListener listener;
@@ -23,7 +23,7 @@ public class SesionUsuarioControlador {
 	public static CuentaDTO datosCuenta;
 	public static int intentosFallidos = 0;
 
-	public SesionUsuarioControlador() {
+	public SesionTarjetaControlador() {
 		this.inicializarListener();
 	}
 

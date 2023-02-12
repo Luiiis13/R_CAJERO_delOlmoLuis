@@ -8,8 +8,17 @@ import java.util.ArrayList;
 
 import modelo.Conectar;
 import modelo.dto.MovimientoDTO;
-
+/***
+ * Clase que sirve para sacar/eliminar/insertar datos de movimiento en la base de datos
+ * @author Luis
+ *
+ */
 public class MovimientoDAO {
+	/***
+	 * Metodo que sirve para insertar un movimiento en la base de datos 
+	 * @param nuevoMovimiento parametro que es el movimiento nuevo que deseamos insertar 
+	 * @throws Exception 
+	 */
 	public void insertarMovimiento(MovimientoDTO nuevoMovimiento) throws Exception {
 		Conectar conexion = new Conectar();
 		try {
@@ -30,7 +39,13 @@ public class MovimientoDAO {
 		}
 	}
 
-	
+	/***
+	 * Metodo que sirve para sacar un determinado movimiento de la base de datos
+	 * 
+	 * @param idTarjetaAsociada parametro entero que identificara el movimiento que
+	 *                       nosotros queremos
+	 * @return
+	 */
 	public ArrayList<MovimientoDTO> obtenerMovimiento(int idTarjetaAsociada) {
 		ArrayList<MovimientoDTO> Movimientos = new ArrayList<>();
 		Conectar conexion = new Conectar();
@@ -57,7 +72,12 @@ public class MovimientoDAO {
 		}
 		return Movimientos;
 	}
-
+	/***
+	 * Metodo que sirve para eliminar un determinado movimiento de la base de datos 
+	 * @param id variable int que determinara la tarjeta que queremos 
+	 * @return devolvera un booleano 
+	 * @throws Exception
+	 */
 	public boolean eliminarMovimiento(int id) throws Exception {
 		boolean eliminado = false;
 		Conectar conexion = new Conectar();

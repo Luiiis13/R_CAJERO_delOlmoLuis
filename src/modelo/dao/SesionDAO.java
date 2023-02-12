@@ -7,9 +7,17 @@ import java.sql.SQLException;
 import modelo.Conectar;
 import modelo.dto.SesionAdministradorDTO;
 import modelo.dto.SesionTarjetaDTO;
-
+/***
+	 * Clase que sirve para sacar datos de la base de datos de la sesion que iniciaremos 
+	 * @author Luis
+	 *
+	 */ 
 public class SesionDAO {
-
+	/***
+	 * Metodo que sirve para verificar la sesion con tarjeta 
+	 * @param numeroTarjeta parametro string para verificar la tarjeta
+	 * @return
+	 */
 	public SesionTarjetaDTO verificarSesion(String numeroTarjeta) {
 
 		SesionTarjetaDTO sesionUsuarioDTO = new SesionTarjetaDTO();
@@ -36,7 +44,11 @@ public class SesionDAO {
 		}
 		return sesionUsuarioDTO;
 	}
-
+/***
+ * Metodo que sirve para verificar la sesion del administrador con los determinados datos 
+ * @param dni String para sacar el usuario dterminado 
+ * @return
+ */
 	public SesionAdministradorDTO verificarSesionAdministrador(String dni) {
 		SesionAdministradorDTO sesionAdministradorDTO = new SesionAdministradorDTO();
 		Conectar conexion = new Conectar();

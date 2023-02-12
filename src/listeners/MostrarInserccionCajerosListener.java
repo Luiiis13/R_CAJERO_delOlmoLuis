@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import vista.InsertarCajeroAdministradorFrame;
 /***
- * 
+ * Clase que saca la vista del frame de insertar cajeros 
  * @author Luis
  *
  */

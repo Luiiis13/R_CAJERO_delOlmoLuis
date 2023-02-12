@@ -1,7 +1,11 @@
 package controlador;
 
 import vista.PantallaInicioFrame;
-
+/***
+ * clase que sirve para crear el frame de inicio
+ * @author Luis
+ *
+ */
 public class PantallaInicioControlador {
 	private PantallaInicioFrame frame;
 

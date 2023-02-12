@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import listeners.CancelarBotonListener;
 import listeners.EditarCajeroAdministradorListener;
 
 /***
@@ -37,6 +38,7 @@ public class ModificarCajerosAdministradorFrame extends JFrame {
 		JPanel contenedorBtn = new JPanel();
 		contenedorBtn.setAlignmentX(CENTER_ALIGNMENT);
 		contenedorBtn.add(aceptarBtn);
+		contenedorBtn.add(cancelarBtn);
 		this.getContentPane().add(contenedorBtn);
 		this.inicializar();
 		this.setVisible(true);
@@ -61,6 +63,8 @@ public class ModificarCajerosAdministradorFrame extends JFrame {
 
 	private void inicializar() {
 		this.aceptarBtn.addActionListener(new EditarCajeroAdministradorListener(this));
+		this.cancelarBtn.addActionListener(new CancelarBotonListener(this));
+
 	}
 
 	/***

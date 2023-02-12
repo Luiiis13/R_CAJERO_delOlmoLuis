@@ -2,24 +2,26 @@ package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 
 import javax.swing.JOptionPane;
 
 import controlador.CuentasControlador;
-import controlador.TarjetasControlador;
 import modelo.dto.CuentaDTO;
-import modelo.dto.TarjetaDTO;
 import vista.ModificarCuentaAdministradorFrame;
-import vista.ModificarTarjetaAdministradorFrame;
-
+/***
+ * Clase que sirve para editar los datos de una cuenta y actualizarla 
+ * @author Luis
+ *
+ */
 public class EditarCuentasAdministradorListener implements ActionListener {
 	private ModificarCuentaAdministradorFrame editarCuentasFrame;
 
 	public EditarCuentasAdministradorListener(ModificarCuentaAdministradorFrame frame) {
 		this.editarCuentasFrame = frame;
 	}
-
+	/***
+	 * Accion que sirve para actualizar los datos de la cuenta a modificar
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -42,7 +44,12 @@ public class EditarCuentasAdministradorListener implements ActionListener {
 			e2.printStackTrace();
 		}
 	}
-
+	/***
+	 * Metodo que sirve para validar que los datos a insertar en los campos son
+	 * correctos
+	 * 
+	 * @return devuelve un booleano
+	 */
 	private boolean validarCampos() {
 		boolean valido = true;
 		String numeroCuentaTxt = this.editarCuentasFrame.getNumeroTxt().getText();

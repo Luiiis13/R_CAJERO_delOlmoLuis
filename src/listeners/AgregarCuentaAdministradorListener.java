@@ -9,14 +9,20 @@ import controlador.CuentasControlador;
 import controlador.SesionAdministradorControlador;
 import modelo.dto.CuentaDTO;
 import vista.InsertarCuentaAdministradorFrame;
-
+/***
+ * Clase que sirve para agregar una nueva cuenta a la base de datos 
+ * @author Luis
+ *
+ */
 public class AgregarCuentaAdministradorListener implements ActionListener {
 	private InsertarCuentaAdministradorFrame insertarCuentaFrame;
 
 	public AgregarCuentaAdministradorListener(InsertarCuentaAdministradorFrame insertarCuentaFrame) {
 		this.insertarCuentaFrame = insertarCuentaFrame;
 	}
-
+	/***
+	 * Accion que sirve para ingresar los distintos datos de una cuenta y posteriormente confirmar su inserccion 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -37,7 +43,10 @@ public class AgregarCuentaAdministradorListener implements ActionListener {
 			e2.printStackTrace();
 		}
 	}
-
+	/***
+	 * Metodo que sirve para validar que los campos rellenados son validos 
+	 * @return 
+	 */ 
 	private boolean validarCampos() {
 		boolean valido = true;
 		String numeroCuentaTxt = this.insertarCuentaFrame.getNumeroTxt().getText();

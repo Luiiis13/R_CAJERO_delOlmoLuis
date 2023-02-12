@@ -7,7 +7,11 @@ import javax.swing.JOptionPane;
 
 import vista.RecargarOtraCantidadTelefonoFrame;
 import vista.RecargarTelefonoFrame;
-
+/***
+ * Clase que sirve para traspasar el numero al frame de recargarOtraCantidad
+ * @author Luis
+ *
+ */
 public class RecargarOtraCantidadTelefonoFrameListener implements ActionListener {
 	private RecargarOtraCantidadTelefonoFrame frame;
 	private RecargarTelefonoFrame recargarTelefonoFrame;
@@ -15,7 +19,9 @@ public class RecargarOtraCantidadTelefonoFrameListener implements ActionListener
 	public RecargarOtraCantidadTelefonoFrameListener(RecargarTelefonoFrame recargarTelefonoFrame) {
 		this.recargarTelefonoFrame = recargarTelefonoFrame;
 	}
-
+/***
+ * Acción que sirve para traspasar el número al frame correspondiente  
+ */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		boolean validar = this.validarDatos();
@@ -27,7 +33,10 @@ public class RecargarOtraCantidadTelefonoFrameListener implements ActionListener
 			this.recargarTelefonoFrame.setVisible(false);
 		}
 	}
-
+/***
+ * Metodo que sirve para validar que el número introducido es válido 
+ * @return
+ */
 	private boolean validarDatos() {
 		boolean valido = true;
 		String numeroTelefono = this.recargarTelefonoFrame.getNumTelefonoTxt().getText();

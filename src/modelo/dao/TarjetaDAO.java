@@ -9,14 +9,23 @@ import java.util.ArrayList;
 
 import modelo.Conectar;
 import modelo.dto.TarjetaDTO;
-
+/***
+ * Clase que sirve para sacar/eliminar/insertar datos de tarjeta en la base de datos
+ * @author Luis
+ *
+ */
 public class TarjetaDAO {
+	/***
+	 * Metodo que sirve para insertar una tarjeta en la base de datos 
+	 * @param nuevaTarjeta parametro que es el telefono nuevo que deseamos insertar 
+	 * @throws Exception 
+	 */
 	public void insertarTarjeta(TarjetaDTO nuevaTarjeta) throws Exception {
 		Conectar conexion = new Conectar();
 		try {
 			String query = "INSERT INTO Tarjeta(numero,fecha_expiracion,cvv,pin,bloqueado,id_cuenta_asociada) VALUES(?,?,?,?,?,?)";
 			PreparedStatement preparedStatement = conexion.getConnect().prepareStatement(query,
-					Statement.RETURN_GENERATED_KEYS);
+					Statement.RETURN_GENERATED_KEYS); // Para retornar el id del registro recien insertado (Se necesita para bonobus)
 			preparedStatement.setString(1, nuevaTarjeta.getNumero());
 			preparedStatement.setDate(2, nuevaTarjeta.getFecha_expiracion());
 			preparedStatement.setInt(3, nuevaTarjeta.getCvv());
@@ -38,7 +47,10 @@ public class TarjetaDAO {
 			conexion.cerrarConexion();
 		}
 	}
-
+	/***
+	 * Metodo que sirve para sacar todas los tarjetas de la base de datos 
+	 * @return devuelve un array con todos los tarjetas 
+	 */
 	public ArrayList<TarjetaDTO> obtenerTarjetas() {
 		ArrayList<TarjetaDTO> tarjetas = new ArrayList<>();
 		Conectar conexion = new Conectar();
@@ -68,7 +80,13 @@ public class TarjetaDAO {
 		}
 		return tarjetas;
 	}
-
+	/***
+	 * Metodo que sirve para sacar una determinada tarjeta de la base de datos
+	 * 
+	 * @param id parametro entero que identificara la tarjeta que
+	 *                       nosotros queremos
+	 * @return
+	 */
 	public TarjetaDTO obtenerTarjeta(int id) {
 		TarjetaDTO tarjeta = null;
 		Conectar conexion = new Conectar();
@@ -98,7 +116,12 @@ public class TarjetaDAO {
 		}
 		return tarjeta;
 	}
-
+	/***
+	 * Metodo que sirve para eliminar una determinada tarjeta de la base de datos 
+	 * @param id variable int que determinara la tarjeta que queremos 
+	 * @return devolvera un booleano 
+	 * @throws Exception
+	 */
 	public boolean eliminarTarjeta(int id) throws Exception {
 		boolean eliminado = false;
 		Conectar conexion = new Conectar();
@@ -117,7 +140,12 @@ public class TarjetaDAO {
 		}
 		return eliminado;
 	}
-
+	/***
+	 * Metodo por el cual actualizaremos una tarjeta de la base de datos
+	 * @param nuevaTarjeta parametro el cual es un objeto de tipo tarjeta que sustituira a la que deseamos actualizar
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean actualizarTarjeta(TarjetaDTO nuevaTarjeta) throws Exception {
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();

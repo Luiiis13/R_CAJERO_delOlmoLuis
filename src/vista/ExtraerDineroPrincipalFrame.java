@@ -55,7 +55,7 @@ public class ExtraerDineroPrincipalFrame extends JFrame {
  * Metodo que sirve para incializar el actionListener de los botones 
  */
 	private void inicializar() {
-		this.otraCantidadBtn.addActionListener(new RetirarOtraCantidadListener());
+		this.otraCantidadBtn.addActionListener(new RetirarOtraCantidadListener(this));
 		this.cincoBtn.addActionListener(new RetirarCantidadDineroListener(5));
 		this.veinticincoBtn.addActionListener(new RetirarCantidadDineroListener(25));
 		this.cincuentaBtn.addActionListener(new RetirarCantidadDineroListener(50));

@@ -7,8 +7,17 @@ import java.util.ArrayList;
 
 import modelo.Conectar;
 import modelo.dto.CuentaDTO;
-
+/***
+ * Clase que sirve para sacar/eliminar/insertar datos de Cuenta en la base de datos
+ * @author Luis
+ *
+ */
 public class CuentaDAO {
+	/***
+	 * Metodo que sirve para insertar un cuenta en la base de datos 
+	 * @param nuevacuenta parametro que es la cuenta nuevo que deseamos insertar 
+	 * @throws Exception 
+	 */
 	public void insertarCuenta(CuentaDTO nuevacuenta) throws Exception {
 		Conectar conexion = new Conectar();
 		try {
@@ -27,7 +36,10 @@ public class CuentaDAO {
 			conexion.cerrarConexion();
 		}
 	}
-
+	/***
+	 * Metodo que sirve para sacar todas las cuentas de la base de datos 
+	 * @return devuelve un array con todos las cuentas 
+	 */
 	public ArrayList<CuentaDTO> obtenerCuentas() {
 		ArrayList<CuentaDTO> cuentas = new ArrayList<>();
 		Conectar conexion = new Conectar();
@@ -54,7 +66,13 @@ public class CuentaDAO {
 		}
 		return cuentas;
 	}
-
+	/***
+	 * Metodo que sirve para sacar una determinada cuenta de la base de datos
+	 * 
+	 * @param id parametro entero que identificara la cuenta que
+	 *                       nosotros queremos
+	 * @return
+	 */
 	public CuentaDTO obtenerCuenta(int id) {
 		CuentaDTO cuenta = null;
 		Conectar conexion = new Conectar();
@@ -82,7 +100,12 @@ public class CuentaDAO {
 		return cuenta;
 	}
 
-
+	/***
+	 * Metodo que sirve para eliminar una determinada cuenta de la base de datos 
+	 * @param id variable int que determinara la cuenta que queremos 
+	 * @return devolvera un booleano 
+	 * @throws Exception
+	 */
 	public boolean eliminarCuenta(int id) throws Exception {
 		boolean eliminado = false;
 		Conectar conexion = new Conectar();
@@ -101,7 +124,12 @@ public class CuentaDAO {
 		}
 		return eliminado;
 	}
-
+	/***
+	 * Metodo por el cual actualizaremos una cuenta de la base de datos
+	 * @param nuevaCuenta parametro el cual es un objeto de tipo cuenta que sustituira a la que deseamos actualizar
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean actualizarCuenta(CuentaDTO nuevaCuenta) throws Exception {
 		boolean actualizado = false;
 		Conectar conexion = new Conectar();
@@ -124,7 +152,13 @@ public class CuentaDAO {
 		}
 		return actualizado;
 	}
-	
+	/***
+	 * Metodo que sirve para sacar una determinada cuenta de la base de datos
+	 * 
+	 * @param numeroCuenta parametro String que identificara la cuenta que
+	 *                       nosotros queremos
+	 * @return
+	 */
 	public CuentaDTO obtenerCuentaDadoNumero(String numeroCuenta) {
 		CuentaDTO cuenta = null;
 		Conectar conexion = new Conectar();

@@ -9,13 +9,19 @@ import controlador.CajeroControlador;
 import controlador.SesionAdministradorControlador;
 import modelo.dto.CajeroDTO;
 import vista.InsertarCajeroAdministradorFrame;
-
+/***
+ * Clase que sirve para agregar un nuevo cajero a la base de datos 
+ * @author Luis
+ *
+ */
 public class AgregarCajeroAdministradorListener implements ActionListener{
 private InsertarCajeroAdministradorFrame insertarCajeroFrame;
 	public AgregarCajeroAdministradorListener(InsertarCajeroAdministradorFrame frame) {
 		this.insertarCajeroFrame=frame;
 	}
-	
+	/***
+	 * Accion que sirve para ingresar los distintos datos de un cajero y posteriormente confirmar su inserccion 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -36,7 +42,10 @@ private InsertarCajeroAdministradorFrame insertarCajeroFrame;
 			e2.printStackTrace();
 		}
 	}
-
+	/***
+	 * Metodo que sirve para validar que los campos rellenados son validos 
+	 * @return 
+	 */ 
 	private boolean validarCampos() {
 		boolean valido = true;
 		String ubicacion = this.insertarCajeroFrame.getUbicacionTxt().getText();

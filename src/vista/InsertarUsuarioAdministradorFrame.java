@@ -14,6 +14,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import listeners.AgregarUsuarioAdministradorListener;
+import listeners.CancelarBotonListener;
 
 /***
  * Clase que implementa en la vista los distintos campos para poder añadir un
@@ -58,6 +59,7 @@ public class InsertarUsuarioAdministradorFrame extends JFrame {
 		JPanel contenedorBtn = new JPanel();
 		contenedorBtn.setAlignmentX(CENTER_ALIGNMENT);
 		contenedorBtn.add(aceptarBtn);
+		contenedorBtn.add(cancelarBtn);
 		this.getContentPane().add(contenedorBtn);
 		this.setVisible(true);
 		this.inicializar();
@@ -92,6 +94,7 @@ public class InsertarUsuarioAdministradorFrame extends JFrame {
 	 */
 	public void inicializar() {
 		this.aceptarBtn.addActionListener(new AgregarUsuarioAdministradorListener(this));
+		this.cancelarBtn.addActionListener(new CancelarBotonListener(this));
 	}
 
 	/***

@@ -2,22 +2,26 @@ package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.annotation.Annotation;
 
 import javax.swing.JOptionPane;
 
 import controlador.CajeroControlador;
 import modelo.dto.CajeroDTO;
-import vista.AdministrarCajerosFrame;
 import vista.ModificarCajerosAdministradorFrame;
-
+/***
+ * Clase que sirve para editar los datos de un cajero y actualizarla 
+ * @author Luis
+ *
+ */
 public class EditarCajeroAdministradorListener implements ActionListener {
 	private ModificarCajerosAdministradorFrame editarCajero;
 
 	public EditarCajeroAdministradorListener(ModificarCajerosAdministradorFrame frame) {
 		this.editarCajero = frame;
 	}
-
+	/***
+	 * Accion que sirve para actualizar los datos de un cajero a modificar
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -38,7 +42,12 @@ public class EditarCajeroAdministradorListener implements ActionListener {
 			e2.printStackTrace();
 		}
 	}
-
+	/***
+	 * Metodo que sirve para validar que los datos a insertar en los campos son
+	 * correctos
+	 * 
+	 * @return devuelve un booleano
+	 */
 	private boolean validarCampos() {
 		boolean valido = true;
 		String ubicacion = this.editarCajero.getUbicacionTxt().getText();

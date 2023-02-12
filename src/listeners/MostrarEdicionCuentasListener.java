@@ -7,21 +7,26 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import controlador.CuentasControlador;
-import controlador.TarjetasControlador;
 import modelo.dto.CuentaDTO;
-import modelo.dto.TarjetaDTO;
 import modelo.tabla.CuentasFila;
-import modelo.tabla.TarjetaFila;
 import vista.AdministrarCuentasFrame;
-import vista.AdministrarTarjetasFrame;
-
+/***
+ * Clase que implementa la cuenta que se ha escogido cuando se da al boton de
+ * modicar
+ * 
+ * @author Luis
+ *
+ */
 public class MostrarEdicionCuentasListener implements ActionListener{
 	private AdministrarCuentasFrame mostrarEdicionCuentas;
 
 	public MostrarEdicionCuentasListener(AdministrarCuentasFrame frame) {
 		this.mostrarEdicionCuentas = frame;
 	}
-
+	/***
+	 * Accion que verifica si se ha escogido mas de una cuenta y si se ha escogido
+	 * que muestre la interfaz correspondiente con sus datos
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {

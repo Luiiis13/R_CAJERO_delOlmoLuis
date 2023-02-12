@@ -6,21 +6,29 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import controlador.CajeroControlador;
 import controlador.UsuariosControlador;
-import modelo.dto.CajeroDTO;
 import modelo.dto.UsuarioDTO;
-import modelo.tabla.CajeroFila;
 import modelo.tabla.UsuarioFila;
-import vista.AdministrarCajerosFrame;
 import vista.AdministrarUsuariosFrame;
 
-public class MostrarEdicionUsuarioListener implements ActionListener{
+/***
+ * Clase que implementa el usuario que se ha escogido cuando se da al boton de
+ * modicar
+ * 
+ * @author Luis
+ *
+ */
+public class MostrarEdicionUsuarioListener implements ActionListener {
 	private AdministrarUsuariosFrame modificarUsuariosFrame;
 
 	public MostrarEdicionUsuarioListener(AdministrarUsuariosFrame frame) {
 		this.modificarUsuariosFrame = frame;
 	}
+
+	/***
+	 * Accion que verifica si se ha escogido mas de un usuario y si se ha escogido
+	 * que muestre la interfaz correspondiente con sus datos
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -33,17 +41,21 @@ public class MostrarEdicionUsuarioListener implements ActionListener{
 				}
 			}
 			if (usuariosSeleccionados.size() > 1) {
-				JOptionPane.showMessageDialog(null, "Error debe seleccionar solamente un usuario", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Error debe seleccionar solamente un usuario", "Error",
+						JOptionPane.ERROR_MESSAGE);
 			}
-			if(usuariosSeleccionados.size()==1) {
-				UsuarioFila filaUsuario= usuariosSeleccionados.get(0);
+			if (usuariosSeleccionados.size() == 1) {
+				UsuarioFila filaUsuario = usuariosSeleccionados.get(0);
 				UsuariosControlador controladorUsuarios = new UsuariosControlador();
-				UsuarioDTO usuarioDTO = new UsuarioDTO(filaUsuario.getId(),filaUsuario.getNombre(), filaUsuario.getDni(),filaUsuario.getPrimerApellido(),filaUsuario.getIsAdmin(),filaUsuario.getContraseña());
+				UsuarioDTO usuarioDTO = new UsuarioDTO(filaUsuario.getId(), filaUsuario.getNombre(),
+						filaUsuario.getDni(), filaUsuario.getPrimerApellido(), filaUsuario.getIsAdmin(),
+						filaUsuario.getContraseña());
 				controladorUsuarios.mostrarInterfazEdicion(usuarioDTO);
 				this.modificarUsuariosFrame.setVisible(false);
 			}
-			if(usuariosSeleccionados.size()==0) {
-				JOptionPane.showMessageDialog(null, "Error debe seleccionar un usuario", "Error", JOptionPane.ERROR_MESSAGE);
+			if (usuariosSeleccionados.size() == 0) {
+				JOptionPane.showMessageDialog(null, "Error debe seleccionar un usuario", "Error",
+						JOptionPane.ERROR_MESSAGE);
 
 			}
 		} catch (Exception e2) {
@@ -51,6 +63,5 @@ public class MostrarEdicionUsuarioListener implements ActionListener{
 			JOptionPane.showMessageDialog(null, "Error haciendo la operación", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
 
 }

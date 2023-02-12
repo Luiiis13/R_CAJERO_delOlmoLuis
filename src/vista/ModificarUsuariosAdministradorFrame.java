@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import listeners.CancelarBotonListener;
 import listeners.EditarUsuariosAdministradorListener;
 
 /***
@@ -58,10 +59,10 @@ public class ModificarUsuariosAdministradorFrame extends JFrame {
 		JPanel contenedorBtn = new JPanel();
 		contenedorBtn.setAlignmentX(CENTER_ALIGNMENT);
 		contenedorBtn.add(aceptarBtn);
+		contenedorBtn.add(cancelarBtn);
 		this.getContentPane().add(contenedorBtn);
 		this.setVisible(true);
 		this.inicializar();
-		this.limitarTamañoDni();
 		this.pack();
 
 	}
@@ -91,6 +92,7 @@ public class ModificarUsuariosAdministradorFrame extends JFrame {
 	 */
 	private void inicializar() {
 		this.aceptarBtn.addActionListener(new EditarUsuariosAdministradorListener(this));
+		this.cancelarBtn.addActionListener(new CancelarBotonListener(this));
 	}
 
 	/***
@@ -132,17 +134,4 @@ public class ModificarUsuariosAdministradorFrame extends JFrame {
 		this.idUsuario = idUsuario;
 	}
 
-	/***
-	 * Metodo que sirve para limitar el numero de caracteres en un campo de texto
-	 */
-	private void limitarTamañoDni() {
-		this.dniTxt.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				String text = ((JTextField) e.getComponent()).getText();
-				if (text.length() >= 9)
-					e.consume();
-			}
-		});
-	}
 }

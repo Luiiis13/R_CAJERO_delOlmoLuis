@@ -5,7 +5,11 @@ import java.awt.event.ActionListener;
 
 import controlador.PantallaInicioAdminControlador;
 import vista.PantallaInicioFrame;
-
+/***
+ * Clase que sirve para sacar la vista del frame de iniciar la sesion como administrador
+ * @author Luis
+ *
+ */
 public class InicioSesionAdministradorListener implements ActionListener {
 	private PantallaInicioFrame inicio;
 

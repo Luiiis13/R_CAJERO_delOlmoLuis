@@ -8,19 +8,22 @@ import java.time.Year;
 import javax.swing.JOptionPane;
 
 import controlador.TarjetasControlador;
-import controlador.UsuariosControlador;
 import modelo.dto.TarjetaDTO;
-import modelo.dto.UsuarioDTO;
 import vista.ModificarTarjetaAdministradorFrame;
-import vista.ModificarUsuariosAdministradorFrame;
-
+/***
+ * Clase que sirve para editar los datos de una tarjeta y actualizarla 
+ * @author Luis
+ *
+ */
 public class EditarTarjetasAdministradorListener implements ActionListener {
 	private ModificarTarjetaAdministradorFrame editarTarjetasFrame;
 
 	public EditarTarjetasAdministradorListener(ModificarTarjetaAdministradorFrame frame) {
 		this.editarTarjetasFrame = frame;
 	}
-
+	/***
+	 * Accion que sirve para actualizar los datos de la tarjeta a modificar
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -49,7 +52,12 @@ public class EditarTarjetasAdministradorListener implements ActionListener {
 			e2.printStackTrace();
 		}
 	}
-
+	/***
+	 * Metodo que sirve para validar que los datos a insertar en los campos son
+	 * correctos
+	 * 
+	 * @return devuelve un booleano
+	 */
 	private boolean validarCampos() {
 		boolean valido = true;
 

@@ -6,16 +6,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import controlador.RecargarBonobusControlador;
-import controlador.SesionUsuarioControlador;
-import modelo.dao.BonobusDAO;
+import controlador.SesionTarjetaControlador;
 import modelo.dao.CuentaDAO;
 import modelo.dao.MovimientoDAO;
-import modelo.dao.TelefonoDAO;
-import modelo.dto.BonobusDTO;
 import modelo.dto.MovimientoDTO;
-import modelo.dto.TelefonoDTO;
 import vista.RecargarOtraCantidadBonobusFrame;
-
+/***
+ * Clase que sirve para recargar determinada cantidad en el telefono
+ * @author Luis
+ *
+ */
 public class RecargarOtraCantidadBonobusListener implements ActionListener {
 	private RecargarOtraCantidadBonobusFrame frame;
 	private int cantidad;
@@ -23,38 +23,41 @@ public class RecargarOtraCantidadBonobusListener implements ActionListener {
 	public RecargarOtraCantidadBonobusListener(RecargarOtraCantidadBonobusFrame frame) {
 		this.frame = frame;
 	}
-
+	/***
+	 * Accion que verifica si la cantidad a extraer es valida y que comprueba si el
+	 * saldo es suficiente , después se establece en la cuenta el saldo actualizado y se lo recarga ak telefono 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.cantidad = Integer.parseInt(this.frame.getCantidadSpinner().getValue().toString());
-		boolean ingresoValido = this.validarExtraccion();
+		boolean ingresoValido = this.validarRecarga();
 		if (ingresoValido == false) {
 			JOptionPane.showMessageDialog(null,
 					"Error haciendo la operación. Debe introducir una cantidad mayor que 0 y múltiplo de 5", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		} else {
-			float saldoActual = SesionUsuarioControlador.datosCuenta.getSaldo();
+			float saldoActual = SesionTarjetaControlador.datosCuenta.getSaldo();
 			try {
 				float saldoRestante = (saldoActual - this.cantidad);
 				if (saldoRestante >= 0) {
-					int idCuenta = SesionUsuarioControlador.datosCuenta.getId();
-					int idTarjeta = SesionUsuarioControlador.datosTarjeta.getId();
+					int idCuenta = SesionTarjetaControlador.datosCuenta.getId();
+					int idTarjeta = SesionTarjetaControlador.datosTarjeta.getId();
 					RecargarBonobusControlador controladorBonobus = new RecargarBonobusControlador();
 					controladorBonobus.recargarBonobus(this.cantidad, idTarjeta);
-					SesionUsuarioControlador.datosCuenta.setSaldo(saldoRestante);
+					SesionTarjetaControlador.datosCuenta.setSaldo(saldoRestante);
 					CuentaDAO cuentaDAO = new CuentaDAO();
-					cuentaDAO.actualizarCuenta(SesionUsuarioControlador.datosCuenta);
+					cuentaDAO.actualizarCuenta(SesionTarjetaControlador.datosCuenta);
 					MovimientoDAO movimientoDAO = new MovimientoDAO();
 					long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
 					MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Recarga de bonobus",
-							SesionUsuarioControlador.datosTarjeta.getId());
+							SesionTarjetaControlador.datosTarjeta.getId());
 					movimientoDAO.insertarMovimiento(movimientoDTO);
 					JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
 				} else {
 					JOptionPane.showMessageDialog(null, "Saldo insuficiente", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			} catch (Exception error) {
-				SesionUsuarioControlador.datosCuenta.setSaldo(saldoActual);
+				SesionTarjetaControlador.datosCuenta.setSaldo(saldoActual);
 				JOptionPane.showMessageDialog(null, "Error haciendo la operación", "Error", JOptionPane.ERROR_MESSAGE);
 				System.out.print(error);
 			} finally {
@@ -63,8 +66,11 @@ public class RecargarOtraCantidadBonobusListener implements ActionListener {
 		}
 
 	}
-
-	private boolean validarExtraccion() {
+	/***
+	 * Metodo que sirve para ver si la cantidad a recargar es mayor que 0 y que sea multiplo de 5
+	 * @return devuelve booleano
+	 */
+	private boolean validarRecarga() {
 		boolean valido = false;
 		if (this.cantidad > 0 && this.cantidad % 5 == 0) {
 			valido = true;

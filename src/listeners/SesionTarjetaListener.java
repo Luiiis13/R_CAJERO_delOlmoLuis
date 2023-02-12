@@ -6,15 +6,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import java.sql.Date;
 import controlador.OpcionesControlador;
-import controlador.SesionUsuarioControlador;
+import controlador.SesionTarjetaControlador;
 import modelo.dao.CuentaDAO;
 import modelo.dao.SesionDAO;
 import modelo.dao.TarjetaDAO;
-import modelo.dao.UsuarioDAO;
 import modelo.dto.CuentaDTO;
 import modelo.dto.SesionTarjetaDTO;
 import modelo.dto.TarjetaDTO;
-import modelo.dto.UsuarioDTO;
 import vista.SesionTarjetaFrame;
 
 /***
@@ -55,8 +53,8 @@ public class SesionTarjetaListener implements ActionListener {
 			}
 			if (sesionDTO.getPin() != pin) {
 				JOptionPane.showMessageDialog(null, "Pin incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
-				SesionUsuarioControlador.intentosFallidos++;
-				if (SesionUsuarioControlador.intentosFallidos > 4) {
+				SesionTarjetaControlador.intentosFallidos++;
+				if (SesionTarjetaControlador.intentosFallidos > 4) {
 					this.bloquearTarjeta(sesionDTO.getId());
 					JOptionPane.showMessageDialog(null, "Tarjeta bloqueada");
 				}
@@ -68,12 +66,12 @@ public class SesionTarjetaListener implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Tarjeta expirada", "Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			
+
 			if (numeroTarjeta.length() < 16) {
 				JOptionPane.showMessageDialog(null,
 						"Error haciendo la operación: El número de tarjeta debe tener 16 dígitos ", "Error",
 						JOptionPane.ERROR_MESSAGE);
-				return ;
+				return;
 			}
 
 			this.obtenerDatosUsuario(sesionDTO.getId());
@@ -97,10 +95,10 @@ public class SesionTarjetaListener implements ActionListener {
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		SesionUsuarioControlador.datosTarjeta = datosTarjeta; // PARA HACER ACCESIBLE LOS DATOS DE LA TARJETA
+		SesionTarjetaControlador.datosTarjeta = datosTarjeta; // PARA HACER ACCESIBLE LOS DATOS DE LA TARJETA
 		CuentaDAO cuenta = new CuentaDAO();
 		CuentaDTO datosCuenta = cuenta.obtenerCuenta(datosTarjeta.getIdCuentaAsociada());
-		SesionUsuarioControlador.datosCuenta = datosCuenta;
+		SesionTarjetaControlador.datosCuenta = datosCuenta;
 		JOptionPane.showMessageDialog(null, "Credenciales validas");
 		this.sesionVista.show(false);
 		OpcionesControlador opcionesControlador = new OpcionesControlador();
@@ -113,8 +111,7 @@ public class SesionTarjetaListener implements ActionListener {
 			datosTarjeta.setBloqueado(true);
 			tarjeta.actualizarTarjeta(datosTarjeta);
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Error haciendo la operación", "Error",
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error haciendo la operación", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}

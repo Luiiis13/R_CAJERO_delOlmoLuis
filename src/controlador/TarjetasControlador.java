@@ -6,14 +6,16 @@ import javax.swing.JOptionPane;
 
 import modelo.dao.BonobusDAO;
 import modelo.dao.TarjetaDAO;
-import modelo.dao.UsuarioDAO;
 import modelo.dto.BonobusDTO;
 import modelo.dto.TarjetaDTO;
-import modelo.dto.UsuarioDTO;
 import vista.AdministrarTarjetasFrame;
 import vista.ModificarTarjetaAdministradorFrame;
-import vista.ModificarUsuariosAdministradorFrame;
 
+/***
+ * Clase que une las distintas funcionalidades de la base de datos con los distintos listeners 
+ * @author Luis
+ *
+ */
 public class TarjetasControlador {
 	private AdministrarTarjetasFrame frame;
 	private TarjetaDAO tarjetaDAO;
@@ -21,7 +23,9 @@ public class TarjetasControlador {
 	public TarjetasControlador() {
 		this.tarjetaDAO = new TarjetaDAO();
 	}
-
+	/***
+	 * Metodo que sirve para crear la vista de administrar tarjeta 
+	 */
 	public void inicializar() {
 		try {
 			ArrayList<TarjetaDTO> tarjetasBD = this.tarjetaDAO.obtenerTarjetas();
@@ -32,6 +36,12 @@ public class TarjetasControlador {
 		}
 	}
 
+	/***
+	 * Metodo que sirve para insertar una tarjeta en la base de datos
+	 * 
+	 * @param tarjetaDTO tarjeta que se insertara en la base de datos
+	 * @throws Exception
+	 */
 	public void agregarTarjeta(TarjetaDTO tarjetaDTO) throws Exception {
 		try {
 			this.tarjetaDAO.insertarTarjeta(tarjetaDTO);
@@ -43,11 +53,22 @@ public class TarjetasControlador {
 		}
 
 	}
-
+	/***
+	 * tarjeta que se eliminara de la base de datos
+	 * 
+	 * @param idTarjeta parametro de tipo entero que servira para identificar la
+	 *                  tarjeta a eliminar
+	 * @throws Exception
+	 */
 	public void eliminarTarjetas(int idTarjeta) throws Exception {
 		this.tarjetaDAO.eliminarTarjeta(idTarjeta);
 	}
-
+	/***
+	 * Metodo que sirve para actualizar los distintos datos de la tarjeta a la hora de
+	 * modificarles
+	 * 
+	 * @param tarjetaDTO
+	 */
 	public void mostrarInterfazEdicion(TarjetaDTO tarjetaDTO) {
 		ModificarTarjetaAdministradorFrame frameModificar = new ModificarTarjetaAdministradorFrame();
 		frameModificar.setNumeroTxt(tarjetaDTO.getNumero());
@@ -58,7 +79,12 @@ public class TarjetasControlador {
 		frameModificar.setIdCuentaAsociada(tarjetaDTO.getIdCuentaAsociada());
 		frameModificar.setFechaExpiracionTxt(tarjetaDTO.getFecha_expiracion());
 	}
-
+	/***
+	 * Metodo que sirve para actualizar una determinada tarjeta
+	 * 
+	 * @param tarjetaDTO
+	 * @throws Exception
+	 */
 	public void actualizarTarjeta(TarjetaDTO tarjetaDTO) throws Exception {
 		try {
 			this.tarjetaDAO.actualizarTarjeta(tarjetaDTO);

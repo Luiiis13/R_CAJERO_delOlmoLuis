@@ -10,11 +10,23 @@ import controlador.CuentasControlador;
 import modelo.tabla.CuentasFila;
 import vista.AdministrarCuentasFrame;
 
-public class EliminarCuentasAdministradorListener implements ActionListener{
-private AdministrarCuentasFrame eliminarCuentasFrame;
-public EliminarCuentasAdministradorListener(AdministrarCuentasFrame frame) {
-	this.eliminarCuentasFrame=frame;
-}
+/***
+ * Clase que sirve para eliminar una determinada cuenta
+ * 
+ * @author Luis
+ *
+ */
+public class EliminarCuentasAdministradorListener implements ActionListener {
+	private AdministrarCuentasFrame eliminarCuentasFrame;
+
+	public EliminarCuentasAdministradorListener(AdministrarCuentasFrame frame) {
+		this.eliminarCuentasFrame = frame;
+	}
+
+	/***
+	 * Accion que obtiene la/las cuenta a eliminar con sus datos y se muestra un
+	 * panel de confirmacion y si acepta se elimina la cuenta
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -36,7 +48,7 @@ public EliminarCuentasAdministradorListener(AdministrarCuentasFrame frame) {
 				} else {
 					JOptionPane.showMessageDialog(null, "Operación cancelada");
 				}
-			}else {
+			} else {
 				JOptionPane.showMessageDialog(null, "Error debe seleccionar una cuenta", "Error",
 						JOptionPane.ERROR_MESSAGE);
 			}
@@ -46,6 +58,12 @@ public EliminarCuentasAdministradorListener(AdministrarCuentasFrame frame) {
 		}
 	}
 
+	/***
+	 * Metodo que sirve para recoger la cuenta determinada y eliminarla
+	 * 
+	 * @param cuentasSeleccionadas parametro para recoger la cuenta
+	 * @throws Exception
+	 */
 	private void eliminarCuentas(ArrayList<CuentasFila> cuentasSeleccionadas) throws Exception {
 		CuentasControlador controladorCuentas = new CuentasControlador();
 		for (int i = 0; i < cuentasSeleccionadas.size(); i++) {

@@ -9,6 +9,12 @@ import controlador.UsuariosControlador;
 import modelo.dto.UsuarioDTO;
 import vista.ModificarUsuariosAdministradorFrame;
 
+/***
+ * Clase que sirve para editar los datos de un usuario y actualizarlo
+ * 
+ * @author Luis
+ *
+ */
 public class EditarUsuariosAdministradorListener implements ActionListener {
 	private ModificarUsuariosAdministradorFrame editarUsuariosFrame;
 
@@ -16,6 +22,9 @@ public class EditarUsuariosAdministradorListener implements ActionListener {
 		this.editarUsuariosFrame = frame;
 	}
 
+	/***
+	 * Accion que sirve para actualizar los datos del usuario a modificar
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -42,6 +51,12 @@ public class EditarUsuariosAdministradorListener implements ActionListener {
 		}
 	}
 
+	/***
+	 * Metodo que sirve para validar que los datos a insertar en los campos son
+	 * correctos
+	 * 
+	 * @return devuelve un booleano
+	 */
 	private boolean validar() {
 		boolean valido = true;
 		String dni = this.editarUsuariosFrame.getDniTxt().getText();

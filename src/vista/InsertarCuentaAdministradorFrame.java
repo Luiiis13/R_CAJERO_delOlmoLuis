@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import listeners.AgregarCuentaAdministradorListener;
+import listeners.CancelarBotonListener;
 
 /***
  * Clase que implementa en la vista los distintos campos para poder añadir una
@@ -46,6 +47,7 @@ public class InsertarCuentaAdministradorFrame extends JFrame {
 		JPanel contenedorBtn = new JPanel();
 		contenedorBtn.setAlignmentX(CENTER_ALIGNMENT);
 		contenedorBtn.add(aceptarBtn);
+		contenedorBtn.add(cancelarBtn);
 		this.getContentPane().add(contenedorBtn);
 		this.inicializar();
 		this.setVisible(true);
@@ -93,6 +95,8 @@ public class InsertarCuentaAdministradorFrame extends JFrame {
 	 */
 	private void inicializar() {
 		this.aceptarBtn.addActionListener(new AgregarCuentaAdministradorListener(this));
+		this.cancelarBtn.addActionListener(new CancelarBotonListener(this));
+
 	}
 
 	/***

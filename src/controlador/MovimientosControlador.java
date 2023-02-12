@@ -2,7 +2,6 @@ package controlador;
 
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import modelo.dao.BonobusDAO;
@@ -15,6 +14,13 @@ import modelo.dto.MovimientoDTO;
 import modelo.dto.TelefonoDTO;
 import vista.MovimientosFrame;
 
+/***
+ * Clase que une las distintas funcionalidades de la base de datos con los
+ * distintos listeners
+ * 
+ * @author Luis
+ *
+ */
 public class MovimientosControlador {
 	private MovimientosFrame frame;
 	private CuentaDAO cuentaDAO;
@@ -23,18 +29,19 @@ public class MovimientosControlador {
 	private BonobusDAO bonobusDAO;
 
 	public MovimientosControlador() {
-
 		this.movimientoDAO = new MovimientoDAO();
 		this.cuentaDAO = new CuentaDAO();
 		this.bonobusDAO = new BonobusDAO();
 		this.telefonoDAO = new TelefonoDAO();
 		this.inicializar();
 	}
-
+/***
+ * Metodo que sirve para inicializar el frame de los movimientos de tarjeta
+ */
 	private void inicializar() {
 		try {
-			int idCuenta = SesionUsuarioControlador.datosCuenta.getId();
-			int idTarjeta = SesionUsuarioControlador.datosTarjeta.getId();
+			int idCuenta = SesionTarjetaControlador.datosCuenta.getId();
+			int idTarjeta = SesionTarjetaControlador.datosTarjeta.getId();
 
 			this.frame = new MovimientosFrame();
 			try {

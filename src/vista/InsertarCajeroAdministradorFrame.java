@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 
 import listeners.AgregarCajeroAdministradorListener;
 import listeners.AgregarCuentaAdministradorListener;
+import listeners.CancelarBotonListener;
 /***
  * Clase que implementa en la vista los distintos campos para poder añadir una
  * nueva cajero
@@ -37,6 +38,7 @@ public class InsertarCajeroAdministradorFrame extends JFrame {
 		JPanel contenedorBtn = new JPanel();
 		contenedorBtn.setAlignmentX(CENTER_ALIGNMENT);
 		contenedorBtn.add(aceptarBtn);
+		contenedorBtn.add(cancelarBtn);
 		this.getContentPane().add(contenedorBtn);
 		this.setVisible(true);
 		this.inicializar();
@@ -51,6 +53,8 @@ public class InsertarCajeroAdministradorFrame extends JFrame {
 	 */
 	private void inicializar() {
 		this.aceptarBtn.addActionListener(new AgregarCajeroAdministradorListener(this));
+		this.cancelarBtn.addActionListener(new CancelarBotonListener(this));
+
 	}
 	public void limpiarCampos() {
 		this.ubicacionTxt.setText("");

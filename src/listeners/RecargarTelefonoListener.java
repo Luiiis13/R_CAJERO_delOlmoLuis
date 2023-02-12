@@ -6,15 +6,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import controlador.RecargaTelefonoControlador;
-import controlador.SesionUsuarioControlador;
+import controlador.SesionTarjetaControlador;
 import modelo.dao.CuentaDAO;
 import modelo.dao.MovimientoDAO;
-import modelo.dao.TelefonoDAO;
 import modelo.dto.CuentaDTO;
 import modelo.dto.MovimientoDTO;
-import modelo.dto.TelefonoDTO;
 import vista.RecargarTelefonoFrame;
 
+/***
+ * Clase que sirve para recargar un telefono con una cantidad preestablecida que
+ * se le pasa en el constructor
+ * @author Luis
+ *
+ */
 public class RecargarTelefonoListener implements ActionListener {
 	private int cantidad;
 	private RecargarTelefonoFrame frame;
@@ -23,13 +27,16 @@ public class RecargarTelefonoListener implements ActionListener {
 		this.cantidad = cantidad;
 		this.frame = frame;
 	}
-
+	/***
+	 * accion que verifica si el metodo es valido y quita el saldo de la cuenta , lo
+	 * añade al telefono y luego lo marca en moviminetos
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
 			boolean valido = this.validarDatos();
 			if (valido == true) {
-				int idCuenta = SesionUsuarioControlador.datosCuenta.getId();
+				int idCuenta = SesionTarjetaControlador.datosCuenta.getId();
 				CuentaDAO cuentaDAO = new CuentaDAO();
 				CuentaDTO datosDeCuenta = cuentaDAO.obtenerCuenta(idCuenta);
 				float nuevoSaldo = datosDeCuenta.getSaldo() - this.cantidad;
@@ -41,14 +48,14 @@ public class RecargarTelefonoListener implements ActionListener {
 				RecargaTelefonoControlador controladorTelefono = new RecargaTelefonoControlador();
 				String numeroTelefono = this.frame.getNumTelefonoTxt().getText();
 				int numero = Integer.parseInt(numeroTelefono);
-				int idTarjeta = SesionUsuarioControlador.datosTarjeta.getId();
+				int idTarjeta = SesionTarjetaControlador.datosTarjeta.getId();
 				controladorTelefono.recargarTelefono(numero, this.cantidad, idTarjeta);
-				SesionUsuarioControlador.datosCuenta.setSaldo(nuevoSaldo);
-				cuentaDAO.actualizarCuenta(SesionUsuarioControlador.datosCuenta);
+				SesionTarjetaControlador.datosCuenta.setSaldo(nuevoSaldo);
+				cuentaDAO.actualizarCuenta(SesionTarjetaControlador.datosCuenta);
 				MovimientoDAO movimientoDAO = new MovimientoDAO();
 				long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
 				MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Recarga de telefono",
-						SesionUsuarioControlador.datosTarjeta.getId());
+						SesionTarjetaControlador.datosTarjeta.getId());
 				movimientoDAO.insertarMovimiento(movimientoDTO);
 				JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
 			}
@@ -59,6 +66,12 @@ public class RecargarTelefonoListener implements ActionListener {
 		}
 	}
 
+	/***
+	 * Metodo que sirve para poder validar los datos de que el telefono esta bien
+	 * introducido
+	 * 
+	 * @return retorna un booleano
+	 */
 	private boolean validarDatos() {
 		boolean valido = true;
 		String numeroTelefono = this.frame.getNumTelefonoTxt().getText();

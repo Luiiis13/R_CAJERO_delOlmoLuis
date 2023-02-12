@@ -8,14 +8,20 @@ import javax.swing.JOptionPane;
 import controlador.UsuariosControlador;
 import modelo.dto.UsuarioDTO;
 import vista.InsertarUsuarioAdministradorFrame;
-
+/***
+ * Clase que sirve para agregar un nuevo usuario a la base de datos 
+ * @author Luis
+ *
+ */
 public class AgregarUsuarioAdministradorListener implements ActionListener {
 	private InsertarUsuarioAdministradorFrame insertarUsuarioFrame;
 
 	public AgregarUsuarioAdministradorListener(InsertarUsuarioAdministradorFrame frame) {
 		this.insertarUsuarioFrame = frame;
 	}
-
+/***
+ * Accion que sirve para ingresar los distintos datos de un usuario y posteriormente confirmar su inserccion 
+ */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -37,7 +43,10 @@ public class AgregarUsuarioAdministradorListener implements ActionListener {
 		}
 
 	}
-
+/***
+ * Metodo que sirve para validar que los campos rellenados son validos 
+ * @return 
+ */ 
 	private boolean validar() {
 		boolean valido = true;
 		String dni = this.insertarUsuarioFrame.getDniTxt().getText();

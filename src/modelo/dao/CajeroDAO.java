@@ -7,8 +7,17 @@ import java.util.ArrayList;
 
 import modelo.Conectar;
 import modelo.dto.CajeroDTO;;
-
+/***
+ * Clase que sirve para sacar/eliminar/insertar datos de cajero en la base de datos
+ * @author Luis
+ *
+ */
 public class CajeroDAO {
+	/***
+	 * Metodo que sirve para insertar un cajero en la base de datos 
+	 * @param nuevoCajero parametro que es el cajero nuevo que deseamos insertar 
+	 * @throws Exception 
+	 */
 	public void insertarCajero(CajeroDTO nuevoCajero) throws Exception {
 		Conectar conexion = new Conectar();
 
@@ -25,7 +34,10 @@ public class CajeroDAO {
 			conexion.cerrarConexion();
 		}
 	}
-
+	/***
+	 * Metodo que sirve para sacar todas los cajeros de la base de datos 
+	 * @return devuelve un array con todos los cajeros 
+	 */
 	public ArrayList<CajeroDTO> obtenerCajeros() {
 		ArrayList<CajeroDTO> cajeros = new ArrayList<>();
 		Conectar conexion = new Conectar();
@@ -49,7 +61,13 @@ public class CajeroDAO {
 		}
 		return cajeros;
 	}
-
+	/***
+	 * Metodo que sirve para sacar un determinado cajero de la base de datos
+	 * 
+	 * @param id parametro entero que identificara el cajero que
+	 *                       nosotros queremos
+	 * @return
+	 */
 	public CajeroDTO obtenerCajero(int id) {
 		CajeroDTO cajero = null;
 		Conectar conexion = new Conectar();
@@ -73,7 +91,12 @@ public class CajeroDAO {
 		}
 		return cajero;
 	}
-
+	/***
+	 * Metodo que sirve para eliminar un determinado cajero de la base de datos 
+	 * @param id variable int que determinara el cajero que queremos 
+	 * @return devolvera un booleano 
+	 * @throws Exception
+	 */
 	public boolean eliminarCajero(int id) throws Exception {
 		boolean eliminado = false;
 		Conectar conexion = new Conectar();
@@ -92,7 +115,12 @@ public class CajeroDAO {
 		}
 		return eliminado;
 	}
-
+	/***
+	 * Metodo por el cual actualizaremos un cajero de la base de datos
+	 * @param nuevoCajero parametro el cual es un objeto de tipo cajero que sustituira a la que deseamos actualizar
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean actualizarCajero(CajeroDTO nuevoCajero) throws Exception {
 
 		boolean actualizado = false;

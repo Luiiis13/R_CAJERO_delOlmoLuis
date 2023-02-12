@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import listeners.MostrarEdicionUsuarioListener;
+import listeners.CancelarBotonListener;
 import listeners.EliminiarUsuarioAdministradorListener;
 import listeners.MostrarInserccionUsuariosListener;
 
@@ -30,6 +31,8 @@ public class AdministrarUsuariosFrame extends JFrame {
 	private JButton insertarbtn = new JButton("Nuevo");
 	private JButton modificarbtn = new JButton("Modificar");
 	private JButton eliminarbtn = new JButton("Eliminar");
+	private JButton cancelarBtn = new JButton("Cancelar");
+
 
 	public AdministrarUsuariosFrame() {
 		this.setTitle("Administrar usuarios");
@@ -46,6 +49,7 @@ public class AdministrarUsuariosFrame extends JFrame {
 		this.panelBotones.add(insertarbtn);
 		this.panelBotones.add(modificarbtn);
 		this.panelBotones.add(eliminarbtn);
+		this.panelBotones.add(cancelarBtn);
 		this.inicializar();
 		this.setVisible(true);
 	}
@@ -61,5 +65,6 @@ public class AdministrarUsuariosFrame extends JFrame {
 		this.insertarbtn.addActionListener(new MostrarInserccionUsuariosListener(this));
 		this.modificarbtn.addActionListener(new MostrarEdicionUsuarioListener(this));
 		this.eliminarbtn.addActionListener(new EliminiarUsuarioAdministradorListener(this));
+		this.cancelarBtn.addActionListener(new CancelarBotonListener(this));
 	}
 }

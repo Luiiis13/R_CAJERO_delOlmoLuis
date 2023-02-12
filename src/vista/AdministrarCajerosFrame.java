@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import listeners.MostrarEdicionCajerosListener;
+import listeners.CancelarBotonListener;
 import listeners.EliminarCajeroAdministradorListener;
 import listeners.MostrarInserccionCajerosListener;
 
@@ -27,9 +28,10 @@ public class AdministrarCajerosFrame extends JFrame{
 	private JTable table;
 	private JScrollPane scroll = new JScrollPane();
 	private ModeloTablaCajero modelo;
-	private JButton insertarbtn = new JButton("Insertar");
+	private JButton insertarbtn = new JButton("Nuevo");
 	private JButton modificarbtn = new JButton("Modificar");
 	private JButton eliminarbtn = new JButton("Eliminar");
+	private JButton cancelarBtn = new JButton("Cancelar");
 	public AdministrarCajerosFrame() {
 		
 		this.setTitle("Administrar cajeros");
@@ -47,6 +49,7 @@ public class AdministrarCajerosFrame extends JFrame{
 		this.panelBotones.add(insertarbtn);
 		this.panelBotones.add(modificarbtn);
 		this.panelBotones.add(eliminarbtn);
+		this.panelBotones.add(cancelarBtn);
 		this.setVisible(true);
 		this.inicializar();
 	}
@@ -61,6 +64,7 @@ public class AdministrarCajerosFrame extends JFrame{
 		this.insertarbtn.addActionListener(new MostrarInserccionCajerosListener());
 		this.modificarbtn.addActionListener(new MostrarEdicionCajerosListener(this));
 		this.eliminarbtn.addActionListener(new EliminarCajeroAdministradorListener(this));
+		this.cancelarBtn.addActionListener(new CancelarBotonListener(this));
 
 	}
 }

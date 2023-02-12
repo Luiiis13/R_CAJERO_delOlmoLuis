@@ -13,6 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import listeners.AgregarTarjetaAdministradorListener;
+import listeners.CancelarBotonListener;
 
 /***
  * Clase que implementa en la vista los distintos campos para poder añadir una
@@ -61,6 +62,7 @@ public class InsertarTarjetaAdministradorFrame extends JFrame {
 		JPanel contenedorBtn = new JPanel();
 		contenedorBtn.setAlignmentX(CENTER_ALIGNMENT);
 		contenedorBtn.add(aceptarBtn);
+		contenedorBtn.add(cancelarBtn);
 		this.getContentPane().add(contenedorBtn);
 		this.inicializar();
 		this.setVisible(true);
@@ -92,6 +94,7 @@ public class InsertarTarjetaAdministradorFrame extends JFrame {
 	 */
 	public void inicializar() {
 		this.aceptarBtn.addActionListener(new AgregarTarjetaAdministradorListener(this));
+		this.cancelarBtn.addActionListener(new CancelarBotonListener(this));
 	}
 
 	/***

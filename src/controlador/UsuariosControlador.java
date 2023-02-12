@@ -3,18 +3,20 @@ package controlador;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
-import javax.swing.event.InternalFrameAdapter;
 
 import modelo.dao.UsuarioDAO;
-import modelo.dto.CajeroDTO;
-import modelo.dto.CuentaDTO;
-import modelo.dto.MovimientoDTO;
+
 import modelo.dto.UsuarioDTO;
 import vista.AdministrarUsuariosFrame;
-import vista.ModificarCajerosAdministradorFrame;
 import vista.ModificarUsuariosAdministradorFrame;
-import vista.MovimientosFrame;
 
+/***
+ * Clase que une las distintas funcionalidades de la base de datos con los
+ * distintos listeners
+ * 
+ * @author Luis
+ *
+ */
 public class UsuariosControlador {
 	private AdministrarUsuariosFrame frame;
 	private UsuarioDAO usuarioDAO;
@@ -24,6 +26,9 @@ public class UsuariosControlador {
 
 	}
 
+	/***
+	 * Metodo que sirve para crear la vista de administrar usuarios
+	 */
 	public void inicializar() {
 		try {
 			ArrayList<UsuarioDTO> usuariosBD = this.usuarioDAO.obtenerUsuarios();
@@ -34,14 +39,33 @@ public class UsuariosControlador {
 		}
 	}
 
+	/***
+	 * Metodo que sirve para insertar un usuario en la base de datos
+	 * 
+	 * @param nuevoUsuario usuario que se insertara en la base de datos
+	 * @throws Exception
+	 */
 	public void insertar(UsuarioDTO nuevoUsuario) throws Exception {
 		this.usuarioDAO.insertarUsuario(nuevoUsuario);
 	}
 
+	/***
+	 * Usuario que se eliminara de la base de datos
+	 * 
+	 * @param idUsuario parametro de tipo entero que servira para identificar el
+	 *                  usuario a eliminar
+	 * @throws Exception
+	 */
 	public void eliminarUsuarios(int idUsuario) throws Exception {
 		this.usuarioDAO.eliminarUsuario(idUsuario);
 	}
 
+	/***
+	 * Metodo que sirve para actualizar los distintos datos del usuario a la hora de
+	 * modificarles
+	 * 
+	 * @param usuarioDTO
+	 */
 	public void mostrarInterfazEdicion(UsuarioDTO usuarioDTO) {
 		ModificarUsuariosAdministradorFrame frameModificar = new ModificarUsuariosAdministradorFrame();
 		frameModificar.setContraseñaField(usuarioDTO.getContraseña());
@@ -51,6 +75,13 @@ public class UsuariosControlador {
 		frameModificar.setIsAdmin(usuarioDTO.getEsAdmin());
 		frameModificar.setIdUsuario(usuarioDTO.getId());
 	}
+
+	/***
+	 * Metodo que sirve para actualizar un determinado usuario
+	 * 
+	 * @param usuarioDTO
+	 * @throws Exception
+	 */
 	public void actualizarUsuario(UsuarioDTO usuarioDTO) throws Exception {
 		this.usuarioDAO.actualizarUsuario(usuarioDTO);
 	}

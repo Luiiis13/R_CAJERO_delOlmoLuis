@@ -30,7 +30,7 @@ public class RecargarOtraCantidadTelefonoFrame extends JFrame {
 		this.add(panel);
 		this.setContentPane(panel);
 		this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		this.setTitle("Extraer dinero");
+		this.setTitle("Recargar teléfono");
 		this.setVisible(true);
 		this.setSize(500, 500);
 		this.panel.add(mensajelbl);

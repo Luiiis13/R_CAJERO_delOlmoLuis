@@ -9,7 +9,12 @@ import javax.swing.JOptionPane;
 import controlador.CajeroControlador;
 import modelo.tabla.CajeroFila;
 import vista.AdministrarCajerosFrame;
-
+/***
+ * Clase que sirve para eliminar el determinada cajero
+ * 
+ * @author Luis
+ *
+ */
 public class EliminarCajeroAdministradorListener implements ActionListener {
 
 	private AdministrarCajerosFrame eliminarCajerosFrame;
@@ -17,7 +22,10 @@ public class EliminarCajeroAdministradorListener implements ActionListener {
 	public EliminarCajeroAdministradorListener(AdministrarCajerosFrame frame) {
 		this.eliminarCajerosFrame = frame;
 	}
-
+	/***
+	 * Accion que obtiene el/los cajeros a eliminar con sus datos y se muestra un
+	 * panel de confirmacion y si acepta se elimina el cajero
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -48,7 +56,12 @@ public class EliminarCajeroAdministradorListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Error haciendo la operación", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+	/***
+	 * Metodo que sirve para recoger el cajero determinado y eliminarlo
+	 * 
+	 * @param cajerosSeleccionados parametro para recoger el cajero
+	 * @throws Exception
+	 */
 	private void eliminarCajeros(ArrayList<CajeroFila> cajerosSeleccionados) throws Exception {
 		CajeroControlador controladoCajero = new CajeroControlador();
 		for (int i = 0; i < cajerosSeleccionados.size(); i++) {

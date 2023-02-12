@@ -8,6 +8,14 @@ import javax.swing.JOptionPane;
 import controlador.SesionAdministradorControlador;
 import vista.PantallaInicioAdministradorFrame;
 
+/***
+ * Clase que saca los datos de la vista de Pantalla inicio administrador cuando
+ * se da al boton aceptar y llama al controlador necesario para validar los
+ * datos
+ * 
+ * @author Luis
+ *
+ */
 public class SesionAdministradorListener implements ActionListener {
 	private SesionAdministradorControlador sesionAdministradorControlador = new SesionAdministradorControlador();
 	private PantallaInicioAdministradorFrame administradorFrame;
@@ -16,6 +24,10 @@ public class SesionAdministradorListener implements ActionListener {
 		this.administradorFrame = frame;
 	}
 
+	/***
+	 * Accion que saca el dni y la contraseña del frame y llama al controlador para
+	 * validarlo si son correctos se cierra ese frame y se muestra un mensaje
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {

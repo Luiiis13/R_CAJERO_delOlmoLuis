@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import listeners.CancelarBotonListener;
 import listeners.EditarTarjetasAdministradorListener;
 
 /***
@@ -60,6 +61,7 @@ public class ModificarTarjetaAdministradorFrame extends JFrame {
 		JPanel contenedorBtn = new JPanel();
 		contenedorBtn.setAlignmentX(CENTER_ALIGNMENT);
 		contenedorBtn.add(aceptarBtn);
+		contenedorBtn.add(cancelarBtn);
 		this.getContentPane().add(contenedorBtn);
 		this.inicializar();
 		this.limitarTamañoCvv();
@@ -150,6 +152,8 @@ public class ModificarTarjetaAdministradorFrame extends JFrame {
 
 	private void inicializar() {
 		this.aceptarBtn.addActionListener(new EditarTarjetasAdministradorListener(this));
+		this.cancelarBtn.addActionListener(new CancelarBotonListener(this));
+
 	}
 
 	/***

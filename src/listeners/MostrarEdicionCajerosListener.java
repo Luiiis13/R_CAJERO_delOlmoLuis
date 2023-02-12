@@ -10,13 +10,23 @@ import controlador.CajeroControlador;
 import modelo.dto.CajeroDTO;
 import modelo.tabla.CajeroFila;
 import vista.AdministrarCajerosFrame;
-
+/***
+ * Clase que implementa el cajero que se ha escogido cuando se da al boton de
+ * modicar
+ * 
+ * @author Luis
+ *
+ */
 public class MostrarEdicionCajerosListener implements ActionListener{
 	private AdministrarCajerosFrame modificarCajerosFrame;
 
 	public MostrarEdicionCajerosListener(AdministrarCajerosFrame frame) {
 		this.modificarCajerosFrame = frame;
 	}
+	/***
+	 * Accion que verifica si se ha escogido mas de un cajero y si se ha escogido
+	 * que muestre la interfaz correspondiente con sus datos
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {

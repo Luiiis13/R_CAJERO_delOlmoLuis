@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import listeners.CancelarBotonListener;
 import listeners.EditarCuentasAdministradorListener;
 
 /***
@@ -27,14 +28,12 @@ public class ModificarCuentaAdministradorFrame extends JFrame {
 	private JLabel numeroLbl = new JLabel("Numero:");
 	private JLabel ibanLbl = new JLabel("Iban:");
 	private JLabel saldoLbl = new JLabel("saldo:");
-//	private JLabel tarjeta_asociadaLbl = new JLabel("Tarjeta_asociada:");
 	private JLabel id_usuarioLbl = new JLabel("Id usuario:");
 	private JTextField numeroTxt = new JTextField();
 	private JTextField ibanTxt = new JTextField();
 	private JTextField saldoTxt = new JTextField();
 	private JTextField tarjeta_asociadaTxt = new JTextField();
 	private JTextField id_usuarioTxt = new JTextField();
-
 	private JButton aceptarBtn = new JButton("Aceptar");
 	private JButton cancelarBtn = new JButton("Cancelar");
 
@@ -58,6 +57,7 @@ public class ModificarCuentaAdministradorFrame extends JFrame {
 		JPanel contenedorBtn = new JPanel();
 		contenedorBtn.setAlignmentX(CENTER_ALIGNMENT);
 		contenedorBtn.add(aceptarBtn);
+		contenedorBtn.add(cancelarBtn);
 		this.getContentPane().add(contenedorBtn);
 		this.limitarTamañoIban();
 		this.limitarTamañoNumero();
@@ -98,10 +98,6 @@ public class ModificarCuentaAdministradorFrame extends JFrame {
 		this.saldoTxt.setText(String.valueOf(saldoTxt));
 	}
 
-//	public void setTarjeta_asociadaTxt(JTextField tarjeta_asociadaTxt) {
-//		this.tarjeta_asociadaTxt = tarjeta_asociadaTxt;
-//	}
-
 	public void setId_usuarioTxt(int id_usuarioTxt) {
 		this.id_usuarioTxt.setText(String.valueOf(id_usuarioTxt));
 	}
@@ -128,6 +124,8 @@ public class ModificarCuentaAdministradorFrame extends JFrame {
 	 */
 	public void inicializar() {
 		this.aceptarBtn.addActionListener(new EditarCuentasAdministradorListener(this));
+		this.cancelarBtn.addActionListener(new CancelarBotonListener(this));
+
 	}
 
 	/***

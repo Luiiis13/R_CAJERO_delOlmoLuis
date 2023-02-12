@@ -6,28 +6,35 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import controlador.CajeroControlador;
 import controlador.UsuariosControlador;
-import modelo.tabla.CajeroFila;
 import modelo.tabla.UsuarioFila;
-import vista.AdministrarCajerosFrame;
 import vista.AdministrarUsuariosFrame;
 
-public class EliminiarUsuarioAdministradorListener implements ActionListener{
+/***
+ * Clase que sirve para eliminar un determinado usuario
+ * 
+ * @author Luis
+ *
+ */
+public class EliminiarUsuarioAdministradorListener implements ActionListener {
 	private AdministrarUsuariosFrame eliminarUsuariosFrame;
 
 	public EliminiarUsuarioAdministradorListener(AdministrarUsuariosFrame frame) {
-				this.eliminarUsuariosFrame = frame;
+		this.eliminarUsuariosFrame = frame;
 	}
 
+	/***
+	 * Accion que obtiene el/los usuarios a eliminar con sus datos y se muestra un
+	 * panel de confirmacion y si acepta se elimina al usuario
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-	
+
 		try {
 			ArrayList<UsuarioFila> arrayUsuario = this.eliminarUsuariosFrame.getModelo().getDatos();
 			ArrayList<UsuarioFila> usuariosSeleccionados = new ArrayList<>();
 			for (int i = 0; i < arrayUsuario.size(); i++) {
-					UsuarioFila filaUsuario = arrayUsuario.get(i);
+				UsuarioFila filaUsuario = arrayUsuario.get(i);
 				if (filaUsuario.isSeleccionable() == true) {
 					usuariosSeleccionados.add(filaUsuario);
 				}
@@ -42,7 +49,7 @@ public class EliminiarUsuarioAdministradorListener implements ActionListener{
 				} else {
 					JOptionPane.showMessageDialog(null, "Operación cancelada");
 				}
-			}else {
+			} else {
 				JOptionPane.showMessageDialog(null, "Error debe seleccionar un usuario", "Error",
 						JOptionPane.ERROR_MESSAGE);
 			}
@@ -52,6 +59,12 @@ public class EliminiarUsuarioAdministradorListener implements ActionListener{
 		}
 	}
 
+	/***
+	 * Metodo que sirve para recoger el usuario determinado y eliminarlo
+	 * 
+	 * @param usuariosSeleccionados parametro para recoger el usuario
+	 * @throws Exception
+	 */
 	private void eliminarUsuarios(ArrayList<UsuarioFila> usuariosSeleccionados) throws Exception {
 		UsuariosControlador controladorUsuarios = new UsuariosControlador();
 		for (int i = 0; i < usuariosSeleccionados.size(); i++) {
@@ -61,4 +74,3 @@ public class EliminiarUsuarioAdministradorListener implements ActionListener{
 		}
 	}
 }
-

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import listeners.CancelarBotonListener;
 import listeners.EliminarCuentasAdministradorListener;
 import listeners.MostrarEdicionCuentasListener;
 import listeners.MostrarInserccionCuentasListener;
@@ -30,6 +31,7 @@ public class AdministrarCuentasFrame extends JFrame {
 	private JButton insertarbtn = new JButton("Nuevo");
 	private JButton modificarbtn = new JButton("Modificar");
 	private JButton eliminarbtn = new JButton("Eliminar");
+	private JButton cancelarBtn = new JButton("Cancelar");
 
 	public AdministrarCuentasFrame() {
 
@@ -47,6 +49,7 @@ public class AdministrarCuentasFrame extends JFrame {
 		this.panelBotones.add(insertarbtn);
 		this.panelBotones.add(modificarbtn);
 		this.panelBotones.add(eliminarbtn);
+		this.panelBotones.add(cancelarBtn);
 		this.setVisible(true);
 		this.inicializar();
 	}
@@ -62,5 +65,7 @@ public class AdministrarCuentasFrame extends JFrame {
 		this.insertarbtn.addActionListener(new MostrarInserccionCuentasListener(this));
 		this.modificarbtn.addActionListener(new MostrarEdicionCuentasListener(this));
 		this.eliminarbtn.addActionListener(new EliminarCuentasAdministradorListener(this));
+		this.cancelarBtn.addActionListener(new CancelarBotonListener(this));
+
 	}
 }

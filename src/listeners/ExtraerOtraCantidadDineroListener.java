@@ -2,16 +2,17 @@ package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import controlador.SesionUsuarioControlador;
+import controlador.SesionTarjetaControlador;
 import modelo.dao.CuentaDAO;
 import modelo.dao.MovimientoDAO;
 import modelo.dto.MovimientoDTO;
 import vista.ExtraerOtraCantidadDineroFrame;
-
+/***
+ * Clase que sirve para recargar la cuenta con un dinero predeterminado 
+ * @author Luis 
+ *
+ */
 public class ExtraerOtraCantidadDineroListener implements ActionListener {
 	private ExtraerOtraCantidadDineroFrame frame;
 	private int extraido;
@@ -19,7 +20,10 @@ public class ExtraerOtraCantidadDineroListener implements ActionListener {
 	public ExtraerOtraCantidadDineroListener(ExtraerOtraCantidadDineroFrame frame) {
 		this.frame = frame;
 	}
-
+	/***
+	 * Accion que verifica si la cantidad a retirar es valido y que comprueba si el
+	 * saldo es suficiente , después se establece en la cuenta el saldo actualizado
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.extraido = Integer.parseInt(this.frame.getCantidadSpinner().getValue().toString());
@@ -29,33 +33,36 @@ public class ExtraerOtraCantidadDineroListener implements ActionListener {
 					"Error haciendo la operación. Debe introducir una cantidad mayor que 0 y múltiplo de 5", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		} else {
-			float saldoActual = SesionUsuarioControlador.datosCuenta.getSaldo();
+			float saldoActual = SesionTarjetaControlador.datosCuenta.getSaldo();
 			try {
 				float saldoRestante = (saldoActual - this.extraido);
 				if (saldoRestante >= 0) {
-					SesionUsuarioControlador.datosCuenta.setSaldo(saldoRestante);
+					SesionTarjetaControlador.datosCuenta.setSaldo(saldoRestante);
 					CuentaDAO cuentaDAO = new CuentaDAO();
-					cuentaDAO.actualizarCuenta(SesionUsuarioControlador.datosCuenta);
+					cuentaDAO.actualizarCuenta(SesionTarjetaControlador.datosCuenta);
 					MovimientoDAO movimientoDAO = new MovimientoDAO();
 					long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
 					MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis),
-							"Extracción de dinero", SesionUsuarioControlador.datosTarjeta.getId());
+							"Extracción de dinero", SesionTarjetaControlador.datosTarjeta.getId());
 					movimientoDAO.insertarMovimiento(movimientoDTO);
 					JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
 				} else {
 					JOptionPane.showMessageDialog(null, "Saldo insuficiente", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			} catch (Exception error) {
-				SesionUsuarioControlador.datosCuenta.setSaldo(saldoActual);
+				SesionTarjetaControlador.datosCuenta.setSaldo(saldoActual);
 				JOptionPane.showMessageDialog(null, "Error haciendo la operación", "Error", JOptionPane.ERROR_MESSAGE);
 				System.out.print(error);
 			} finally {
-				this.frame.show(false);
+				this.frame.setVisible(false);
 			}
 		}
 
 	}
-
+/***
+ * Metodo que sirve para validar que la cantidad a extraer era valida   
+ * @return
+ */
 	private boolean validarExtraccion() {
 		boolean valido = false;
 		if (this.extraido > 0 && this.extraido % 5 == 0) {

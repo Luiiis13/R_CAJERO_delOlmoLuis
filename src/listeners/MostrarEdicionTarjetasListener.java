@@ -37,7 +37,7 @@ public class MostrarEdicionTarjetasListener implements ActionListener {
 				TarjetaFila filaTarjeta = tarjetasSeleccionadas.get(0);
 				TarjetasControlador controladorTarjetas = new TarjetasControlador();
 				TarjetaDTO tarjetaDTO = new TarjetaDTO(filaTarjeta.getId(), filaTarjeta.getNumero(),
-						filaTarjeta.getFecha_expiracion(), filaTarjeta.getPin(), filaTarjeta.getCvv(),
+						filaTarjeta.getFecha_expiracion(), filaTarjeta.getCvv() ,filaTarjeta.getPin(),
 						filaTarjeta.isBloqueado(), filaTarjeta.getIdCuentaAsociada());
 				controladorTarjetas.mostrarInterfazEdicion(tarjetaDTO);
 				this.mostrarEdicionTarjetas.setVisible(false);

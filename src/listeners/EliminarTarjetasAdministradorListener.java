@@ -10,11 +10,22 @@ import controlador.TarjetasControlador;
 import modelo.tabla.TarjetaFila;
 import vista.AdministrarTarjetasFrame;
 
-public class EliminarTarjetasAdministradorListener implements ActionListener{
-private AdministrarTarjetasFrame eliminarTarjetasFrame;
-public EliminarTarjetasAdministradorListener(AdministrarTarjetasFrame frame) {
-	this.eliminarTarjetasFrame=frame;
-}
+/***
+ * Clase que sirve para eliminar una determinada tarjeta
+ * 
+ * @author Luis
+ *
+ */
+public class EliminarTarjetasAdministradorListener implements ActionListener {
+	private AdministrarTarjetasFrame eliminarTarjetasFrame;
+
+	public EliminarTarjetasAdministradorListener(AdministrarTarjetasFrame frame) {
+		this.eliminarTarjetasFrame = frame;
+	}
+	/***
+	 * Accion que obtiene la/las tarjeta a eliminar con sus datos y se muestra un
+	 * panel de confirmacion y si acepta se elimina la tarjeta
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -36,7 +47,7 @@ public EliminarTarjetasAdministradorListener(AdministrarTarjetasFrame frame) {
 				} else {
 					JOptionPane.showMessageDialog(null, "Operación cancelada");
 				}
-			}else {
+			} else {
 				JOptionPane.showMessageDialog(null, "Error debe seleccionar una tarjeta", "Error",
 						JOptionPane.ERROR_MESSAGE);
 			}
@@ -46,6 +57,12 @@ public EliminarTarjetasAdministradorListener(AdministrarTarjetasFrame frame) {
 		}
 	}
 
+	/***
+	 * Metodo que sirve para recoger la tarjeta determinado y eliminarlo
+	 * 
+	 * @param tarjetasSeleccionados parametro para recoger la tarjeta
+	 * @throws Exception
+	 */
 	private void eliminarTarjetas(ArrayList<TarjetaFila> tarjetasSeleccionados) throws Exception {
 		TarjetasControlador controladorTarjetas = new TarjetasControlador();
 		for (int i = 0; i < tarjetasSeleccionados.size(); i++) {
@@ -53,6 +70,6 @@ public EliminarTarjetasAdministradorListener(AdministrarTarjetasFrame frame) {
 			int idTarjeta = filaTarjetas.getId();
 			controladorTarjetas.eliminarTarjetas(idTarjeta);
 		}
-	}		
+	}
 
 }

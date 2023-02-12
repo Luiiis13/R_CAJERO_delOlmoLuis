@@ -6,21 +6,26 @@ import java.sql.Date;
 import java.time.Year;
 
 import javax.swing.JOptionPane;
-import javax.xml.crypto.Data;
 
 import controlador.CuentasControlador;
 import controlador.TarjetasControlador;
 import modelo.dto.CuentaDTO;
 import modelo.dto.TarjetaDTO;
 import vista.InsertarTarjetaAdministradorFrame;
-
+/***
+ * Clase que sirve para agregar una nueva tarjeta a la base de datos 
+ * @author Luis
+ *
+ */
 public class AgregarTarjetaAdministradorListener implements ActionListener {
 	private InsertarTarjetaAdministradorFrame insertarTarjetasFrame;
 
 	public AgregarTarjetaAdministradorListener(InsertarTarjetaAdministradorFrame frame) {
 		this.insertarTarjetasFrame = frame;
 	}
-
+	/***
+	 * Accion que sirve para ingresar los distintos datos de una tarjeta y posteriormente confirmar su inserccion 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -53,7 +58,10 @@ public class AgregarTarjetaAdministradorListener implements ActionListener {
 		}
 
 	}
-
+	/***
+	 * Metodo que sirve para validar que los campos rellenados son validos 
+	 * @return 
+	 */ 
 	private boolean validarCampos() {
 		boolean valido = true;
 		String cuentaTxt = this.insertarTarjetasFrame.getCuentaTxt().getText();

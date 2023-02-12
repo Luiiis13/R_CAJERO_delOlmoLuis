@@ -57,11 +57,11 @@ public class IngresarDineroPrincipalFrame extends JFrame {
 	 * Metodo que inicializa los actionListeners de los botones
 	 */
 	private void inicializar() {
-		this.cincoBtn.addActionListener(new IngresarCantidadDineroListener(5));
-		this.veinticincoBtn.addActionListener(new IngresarCantidadDineroListener(25));
-		this.cincuentaBtn.addActionListener(new IngresarCantidadDineroListener(50));
-		this.setentaycincoBtn.addActionListener(new IngresarCantidadDineroListener(75));
-		this.cienBtn.addActionListener(new IngresarCantidadDineroListener(100));
-		this.otraCantidadBtn.addActionListener(new IngresarOtraCantidadListener());
+		this.cincoBtn.addActionListener(new IngresarCantidadDineroListener(5,this));
+		this.veinticincoBtn.addActionListener(new IngresarCantidadDineroListener(25,this));
+		this.cincuentaBtn.addActionListener(new IngresarCantidadDineroListener(50,this));
+		this.setentaycincoBtn.addActionListener(new IngresarCantidadDineroListener(75,this));
+		this.cienBtn.addActionListener(new IngresarCantidadDineroListener(100,this));
+		this.otraCantidadBtn.addActionListener(new IngresarOtraCantidadListener(this));
 	}
 }

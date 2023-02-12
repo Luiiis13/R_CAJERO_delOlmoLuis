@@ -2,17 +2,19 @@ package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 
 import javax.swing.JOptionPane;
 
-import controlador.SesionUsuarioControlador;
-import modelo.dao.CuentaDAO;
+import controlador.SesionTarjetaControlador;
 import modelo.dao.MovimientoDAO;
 import modelo.dao.TarjetaDAO;
 import modelo.dto.MovimientoDTO;
 import vista.CambiarNumeroSecretoFrame;
-
+/***
+ * Clase que implementa la logica para cambiar el numero secreto de la tarjeta 
+ * @author Luis
+ *
+ */
 public class CambiarNumeroSecretoBotonListener implements ActionListener {
 
 	private CambiarNumeroSecretoFrame frame;
@@ -20,20 +22,22 @@ public class CambiarNumeroSecretoBotonListener implements ActionListener {
 	public CambiarNumeroSecretoBotonListener(CambiarNumeroSecretoFrame frame) {
 		this.frame = frame;
 	}
-
+/***
+ * Accion que verifica que el pin es valido , actualiza la tarjeta y luego crea un nuevo movimiento 
+ */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
 			boolean correcto = this.comprobarNuevoPin();
 			if (correcto == true) {
 				int nuevoPin = Integer.parseInt(this.frame.getPinPassfield().getText());
-				SesionUsuarioControlador.datosTarjeta.setPin(nuevoPin);
+				SesionTarjetaControlador.datosTarjeta.setPin(nuevoPin);
 				TarjetaDAO tarjetaDAO = new TarjetaDAO();
-				tarjetaDAO.actualizarTarjeta(SesionUsuarioControlador.datosTarjeta);
+				tarjetaDAO.actualizarTarjeta(SesionTarjetaControlador.datosTarjeta);
 				MovimientoDAO movimientoDAO = new MovimientoDAO();
 				long millis = System.currentTimeMillis();// PARA COGER LA FECHA ACTUAL
 				MovimientoDTO movimientoDTO = new MovimientoDTO(0, new java.sql.Date(millis), "Cambio pin",
-						SesionUsuarioControlador.datosTarjeta.getId());
+						SesionTarjetaControlador.datosTarjeta.getId());
 				movimientoDAO.insertarMovimiento(movimientoDTO);
 				JOptionPane.showMessageDialog(null, "La operación se ha ejecutado correctamente");
 				this.frame.setVisible(false);
@@ -43,7 +47,9 @@ public class CambiarNumeroSecretoBotonListener implements ActionListener {
 			System.out.print(error);
 		}
 	}
-
+/***
+ * Metodo que sirve para comprobar que el pin a insertar es valido 
+ */
 	private boolean comprobarNuevoPin() {
 		boolean correcto = false;
 		String nuevoPinText = this.frame.getPinPassfield().getText();
@@ -65,7 +71,7 @@ public class CambiarNumeroSecretoBotonListener implements ActionListener {
 					JOptionPane.ERROR_MESSAGE);
 			return correcto;
 		}
-		int numeroActual = SesionUsuarioControlador.datosTarjeta.getPin();
+		int numeroActual = SesionTarjetaControlador.datosTarjeta.getPin();
 		if (nuevoPin == numeroActual) {
 			JOptionPane.showMessageDialog(null, "El pin nuevo es igual al anterior", "Error",
 					JOptionPane.ERROR_MESSAGE);

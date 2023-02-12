@@ -5,7 +5,11 @@ import javax.swing.JOptionPane;
 import modelo.dao.SesionDAO;
 import modelo.dto.SesionAdministradorDTO;
 import vista.AdministradorMenuFrame;
-
+/***
+ * Clase que une las distintas funcionalidades de la base de datos con los distintos listeners 
+ * @author Luis
+ *
+ */
 public class SesionAdministradorControlador {
 	private SesionDAO sesionDAO = new SesionDAO();
 	public static SesionAdministradorDTO sesionAdminDTO;
@@ -13,7 +17,12 @@ public class SesionAdministradorControlador {
 	public SesionAdministradorControlador() {
 
 	}
-
+/***
+ * metodo que sirve para verificar que los datos para iniciar la sesion como administrador son correctos 
+ * @param dni
+ * @param contraseña
+ * @return
+ */
 	public boolean validarSesionAdministrador(String dni, String contraseña) {
 		boolean valido = false;
 		SesionAdministradorDTO sesionAdminDTO = this.sesionDAO.verificarSesionAdministrador(dni);
@@ -31,6 +40,9 @@ public class SesionAdministradorControlador {
 		valido = true;
 		return valido;
 	}
+	/***
+	 * Metodo que sirve para mostrar las distintas opciones de administrador 
+	 */
 	public void mostrarOpcionesAdministrador() {
 		AdministradorMenuFrame frameMenu=new AdministradorMenuFrame();
 	}
